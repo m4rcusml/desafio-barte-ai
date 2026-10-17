@@ -242,5 +242,75 @@
       "diferencas_metricas": {},
       "arquivos_saida_alterados": []
     }
+  },
+  {
+    "id_execucao": "EXEC-20261017T212350771736Z-10e664fd20d8",
+    "execucao_dir": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\execucoes\\2026-09\\EXEC-20261017T212350771736Z-10e664fd20d8",
+    "data_hora_execucao": "2026-10-17T18:23:51.005528-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "3.1.0-vigencias-e-consultas-validadas",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-20261017T203905755563Z-3ce9464ec325",
+      "versao_regras_anterior": "3.0.0-snapshots-por-execucao",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": true,
+      "saidas_identicas": true,
+      "regras_identicas": false,
+      "codigo_identico": false,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    }
+  },
+  {
+    "id_execucao": "EXEC-20261017T212531357016Z-af4cf33e9f2d",
+    "execucao_dir": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\execucoes\\2026-09\\EXEC-20261017T212531357016Z-af4cf33e9f2d",
+    "data_hora_execucao": "2026-10-17T18:25:31.863436-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "3.1.0-vigencias-e-consultas-validadas",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-20261017T212350771736Z-10e664fd20d8",
+      "versao_regras_anterior": "3.1.0-vigencias-e-consultas-validadas",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": true,
+      "saidas_identicas": true,
+      "regras_identicas": true,
+      "codigo_identico": false,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    }
   }
 ]

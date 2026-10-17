@@ -9,6 +9,7 @@ import json
 import urllib.request
 import urllib.error
 from typing import Any, Dict, Optional
+from .validation import validar_classificacao
 
 
 class DeepSeekClient:
@@ -76,14 +77,7 @@ Responda APENAS um JSON com o seguinte formato:
                 res_data = json.loads(resp.read().decode("utf-8"))
                 text = res_data["choices"][0]["message"]["content"].strip()
                 parsed = json.loads(text)
-                return {
-                    "domain": parsed.get("domain", "DESCONHECIDO"),
-                    "confidence": float(parsed.get("confidence", 0.85)),
-                    "is_delayed_batch": bool(parsed.get("is_delayed_batch", False)),
-                    "delayed_prob": float(parsed.get("confidence", 0.85)) if parsed.get("is_delayed_batch") else 0.0,
-                    "method": "DEEPSEEK_V1_FLASH",
-                    "reason": parsed.get("reason", ""),
-                }
+                return validar_classificacao(parsed, "DEEPSEEK_V1_FLASH")
         except urllib.error.HTTPError as e:
             e.close()
             return None

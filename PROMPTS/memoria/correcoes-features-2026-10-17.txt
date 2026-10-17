@@ -1,0 +1,78 @@
+CORREÇÃO DAS FALHAS DA AUDITORIA AMPLIADA — 17/10/2026
+
+Base: 3bc3738, preservando os commits de históricos dos integrantes.
+Correções de implementação desta rodada ainda locais no momento dos testes;
+o commit posterior registra exatamente os fontes conferidos pelos hashes.
+
+CORREÇÕES
+
+1. Checkout exige contrato vigente e taxa válida. Vazio, inválido, NaN,
+   taxa negativa ou modalidade sem regra não viram isenção. Zero explícito
+   continua permitido. Condições elegíveis conflitantes bloqueiam a operação.
+2. Operações bloqueadas geram pendência com CNPJ, responsável e rastro da taxa
+   observada, sem incluí-la como receita confirmada. Partes independentes
+   continuam; o estado técnico indica os novos bloqueios.
+3. Consultor valida a competência do manifesto; não pode reetiquetar setembro
+   como outubro. Nome exato/CNPJ têm prioridade; consultas ambíguas pedem
+   identificação. Não há seleção automática pelo token genérico VIAGENS.
+4. Manifesto inclui índice estruturado de pendências por CNPJ. Atlas pode ser
+   consultada pelo CNPJ mesmo sem comissão. Os seis CSVs não mudaram de formato.
+5. Lista de todos os arquivos Orbe agora integra ClosingState. LangGraph e
+   executor nativo processam o terceiro lote, sem omissão silenciosa.
+6. Gemini e DeepSeek rejeitam domínio desconhecido, confiança inválida ou
+   ausente, booleanos em texto e tipos incorretos, acionando o fallback.
+7. CLI, consultor e build configuram UTF-8 também com saída redirecionada.
+8. Build embute apenas fontes Python e metadados, nunca .env ou dados. O
+   snapshot do EXE copia os fontes, guarda commit de base do build e hash do
+   binário, incluído na assinatura do código. Snapshot sem fontes é recusado.
+9. Versão de regras: 3.1.0-vigencias-e-consultas-validadas. Aprovações anteriores
+   não são herdadas indevidamente após mudanças. Aprovação continua humana.
+
+VERIFICAÇÃO FINAL
+
+- 58 testes permanentes passaram no executor nativo e 58 no LangGraph 1.2.16.
+- 19 casos adicionais da auditoria passaram após as correções. O teste de
+  competência foi ajustado para aceitar a rejeição já na construção do
+  consultor, em vez de apenas ao chamar get_summary; a exigência de não
+  apresentar setembro como outubro foi mantida.
+- Testes permanentes novos cobrem vigências, taxa vazia/inválida, zero explícito,
+  estorno pela data original, resposta tipada de IA, identificação dos lojistas,
+  competência, terceiro lote, UTF-8 e identidade/fontes do EXE.
+- Build real via PyInstaller 6.22.3, instalado somente na pasta de auditoria.
+  EXE --help e fechamento de setembro com stdout redirecionado: exit code 0.
+- Os seis CSVs do EXE são idênticos aos do Python e aos versionados, após
+  normalização de finais de linha. Os 32 fontes do snapshot do EXE têm os
+  mesmos hashes do código testado. Hash do binário presente e verificável.
+- Terceiro lote sintético: ambos os executores incluem a nova venda e apuram
+  checkout 203889.82, sem a diferença anterior de 154.48.
+- Setembro real republicado: checkout 203735.34, remessas 39543.42; 35 comissões,
+  115 divergências, 21 notas, 184 lançamentos, 68 pendências, 4503 linhas de rastro.
+  Os seis CSVs oficiais permanecem idênticos ao Git; só os manifestos/histórico
+  foram renovados para refletir código, regras e índice consultivo.
+- Código e dados de execuções anteriores foram preservados; nenhuma aprovação
+  financeira, emissão fiscal, pagamento ou lançamento externo foi realizado.
+
+NÍVEIS E LIMITES
+
+Mínimo e alvo continuam atendidos no conjunto auditado. Os bloqueios de
+generalização e consulta identificados na auditoria ampliada foram corrigidos;
+o extra volta a ter cobertura funcional nos cenários testados, cumulativa com
+mínimo e alvo. Não se promete aceitação de qualquer layout/evento futuro nem
+aprovação pelo gabarito privado da banca. Contas contábeis seguem propostas e
+o fechamento real segue PROVISORIO.
+
+Chamadas reais a Jev/Gemini/DeepSeek permanecem sem homologação, pois não há
+credenciais configuradas. Foram verificados contratos, respostas controladas
+e contingências; não se inventou validação de disponibilidade de provedores.
+
+EVIDÊNCIAS
+
+correcoes-features-2026-10-17.json: executores, build, hashes e equivalência.
+correcoes-features-testes-nativo-2026-10-17.log: 58 testes aprovados.
+correcoes-features-testes-langgraph-2026-10-17.log: 58 testes aprovados.
+correcoes-features-testes-adicionais-2026-10-17.log: 19 casos aprovados.
+tests/test_regressoes_auditoria.py: regressões permanentes reproduzíveis.
+work/correcao-features-2026-10-17/: logs, build, EXE e snapshots locais ignorados.
+
+Os históricos da conversa principal não foram editados ou incluídos novamente
+neste commit. Esta solicitação autoriza commit, sem push nesta rodada.

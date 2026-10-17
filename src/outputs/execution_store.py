@@ -8,6 +8,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import time
 from datetime import datetime, timezone
 from decimal import Decimal
@@ -79,14 +80,24 @@ def preparar_execucao(state):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
         arquivos_codigo.append((rel.as_posix(), sha256_file(target)))
-    try:
-        commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo, capture_output=True,
-                                text=True, check=True, timeout=10).stdout.strip()
-    except (OSError, subprocess.SubprocessError):
-        commit = None
+    if not arquivos_codigo:
+        raise ValueError("Fontes de execução não encontrados; snapshot de código não pode ficar vazio.")
+    executavel_hash = None
+    if getattr(sys, "frozen", False):
+        info = _ler(repo / "tarvo_build.json")
+        commit = info.get("commit")
+        executavel_hash = sha256_file(sys.executable)
+    else:
+        try:
+            commit = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo, capture_output=True,
+                                    text=True, check=True, timeout=10).stdout.strip()
+        except (OSError, subprocess.SubprocessError):
+            commit = None
+    identidade_codigo = {"fontes": arquivos_codigo, "executavel": executavel_hash}
     state["codigo_execucao"] = {
         "commit": commit,
-        "sha256_fontes": hashlib.sha256(json.dumps(arquivos_codigo).encode()).hexdigest(),
+        "sha256_fontes": hashlib.sha256(json.dumps(identidade_codigo).encode()).hexdigest(),
+        "sha256_executavel": executavel_hash,
         "arquivos": arquivos_codigo,
         "observacao": "A cópia em codigo/ registra também alterações locais ainda sem commit.",
     }

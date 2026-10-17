@@ -164,7 +164,7 @@ Ao executar, o agente gera os 6 CSVs obrigatórios com separador `;` e ponto dec
 
 ## Evidências e limites da entrega
 
-A revisão técnica de 17/10/2026 executou **40 testes**, reproduziu os seis CSVs
+A revisão técnica de 17/10/2026 executou **58 testes**, reproduziu os seis CSVs
 com o ZIP original e o complemento `06`, e conferiu 423 resultados por soma do
 rastro. O mínimo, o alvo e o extra são cumulativos e estão cobertos nos dados de
 setembro e cenários sintéticos de outubro; isso não equivale ao gabarito privado
@@ -185,3 +185,26 @@ postagens/checkpoints e os prazos; esta exportação não acrescenta recibos de 
 antigos em `PROMPTS/memoria/` e o plano em `PROMPTS/outputs/arquitetura-stack.md`
 preservam o estado de suas versões; o README e o dossiê descrevem a implementação
 atual. Consulte `PROMPTS/memoria/revalidacao-main-cd2d849-2026-10-17.txt`.
+
+
+### Correções verificadas na revisão final de 17/10
+
+- Contrato fora da vigência, taxa vazia/inválida e condição ambígua bloqueiam a
+  contribuição afetada com pendência e rastro; zero explícito continua válido.
+  O estado técnico indica bloqueios, sem impedir o cálculo das partes independentes.
+- Todos os lotes Orbe são preservados também entre os nós do LangGraph.
+- O consultor prioriza nome exato/CNPJ e pede identificação em consultas ambíguas.
+  Pendências sem comissão, como Atlas, são consultáveis pelo índice de CNPJ do
+  manifesto. Para saídas antigas sem esse índice, reprocessar as fontes preservadas.
+- `--competencia` valida a competência do manifesto, sem trocar o rótulo dos
+  valores. Para consultar outro mês, selecionar seu snapshot com `--output-dir`.
+- Respostas inválidas de Gemini/DeepSeek são rejeitadas, permitindo o fallback.
+  Chamadas reais aos provedores continuam sem homologação por falta de credenciais.
+- O EXE foi compilado e executado com saída redirecionada em UTF-8. O pacote
+  inclui somente fontes Python e metadados do build; `.env` e dados não são
+  embutidos. O snapshot preserva esses fontes e registra o hash do executável.
+
+Os 58 testes passaram nos dois executores. A repetição dos 19 casos adicionais
+da auditoria passou após as correções. Os seis CSVs de setembro mantêm os mesmos
+valores e conteúdo; os manifestos foram renovados com a versão de regras e o
+índice consultivo. Evidências em `PROMPTS/memoria/correcoes-features-2026-10-17.txt`.

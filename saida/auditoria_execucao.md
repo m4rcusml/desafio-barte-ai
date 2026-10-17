@@ -1,8 +1,8 @@
 # 📋 Manifesto de Auditoria da Execução — Fechamento Financeiro Tarvo
-**ID da Execução:** `EXEC-20261017T203905755563Z-3ce9464ec325`
-**Versão de Regras:** `3.0.0-snapshots-por-execucao`
+**ID da Execução:** `EXEC-20261017T212531357016Z-af4cf33e9f2d`
+**Versão de Regras:** `3.1.0-vigencias-e-consultas-validadas`
 **Competência:** `2026-09` (09/2026)
-**Data e Hora:** 2026-10-17T17:39:05.982798-03:00
+**Data e Hora:** 2026-10-17T18:25:31.863436-03:00
 **Estado Técnico:** `CONCLUIDO`
 **Status de Aprovação Humana:** `PROVISORIO`
 **Auditoria Matemática de Rastro:** `✅ 100% CONCILIADO`

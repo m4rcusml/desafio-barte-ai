@@ -1,0 +1,24 @@
+test_arredondamento_simetrico (test_extended.TestExtendedFeatures.test_arredondamento_simetrico) ... ok
+test_clientes_http_falha_aciona_fallback (test_extended.TestExtendedFeatures.test_clientes_http_falha_aciona_fallback) ... ok
+test_clientes_http_sucesso_com_resposta_controlada (test_extended.TestExtendedFeatures.test_clientes_http_sucesso_com_resposta_controlada) ... ok
+test_clientes_nao_tratam_texto_false_como_booleano_true (test_extended.TestExtendedFeatures.test_clientes_nao_tratam_texto_false_como_booleano_true) ... ok
+test_consultor_consulta_exata_nao_escolhe_outro_lojista (test_extended.TestExtendedFeatures.test_consultor_consulta_exata_nao_escolhe_outro_lojista) ... ok
+test_consultor_id_inexistente_e_decisor (test_extended.TestExtendedFeatures.test_consultor_id_inexistente_e_decisor) ... ok
+test_consultor_lojista_bloqueado_consultavel_por_cnpj (test_extended.TestExtendedFeatures.test_consultor_lojista_bloqueado_consultavel_por_cnpj) ... ok
+test_consultor_nao_rotula_setembro_como_outubro (test_extended.TestExtendedFeatures.test_consultor_nao_rotula_setembro_como_outubro) ... ok
+test_contrato_fora_da_vigencia_nao_fatura (test_extended.TestExtendedFeatures.test_contrato_fora_da_vigencia_nao_fatura) ... ok
+test_deepseek_rejeita_confianca_fora_de_0_a_1 (test_extended.TestExtendedFeatures.test_deepseek_rejeita_confianca_fora_de_0_a_1) ... ok
+test_dotenv_explicito_e_precedencia_ambiente (test_extended.TestExtendedFeatures.test_dotenv_explicito_e_precedencia_ambiente) ... ok
+test_filtro_divergencia_limite_inclusivo (test_extended.TestExtendedFeatures.test_filtro_divergencia_limite_inclusivo) ... ok
+test_gemini_rejeita_dominio_fora_do_contrato (test_extended.TestExtendedFeatures.test_gemini_rejeita_dominio_fora_do_contrato) ... ok
+test_guardrail_detecta_id_cnpj_data_invalidos (test_extended.TestExtendedFeatures.test_guardrail_detecta_id_cnpj_data_invalidos) ... ok
+test_heuristica_plano_e_desconhecido (test_extended.TestExtendedFeatures.test_heuristica_plano_e_desconhecido) ... ok
+test_normalizadores_formatos_suportados (test_extended.TestExtendedFeatures.test_normalizadores_formatos_suportados) ... ok
+test_router_baixa_confianca_cai_para_heuristica (test_extended.TestExtendedFeatures.test_router_baixa_confianca_cai_para_heuristica) ... ok
+test_router_todos_caminhos_sucesso (test_extended.TestExtendedFeatures.test_router_todos_caminhos_sucesso) ... ok
+test_taxa_vazia_nao_vira_isencao_silenciosa (test_extended.TestExtendedFeatures.test_taxa_vazia_nao_vira_isencao_silenciosa) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.060s
+
+OK

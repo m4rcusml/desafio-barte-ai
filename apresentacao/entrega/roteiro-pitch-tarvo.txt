@@ -2,7 +2,7 @@ TARVO / ROTEIRO PARA O PITCH BARTE AI
 Revisão 4 / 17 de outubro de 2026
 
 ESTADO E EVIDÊNCIAS
-Base: main cd2d849, revisão documental posterior, 40 testes aprovados,
+Base: main cd2d849, revisão documental posterior, 58 testes aprovados,
 CLI real com ZIP original + 06, seis CSVs reproduzidos e 423 resultados
 conferidos por soma do rastro. O fechamento continua PROVISORIO.
 Fontes principais: README.md, HIPOTESES.md, DOCUMENTO_DE_LEITURA.md,
@@ -113,7 +113,7 @@ SLIDE 12 / Helena decide com a origem à vista
 13:15–14:10 / Marcus
 
 FALA
-A entrega funcional cobre mínimo, alvo e extra nos cenários auditados. São 40 testes, seis CSVs reproduzidos e 4.503 contribuições de rastro para 423 resultados. O mínimo é checkout rastreável; o alvo acrescenta as demais saídas; o extra explica pendências e reutiliza o fluxo em outubro. A consistência não elimina decisões contábeis e comerciais. Helena continua responsável pela aprovação financeira. A apresentação deixa claros os números apurados, as evidências e o que ainda depende de uma pessoa.
+A entrega funcional cobre mínimo, alvo e extra nos cenários auditados. São 58 testes, seis CSVs reproduzidos e 4.503 contribuições de rastro para 423 resultados. O mínimo é checkout rastreável; o alvo acrescenta as demais saídas; o extra explica pendências e reutiliza o fluxo em outubro. A consistência não elimina decisões contábeis e comerciais. Helena continua responsável pela aprovação financeira. A apresentação deixa claros os números apurados, as evidências e o que ainda depende de uma pessoa.
 
 ========================================================================
 

@@ -1,7 +1,7 @@
 Tarvo / Pitch para o financeiro e CFO — revisão 4, 17/10/2026
 
 Roteiro local atualizado: roteiro-pitch-tarvo.txt.
-Base: main cd2d849, 40 testes, CLI real com ZIP original + 06, seis CSVs
+Base: main cd2d849, 58 testes, CLI real com ZIP original + 06, seis CSVs
 reproduzidos e 423 resultados conferidos por soma do rastro.
 
 Deck de referência:

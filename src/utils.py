@@ -5,6 +5,7 @@ Funções Utilitárias e Constantes Canônicas (Tarvo Closing Engine).
 from __future__ import annotations
 import os
 import re
+import sys
 from pathlib import Path
 from decimal import Decimal, ROUND_HALF_UP
 from typing import Optional, Any, Dict
@@ -47,6 +48,13 @@ def load_dotenv_safe(env_path: Optional[Path] = None) -> None:
 
 # Carrega automaticamente ao importar
 load_dotenv_safe()
+
+
+def configurar_saida_utf8() -> None:
+    """Mantém logs legíveis também no EXE com stdout redirecionado no Windows."""
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="backslashreplace")
 
 # Legendas de codificação numérica para otimização tabular
 LEGENDS: Dict[str, Dict[str, int]] = {
@@ -146,7 +154,7 @@ def fmt_vigencia(val: Optional[str]) -> str:
     return iso_date
 
 
-VERSAO_REGRAS = "3.0.0-snapshots-por-execucao"
+VERSAO_REGRAS = "3.1.0-vigencias-e-consultas-validadas"
 
 
 def sha256_file(path: Optional[Path | str]) -> str:

@@ -48,7 +48,7 @@ escolher uma regra comercial. O núcleo pode funcionar sem chamadas a modelos.
 Não há benchmark de latência de produção. Não se promete execução inferior a
 0,1 segundo, disponibilidade irrestrita, partidas dobradas completas ou conciliação
 de todos os recebíveis. A apresentação verificada usa CLI Python e subagente;
-o build do EXE é opcional e não foi validado nesta revisão.
+o build do EXE é opcional e foi validado em Windows, inclusive com saída redirecionada e preservação dos fontes.
 
 ## Regras e escolhas com efeito financeiro
 
@@ -139,7 +139,7 @@ para limites de backup, concorrência, falhas e armazenamento local.
 
 ## Entrega geral e limitações restantes
 
-Os 40 testes cobrem setembro, outubro sintético, conflitos, fontes incompletas,
+Os 58 testes cobrem setembro, outubro sintético, conflitos, fontes incompletas,
 preservação de versões e proteção de publicação. A aprovação financeira real
 continua provisória. O subagente não paga, emite nota fiscal, lança no ERP ou
 aprova contratos/exceções.

@@ -6,6 +6,7 @@ Processa o lote principal (01) e o lote incremental de ajustes tardios (06).
 from __future__ import annotations
 import csv
 from dataclasses import dataclass, field
+from datetime import date
 from decimal import Decimal
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
@@ -68,19 +69,28 @@ class ResultadoCheckout:
     totais_por_lojista: Dict[str, Decimal] = field(default_factory=dict)
 
 
-def _normalizar_pct(val_str: str) -> Decimal:
+class RegraCheckoutIndisponivel(ValueError):
+    def __init__(self, tipo: str, mensagem: str):
+        super().__init__(mensagem)
+        self.tipo = tipo
+
+
+def _normalizar_pct(val_str: str) -> Optional[Decimal]:
     if not val_str or not val_str.strip():
-        return Decimal("0.00")
+        return None
     s = val_str.strip().rstrip("%").lower()
     if s in ("padrão", "padrao"):
-        return Decimal("0.015")
+        # O padrão 1,5% foi confirmado para remessa, não para taxas de checkout.
+        return None
     try:
         d = Decimal(s)
+        if not d.is_finite() or d < 0:
+            return None
         if d >= Decimal("0.20"):
             return d / Decimal("100")
         return d
     except Exception:
-        return Decimal("0.00")
+        return None
 
 
 def carregar_contratos(tabela_taxas_path: Path) -> Dict[str, List[Dict[str, Any]]]:
@@ -149,38 +159,39 @@ def obter_taxa_contratada(
     modalidade: int,
     qtd_parcelas: int,
 ) -> Tuple[Decimal, str, str]:
-    contrato_escolhido = contratos[0]
-    if len(contratos) > 1:
-        for c in contratos:
-            vig = c["vigencia"]
-            if vig.endswith("-ate"):
-                if data_operacao <= vig.replace("-ate", ""):
-                    contrato_escolhido = c
-                    break
-            elif vig.endswith("-apd"):
-                if data_operacao >= vig.replace("-apd", ""):
-                    contrato_escolhido = c
-                    break
+    try:
+        data = date.fromisoformat(data_operacao)
+        elegiveis = []
+        for contrato in contratos:
+            vig = contrato["vigencia"]
+            limite = date.fromisoformat(vig.removesuffix("-ate").removesuffix("-apd"))
+            if (data <= limite if vig.endswith("-ate") else data >= limite):
+                elegiveis.append(contrato)
+    except (ValueError, TypeError):
+        raise RegraCheckoutIndisponivel("VIGENCIA_CONTRATUAL_INVALIDA", "Data ou vigência contratual ausente/inválida.")
+    if not elegiveis:
+        raise RegraCheckoutIndisponivel("CONTRATO_FORA_DA_VIGENCIA", f"Nenhum contrato vigente em {data_operacao}.")
+    # Repetições do mesmo cadastro não criam ambiguidade; condições distintas, sim.
+    assinaturas = {tuple(sorted(c.items())) for c in elegiveis}
+    if len(assinaturas) > 1:
+        raise RegraCheckoutIndisponivel("CONTRATO_AMBIGUO", f"Mais de uma condição contratual vigente em {data_operacao}.")
+    contrato_escolhido = elegiveis[0]
 
     cnpj = contrato_escolhido["cnpj"]
     lojista = contrato_escolhido["lojista"]
 
-    if tipo_lancamento in (3, 4):  # Antecipação ou Reversão de Antecipação
-        return contrato_escolhido["antecipacao"], cnpj, lojista
-
-    if modalidade == 4:  # Débito
-        return contrato_escolhido["debito"], cnpj, lojista
-    elif modalidade == 3:  # PIX
-        return contrato_escolhido["pix"], cnpj, lojista
-    elif modalidade == 1:  # Crédito à vista
-        return contrato_escolhido["credito_a_vista"], cnpj, lojista
-    elif modalidade == 2:  # Crédito Parcelado
-        if qtd_parcelas <= 6:
-            return contrato_escolhido["cred_2_6x"], cnpj, lojista
-        else:
-            return contrato_escolhido["cred_7_12x"], cnpj, lojista
-
-    return Decimal("0.00"), cnpj, lojista
+    if tipo_lancamento in (3, 4):
+        campo = "antecipacao"
+    elif tipo_lancamento in (1, 2) and modalidade == 2 and 2 <= qtd_parcelas <= 12:
+        campo = "cred_2_6x" if qtd_parcelas <= 6 else "cred_7_12x"
+    elif tipo_lancamento in (1, 2) and modalidade in (1, 3, 4):
+        campo = {1: "credito_a_vista", 3: "pix", 4: "debito"}[modalidade]
+    else:
+        raise RegraCheckoutIndisponivel("MODALIDADE_SEM_REGRA", "Tipo, modalidade ou parcelamento sem regra contratual.")
+    taxa = contrato_escolhido.get(campo)
+    if taxa is None:
+        raise RegraCheckoutIndisponivel("TAXA_CONTRATUAL_AUSENTE_OU_INVALIDA", f"Taxa {campo} ausente/inválida; não presumir isenção.")
+    return taxa, cnpj, lojista
 
 
 def _nome_arq_orbe_amigavel(arq_origem: str) -> str:
@@ -286,6 +297,15 @@ def processar_checkout(
 
     casa_isencao_txs: List[Tuple[str, Decimal, str, Decimal, Decimal]] = []
     ids_ja_processados: set[str] = set()
+
+    def registrar_bloqueio_regra(erro, ref, arquivo, contratos, valor_observado):
+        valor = round_half_up(valor_observado)
+        pendencias.append(LinhaPendencia(
+            tipo=erro.tipo, ref_origem=ref, valor_brl=valor,
+            motivo=f"{contratos[0]['lojista']} (CNPJ {contratos[0]['cnpj']}): {erro} Operação bloqueada para faturamento; valor da pendência é taxa observada, não comissão confirmada.",
+            quem_decide="Bia / Comercial", cnpj=contratos[0]["cnpj"], arquivo_origem=arquivo,
+            rastro_itens=[LinhaRastro("", arquivo, ref, valor, "Bloqueio por regra contratual indisponível", "PENDENTE", str(erro))],
+        ))
 
     for row, arq_origem in rows_all:
         id_transacao = row["id_transacao"].strip()
@@ -434,9 +454,13 @@ def processar_checkout(
                 data_orig_casa = tx_primarias[id_referencia].get("data_movimento", "").strip()
             if "2026-09-01" <= data_mov <= "2026-12-31":
                 if tipo_lancto in (2, 4) and data_orig_casa and data_orig_casa < "2026-09-01":
-                    taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
-                        contratos, data_orig_casa, tipo_lancto, modalidade, qtd_parcelas
-                    )
+                    try:
+                        taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
+                            contratos, data_orig_casa, tipo_lancto, modalidade, qtd_parcelas
+                        )
+                    except RegraCheckoutIndisponivel as erro:
+                        registrar_bloqueio_regra(erro, id_transacao, arq_amigavel, contratos, valor_taxa)
+                        continue
                     taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
                     comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)
                     regra_aplicada = f"Estorno anterior a set/2026 pela taxa da venda original ({data_orig_casa}) (Regra Helena)"
@@ -465,9 +489,13 @@ def processar_checkout(
         else:
             data_para_taxa = data_mov
 
-        taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
-            contratos, data_para_taxa, tipo_lancto, modalidade, qtd_parcelas
-        )
+        try:
+            taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
+                contratos, data_para_taxa, tipo_lancto, modalidade, qtd_parcelas
+            )
+        except RegraCheckoutIndisponivel as erro:
+            registrar_bloqueio_regra(erro, id_transacao, arq_amigavel, contratos, valor_taxa)
+            continue
 
         taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
         comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)

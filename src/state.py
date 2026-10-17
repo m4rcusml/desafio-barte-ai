@@ -42,6 +42,8 @@ class ClosingState(TypedDict, total=False):
     # Ingestão, Cobertura e Triagem Tripla
     arquivos_descobertos: List[FileMetadata]
     arquivos_identificados: Dict[str, str]  # chave semântica -> caminho do arquivo
+    orbe_arquivos_lista: List[str]  # todos os lotes; preservado entre nós LangGraph
+    indice_pendencias_cnpj: Dict[str, List[str]]
     cobertura_fontes: Dict[str, Dict[str, Any]]  # domínio -> {estado, arquivo, motivo, dependencia, responsavel, linhas_validas}
 
     # Camada Silver (dados formatados canônicos)

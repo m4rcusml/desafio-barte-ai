@@ -16,12 +16,14 @@ import argparse
 import csv
 import json
 import sys
+import re
+import unicodedata
 from decimal import Decimal
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 
-from ..utils import format_competencia_br
+from ..utils import format_competencia_br, configurar_saida_utf8
 
 
 class TarvoConsultant:
@@ -42,6 +44,12 @@ class TarvoConsultant:
         else:
             self.output_dir = Path(output_dir)
         self.competencia_override = competencia
+        if competencia is not None:
+            if not re.fullmatch(r"\d{4}-(0[1-9]|1[0-2])", competencia):
+                raise ValueError("Competência inválida; use AAAA-MM.")
+            efetiva = self._read_manifest().get("competencia")
+            if efetiva != competencia:
+                raise ValueError(f"Competência solicitada {competencia} difere da saída consultada ({efetiva or 'não identificada'}). Selecione o snapshot correto com --output-dir.")
 
     def _read_csv(self, filename: str) -> List[Dict[str, str]]:
         path = self.output_dir / filename
@@ -94,7 +102,7 @@ class TarvoConsultant:
             for k, v in pend_por_decisor.items()
         }
 
-        comp_raw = self.competencia_override or manifest.get("competencia", "2026-09")
+        comp_raw = manifest.get("competencia", "2026-09")
         comp_fmt = format_competencia_br(comp_raw)
         status_aprov = manifest.get("status_aprovacao", manifest.get("status_fechamento", "PROVISORIO"))
         estado_tec = manifest.get("estado_tecnico", "CONCLUIDO")
@@ -124,24 +132,40 @@ class TarvoConsultant:
 
     def explain_lojista(self, query: str) -> Dict[str, Any]:
         """Explica detalhadamente o fechamento de um lojista específico por nome ou CNPJ."""
-        q = query.strip().upper()
+        def normalizar(value):
+            text = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode().upper()
+            return " ".join(re.findall(r"[A-Z0-9]+", text))
+
+        q = normalizar(query)
+        if not q:
+            return {"erro": "Informe um nome ou CNPJ para a consulta."}
+        cnpj_query = re.sub(r"\D", "", query)
+        por_cnpj = len(cnpj_query) == 14
         comissoes = self._read_csv("comissoes_por_lojista.csv")
         notas = self._read_csv("notas_a_emitir.csv")
         pendencias = self._read_csv("pendencias.csv")
         rastro = self._read_csv("rastro.csv")
 
         # Localiza comissões
-        tokens = [t for t in q.split() if len(t) > 2]
-        matches_com = [
-            c for c in comissoes
-            if q in c["lojista"].upper() or q == c["cnpj"] or (tokens and any(t in c["lojista"].upper() for t in tokens))
-        ]
+        tokens = set(q.split())
+        if por_cnpj:
+            matches_com = [c for c in comissoes if c["cnpj"] == cnpj_query]
+        else:
+            matches_com = [c for c in comissoes if normalizar(c["lojista"]) == q]
+            if not matches_com:
+                matches_com = [c for c in comissoes if tokens <= set(normalizar(c["lojista"]).split())]
+        if len({c["cnpj"] for c in matches_com}) > 1:
+            return {"erro": "Consulta ambígua; informe o CNPJ ou nome completo.",
+                    "candidatos": [{"cnpj": c["cnpj"], "lojista": c["lojista"]} for c in matches_com]}
+
+        ids_por_cnpj = self._read_manifest().get("indice_pendencias_cnpj", {})
 
         if not matches_com:
             # Pode estar bloqueado (ex: Atlas)
             matches_pend = [
                 p for p in pendencias
-                if q in p["motivo"].upper() or q == p["ref_origem"]
+                if (p["id_saida"] in ids_por_cnpj.get(cnpj_query, []) if por_cnpj
+                    else tokens <= set(normalizar(p["motivo"]).split()) or q == normalizar(p["ref_origem"]))
             ]
             if matches_pend:
                 return {
@@ -159,8 +183,8 @@ class TarvoConsultant:
 
         # Vínculos no rastro
         linhas_rastro = [r for r in rastro if r["id_saida"] == id_com]
-        nota = next((n for n in notas if n["tomador_cnpj"] == cnpj), None)
-        pends_cli = [p for p in pendencias if cnpj in p["motivo"] or q in p["motivo"].upper()]
+        nota = next((n for n in notas if n["tomador_cnpj"] == cnpj and n["linha_negocio"] == com["linha_negocio"]), None)
+        pends_cli = [p for p in pendencias if p["id_saida"] in ids_por_cnpj.get(cnpj, [])]
 
         return {
             "id_saida": id_com,
@@ -230,6 +254,7 @@ class TarvoConsultant:
 
 
 def main():
+    configurar_saida_utf8()
     parser = argparse.ArgumentParser(description="Subagente Consultivo Tarvo Pagamentos")
     parser.add_argument("--summary", action="store_true", help="Exibe resumo executivo do fechamento")
     parser.add_argument("--lojista", type=str, help="Consulta e explica fechamento de um lojista por nome ou CNPJ")
@@ -239,10 +264,13 @@ def main():
     parser.add_argument("--competencia", type=str, default=None, help="Competência no formato YYYY-MM (opcional)")
 
     args = parser.parse_args()
-    agent = TarvoConsultant(
-        output_dir=Path(args.output_dir) if args.output_dir else None,
-        competencia=args.competencia,
-    )
+    try:
+        agent = TarvoConsultant(
+            output_dir=Path(args.output_dir) if args.output_dir else None,
+            competencia=args.competencia,
+        )
+    except ValueError as erro:
+        parser.error(str(erro))
 
     if args.summary:
         res = agent.get_summary()

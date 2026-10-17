@@ -1,0 +1,53 @@
+{
+  "base_commit": "3bc373808c3d4a99c08b5b8e14e931a20a90eeec",
+  "testes_nativo": 58,
+  "testes_langgraph": {
+    "graph_type": "langgraph.graph.state.CompiledStateGraph",
+    "tests_run": 58,
+    "failures": 0,
+    "errors": 0,
+    "failed_tests": []
+  },
+  "casos_adicionais": 19,
+  "build": {
+    "build_exit_code": 0,
+    "exe_exists": true,
+    "exe-ajuda": {
+      "exit_code": 0,
+      "log_tail": "{PROVISORIO,APROVADO_POR_HELENA,REABERTO_PARA_REVISAO}]\n                            [--competencia COMPETENCIA]\n\nAgente de Fechamento Financeiro Tarvo Pagamentos\n\noptions:\n  -h, --help            show this help message and exit\n  --data-dir DATA_DIR   Diretório onde os arquivos brutos estão localizados\n                        (padrão: diretório atual)\n  --status {PROVISORIO,APROVADO_POR_HELENA,REABERTO_PARA_REVISAO}\n                        Estado de aprovação do fechamento (PROVISORIO,\n                        APROVADO_POR_HELENA ou REABERTO_PARA_REVISAO)\n  --competencia COMPETENCIA\n                        Competência do fechamento no formato YYYY-MM (padrão:\n                        2026-09)\n"
+    },
+    "exe-setembro": {
+      "exit_code": 0,
+      "log_tail": "ficados : 184 registros\n✓ pendencias.csv            : 68 registros\n✓ rastro.csv                : 4503 registros vinculados\n===========================================================================\nArquivos salvos com sucesso em:\n 1. C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\correcao-features-2026-10-17\\exe-real\\fechamento-completo\n 2. C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\correcao-features-2026-10-17\\exe-real\\saida\nExecução preservada: C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\correcao-features-2026-10-17\\exe-real\\execucoes\\2026-09\\EXEC-20261017T212534991566Z-5b956c6bd8f9\n===========================================================================\n"
+    },
+    "csvs_identicos_python": {
+      "comissoes_por_lojista.csv": true,
+      "divergencias_taxa.csv": true,
+      "notas_a_emitir.csv": true,
+      "lancamentos_classificados.csv": true,
+      "pendencias.csv": true,
+      "rastro.csv": true
+    }
+  },
+  "fontes_no_snapshot_exe": 32,
+  "hash_executavel": "4cb3a34547779da602009578745338ad46eee5bc7af90327a58c7d83855cf10b",
+  "fontes_exe_identicos_ao_codigo_testado": true,
+  "seis_csvs_identicos_ao_git": true,
+  "multiplas_fontes": {
+    "langgraph": {
+      "checkout_total": "203889.82",
+      "extra_sale_in_trace": true,
+      "state": "CONCLUIDO"
+    },
+    "native": {
+      "checkout_total": "203889.82",
+      "extra_sale_in_trace": true,
+      "state": "CONCLUIDO"
+    },
+    "equivalent": true
+  },
+  "id_execucao_oficial": "EXEC-20261017T212531357016Z-af4cf33e9f2d",
+  "versao_regras": "3.1.0-vigencias-e-consultas-validadas",
+  "status_aprovacao": "PROVISORIO",
+  "chamadas_reais_ia": "NAO_HOMOLOGADAS_SEM_CREDENCIAIS"
+}

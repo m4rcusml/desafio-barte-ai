@@ -311,6 +311,7 @@ def gerar_manifestos_auditoria(
         "hash_saidas_combinado": hash_saidas_combinado,
         "metricas_financeiras": metricas_atuais,
         "cobertura_fontes": cobertura_fontes,
+        "indice_pendencias_cnpj": state.get("indice_pendencias_cnpj", {}),
         "arquivos_entrada": arquivos_inventario,
         "arquivos_saida": arquivos_saida_inv,
         "comparacao_execucao_anterior": comparacao_execucao,
@@ -618,6 +619,14 @@ def emitir_todos_os_entregaveis(
         }
         pendencias_rows.append(p_row)
         pendencias_objs.append((p_row, p))
+
+    # Índice estruturado para consulta por CNPJ, inclusive sem comissão faturável.
+    # Não altera as seis colunas oficiais de pendências nem depende de texto livre.
+    state["indice_pendencias_cnpj"] = {}
+    for p_row, pendencia in pendencias_objs:
+        cnpj = getattr(pendencia, "cnpj", "")
+        if cnpj:
+            state["indice_pendencias_cnpj"].setdefault(cnpj, []).append(p_row["id_saida"])
 
     # 6. rastro.csv (Universal Expandido - Organização Barte 14h11)
     # A) Comissões Checkout

@@ -41,3 +41,10 @@ da pasta inteira; publicar o código no GitHub não envia esse histórico. Essa
 preservação não é armazenamento inviolável: quem tem acesso ao disco pode alterar
 arquivos. Não há garantia de transação entre volumes, de recuperação automática
 após queda de energia ou de publicação simultânea por vários processos.
+
+
+No executável Windows, os fontes Python são embutidos pelo script de build e
+copiados para `codigo/src/` em cada snapshot. Os metadados registram o commit
+de base do build e o hash do executável; a assinatura do código inclui esse
+hash. Um snapshot sem fontes não é finalizado. Credenciais `.env` e dados de
+entrada não são recursos embutidos do binário.

@@ -15,9 +15,11 @@ if str(current_dir.parent) not in sys.path:
     sys.path.insert(0, str(current_dir.parent))
 
 from src.graph import build_closing_graph
+from src.utils import configurar_saida_utf8
 
 
 def main():
+    configurar_saida_utf8()
     parser = argparse.ArgumentParser(description="Agente de Fechamento Financeiro Tarvo Pagamentos")
     parser.add_argument(
         "--data-dir",

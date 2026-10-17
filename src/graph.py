@@ -140,7 +140,7 @@ def node_ingestao_triagem(state: ClosingState) -> ClosingState:
     state["arquivos_descobertos"] = descobertos
     state["arquivos_identificados"] = mapa_arquivos
     state["cobertura_fontes"] = cobertura
-    state["_orbe_arquivos_lista"] = orbe_arquivos_lista  # type: ignore[typeddict-unknown-key]
+    state["orbe_arquivos_lista"] = orbe_arquivos_lista
     return state
 
 
@@ -181,7 +181,7 @@ def node_silver_formatters(state: ClosingState) -> ClosingState:
     silver_paths: Dict[str, Any] = {}
 
     # 1 & 2. Arquivos Orbe (Principal, Ajustes Tardios 06 e eventuais lotes adicionais de outra competência)
-    orbe_raw_list: List[str] = state.get("_orbe_arquivos_lista", [])  # type: ignore[assignment]
+    orbe_raw_list: List[str] = state.get("orbe_arquivos_lista", [])
     if not orbe_raw_list:
         if mapa.get("ORBE_FECHAMENTO_PRINCIPAL"):
             orbe_raw_list.append(mapa["ORBE_FECHAMENTO_PRINCIPAL"])
@@ -452,7 +452,11 @@ def node_motores_dominio(state: ClosingState) -> ClosingState:
     )
     state["estado_tecnico"] = (
         "PARCIAL_COM_BLOQUEIOS"
-        if (alguma_invalida_ou_bloqueada or alguma_obrigatoria_ausente)
+        if (alguma_invalida_ou_bloqueada or alguma_obrigatoria_ausente or any(
+            p.tipo in {"CONTRATO_FORA_DA_VIGENCIA", "VIGENCIA_CONTRATUAL_INVALIDA", "CONTRATO_AMBIGUO",
+                       "TAXA_CONTRATUAL_AUSENTE_OU_INVALIDA", "MODALIDADE_SEM_REGRA"}
+            for p in res_checkout.pendencias
+        ))
         else "CONCLUIDO"
     )
     state["cobertura_fontes"] = cobertura
