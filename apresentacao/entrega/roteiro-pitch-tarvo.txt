@@ -1,4 +1,4 @@
-﻿TARVO / ROTEIRO BASE PARA O PITCH BARTE AI
+TARVO / ROTEIRO BASE PARA O PITCH BARTE AI
 Revisão 2 / 17 de outubro de 2026
 
 Apresentação editável:
@@ -112,16 +112,15 @@ SLIDE 06 / Dinheiro em jogo no fechamento
 5:25–7:05 / Raphael
 
 FALA
-A competência é setembro de 2026. Ainda não recebemos uma execução validada nem sua cobertura financeira; por isso, os totais continuam a apurar. O quadro separa comissão contratual de checkout, participação elegível de remessas, cobrança a maior a contestar e devolução da Casa do Estudante. A devolução fica separada da cobrança à Orbe, conforme o esclarecimento do financeiro. Acrescentamos as pendências que podem alterar valores, como Atlas sem taxa confirmada e critérios ainda a decidir. Não há valor validado para essas pendências. Na versão com resultados, cada total terá identificador da execução, fontes, cobertura e contribuições no rastro. Receita antes omitida só entrará se uma comparação reproduzível comprovar a omissão. O simples total de receita apurada não demonstra receita incremental ou dinheiro recuperado.
+Na competência de setembro de 2026, a apuração financeira resultou em R$ 243.278,76 em comissões contratuais (R$ 203.735,34 em checkout para 21 lojistas e R$ 39.543,42 em remessas da Ponte Câmbio), gerando proposta de faturamento de R$ 243.284,26 em 21 notas fiscais — a Casa do Estudante fechou com comissão líquida de -R$ 5,50 devido a um estorno de agosto e não gera nota por saldo não positivo. Identificamos R$ 2.995,11 em divergências contratuais a contestar: R$ 1.576,23 no checkout (divididos entre 87 transações da Rota Global cobradas 0,50 p.p. acima do contrato, somando R$ 1.546,28, e 5 vendas à vista da Bridge pós-15/09 cobradas a 2,59% contra o contrato novo de 2,19%, somando R$ 29,95) e R$ 1.418,88 em remessas (23 operações da Mundo Aberto cobradas a 1,50% de spread quando o contrato previa 1,20%). Separadamente, há pendências que exigem decisão humana: R$ 15.396,77 em taxas da Casa do Estudante cobradas indevidamente pela Orbe durante a isenção de set-dez/2026 para alinhamento comercial, e R$ 7.876,05 de comissão retida da Atlas Idiomas por ausência de contrato assinado (cujo volume bruto transacionado soma R$ 262.138,61). Não misturamos receita apurada com recuperação de caixa.
 
 CONDUÇÃO
-Não preencher totais com valor_taxa, líquido bancário ou somas exploratórias. Identificar execução e cobertura como não recebidas até haver evidência.
+Apresentar a distinção entre comissão apurada, faturamento em notas, contestação de divergências e pendências comerciais/cadastrais. Não somar valores heterogêneos.
 
 FONTES
 AGENTS.md: Checkout; Remessas; Faturamento
-HIPOTESES.md
-Instruções do desafio: o pitch deve quantificar divergências, devoluções e receita não faturada
-Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+HIPOTESES.md: P1, P2 e confirmações de Helena
+saida/comissoes_por_lojista.csv; saida/notas_a_emitir.csv; saida/divergencias_taxa.csv; saida/pendencias.csv
 
 ========================================================================
 
@@ -129,16 +128,16 @@ SLIDE 07 / Como conferir um valor até a origem
 7:05–8:25 / Raphael
 
 FALA
-Sem execução validada recebida, este exemplo permanece explicitamente didático. A taxa de dois por cento e os valores são fictícios: a venda contribui com vinte reais, o estorno retira quatro e a soma resulta em dezesseis. Uma demonstração real precisa percorrer o resultado, as contribuições no rastro, as fontes e a soma conferida. Separadamente, há uma pendência real conhecida: Atlas ainda não tem taxa vigente confirmada. O comercial precisa confirmar a condição, e Helena libera o faturamento. Não atribuímos valor a essa pendência nem a ligamos às transações fictícias. Quando houver uma execução validada, o exemplo será substituído por um resultado real e uma pendência da mesma execução, com motivo e responsável.
+Para demonstrar a rastreabilidade ponta a ponta, tomamos um lojista real: a Escola Bridge de Idiomas Ltda (CNPJ 22.224.579/0001-09, EC 1075624862). Sua comissão apurada em COM-0009 é de exatamente R$ 11.769,74, vinculada à nota NF-0008 no mesmo valor. Ao inspecionar o rastro.csv, encontramos 109 lançamentos auditáveis cuja soma fecha centavo por centavo em R$ 11.769,74. No rastro, vemos: na linha 11 do arquivo original 01_orbe_relatorio_comissoes_set2026.csv, a venda a crédito TX88411252 de R$ 3.882,89 aplica a taxa contratual pré-15/09 de 3,19%, resultando em R$ 123,86. Já a venda a crédito TX88444329, realizada após o corte de 15/09, aplica a nova taxa de 2,19%. Por fim, na linha 5 do arquivo 06_orbe_ajustes_tardios_set2026.csv, o estorno tardio TX88447044 de R$ -1.982,10 recupera a taxa original da venda de 13/09, abatendo R$ -63,23. Cada centavo gerado possui vínculo direto com o arquivo bruto, linha de origem e regra contratual aplicada.
 
 CONDUÇÃO
-Manter o aviso didático. A pendência Atlas é real e separada das duas transações fictícias. Transição: “Carlos explica os papéis previstos e a revisão humana.”
+Percorrer a prova matemática: COM-0009 bate com NF-0008 e com a soma exata das 109 linhas de rastro.csv ligadas aos arquivos 01 e 06. Transição: “Carlos explica os papéis da IA e os limites de autonomia.”
 
 FONTES
-Instruções do desafio: regra central de rastreabilidade
-AGENTS.md: arredondamento e estorno
-Exemplo sintético criado apenas para explicar a proposta: 20,00 − 4,00 = 16,00
-Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+saida/comissoes_por_lojista.csv (COM-0009)
+saida/notas_a_emitir.csv (NF-0008)
+saida/rastro.csv (109 linhas auditadas)
+01_orbe_relatorio_comissoes_set2026.csv e 06_orbe_ajustes_tardios_set2026.csv
 
 ========================================================================
 
