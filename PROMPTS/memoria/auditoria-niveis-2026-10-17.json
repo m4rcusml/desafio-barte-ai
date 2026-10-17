@@ -1,0 +1,193 @@
+{
+  "checkout_comparacao_independente": {},
+  "checkout_rastro_erros": [],
+  "checkout_total": "203735.34",
+  "somas_rastro_erros": [],
+  "cnpj_erros": [],
+  "contas_invalidas": [],
+  "origem_orbe_incorreta": [
+    {
+      "id": "PEN-0176",
+      "ref": "TX88447011",
+      "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+      "correto": "06_orbe_ajustes_tardios_set2026.csv"
+    },
+    {
+      "id": "PEN-0177",
+      "ref": "TX88447030",
+      "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+      "correto": "06_orbe_ajustes_tardios_set2026.csv"
+    },
+    {
+      "id": "PEN-0178",
+      "ref": "TX88447044",
+      "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+      "correto": "06_orbe_ajustes_tardios_set2026.csv"
+    },
+    {
+      "id": "PEN-0179",
+      "ref": "TX88447057",
+      "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+      "correto": "06_orbe_ajustes_tardios_set2026.csv"
+    },
+    {
+      "id": "PEN-0180",
+      "ref": "TX88447070",
+      "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+      "correto": "06_orbe_ajustes_tardios_set2026.csv"
+    },
+    {
+      "id": "PEN-0181",
+      "ref": "TX88447093",
+      "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+      "correto": "06_orbe_ajustes_tardios_set2026.csv"
+    },
+    {
+      "id": "PEN-0182",
+      "ref": "TX88447109",
+      "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+      "correto": "06_orbe_ajustes_tardios_set2026.csv"
+    }
+  ],
+  "remessa_divergencias_com_base_distinta": [
+    {
+      "ref": "PC-0926-0011",
+      "atual": "30.00",
+      "base_ptax": "29.56"
+    },
+    {
+      "ref": "PC-0926-0016",
+      "atual": "69.35",
+      "base_ptax": "68.33"
+    },
+    {
+      "ref": "PC-0926-0033",
+      "atual": "69.22",
+      "base_ptax": "68.20"
+    },
+    {
+      "ref": "PC-0926-0039",
+      "atual": "64.55",
+      "base_ptax": "63.60"
+    },
+    {
+      "ref": "PC-0926-0045",
+      "atual": "46.34",
+      "base_ptax": "45.66"
+    },
+    {
+      "ref": "PC-0926-0075",
+      "atual": "76.54",
+      "base_ptax": "75.39"
+    },
+    {
+      "ref": "PC-0926-0098",
+      "atual": "18.87",
+      "base_ptax": "18.59"
+    },
+    {
+      "ref": "PC-0926-0141",
+      "atual": "45.07",
+      "base_ptax": "44.40"
+    },
+    {
+      "ref": "PC-0926-0145",
+      "atual": "66.70",
+      "base_ptax": "65.71"
+    },
+    {
+      "ref": "PC-0926-0180",
+      "atual": "70.16",
+      "base_ptax": "69.12"
+    },
+    {
+      "ref": "PC-0926-0188",
+      "atual": "40.98",
+      "base_ptax": "40.38"
+    },
+    {
+      "ref": "PC-0926-0236",
+      "atual": "72.43",
+      "base_ptax": "71.36"
+    },
+    {
+      "ref": "PC-0926-0240",
+      "atual": "16.97",
+      "base_ptax": "16.72"
+    },
+    {
+      "ref": "PC-0926-0266",
+      "atual": "66.77",
+      "base_ptax": "65.77"
+    },
+    {
+      "ref": "PC-0926-0364",
+      "atual": "44.07",
+      "base_ptax": "43.41"
+    },
+    {
+      "ref": "PC-0926-0373",
+      "atual": "115.11",
+      "base_ptax": "113.43"
+    },
+    {
+      "ref": "PC-0926-0388",
+      "atual": "63.34",
+      "base_ptax": "62.41"
+    },
+    {
+      "ref": "PC-0926-0409",
+      "atual": "20.20",
+      "base_ptax": "19.90"
+    },
+    {
+      "ref": "PC-0926-0434",
+      "atual": "239.27",
+      "base_ptax": "235.76"
+    },
+    {
+      "ref": "PC-0926-0487",
+      "atual": "65.99",
+      "base_ptax": "65.01"
+    },
+    {
+      "ref": "PC-0926-0492",
+      "atual": "36.67",
+      "base_ptax": "36.13"
+    },
+    {
+      "ref": "PC-0926-0516",
+      "atual": "23.63",
+      "base_ptax": "23.28"
+    },
+    {
+      "ref": "PC-0926-0566",
+      "atual": "77.91",
+      "base_ptax": "76.76"
+    }
+  ],
+  "remessa_total_exportado": "1440.14",
+  "remessa_total_base_ptax": "1418.88",
+  "pendencias_por_tipo": {
+    "ISENCAO_NAO_AVISADA": 118,
+    "CADASTRO_PENDENTE": 57,
+    "DIVERGENCIA_CADASTRO_BANDEIRA": 7,
+    "OPERACAO_DUPLICADA": 1,
+    "SPREAD_NEGATIVO_CONTESTACAO": 4,
+    "CREDITO_NAO_IDENTIFICADO": 1,
+    "DEVOLUCAO_SEM_CAUSA": 1,
+    "TRANSITO_BANCARIO": 1
+  },
+  "remessa_comissoes_diferencas": {},
+  "remessa_total_comissao": "39543.42",
+  "notas_diferencas": {},
+  "datas_invalidas": [],
+  "metodo_confianca_invalidos": [],
+  "ids_saida_duplicados": {
+    "comissoes_por_lojista.csv": [],
+    "divergencias_taxa.csv": [],
+    "lancamentos_classificados.csv": [],
+    "notas_a_emitir.csv": [],
+    "pendencias.csv": []
+  }
+}

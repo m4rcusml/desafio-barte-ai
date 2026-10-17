@@ -1,0 +1,104 @@
+{
+  "checkout_01": "207039.73",
+  "checkout_01_06": "203735.34",
+  "checkout_06_repetido": "200430.95",
+  "diferenca_duplicacao": "-3304.39",
+  "efeito_06": [
+    {
+      "cnpj": "07752116000126",
+      "lojista": "Kiwi Experience",
+      "antes": "10711.41",
+      "depois": "10886.22",
+      "diferenca": "174.81"
+    },
+    {
+      "cnpj": "16181276000153",
+      "lojista": "EduAbroad",
+      "antes": "12070.17",
+      "depois": "11858.16",
+      "diferenca": "-212.01"
+    },
+    {
+      "cnpj": "17217888000111",
+      "lojista": "Mundo Aberto",
+      "antes": "18522.09",
+      "depois": "18508.09",
+      "diferenca": "-14.00"
+    },
+    {
+      "cnpj": "22224579000109",
+      "lojista": "Escola Bridge de Idiomas Ltda",
+      "antes": "11916.02",
+      "depois": "11769.74",
+      "diferenca": "-146.28"
+    },
+    {
+      "cnpj": "23109187000161",
+      "lojista": "Oxford Prep Cursos Ltda",
+      "antes": "16077.90",
+      "depois": "13845.71",
+      "diferenca": "-2232.19"
+    },
+    {
+      "cnpj": "34671260000100",
+      "lojista": "Maple Study Assessoria Educacional Ltda",
+      "antes": "15010.78",
+      "depois": "14165.77",
+      "diferenca": "-845.01"
+    },
+    {
+      "cnpj": "68567965000102",
+      "lojista": "Dublin Hub Intercâmbio Ltda",
+      "antes": "11906.08",
+      "depois": "11876.37",
+      "diferenca": "-29.71"
+    }
+  ],
+  "validacao_somas": {
+    "valido": true,
+    "erros": [],
+    "total_ids_validados": 545
+  },
+  "pendencias_por_tipo": {
+    "ISENCAO_NAO_AVISADA": 118,
+    "CADASTRO_PENDENTE": 57,
+    "DIVERGENCIA_CADASTRO_BANDEIRA": 7,
+    "OPERACAO_DUPLICADA": 1,
+    "SPREAD_NEGATIVO_CONTESTACAO": 4,
+    "CREDITO_NAO_IDENTIFICADO": 1,
+    "DEVOLUCAO_SEM_CAUSA": 1,
+    "TRANSITO_BANCARIO": 1
+  },
+  "arquivos": {
+    "comissoes_por_lojista.csv": {
+      "linhas": 35,
+      "igual_versionado": true,
+      "sha256": "5d15634863c10cdf65959697762006be7c9118f1232e0e7bfb3519dadf49ff49"
+    },
+    "notas_a_emitir.csv": {
+      "linhas": 21,
+      "igual_versionado": true,
+      "sha256": "9672ffeb96db22ad73deac7d61c7667800e1891e622cd19cc44d9008ca43f5c6"
+    },
+    "divergencias_taxa.csv": {
+      "linhas": 115,
+      "igual_versionado": true,
+      "sha256": "ab31d8bc98fa6daa95a535b8d0f165f364ecc374f7662c7f3e423bb7e4291cf0"
+    },
+    "lancamentos_classificados.csv": {
+      "linhas": 184,
+      "igual_versionado": true,
+      "sha256": "7c4120d055b43cf608694eca4f3158952a9d1f9e98e0f5e1da6aebb519c8f0e0"
+    },
+    "pendencias.csv": {
+      "linhas": 190,
+      "igual_versionado": true,
+      "sha256": "b2d2ca4b867415d4dfb4174f418bb73455fe3c832c99732df33d5f4ca94ad862"
+    },
+    "rastro.csv": {
+      "linhas": 4508,
+      "igual_versionado": true,
+      "sha256": "a8f2e89870720588b69f924ab8ec6ee83a5c89db7ac37271970a325a2c5ba83f"
+    }
+  }
+}
