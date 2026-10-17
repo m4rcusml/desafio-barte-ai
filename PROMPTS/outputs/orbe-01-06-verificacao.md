@@ -46,7 +46,7 @@ Em todos os pares abaixo, EC, modalidade, parcelas, taxa aplicada e data origina
 | `AN88447178` / L13 | `AN88446748` / L1810 | 29/09/2026 | 41690,09 | 875,49 | 40814,60 |
 | `AN88447194` / L14 | `AN88446551` / L1533 | 24/09/2026 | 36583,37 | 768,25 | 35815,12 |
 
-## Inconsistência concreta: bandeira em sete pares
+## Diferença de bandeira em sete pares — esclarecida por Helena
 
 | Estorno / linha `06` | Venda original / linha `01` | Bandeira na venda | Bandeira no estorno |
 |---|---|---|---|
@@ -71,14 +71,21 @@ Há também variações de nome em seis desses pares, com EC igual em todos:
 
 Preservar os dois textos originais e associar pelo EC confirmado, sem sobrescrever fontes. Variação de nome não comprova troca de lojista.
 
-**Interpretação e proposta técnica:** os IDs de referência únicos, ECs, datas e valores opostos sustentam o vínculo observado. As regras contratuais confirmadas não usam bandeira como dimensão da taxa; a diferença de bandeira, isoladamente, não altera a fórmula nem justifica excluir automaticamente o estorno. Isso não confirma que a bandeira divergente seja válida. Registrar pendência de qualidade com os sete pares, manter ambas as evidências e submeter a conferência a Helena, sem corrigir silenciosamente nem declarar os dados integralmente consistentes. Quando o desenvolvimento começar, o tratamento proposto é aplicar as regras conhecidas e manter a pendência na revisão humana. A análise das fontes está concluída; a resposta de Helena permanece pendente.
+**Tratamento confirmado por Helena:** manter os vínculos por `id_referencia`; bandeira não muda a taxa da Tarvo e a Orbe às vezes a troca no estorno. Não contestar nem abrir pendência apenas por essa diferença. A proposta inicial de registrar pendência de qualidade/correção com a Orbe foi dispensada pela resposta. Preservar os valores originais de bandeira como evidência; não sobrescrever as fontes. Os demais campos e valores foram conferidos, como registrado acima. Esta orientação não valida referências incorretas ou conflitos em outros campos.
 
-**Pergunta enviada pelo usuário à Helena, aguardando resposta:** “Helena, no complemento `06`, estes sete estornos têm bandeira diferente da venda apontada por `id_referencia` (tabela acima), embora EC, data original, modalidade, parcelas, taxa aplicada e os valores opostos confiram. Podemos manter esses vínculos para setembro e registrar a diferença de bandeira como erro de informação a corrigir com a Orbe? Se algum vínculo estiver incorreto, qual referência deve ser usada?”
+**Histórico — pergunta enviada pelo usuário à Helena e respondida:** “Helena, no complemento `06`, estes sete estornos têm bandeira diferente da venda apontada por `id_referencia` (tabela acima), embora EC, data original, modalidade, parcelas, taxa aplicada e os valores opostos confiram. Podemos manter esses vínculos para setembro e registrar a diferença de bandeira como erro de informação a corrigir com a Orbe? Se algum vínculo estiver incorreto, qual referência deve ser usada?”
 
-O envio foi confirmado pelo usuário nesta conversa; não foram fornecidos horário ou permalink da mensagem. O texto acima registra o conteúdo da pergunta, sem representar resposta ou aprovação de Helena.
+O envio e o recebimento da resposta foram confirmados pelo usuário nesta conversa; não foram fornecidos horário ou permalink das mensagens.
+
+**Resposta de Helena, fornecida pelo usuário em 17/10/2026:**
+
+> **[Financeiro] Resposta para Turma do Barulho**
+> Bandeira não muda a taxa para a gente. A Orbe às vezes troca a bandeira no estorno; não precisa contestar nem abrir pendência. Sigam com o vínculo pela referência, como vocês fizeram. — Helena
+
+A questão das sete bandeiras está encerrada. A resposta confirma o tratamento, sem constituir aprovação de valores do fechamento ou evidência de implementação.
 
 Não é necessário perguntar onde estão as 13 operações, qual envio prevalece por ID duplicado, nem se os ajustes são integrais em valor bruto: esses pontos foram conferidos. Semântica de futuros arquivos, reabertura de período aprovado e completude do mês continuam sem protocolo geral, mas não foram demonstrados como bloqueios deste complemento.
 
 ## Limites
 
-Conferência de IDs, referências e campos das fontes; não apura comissão pela tabela contratada, divergência contratual, total por lojista nem efeito nas notas. Igualdade de `valor_taxa` com o oposto da operação original não transforma esse campo na comissão faturável. Os 1.957 IDs não equivalem a 1.957 contribuições elegíveis: Atlas e outras regras continuam exigindo seus tratamentos. Deduplicação de produção, decisões humanas, reprocessamento e geração/validação dos seis CSVs são requisitos para o desenvolvimento futuro. Não são pendências desta análise nem funcionalidades existentes. A pendência atual desta investigação é registrar a resposta de Helena quando chegar.
+Conferência de IDs, referências e campos das fontes; não apura comissão pela tabela contratada, divergência contratual, total por lojista nem efeito nas notas. Igualdade de `valor_taxa` com o oposto da operação original não transforma esse campo na comissão faturável. Os 1.957 IDs não equivalem a 1.957 contribuições elegíveis: Atlas e outras regras continuam exigindo seus tratamentos. Deduplicação de produção, decisões humanas, reprocessamento e geração/validação dos seis CSVs são requisitos para o desenvolvimento futuro. Não são pendências desta análise nem funcionalidades existentes. A análise do `06` e o esclarecimento das sete bandeiras estão concluídos, sem pergunta específica ainda aberta desta investigação. As lacunas gerais de ajustes futuros continuam documentadas separadamente.
