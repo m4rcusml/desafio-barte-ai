@@ -1,0 +1,64 @@
+Checkpoint 1 — Turma do Barulho
+
+1. Causa raiz
+
+O fechamento leva oito dias porque cadastros, taxas, vigências e condições especiais estão fragmentados entre uma planilha desatualizada e o conhecimento de Helena, gerando associação manual, retrabalho e espera por esclarecimentos. A conferência atual não detecta sistematicamente diferenças entre taxas aplicadas e contratadas, e as exceções não possuem registro estruturado de decisão.
+
+2. Nível de entrega: extra
+
+A Tarvo já apura comissões, prepara notas, classifica extratos e revisa o fechamento, predominantemente de forma manual. Bia cuida do checkout e das taxas; Caio, dos bancos e remessas; Helena confere, aprova e decide exceções.
+
+Pretendemos entregar:
+- Comissões de checkout e remessa por lojista.
+- Divergências de taxa e notas a emitir.
+- Classificação dos dois extratos.
+- Pendências com motivo, evidências e responsável.
+- Rastreabilidade dos valores até as linhas de origem.
+- Processamento parametrizado para reutilização em outubro.
+
+O núcleo será determinístico em Python. Uma camada agêntica apoiará investigação, explicação e insights, com transparência sobre fontes, regras, ações e limitações.
+
+Queremos validar três formas de resolver o problema:
+- MCP integrado ao Claude, Codex ou similar: ferramentas acessadas pelo assistente que o usuário já utiliza. Deve focar em um ou mais usuário que centraliza muitas funções do sistema.
+- Subagente autônomo: execução do fluxo técnico inteiro e geração de resultados e pendências sem supervisão contínua acoplado ao sistema da empresa, seja para a Barte vender para a Tarvo ou diretamente para a Tarvo. Deve focar para que os usuários não precisem interagir diretamente com a solução mas entender o que está acontecendo.
+- Executável com IA integrada: processamento, assistência e revisão com supervisão humana. Deve focar em usuários que centralizam muitas funções
+
+Nas três alternativas, decisões comerciais e exceções sem regra confirmada permanecem humanas. Este é o plano de desenvolvimento; não estamos declarando funcionalidades implementadas.
+
+3. Plano até 18h30
+
+- Até 13h: ingestão das fontes e apuração de checkout com cadastros, vigências, arredondamento e rastro.
+- Até 15h30: remessas, divergências, notas e classificação bancária, com pendências consolidadas.
+- Até 17h: seis CSVs gerados e validados; integração agêntica conforme feedback sobre a apresentação.
+- Até 18h30: reprodução do zero, revisão dos números, documentação, histórico de IA e entrega do repositório.
+
+Priorizaremos correção, rastreabilidade e pendências antes de ampliar as funcionalidades da camada agêntica.
+
+4. Três premissas ainda não confirmadas
+
+A. Tolerância de remessa: avaliar inicialmente 0,01 ponto percentual, verificando também o impacto monetário. O limite foi delegado aos participantes, mas esse valor não foi homologado. Se inadequado, recalibramos o filtro e regeneramos as divergências; a comissão continua baseada no spread realizado elegível.
+
+B. Classificação de movimentos sem identificação: usar contrapartida transitória compatível com o plano, quando disponível, mantendo pendência e sem reconhecer receita indevidamente. Se inadequado, revisamos as contas e reprocessamos os lançamentos afetados.
+
+C. Hipótese de caixa: repasses anteriores à liquidação contribuem para a necessidade de financiamento, mas sua participação no saldo negativo e seu custo ainda não foram quantificados. Se a hipótese não se sustentar, revemos a explicação do impacto financeiro; não atribuiremos todo o saldo aos adiantamentos nem aplicaremos automaticamente a taxa de antecipação de 2,1%.
+
+Aplicaremos as regras já confirmadas, incluindo arredondamento por linha, Atlas sem faturamento até confirmação comercial e tratamento da Casa do Estudante como devolução separada, sem cobrança à Orbe pela isenção não comunicada.
+
+5. O que fica de fora de propósito
+
+- Conciliação parcela por parcela entre Orbe e bancos, sem agenda de recebíveis.
+- Execução de pagamentos, devoluções, emissão fiscal, lançamentos no ERP e envio de contestações.
+- Apuração de lucro líquido e custo financeiro sem dados suficientes.
+- Aprovação autônoma de contratos e exceções pela IA.
+- Resolução automática de situações inéditas em outubro: esses casos deverão gerar pendências explicadas.
+
+6. Quem faz o quê
+
+Somos três integrantes, organizados por frente:
+- Dados e apuração (Marcus): ingestão, normalização, cadastros, contratos e comissões.
+- Fechamento e validação (Raphael): notas, bancos, pendências, rastreabilidade e conferência.
+- Camada agêntica e experiência (Carlos): ferramentas consultivas, apresentação ao usuário, transparência e integração.
+
+A revisão dos resultados, das hipóteses e do pitch será conjunta.
+
+Feedback solicitado: qual das três apresentações atende melhor ao financeiro da Tarvo, qual autonomia é desejável e se as premissas e os limites propostos estão adequados.

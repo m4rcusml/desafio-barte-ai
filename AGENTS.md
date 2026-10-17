@@ -1,6 +1,36 @@
 # Tarvo — contexto do problema e operação atual
 
-Este documento resume o caso fictício do Desafio Barte AI. Descreve o negócio e as regras conhecidas; não define arquitetura ou implementação. Dados, empresas, pessoas e CNPJs do data pack são sintéticos.
+Este documento orienta o trabalho no caso fictício do Desafio Barte AI: contexto do negócio, regras confirmadas, escopo e decisões de desenvolvimento. Dados, empresas, pessoas e CNPJs do data pack são sintéticos.
+
+## Orientações para o desenvolvimento
+
+- Objetivo acordado: **nível extra**, com fechamento completo de setembro/2026, rastreabilidade dos valores, pendências explicadas e processamento parametrizado para outubro.
+- Núcleo de análises e cálculos determinístico em **Python**. A camada agêntica apoia investigação, explicação e insights; decisões comerciais e exceções sem regra confirmada permanecem humanas.
+- A apresentação ainda está **aberta à validação**: MCP integrado ao Claude/Codex ou similar; subagente que executa o fluxo técnico sem supervisão contínua; ou executável com IA e supervisão humana. Não registrar nenhuma dessas alternativas como escolhida. Execução autônoma do fluxo não autoriza aprovação de exceções.
+- Transparência: apresentar fontes, regras, ações realizadas, limitações e decisões pendentes. Recomendações da IA devem distinguir fatos confirmados de hipóteses e apontar evidências verificáveis.
+- O [checkpoint enviado](PROMPTS/outputs/checkpoint-1.txt) é um plano, não comprovação de funcionalidades implementadas. A rotina atual da Tarvo não é progresso de implementação da equipe. Não divulgar totais exploratórios como resultados validados.
+- Consulte [HIPOTESES.md](HIPOTESES.md) para premissas, impactos e confirmações. O histórico detalhado está em [duvidas-slack.md](PROMPTS/outputs/duvidas-slack.md) e [nossas-duvidas.md](PROMPTS/outputs/nossas-duvidas.md). Respostas específicas posteriores complementam o contexto anterior; propostas de participantes e silêncio não confirmam regras.
+
+### Equipe
+
+| Responsável | Frente |
+|---|---|
+| Marcus | Dados e apuração: ingestão, normalização, cadastros, contratos e comissões |
+| Raphael | Fechamento e validação: notas, bancos, pendências, rastreabilidade e conferência |
+| Carlos | Camada agêntica e experiência: ferramentas consultivas, apresentação, transparência e integração |
+
+Revisão de resultados, hipóteses e pitch é conjunta. Essas responsabilidades não são autorização para criar subagentes ou enviar mensagens a terceiros.
+
+### Entrega e limites
+
+- Consumir os arquivos como chegam, sem limpeza manual prévia. Preservar referências e distinguir registro original de dado normalizado.
+- Gerar em `saida/`: `comissoes_por_lojista.csv`, `divergencias_taxa.csv`, `notas_a_emitir.csv`, `lancamentos_classificados.csv`, `pendencias.csv` e `rastro.csv`.
+- CSV com `;`, decimal com ponto, datas `AAAA-MM-DD` e CNPJ com 14 dígitos. Usar `CHECKOUT`/`REMESSA`, `AURORA`/`MERIDIANO` e métodos `REGRA`/`IA`/`HUMANO`, conforme aplicável; confiança de 0 a 1.
+- Origem: `id_transacao` da Orbe, número da operação Ponte, linha física `L<n>` do Aurora e `FITID` do Meridiano. A soma das contribuições por `id_saida` no rastro deve fechar com o valor reportado; preservar evidência de exclusões e duplicatas.
+- Manter instruções de execução do zero no README, premissas em `HIPOTESES.md` e histórico de IA em `PROMPTS/`, com `MOMENTOS.md` conforme o desafio.
+- Priorizar correção, rastreabilidade e pendências antes de ampliar a camada agêntica. Marcos enviados para 17/10: 13h ingestão/checkout; 15h30 demais frentes; 17h CSVs validados e integração agêntica; 18h30 reprodução, documentação e repositório. São metas, não conclusão declarada.
+- Fora de escopo: conciliação parcela por parcela sem agenda; execução de pagamentos/devoluções; emissão fiscal; lançamentos efetivos no ERP; envio de contestações; lucro líquido/custo financeiro sem dados; aprovação autônoma de contratos/exceções. Notas são propostas **a emitir**.
+- Outubro deve reutilizar processamento e regras com vigência. Situações inéditas geram pendências, não decisões inventadas.
 
 ## Negócio e participantes
 
@@ -24,6 +54,7 @@ Regras confirmadas pelo financeiro:
 
 - **Comissão faturável:** valor bruto × taxa contratada, transação por transação. `valor_taxa` informa o que a Orbe cobrou; não substitui o contrato. O case não detalha custos suficientes para calcular lucro líquido.
 - **Divergência:** diferença entre taxa aplicada e contratada. Cobrança a maior é analisada pelo financeiro, que trata a devolução ao lojista e a cobrança à Orbe; não há devolução automática.
+- **Arredondamento:** centavos por linha, antes da soma, com meio centavo para cima em magnitude (`-0,005 → -0,01`; em Python, `Decimal` com `ROUND_HALF_UP`). A Orbe trunca; diferença só de truncamento não é divergência de taxa. Calcular a divergência por bruto × (taxa aplicada − taxa contratada), com unidades consistentes.
 - **Estorno:** devolve a taxa e reduz a comissão no mês do estorno, usando a taxa contratada na data da venda original. Venda de agosto estornada em setembro afeta setembro; agosto não é reaberto.
 - **Antecipação:** sua comissão integra o checkout. Reversão anula a taxa da antecipação referenciada.
 - **Bridge:** há condições até 14/09/2026 e novas condições a partir de 15/09/2026; a vigência precisa ser respeitada.
@@ -44,8 +75,13 @@ Regras confirmadas:
 - Spread contratado vazio ou “padrão”: 1,5% sobre a PTAX de referência. Mundo Aberto negociou 1,20% em julho/2026; aplicação superior é divergência a contestar com a Ponte.
 - A competência usa a **data de contratação**, mesmo quando a liquidação ocorre em outubro.
 - O número da operação é único; repetição não representa duas operações legítimas. Não foi definida a precedência entre registros duplicados conflitantes.
+- No par concreto `PC-0926-0162`, os dados financeiros são iguais; só a observação “reprocessada” difere. Contar uma vez, preservando ambas as linhas e a pendência de correção do relatório.
 - “APROVADO C/ RESSALVA” não impede inclusão por si só.
 - Os spreads negativos questionados foram rejeitados: a trava contratual dura duas horas e essas operações passaram do prazo. Ficam fora da comissão e da nota, com contestação pelo financeiro. Não extrapolar essa explicação para situações novas sem evidência.
+- Os quatro negativos questionados são pendências de contestação; não é obrigatório incluí-los nas divergências de taxa. Sua natureza é prejuízo Tarvo–Ponte, distinta de cobrança a maior ao lojista.
+- Arredondar a participação por operação antes de somar, com a mesma regra do checkout: 50% de R$ 262,01 = R$ 131,01.
+- Contestar o valor integral pago a mais pelo lojista, não apenas os 50% da Tarvo. A tolerância numérica foi delegada à equipe; a proposta ainda não homologada está em `HIPOTESES.md`.
+- O excesso de spread da Mundo Aberto integra a comissão e a nota de setembro pelo realizado elegível. Eventual devolução ajusta a participação no mês do ajuste; contestação é processo separado. Para o case, considerar prazo aberto; não presumir desconto no futuro TED.
 
 O e-mail da Ponte prevê o repasse de setembro em 06/10/2026, condicionado ao recebimento da nota fiscal de intermediação. A Ponte paga a participação à Tarvo; o lojista identifica a origem comercial da comissão.
 
@@ -73,6 +109,10 @@ Fatos confirmados sobre setembro:
 
 O financeiro esclareceu os fatos, mas deixou a proposta dos lançamentos e o tratamento das pendências para os participantes justificarem; não confirmou contas contábeis específicas para esses casos.
 
+`conta_codigo` identifica a **contrapartida do movimento bancário**. Baixar obrigações/recebíveis já registrados, sem reconhecer novamente receita/despesa. Além da folha, tributos de agosto e recebimento Ponte de 04/09 citados, o financeiro informou que nada estava provisionado: tarifas, aluguel, cloud, assinaturas e serviços entram como despesa do mês. Contas específicas e casos ambíguos exigem justificativa e premissa registrada.
+
+A Orbe deposita tudo no Aurora e não paga lojistas diretamente. Débito/Pix liquidam no dia seguinte; crédito/parcelado, nos meses seguintes conforme parcelas. O líquido do relatório de setembro não precisa igualar os créditos bancários de setembro. Não gerar divergência apenas por essa diferença nem inventar conciliação sem agenda de recebíveis.
+
 ## Fontes e rotina atual
 
 | Fonte | Conteúdo e particularidades |
@@ -92,9 +132,9 @@ Distribuição aproximada dos oito dias: checkout, 3 dias (metade de associaçã
 
 ## Lacunas conhecidas
 
-Até a verificação feita no dia 16/10, faltam especificações completas de arredondamento, histórico contratual necessário a certos estornos, precedência de duplicidades conflitantes, fluxo de liquidação/repasse, custos da adquirência, procedimentos fiscais e lançamentos efetivamente realizados no ERP.
+As revisões de 17/10 resolveram arredondamento, rotina, responsáveis, esforço, desconto da taxa, calendário aproximado de repasses e retorno de contestações. Os nove estornos de agosto analisados têm referência contratual com vigência aplicável; não tratá-los como bloqueados por ausência das vendas originais no CSV de setembro.
 
-As revisões de 17/10 documentadas em `PROMPTS/outputs/duvidas-slack.md` e `PROMPTS/outputs/nossas-duvidas.md` complementam esse retrato inicial, incluindo arredondamento, rotina, responsáveis, esforço, desconto da taxa, calendário aproximado de repasses e retorno de contestações. A relação entre repasses do já liquidado e uso da conta garantida foi esclarecida: o primeiro é a regra; o segundo financia exceções práticas sob pressão de lojistas, sem documentação ou limite definido.
+Permanecem sem confirmação: taxa vigente da Atlas; precedência em duplicatas futuras com valores conflitantes; limite numérico de tolerância escolhido pela equipe; contas específicas de casos bancários ambíguos; agenda detalhada de recebíveis e custos da adquirência/conta garantida. Procedimento fiscal completo e execução no ERP não integram a entrega planejada. Premissas e impactos estão em `HIPOTESES.md`.
 
 ## Referências
 
@@ -106,4 +146,6 @@ As revisões de 17/10 documentadas em `PROMPTS/outputs/duvidas-slack.md` e `PROM
 - [Remessas](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792193429257939).
 - [Condições especiais e bancos](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792193803331999).
 - [Casa do Estudante: devolução separada, sem cobrança à Orbe pela isenção não comunicada](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792241097683849).
-- [Dúvida de divergência e tolerância ainda aberta na consulta](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792194771073879).
+- [Resposta: valor integral da divergência de remessa e tolerância delegada à equipe](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792195101083859).
+- [Arredondamento e cálculo de divergências](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792196013836169).
+- [Contrapartidas e provisões](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792196067326279).
