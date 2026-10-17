@@ -1,0 +1,10 @@
+id_saida;tipo;ref_origem;valor_brl;motivo;quem_decide
+PEN-01;CADASTRO_EC_PENDENTE;3472404711;1940.87;"EC 3472404711 (WOMBAT EXPERIENCE TURISMO) casado pela razão social com 'Wombat Experience' (CNPJ 14084183000185). Comissão calculada; cadastrar o EC na tabela de taxas.";Financeiro
+PEN-02;CADASTRO_EC_PENDENTE;2113812656;1724.31;"EC 2113812656 (ESTRELA VIAGENS TURISMO) casado pela razão social com 'Estrela Viagens' (CNPJ 18331932000182). Comissão calculada; cadastrar o EC na tabela de taxas.";Financeiro
+PEN-03;LOJISTA_AMBIGUO;2968836826;1288.08;EC 2968836826 (ESTRELA INTERCAMBIO) fora da tabela e o nome não bate exatamente com nenhum lojista (candidatos: Nova Estrela Intercâmbio, Estrela Viagens). Comissão, divergência e nota não calculadas.;Comercial
+PEN-04;LOJISTA_SEM_CONTRATO_VIGENTE;3270755343;1611.01;"EC 3270755343 (LUMEN IDIOMAS) não está na tabela vigente; só existe na aba 'ANTIGO 2025 - nao usar'. Comissão, divergência e nota não calculadas.";Comercial
+PEN-05;OPERACAO_DUPLICADA;PC-0926-0013;101.24;"PC-0926-0013 aparece duas vezes no relatório da Ponte (2ª marcada 'reprocessada'). Contada uma vez; o total do rodapé da Ponte inclui a repetida. Contestar com a Ponte em até 5 dias úteis.";Financeiro
+PEN-06;SPREAD_NEGATIVO;PC-0926-0035;-559.375;PC-0926-0035 (LISBOETA CURSOS E VI) com spread de R$ -1118.75 ('Taxa travada no pedido (D-1)'). Fora da comissão até alguém decidir se a Tarvo aceita dividir o prejuízo.;Financeiro
+PEN-07;SPREAD_NEGATIVO;PC-0926-0085;-171.67;PC-0926-0085 (ROTA LIVRE ESTUDANTI) com spread de R$ -343.34 ('Taxa travada no pedido (D-1)'). Fora da comissão até alguém decidir se a Tarvo aceita dividir o prejuízo.;Financeiro
+PEN-08;CREDITO_NAO_IDENTIFICADO;L42;4750.00;"'PIX RECEBIDO 41203887000155 SEM IDENTIFICACAO' classificado em 1.1.09.002; identificar o pagador.";Financeiro
+PEN-09;LANCAMENTO_SEM_REGRA;L56;8900.00;"'DEVOLUCAO PIX - CAMINHOS INTERC': crédito de lojista sem explicação; não classificado.";Financeiro

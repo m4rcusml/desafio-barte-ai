@@ -1,0 +1,76 @@
+arquivo;ref_origem;pegadinha;o_que_o_gabarito_espera;regra
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linhas 5-6;Mesmo lojista em duas linhas: crédito à vista 2,59% até 14/09 e 2,29% a partir de 15/09;Taxa escolhida pela data da venda (estorno usa a data da venda original);R2 [DECIDIDO]
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linha 17;Taxas gravadas como texto '1,49%' em vez de número;"Ler como 1,49 etc.; 2-6x contratado é 3,09%";formato
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linhas 13 e 19;CNPJ salvo como número: perdeu o zero à esquerda (13 dígitos);Completar com zero à esquerda até 14 dígitos;formato
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!coluna CNPJ;CNPJ ora com pontuação, ora só dígitos;Saída sempre com 14 dígitos;formato
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linhas 8 e 7;EC Orbe em branco ('EC pendente');Casar pela razão social da aba antiga (nome normalizado igual) + pendência CADASTRO_EC_PENDENTE;R11 [PROPOSTA]
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linha 21;EC em branco e a Orbe manda 'ESTRELA INTERCAMBIO', que lembra 'Nova Estrela Intercâmbio' e 'Estrela Viagens';Não casar por aproximação: pendência LOJISTA_AMBIGUO, sem comissão/divergência/nota de checkout. A remessa dela entra normal (Ponte traz CNPJ);R12 [PROPOSTA]
+02_tabela_taxas_contratadas.xlsx;ANTIGO 2025 - nao usar;Lumen Idiomas só existe na aba antiga, mas tem movimento na Orbe;"Pendência LOJISTA_SEM_CONTRATO_VIGENTE; não usar as taxas de 2025";R12 [PROPOSTA]
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linha 12;Comentário na célula fala em 'condição especial' não formalizada;"Seguir a taxa da tabela (todas as linhas desse lojista batem com ela; nenhuma divergência)";alarme falso
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linha 18;Spread remessa escrito 'padrão';Vale 1,5%;R9 [PROPOSTA]
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linhas 8 e 20;Spread remessa em branco;Vale 1,5% (rodapé: 'spread em branco = padrão');R9 [PROPOSTA]
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linha 14;Spread negociado 1,2% mas a Ponte aplica 1,5%;Uma divergência de REMESSA por operação da Caminhos;R10 [PROPOSTA]
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linha 22;Lojista INATIVO, sem vigência e sem movimento;Não gera comissão, nota nem pendência;alarme falso
+02_tabela_taxas_contratadas.xlsx;Taxas vigentes!linhas 15 e 20;'só remessa': MDR em branco;Só comissão de REMESSA;formato
+01_orbe_relatorio_comissoes_set2026.csv;TX77311188;Cordilheira débito cobrado 1,49% (contratado 1,39%);Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77311424;Trilha Sul à vista cobrada 2,99% (contratado 2,69%);Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77311842;Rumo Norte 2-6x cobrada 3,19% (contratado 3,09%, gravado como texto);Divergência CHECKOUT;formato
+01_orbe_relatorio_comissoes_set2026.csv;TX77311995;"Campus Mundi 2-6x cobrada 3,19% (contratado 2,99%; CNPJ sem zero na planilha)";Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77312937;Fiorde Pix cobrado 0,89% (contratado 0,79%);Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77313008;Trilha Sul à vista cobrada 2,99% (contratado 2,69%);Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;AN77350058;Reversão integral de antecipação;Abate a taxa de antecipação inteira;premissa
+01_orbe_relatorio_comissoes_set2026.csv;TX77313415;Venda 10/09 a 2,59% estornada em 22/09 (depois da troca de taxa);"Sem divergência (vale a data da venda); por data do movimento daria alarme falso";R2 [DECIDIDO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77313904;Pix de R$ 1,00 / R$ 3,50 cobrado 0,89% (contratado 0,79%): diferença < 1 centavo;"Pelo método % aparece com diferenca_brl 0.00; pelo método em reais não aparece";R3 [ABERTO]
+01_orbe_relatorio_comissoes_set2026.csv;AN77350096;Reversão integral de antecipação;Abate a taxa de antecipação inteira;premissa
+01_orbe_relatorio_comissoes_set2026.csv;TX77314076;Rumo Norte 2-6x cobrada 3,19% (contratado 3,09%, gravado como texto);Divergência CHECKOUT;formato
+01_orbe_relatorio_comissoes_set2026.csv;TX77314535;Wombat (casado por nome) à vista cobrada 2,69% (contratado 2,59%);Divergência CHECKOUT;R11 [PROPOSTA]
+01_orbe_relatorio_comissoes_set2026.csv;TX77314785;Venda à vista Ponto Final em 14/09 (2,59%) ou 15/09 (2,29%);Sem divergência;R2 [DECIDIDO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77315214;Venda à vista Ponto Final em 14/09 (2,59%) ou 15/09 (2,29%);Sem divergência;R2 [DECIDIDO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77315271;Estorno de uma venda que já tinha divergência;Linha de divergência com sinal negativo que anula a da venda;R4 [ABERTO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77315587;Ponto Final cobrada 2,59% depois de 15/09 (Orbe não atualizou a renegociação);Divergência CHECKOUT;R2 [DECIDIDO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77315730;Cordilheira débito cobrado 1,49% (contratado 1,39%);Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77315913;"Campus Mundi 2-6x cobrada 3,19% (contratado 2,99%; CNPJ sem zero na planilha)";Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77316216;Ponto Final cobrada 2,59% depois de 15/09 (Orbe não atualizou a renegociação);Divergência CHECKOUT;R2 [DECIDIDO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77317139;Rumo Norte 2-6x cobrada 3,19% (contratado 3,09%, gravado como texto);Divergência CHECKOUT;formato
+01_orbe_relatorio_comissoes_set2026.csv;TX77317529;Cordilheira débito cobrado 1,49% (contratado 1,39%);Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77317638;Venda 10/09 a 2,59% estornada em 22/09 (depois da troca de taxa);"Sem divergência (vale a data da venda); por data do movimento daria alarme falso";R2 [DECIDIDO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77317790;Ponto Final cobrada 2,59% depois de 15/09 (Orbe não atualizou a renegociação);Divergência CHECKOUT;R2 [DECIDIDO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77318272;Fiorde Pix cobrado 0,89% (contratado 0,79%);Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77318762;Trilha Sul à vista cobrada 2,99% (contratado 2,69%);Divergência CHECKOUT;
+01_orbe_relatorio_comissoes_set2026.csv;TX77319309;Pix de R$ 1,00 / R$ 3,50 cobrado 0,89% (contratado 0,79%): diferença < 1 centavo;"Pelo método % aparece com diferenca_brl 0.00; pelo método em reais não aparece";R3 [ABERTO]
+01_orbe_relatorio_comissoes_set2026.csv;TX77319628;Ponto Final cobrada 2,59% depois de 15/09 (Orbe não atualizou a renegociação);Divergência CHECKOUT;R2 [DECIDIDO]
+06_orbe_ajustes_tardios_set2026.csv;AN77350196;Reversão integral de antecipação (arquivo de ajustes tardios);Abate a taxa de antecipação inteira;premissa
+06_orbe_ajustes_tardios_set2026.csv;AN77350212;Reversão integral de antecipação (arquivo de ajustes tardios);Abate a taxa de antecipação inteira;premissa
+06_orbe_ajustes_tardios_set2026.csv;TX77320357;Estorno de uma venda que já tinha divergência;Linha de divergência com sinal negativo que anula a da venda;R4 [ABERTO]
+06_orbe_ajustes_tardios_set2026.csv;TX77320495;Venda que só chegou no arquivo de ajustes tardios;Entra na comissão de setembro;aviso da banca
+06_orbe_ajustes_tardios_set2026.csv;7 estornos;Ajustes tardios de 30/09 que não estavam no arquivo 01;Somar ao fechamento de setembro (o código deve ler todos os arquivos da Orbe);aviso da banca
+01_orbe_relatorio_comissoes_set2026.csv / 06_orbe_ajustes_tardios_set2026.csv;estornos;Bandeira do estorno às vezes diferente da venda original;"Ruído do export; ligar estorno à venda pelo id_referencia, não pela bandeira";alarme falso
+01_orbe_relatorio_comissoes_set2026.csv;EC 3758833760;Mesmo EC com nomes diferentes: ATLANTICA INTERCAMBIO, ATLANTICA INTERC LTDA;Agrupar pelo EC, não pelo nome;formato
+01_orbe_relatorio_comissoes_set2026.csv;EC 2079829543;Mesmo EC com nomes diferentes: PONTO FINAL IDIOMAS, ESCOLA PONTO FINAL IDIOMAS;Agrupar pelo EC, não pelo nome;formato
+01_orbe_relatorio_comissoes_set2026.csv;EC 2396879808;Mesmo EC com nomes diferentes: CAMINHOS INTERCAMBIO, Caminhos, CAMINHOS INTERC LTDA;Agrupar pelo EC, não pelo nome;formato
+01_orbe_relatorio_comissoes_set2026.csv;EC 2467939811;Mesmo EC com nomes diferentes: CASA BRASIL ESTUDANTES, CASA BRASIL ESTUD;Agrupar pelo EC, não pelo nome;formato
+01_orbe_relatorio_comissoes_set2026.csv;EC 3519738359;Mesmo EC com nomes diferentes: BOAS-VINDAS EXCHANGE, BOAS VINDAS EXCHANGE;Agrupar pelo EC, não pelo nome;formato
+01_orbe_relatorio_comissoes_set2026.csv;EC 3416897075;Mesmo EC com nomes diferentes: LISBOETA CURSOS E VIAGENS, LISBOETA CURSOS VIAGENS;Agrupar pelo EC, não pelo nome;formato
+01_orbe_relatorio_comissoes_set2026.csv;valor_taxa;A Orbe trunca a taxa no centavo (ex.: 29,708 vira 29,70);"Não é divergência; % aplicada igual à contratada";alarme falso
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0013 (linha 10);Operação repetida com Observação 'reprocessada';Contar uma vez + pendência OPERACAO_DUPLICADA;R7 [PROPOSTA]
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0028 (linha 14);Status 'APROVADO C/ RESSALVA';Entra normal na comissão;R6 [DOC]
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0035 (linha 16);Spread negativo ('Taxa travada no pedido (D-1)');"Fora da comissão e das divergências; pendência SPREAD_NEGATIVO";R8 [PROPOSTA]
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0047 (linha 21);Caminhos: spread realizado 1,5% x contratado 1,2%;"Divergência REMESSA; comissão usa o spread realizado";R10 [PROPOSTA]
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0051 (linha 22);Status 'APROVADO C/ RESSALVA';Entra normal na comissão;R6 [DOC]
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0054 (linha 23);Caminhos: spread realizado 1,5% x contratado 1,2%;"Divergência REMESSA; comissão usa o spread realizado";R10 [PROPOSTA]
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0075 (linha 29);Caminhos: spread realizado 1,5% x contratado 1,2%;"Divergência REMESSA; comissão usa o spread realizado";R10 [PROPOSTA]
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0080 (linha 31);Status 'APROVADO C/ RESSALVA';Entra normal na comissão;R6 [DOC]
+03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0085 (linha 33);Spread negativo ('Taxa travada no pedido (D-1)');"Fora da comissão e das divergências; pendência SPREAD_NEGATIVO";R8 [PROPOSTA]
+03_email_ponte_cambio_relatorio_set2026.eml;rodapé da aba Operações;'Total de operações' e 'Spread total R$' incluem a duplicada e os negativos;"Não usar o rodapé como total; somar as linhas válidas";formato
+03_email_ponte_cambio_relatorio_set2026.eml;coluna CNPJ Cliente / Cliente;"CNPJ com e sem pontuação; nome cortado em 20 caracteres e com acento";Casar pelo CNPJ;formato
+03_email_ponte_cambio_relatorio_set2026.eml;anexo;Relatório vem como xlsx em base64 dentro do .eml;Extrair o anexo sem limpeza manual;formato
+05a_extrato_banco_aurora_cc4471_set2026.csv;L15;Folha 08/2026 paga em setembro;2.1.04.001 (baixa da obrigação);R15 [VALIDADO]
+05a_extrato_banco_aurora_cc4471_set2026.csv;L24;Nome com 'Õ' mantido e 'Ç' removido pelo banco;Ainda é repasse a lojista;formato
+05a_extrato_banco_aurora_cc4471_set2026.csv;L42;PIX recebido sem identificação;1.1.09.002 + pendência;R15 [VALIDADO]
+05a_extrato_banco_aurora_cc4471_set2026.csv;L44;PIX ENVIADO que não é repasse a lojista;4.2.06 (não 2.1.01.001);R15
+05a_extrato_banco_aurora_cc4471_set2026.csv;L56;Devolução de PIX de lojista sem explicação;HUMANO, sem conta + pendência;R15 [VALIDADO]
+05a_extrato_banco_aurora_cc4471_set2026.csv;L61;Nome com 'Õ' mantido e 'Ç' removido pelo banco;Ainda é repasse a lojista;formato
+05a_extrato_banco_aurora_cc4471_set2026.csv;L69;Transferência de 30/09 que não chega no Meridiano em setembro;"1.1.09.001 normal; sem pendência (se resolve em outubro)";R15 [PROPOSTA]
+05a_extrato_banco_aurora_cc4471_set2026.csv;L1-L8 e rodapé;Cabeçalho de 7 linhas, SALDO ANTERIOR, SALDO FINAL e aviso no fim;"Não são lançamentos; ref_origem = número da linha física (primeiro lançamento é L9)";formato
+05b_extrato_banco_meridiano_cc90233_set2026.ofx;MRD2026090049;Comissão de agosto recebida em setembro;1.1.03.002 (baixa do a receber), não receita de setembro;R15 [VALIDADO]
+05b_extrato_banco_meridiano_cc90233_set2026.ofx;cabeçalho;Declara CHARSET:1252 mas os bytes são UTF-8 com caractere inválido no lugar do acento (INTERC�MBIO);"Ler sem quebrar; casar lojista pelo resto do nome";formato

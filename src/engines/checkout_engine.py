@@ -1,0 +1,325 @@
+"""
+Motor de Checkout e Divergências de Taxa (Camada Gold).
+Processa o lote principal (01) e o lote incremental de ajustes tardios (06).
+"""
+
+from __future__ import annotations
+import csv
+from dataclasses import dataclass, field
+from decimal import Decimal
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple, Any
+
+from ..utils import round_half_up
+
+
+@dataclass
+class LinhaComissaoLojista:
+    cnpj: str
+    lojista: str
+    linha_negocio: str  # 'CHECKOUT'
+    comissao_brl: Decimal
+    transacoes_count: int = 0
+    id_saida: str = ""
+
+
+@dataclass
+class LinhaDivergenciaTaxa:
+    cnpj: str
+    linha_negocio: str  # 'CHECKOUT'
+    ref_origem: str     # id_transacao
+    taxa_contratada_pct: Decimal
+    taxa_aplicada_pct: Decimal
+    diferenca_brl: Decimal
+    id_saida: str = ""
+
+
+@dataclass
+class LinhaPendencia:
+    tipo: str
+    ref_origem: str
+    valor_brl: Decimal
+    motivo: str
+    quem_decide: str
+    cnpj: str = ""
+    id_saida: str = ""
+
+
+@dataclass
+class LinhaRastro:
+    id_saida: str
+    arquivo_origem: str
+    ref_origem: str
+    valor: Decimal
+
+
+@dataclass
+class ResultadoCheckout:
+    comissoes: List[LinhaComissaoLojista]
+    divergencias: List[LinhaDivergenciaTaxa]
+    pendencias: List[LinhaPendencia]
+    rastro: List[LinhaRastro]
+    totais_por_lojista: Dict[str, Decimal] = field(default_factory=dict)
+
+
+def _normalizar_pct(val_str: str) -> Decimal:
+    if not val_str or not val_str.strip():
+        return Decimal("0.00")
+    s = val_str.strip().rstrip("%").lower()
+    if s in ("padrão", "padrao"):
+        return Decimal("0.015")
+    try:
+        d = Decimal(s)
+        if d >= Decimal("0.20"):
+            return d / Decimal("100")
+        return d
+    except Exception:
+        return Decimal("0.00")
+
+
+def carregar_contratos(tabela_taxas_path: Path) -> Dict[str, List[Dict[str, Any]]]:
+    contratos_por_ec: Dict[str, List[Dict[str, Any]]] = {}
+    with open(tabela_taxas_path, mode="r", encoding="utf-8") as f:
+        reader = csv.DictReader(f, delimiter=";")
+        for row in reader:
+            ec = row.get("ec_orbe", "").strip()
+            cnpj = row.get("cnpj", "").strip()
+            lojista = row.get("lojista", "").strip()
+            vigencia = row.get("vigencia", "").strip()
+
+            c_info = {
+                "lojista": lojista,
+                "cnpj": cnpj,
+                "ec_orbe": ec,
+                "vigencia": vigencia,
+                "debito": _normalizar_pct(row.get("debito", "")),
+                "credito_a_vista": _normalizar_pct(row.get("credito_a_vista", "")),
+                "cred_2_6x": _normalizar_pct(row.get("cred_2_6x", "")),
+                "cred_7_12x": _normalizar_pct(row.get("cred_7_12x", "")),
+                "pix": _normalizar_pct(row.get("pix", "")),
+                "antecipacao": _normalizar_pct(row.get("antecipacao", "")),
+                "spread_remessa": _normalizar_pct(row.get("spread_remessa", "")),
+                "obs": row.get("obs", ""),
+            }
+            if ec:
+                contratos_por_ec.setdefault(ec, []).append(c_info)
+
+    # Adiciona os 3 mapeamentos conhecidos confirmados no Slack pela Helena (Dúvida 5)
+    # 1043300981 -> Novo Horizonte Intercambio
+    # 1043396662 -> Horizonte Viagens
+    # 1038867654 -> Kiwi Experience
+    with open(tabela_taxas_path, mode="r", encoding="utf-8") as f:
+        reader = csv.DictReader(f, delimiter=";")
+        for row in reader:
+            cnpj = row.get("cnpj", "").strip()
+            for ec_target, cnpj_target in [
+                ("1043300981", "66564512000199"),
+                ("1043396662", "78576234000179"),
+                ("1038867654", "07752116000126"),
+            ]:
+                if cnpj == cnpj_target:
+                    contratos_por_ec.setdefault(ec_target, []).append({
+                        "lojista": row.get("lojista", "").strip(),
+                        "cnpj": cnpj,
+                        "ec_orbe": ec_target,
+                        "vigencia": row.get("vigencia", "").strip(),
+                        "debito": _normalizar_pct(row.get("debito", "")),
+                        "credito_a_vista": _normalizar_pct(row.get("credito_a_vista", "")),
+                        "cred_2_6x": _normalizar_pct(row.get("cred_2_6x", "")),
+                        "cred_7_12x": _normalizar_pct(row.get("cred_7_12x", "")),
+                        "pix": _normalizar_pct(row.get("pix", "")),
+                        "antecipacao": _normalizar_pct(row.get("antecipacao", "")),
+                        "spread_remessa": _normalizar_pct(row.get("spread_remessa", "")),
+                        "obs": row.get("obs", ""),
+                    })
+
+    return contratos_por_ec
+
+
+def obter_taxa_contratada(
+    contratos: List[Dict[str, Any]],
+    data_operacao: str,
+    tipo_lancamento: int,
+    modalidade: int,
+    qtd_parcelas: int,
+) -> Tuple[Decimal, str, str]:
+    contrato_escolhido = contratos[0]
+    if len(contratos) > 1:
+        for c in contratos:
+            vig = c["vigencia"]
+            if vig.endswith("-ate"):
+                if data_operacao <= vig.replace("-ate", ""):
+                    contrato_escolhido = c
+                    break
+            elif vig.endswith("-apd"):
+                if data_operacao >= vig.replace("-apd", ""):
+                    contrato_escolhido = c
+                    break
+
+    cnpj = contrato_escolhido["cnpj"]
+    lojista = contrato_escolhido["lojista"]
+
+    if tipo_lancamento in (3, 4):  # Antecipação ou Reversão de Antecipação
+        return contrato_escolhido["antecipacao"], cnpj, lojista
+
+    if modalidade == 4:  # Débito
+        return contrato_escolhido["debito"], cnpj, lojista
+    elif modalidade == 3:  # PIX
+        return contrato_escolhido["pix"], cnpj, lojista
+    elif modalidade == 1:  # Crédito à vista
+        return contrato_escolhido["credito_a_vista"], cnpj, lojista
+    elif modalidade == 2:  # Crédito Parcelado
+        if qtd_parcelas <= 6:
+            return contrato_escolhido["cred_2_6x"], cnpj, lojista
+        else:
+            return contrato_escolhido["cred_7_12x"], cnpj, lojista
+
+    return Decimal("0.00"), cnpj, lojista
+
+
+def processar_checkout(
+    orbe_csv_paths: List[Path],
+    tabela_taxas_path: Path,
+) -> ResultadoCheckout:
+    contratos_map = carregar_contratos(tabela_taxas_path)
+
+    comissoes_acumuladas: Dict[str, Dict[str, Any]] = {}
+    divergencias: List[LinhaDivergenciaTaxa] = []
+    pendencias: List[LinhaPendencia] = []
+    rastro: List[LinhaRastro] = []
+
+    rows: List[Tuple[Dict[str, str], str]] = []
+    for p in orbe_csv_paths:
+        if p.exists():
+            with open(p, mode="r", encoding="utf-8") as f:
+                reader = csv.DictReader(f, delimiter=";")
+                for r in reader:
+                    rows.append((r, p.name))
+
+    for row, arq_origem in rows:
+        id_transacao = row["id_transacao"].strip()
+        data_mov = row["data_movimento"].strip()
+        ec = row["cod_estabelecimento"].strip()
+        nome_estab = row["nome_estabelecimento"].strip()
+        tipo_lancto = int(row["tipo_lancamento"])
+        modalidade = int(row["modalidade"]) if row["modalidade"] else 0
+        qtd_parcelas = int(row["qtd_parcelas"]) if row["qtd_parcelas"] else 1
+        valor_bruto = Decimal(row["valor_bruto"])
+        taxa_aplicada_pct = Decimal(row["taxa_aplicada_pct"]) if row["taxa_aplicada_pct"] else Decimal("0.00")
+        data_venda_orig = row.get("data_venda_original", "").strip()
+
+        # REGRA 1: ATLAS IDIOMAS (1076801732) - BLOQUEIO TOTAL
+        if ec == "1076801732":
+            pendencias.append(
+                LinhaPendencia(
+                    tipo="CADASTRO_PENDENTE",
+                    ref_origem=id_transacao,
+                    valor_brl=round_half_up(valor_bruto),
+                    motivo="Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente. Não faturar até confirmação do Comercial.",
+                    quem_decide="Bia / Comercial",
+                    cnpj="39566044000119",
+                )
+            )
+            continue
+
+        # REGRA 2: CASA DO ESTUDANTE (1018325654) - ISENÇÃO SET-DEZ
+        if ec == "1018325654":
+            if tipo_lancto == 2 and data_venda_orig and data_venda_orig < "2026-09-01":
+                contratos = contratos_map.get(ec, [])
+                taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
+                    contratos, data_venda_orig, tipo_lancto, modalidade, qtd_parcelas
+                )
+                comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)
+                if cnpj not in comissoes_acumuladas:
+                    comissoes_acumuladas[cnpj] = {"cnpj": cnpj, "lojista": lojista, "total": Decimal("0.00"), "count": 0, "refs": []}
+                comissoes_acumuladas[cnpj]["total"] += comissao_linha
+                comissoes_acumuladas[cnpj]["count"] += 1
+                comissoes_acumuladas[cnpj]["refs"].append((id_transacao, comissao_linha, arq_origem))
+            else:
+                pendencias.append(
+                    LinhaPendencia(
+                        tipo="ISENCAO_NAO_AVISADA",
+                        ref_origem=id_transacao,
+                        valor_brl=round_half_up(valor_bruto),
+                        motivo="Casa do Estudante possui acordo de isenção de taxas (set-dez/2026). Tratar devolução internamente.",
+                        quem_decide="Helena / Comercial",
+                        cnpj="11802934000190",
+                    )
+                )
+            continue
+
+        contratos = contratos_map.get(ec)
+        if not contratos:
+            pendencias.append(
+                LinhaPendencia(
+                    tipo="EC_NAO_CONTRATADO",
+                    ref_origem=id_transacao,
+                    valor_brl=round_half_up(valor_bruto),
+                    motivo=f"EC {ec} ({nome_estab}) não possui contrato cadastrado.",
+                    quem_decide="Bia / Comercial",
+                )
+            )
+            continue
+
+        data_para_taxa = data_venda_orig if (tipo_lancto == 2 and data_venda_orig) else data_mov
+        taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
+            contratos, data_para_taxa, tipo_lancto, modalidade, qtd_parcelas
+        )
+
+        taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
+        comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)
+
+        if cnpj not in comissoes_acumuladas:
+            comissoes_acumuladas[cnpj] = {"cnpj": cnpj, "lojista": lojista, "total": Decimal("0.00"), "count": 0, "refs": []}
+
+        comissoes_acumuladas[cnpj]["total"] += comissao_linha
+        comissoes_acumuladas[cnpj]["count"] += 1
+        comissoes_acumuladas[cnpj]["refs"].append((id_transacao, comissao_linha, arq_origem))
+
+        # Divergência de Taxa (Tolerância descartada; apenas se taxa aplicada != contratada)
+        diff_taxa_pct = taxa_aplicada_pct - taxa_contratada_pct
+        if abs(diff_taxa_pct) >= Decimal("0.005"):
+            diferenca_brl = round_half_up(valor_bruto * (diff_taxa_pct / Decimal("100")))
+            divergencias.append(
+                LinhaDivergenciaTaxa(
+                    cnpj=cnpj,
+                    linha_negocio="CHECKOUT",
+                    ref_origem=id_transacao,
+                    taxa_contratada_pct=taxa_contratada_pct.quantize(Decimal("0.01")),
+                    taxa_aplicada_pct=taxa_aplicada_pct.quantize(Decimal("0.01")),
+                    diferenca_brl=diferenca_brl,
+                )
+            )
+
+    lista_comissoes: List[LinhaComissaoLojista] = []
+    totais_map: Dict[str, Decimal] = {}
+
+    for cnpj, dados in sorted(comissoes_acumuladas.items(), key=lambda x: x[1]["lojista"]):
+        total_comissao = round_half_up(dados["total"])
+        totais_map[cnpj] = total_comissao
+        lista_comissoes.append(
+            LinhaComissaoLojista(
+                cnpj=cnpj,
+                lojista=dados["lojista"],
+                linha_negocio="CHECKOUT",
+                comissao_brl=total_comissao,
+                transacoes_count=dados["count"],
+            )
+        )
+        for ref, v_linha, arq in dados["refs"]:
+            rastro.append(
+                LinhaRastro(
+                    id_saida=cnpj,
+                    arquivo_origem=arq,
+                    ref_origem=ref,
+                    valor=v_linha,
+                )
+            )
+
+    return ResultadoCheckout(
+        comissoes=lista_comissoes,
+        divergencias=divergencias,
+        pendencias=pendencias,
+        rastro=rastro,
+        totais_por_lojista=totais_map,
+    )

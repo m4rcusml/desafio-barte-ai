@@ -1,0 +1,23 @@
+id_saida;cnpj;lojista;linha_negocio;comissao_brl;comissao_contratada_brl;qtd_linhas_origem;regra_em_aberto;observacao
+COM-CHK-01;34483025000105;Atlântica Intercâmbio Ltda;CHECKOUT;2089.54;2089.65;19;R1;
+COM-CHK-02;60291407000147;Escola Ponto Final de Idiomas Ltda;CHECKOUT;1249.38;1227.32;23;R1;
+COM-CHK-03;46730683000133;Rumo Norte Viagens Estudantis Ltda;CHECKOUT;2819.25;2806.03;23;R1;
+COM-CHK-04;14084183000185;Wombat Experience Turismo Ltda;CHECKOUT;1940.87;1938.64;23;R1;identificado por nome (EC fora da tabela)
+COM-CHK-05;36018123000105;Caminhos Intercâmbio Ltda;CHECKOUT;1331.45;1331.51;19;R1;
+COM-CHK-06;09076726000182;Fiorde Idiomas Online Ltda;CHECKOUT;2260.62;2255.69;21;R1;
+COM-CHK-07;65004934000147;Cordilheira Expedições Ltda;CHECKOUT;1859.25;1857.53;23;R1;
+COM-CHK-08;00245874000109;Casa Brasil Estudantes Ltda;CHECKOUT;2718.27;2718.37;16;R1;
+COM-CHK-09;03663124000145;Campus Mundi Ltda;CHECKOUT;3907.67;3881.53;17;R1;
+COM-CHK-10;52050168000105;Trilha Sul Turismo Ltda;CHECKOUT;2619.69;2602.80;26;R1;
+COM-CHK-11;28104034000145;Boas-Vindas Exchange Ltda;CHECKOUT;2116.17;2116.23;18;R1;
+COM-CHK-12;96479080000189;Lisboeta Cursos e Viagens Ltda;CHECKOUT;2075.87;2075.95;15;R1;
+COM-CHK-13;18331932000182;Estrela Viagens e Turismo Ltda;CHECKOUT;1724.31;1724.43;16;R1;identificado por nome (EC fora da tabela)
+COM-REM-01;34483025000105;Atlântica Intercâmbio Ltda;REMESSA;619.10;;4;;
+COM-REM-02;14084183000185;Wombat Experience Turismo Ltda;REMESSA;656.29;;3;;
+COM-REM-03;36018123000105;Caminhos Intercâmbio Ltda;REMESSA;944.60;;4;;
+COM-REM-04;00245874000109;Casa Brasil Estudantes Ltda;REMESSA;627.23;;4;;
+COM-REM-05;28104034000145;Boas-Vindas Exchange Ltda;REMESSA;989.86;;4;;
+COM-REM-06;96479080000189;Lisboeta Cursos e Viagens Ltda;REMESSA;1018.88;;3;;
+COM-REM-07;23894769000104;Nova Estrela Intercâmbio Ltda;REMESSA;1042.33;;4;;
+COM-REM-08;91112886000110;Polar Educação Internacional Ltda;REMESSA;816.03;;4;;
+COM-REM-09;46398977000100;Rota Livre Estudantil Ltda;REMESSA;939.88;;3;;

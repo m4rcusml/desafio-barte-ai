@@ -1,0 +1,15 @@
+id_saida;tomador_cnpj;tomador;linha_negocio;valor_brl;discriminacao;valor_alternativo_R1;regra_em_aberto
+NF-01;34483025000105;Atlântica Intercâmbio Ltda;CHECKOUT;2089.54;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;2089.65;R1
+NF-02;60291407000147;Escola Ponto Final de Idiomas Ltda;CHECKOUT;1249.38;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;1227.32;R1
+NF-03;46730683000133;Rumo Norte Viagens Estudantis Ltda;CHECKOUT;2819.25;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;2806.03;R1
+NF-04;14084183000185;Wombat Experience Turismo Ltda;CHECKOUT;1940.87;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;1938.64;R1
+NF-05;36018123000105;Caminhos Intercâmbio Ltda;CHECKOUT;1331.45;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;1331.51;R1
+NF-06;09076726000182;Fiorde Idiomas Online Ltda;CHECKOUT;2260.62;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;2255.69;R1
+NF-07;65004934000147;Cordilheira Expedições Ltda;CHECKOUT;1859.25;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;1857.53;R1
+NF-08;00245874000109;Casa Brasil Estudantes Ltda;CHECKOUT;2718.27;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;2718.37;R1
+NF-09;03663124000145;Campus Mundi Ltda;CHECKOUT;3907.67;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;3881.53;R1
+NF-10;52050168000105;Trilha Sul Turismo Ltda;CHECKOUT;2619.69;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;2602.80;R1
+NF-11;28104034000145;Boas-Vindas Exchange Ltda;CHECKOUT;2116.17;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;2116.23;R1
+NF-12;96479080000189;Lisboeta Cursos e Viagens Ltda;CHECKOUT;2075.87;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;2075.95;R1
+NF-13;18331932000182;Estrela Viagens e Turismo Ltda;CHECKOUT;1724.31;Intermediação de pagamentos (MDR e antecipação) - competência 09/2026;1724.43;R1
+NF-14;75374179000146;Ponte Câmbio S.A.;REMESSA;7654.19;Intermediação de câmbio - participação de 50% no spread realizado - competência 09/2026;;
