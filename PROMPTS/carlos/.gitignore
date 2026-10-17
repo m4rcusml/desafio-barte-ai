@@ -1,0 +1,4 @@
+# Arquivos locais temporários gerados ao abrir os bancos SQLite.
+*.db-shm
+*.db-wal
+*.db-journal

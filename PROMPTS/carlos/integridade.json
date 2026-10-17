@@ -1,0 +1,93 @@
+{
+  "originais_preservados_em_downloads": true,
+  "criterio": "Somente credenciais substituidas por marcador de mesmo tamanho; outros bytes preservados.",
+  "arquivos": [
+    {
+      "arquivo": "carlosvaz-gemini-agy-2.txt",
+      "bytes": 2015331,
+      "sha256_original": "4388d03f57e548d0ae56bf05c754f43dbc08dbafb4f9696b12065da79365eb49",
+      "sha256_publicado": "655325d5d2e4d9fa0fbfdc76289ba755564d8f225881394a14367170828e446c",
+      "ocorrencias_de_credencial_ocultadas": 21,
+      "integridade_sqlite": null,
+      "contagens_tabelas_preservadas": null
+    },
+    {
+      "arquivo": "carlosvaz-gemini-agy.txt",
+      "bytes": 6049240,
+      "sha256_original": "d6c1a6286946c6523bbbf78509f7ba755227a8ee43eae2db02090221073fbafa",
+      "sha256_publicado": "0f93209250f4daff8c31a4fe647062686021972d3b99652146e2ec674ef30525",
+      "ocorrencias_de_credencial_ocultadas": 66,
+      "integridade_sqlite": null,
+      "contagens_tabelas_preservadas": null
+    },
+    {
+      "arquivo": "carlosvaz-gemini-agy-3.txt",
+      "bytes": 501502,
+      "sha256_original": "755b4bb59e3e28684899b40d1374eb57bb4f4027a04ba3300c4c47c8b849ef6c",
+      "sha256_publicado": "a6d65e80a641ed57b99af27e28bccf33423ecad1e0e8b59b4e788c75cc158f96",
+      "ocorrencias_de_credencial_ocultadas": 14,
+      "integridade_sqlite": null,
+      "contagens_tabelas_preservadas": null
+    },
+    {
+      "arquivo": "carlosvaz-gemini-agy-3.db",
+      "bytes": 4325376,
+      "sha256_original": "e5fcc32804f6ef16e18a53812ffc7a4ab4bd6ae9c684df4d18f509751be65efd",
+      "sha256_publicado": "d314ffa0505ff280ff62a40e77756d99562f25afda43f6817a524659cd9b78f2",
+      "ocorrencias_de_credencial_ocultadas": 81,
+      "integridade_sqlite": "ok",
+      "contagens_tabelas_preservadas": {
+        "trajectory_meta": 1,
+        "steps": 283,
+        "gen_metadata": 139,
+        "executor_metadata": 4,
+        "parent_references": 0,
+        "trajectory_metadata_blob": 1,
+        "battle_mode_infos": 0
+      }
+    },
+    {
+      "arquivo": "carlosvaz-gemini-agy-2.db",
+      "bytes": 10649600,
+      "sha256_original": "ead898072730454c38246387f98339f2b626c5c21c7946d14980fd78d5a0f212",
+      "sha256_publicado": "ae00f0b55abd6ffad0f3dce46c7433523ccd2e5b8fc498f5f4523d1fc6c93273",
+      "ocorrencias_de_credencial_ocultadas": 103,
+      "integridade_sqlite": "ok",
+      "contagens_tabelas_preservadas": {
+        "trajectory_meta": 1,
+        "steps": 341,
+        "gen_metadata": 136,
+        "executor_metadata": 7,
+        "parent_references": 0,
+        "trajectory_metadata_blob": 1,
+        "battle_mode_infos": 0
+      }
+    },
+    {
+      "arquivo": "carlosvaz-gemini-agy.db",
+      "bytes": 35586048,
+      "sha256_original": "546a543abdbc0daff19ffb89662728f838bedd8eba5db27dd9b461810f7f4189",
+      "sha256_publicado": "1d097c3dbb883965d3e7899aa03da92bf40307b98376b048a99b5d2417eba094",
+      "ocorrencias_de_credencial_ocultadas": 327,
+      "integridade_sqlite": "ok",
+      "contagens_tabelas_preservadas": {
+        "trajectory_meta": 1,
+        "steps": 2272,
+        "gen_metadata": 1127,
+        "executor_metadata": 63,
+        "parent_references": 0,
+        "trajectory_metadata_blob": 1,
+        "battle_mode_infos": 0
+      }
+    },
+    {
+      "arquivo": "fechamento-completo.zip",
+      "bytes": 97026,
+      "sha256_original": "06fd27615ab8aa69dc4ddd0340cc5fb8aa2c3c4c1b876e49f93ebefd325592b9",
+      "sha256_publicado": "06fd27615ab8aa69dc4ddd0340cc5fb8aa2c3c4c1b876e49f93ebefd325592b9",
+      "ocorrencias_de_credencial_ocultadas": 0,
+      "integridade_sqlite": null,
+      "contagens_tabelas_preservadas": null
+    }
+  ]
+}

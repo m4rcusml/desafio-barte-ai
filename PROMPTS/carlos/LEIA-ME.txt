@@ -1,0 +1,24 @@
+ANEXOS DE CARLOS — DESAFIO BARTE AI
+
+Arquivos recebidos pelo usuário e guardados nesta pasta:
+- carlosvaz-gemini-agy.txt e carlosvaz-gemini-agy.db
+- carlosvaz-gemini-agy-2.txt e carlosvaz-gemini-agy-2.db
+- carlosvaz-gemini-agy-3.txt e carlosvaz-gemini-agy-3.db
+- fechamento-completo.zip
+
+Os históricos contêm credenciais de API. Antes da publicação, somente essas
+credenciais foram substituídas por marcadores [REMOVIDA] com preenchimento
+para preservar o tamanho dos campos e arquivos. Isso inclui repetições em
+textos e blobs SQLite. O regulamento permite retirar chaves de API do histórico.
+Nenhuma correção, resumo ou reescrita das conversas foi realizada.
+
+Os anexos originais em Downloads permanecem intactos. integridade.json registra
+os hashes SHA-256 dos originais e das cópias publicadas e a quantidade de
+ocorrências ocultadas por arquivo, sem registrar os valores das credenciais.
+Os três bancos SQLite passaram no PRAGMA integrity_check e mantêm as contagens
+de registros de todas as tabelas. O ZIP foi conferido e permanece inalterado.
+
+O .gitattributes desta pasta impede conversão de quebras de linha pelo Git,
+preservando os hashes das cópias publicadas. Espaços e quebras de linha do
+histórico são mantidos. Estes anexos documentam a parte de Carlos e não
+substituem os históricos de outros integrantes nem a revisão financeira.

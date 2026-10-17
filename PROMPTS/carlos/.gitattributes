@@ -1,0 +1,5 @@
+# Históricos preservam os bytes recebidos, exceto as redações de credenciais.
+*.txt -text -whitespace
+*.db -text
+*.zip -text
+integridade.json -text
