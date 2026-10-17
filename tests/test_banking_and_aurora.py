@@ -24,7 +24,7 @@ class TestBankingAndAurora(unittest.TestCase):
         cls.repo_root = Path(__file__).resolve().parent.parent
         cls.workspace_root = cls.repo_root.parent.parent
         cls.data_dir = cls.workspace_root / "Tarvo_Data_Pack_set2026"
-        cls.silver_dir = cls.data_dir / "dados_formatados"
+        cls.silver_dir = cls.repo_root / "dados_formatados" if (cls.repo_root / "dados_formatados").exists() else cls.data_dir / "dados_formatados"
         cls.raw_aurora = cls.data_dir / "05a_extrato_banco_aurora_cc4471_set2026.csv"
         cls.f_ponte = cls.silver_dir / "03_ponte_cambio_operacoes_formatado.csv"
         cls.f_taxas = cls.silver_dir / "02_tabela_taxas_contratadas_formatado.csv"

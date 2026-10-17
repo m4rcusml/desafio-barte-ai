@@ -47,8 +47,7 @@ def node_ingestao_triagem(state: ClosingState) -> ClosingState:
 
 
 def node_silver_formatters(state: ClosingState) -> ClosingState:
-    data_dir = Path(state["data_dir"])
-    silver_dir = data_dir / "dados_formatados"
+    silver_dir = Path(state.get("output_dir_local", ".")).parent / "dados_formatados"
     silver_dir.mkdir(parents=True, exist_ok=True)
 
     mapa = state.get("arquivos_identificados", {})
@@ -106,8 +105,7 @@ def node_silver_formatters(state: ClosingState) -> ClosingState:
 
 
 def node_guardrail_1(state: ClosingState) -> ClosingState:
-    data_dir = Path(state["data_dir"])
-    silver_dir = data_dir / "dados_formatados"
+    silver_dir = Path(state.get("output_dir_local", ".")).parent / "dados_formatados"
     relatorio = validar_silver_files(silver_dir)
 
     state["relatorio_sanidade"] = {
@@ -149,7 +147,7 @@ def node_motores_dominio(state: ClosingState) -> ClosingState:
     res_remessas = processar_remessas(ponte_p, tabela_taxas_p)
 
     # 3. Bancário
-    silver_dir = Path(state["data_dir"]) / "dados_formatados"
+    silver_dir = Path(state.get("output_dir_local", ".")).parent / "dados_formatados"
     res_contabil = classificar_extratos(silver_dir)
 
     state["resultado_checkout"] = res_checkout

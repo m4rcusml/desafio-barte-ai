@@ -22,7 +22,7 @@ class TestCheckoutAndBandeiras(unittest.TestCase):
         cls.repo_root = Path(__file__).resolve().parent.parent
         cls.workspace_root = cls.repo_root.parent.parent
         cls.data_dir = cls.workspace_root / "Tarvo_Data_Pack_set2026"
-        cls.silver_dir = cls.data_dir / "dados_formatados"
+        cls.silver_dir = cls.repo_root / "dados_formatados" if (cls.repo_root / "dados_formatados").exists() else cls.data_dir / "dados_formatados"
         cls.f_01 = cls.silver_dir / "01_orbe_relatorio_comissoes_formatado.csv"
         cls.f_06 = cls.silver_dir / "06_orbe_ajustes_tardios_formatado.csv"
         cls.f_taxas = cls.silver_dir / "02_tabela_taxas_contratadas_formatado.csv"
