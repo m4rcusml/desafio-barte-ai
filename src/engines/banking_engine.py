@@ -115,7 +115,7 @@ def classificar_extratos(silver_dir: Path) -> ResultadoContabil:
                         quem_decide="Helena / Financeiro",
                     )
                 )
-            elif "CONTABILIDADE EXATA" in desc_upper:
+            elif "CONTABILIDADE" in desc_upper:
                 conta_codigo = "4.2.06"
             elif "GPS INSS" in desc_upper:
                 conta_codigo = "2.1.04.002"
