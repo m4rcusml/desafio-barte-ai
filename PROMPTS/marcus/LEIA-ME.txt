@@ -1,0 +1,87 @@
+HISTÓRICO DAS SESSÕES DE MARCUS — DESAFIO BARTE AI
+
+Comece por INDICE.txt. Há um transcript legível (.txt) para cada chat,
+sem versão duplicada em JSONL. manifesto.json registra IDs, títulos, datas UTC,
+contagens, fontes, hashes SHA-256, corte da captura e redações de privacidade.
+
+ESCOPO
+
+Nove chats do projeto barte/desafio-barte-ai, incluindo “Entrega final”, este
+chat. A associação foi conferida por listagem do app, diretório das sessões
+ativas/arquivadas e índice local do Codex consultado em modo somente leitura.
+“Entendimento do desafio” foi criado em outro diretório e depois associado ao
+projeto; está incluído pelo ID, além da seleção pelo diretório do repositório.
+
+Dois chats complementares de preparação foram incluídos porque o regulamento
+pede construção E preparação: “Preparar-se para o Desafio Barte AI” e
+“Explicar o JEV e como usar”. São identificados separadamente no índice.
+Chats pessoais de outros assuntos não integram o pacote. Sessões automáticas
+internas do aplicativo não são chats do usuário e não foram exportadas.
+
+O QUE FOI PRESERVADO
+
+Mensagens do usuário, respostas finais, atualizações do assistente, chamadas de
+ferramentas e resultados disponíveis nos registros persistidos, em ordem e sem
+resumo, correção factual ou reescrita. Erros e respostas antigas continuam no
+histórico. Cabeçalhos, índice e manifesto são organização adicionada à exportação,
+não falas atribuídas aos participantes. As referências a arquivos e anexos
+permanecem nas mensagens; os documentos externos referenciados não são duplicados.
+
+Esta é uma exportação de conversas, não uma cópia das configurações internas do
+Codex. Eventos internos de execução, telemetria, instruções do aplicativo e
+duplicações de eventos não são incluídos. Cada item exportado informa a linha
+de origem, para conferir a correspondência com a fonte local.
+
+PRIVACIDADE
+
+O case permite remover chaves de API e dados pessoais. Foram aplicadas redações
+identificáveis a e-mails, padrões de credenciais/tokens e metadados pessoais de
+chats/projetos alheios que apareceram em resultados de listagem. As ocorrências
+estão no manifesto, sem registrar valores sensíveis. CNPJs e valores financeiros
+do case sintético são preservados. Os arquivos de autenticação não são fontes
+desta exportação. Os originais locais do Codex não foram modificados.
+
+COBERTURA DO REGULAMENTO
+
+Fonte oficial:
+https://docs.google.com/document/d/1GwHs0lgLWXdw-jIrPyYAxyJ_xEJJxViE/edit
+
+- Histórico das sessões de construção e preparação: arquivos em sessoes/.
+- Conteúdo sem edição, salvo dados pessoais/credenciais: exportação e registro
+  de redações conferidos contra o trecho capturado dos registros locais.
+- De dois a quatro momentos, com ao menos um erro da IA: MOMENTOS.md desta
+  pasta possui quatro momentos específicos de Marcus com links às sessões;
+  PROMPTS/MOMENTOS.md continua sendo o índice geral obrigatório da equipe.
+- Evidência de integridade e abrangência: manifesto.json e VALIDACAO.json.
+
+CORTE DA SESSÃO ATUAL
+
+As sessões encerradas incluem todos os itens de conversa persistidos encontrados.
+O chat “Entrega final” permanece aberto: a captura termina no último item
+persistido indicado no manifesto, incluindo a solicitação de reunir o histórico.
+Mensagens posteriores à captura não podem constar retroativamente desse arquivo.
+O exportador permite atualizar o pacote depois de encerrar ou continuar o chat.
+Não se afirma recuperação de sessões apagadas, de outras máquinas ou de outros
+integrantes; esta pasta documenta a parte de Marcus disponível neste Codex.
+
+ATUALIZAR E CONFERIR
+
+Na raiz do repositório, no computador com os registros locais:
+python PROMPTS/marcus/exportar_historico.py
+python PROMPTS/marcus/validar_historico.py
+
+O primeiro comando atualiza os exports e hashes com novo corte. O segundo
+reconstrói cada transcript a partir das fontes locais no corte registrado e
+compara seu conteúdo integral com o TXT, além de conferir hashes, cobertura,
+redações, ausência de exports JSONL e os quatro momentos do índice geral.
+Os JSONs de catálogo, manifesto e validação são metadados, não cópias de chats.
+O .gitattributes local preserva os bytes dos transcripts e seus hashes no Git;
+espaços e quebras de linha originais das conversas não são corrigidos.
+O formato JSONL dos registros originais do Codex continua sendo lido apenas
+como fonte local; esses originais não foram removidos ou alterados.
+A leitura dos exports e a
+checagem de seus hashes não exigem credenciais de API; a comparação com fontes
+exige que os registros locais originais permaneçam disponíveis.
+
+Os resumos e auditorias de PROMPTS/memoria são evidências complementares e
+continuam históricos. Eles não substituem os transcripts desta pasta.

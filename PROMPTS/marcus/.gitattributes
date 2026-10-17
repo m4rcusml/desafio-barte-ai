@@ -1,0 +1,4 @@
+# Preservar os bytes capturados: hashes e transcripts não devem mudar no checkout.
+sessoes/*.txt -text -whitespace
+manifesto.json -text
+VALIDACAO.json -text

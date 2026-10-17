@@ -1,0 +1,18 @@
+{
+  "resultado": "APROVADO",
+  "sessoes": 11,
+  "registros_conferidos_com_fonte": 1084,
+  "arquivos_de_conversa": 11,
+  "formato_transcripts": "TXT",
+  "captura_utc": "2026-10-17T21:13:58.427903+00:00",
+  "sha256_manifesto": "d9e34863fbc2b4761ad9eb9be22d97948b8c6fa86b87e1d6ec82cb4b4c5693ad",
+  "verificacoes": [
+    "hashes_dos_exports",
+    "hashes_das_fontes_no_corte",
+    "todas_as_mensagens_e_ferramentas_exportaveis",
+    "igualdade_integral_do_txt_com_renderizacao_da_fonte_redigida",
+    "ausencia_de_exports_jsonl",
+    "ausencia_de_metadados_de_chats_pessoais_alheios_verificados",
+    "quatro_momentos_no_indice_geral"
+  ]
+}

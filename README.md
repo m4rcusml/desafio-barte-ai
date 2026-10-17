@@ -178,8 +178,10 @@ parcela por parcela nem geração de partidas dobradas completas para o ERP.
 O roteiro local atualizado está em `apresentacao/entrega/roteiro-pitch-tarvo.txt`.
 A revisão local não sincroniza automaticamente as notas do deck remoto.
 `PROMPTS/MOMENTOS.md` contém quatro intervenções, mas não substitui o histórico
-integral das sessões exigido pelo regulamento. Reunir esses históricos e confirmar
-postagens/checkpoints e horários continuam tarefas da entrega geral. Relatórios
+integral exigido pelo regulamento. Os exports das sessões de Marcus estão em
+`PROMPTS/marcus/`, com índice, momentos, hashes e corte da captura. As sessões dos
+demais integrantes precisam ser reunidas por eles. O usuário confirmou as
+postagens/checkpoints e os prazos; esta exportação não acrescenta recibos de envio. Relatórios
 antigos em `PROMPTS/memoria/` e o plano em `PROMPTS/outputs/arquitetura-stack.md`
 preservam o estado de suas versões; o README e o dossiê descrevem a implementação
 atual. Consulte `PROMPTS/memoria/revalidacao-main-cd2d849-2026-10-17.txt`.

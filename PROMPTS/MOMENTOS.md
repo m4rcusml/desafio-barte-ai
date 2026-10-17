@@ -2,6 +2,8 @@
 
 Índice de quatro momentos da construção da solução; não substitui o histórico integral das sessões exigido pelo desafio.
 
+O histórico de Marcus, incluindo construção e preparação, está em [marcus/INDICE.txt](marcus/INDICE.txt), com critérios de captura em [marcus/LEIA-ME.txt](marcus/LEIA-ME.txt) e [quatro momentos específicos](marcus/MOMENTOS.md). Os demais integrantes mantêm a responsabilidade por suas próprias sessões.
+
 ## 1. Triagem dos arquivos e contingência offline
 
 Pedimos à IA uma triagem para arquivos atípicos e ajustes tardios; ela propôs uma cascata com Jev, Gemini, DeepSeek e heurísticas locais.
