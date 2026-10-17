@@ -1,6 +1,6 @@
 # 📋 Manifesto de Auditoria da Execução — Fechamento Financeiro Tarvo
 **Competência:** 2026-09  
-**Data e Hora:** 2026-10-17T15:43:49.779334-03:00  
+**Data e Hora:** 2026-10-17T16:18:12.846052-03:00  
 **Status do Fechamento:** `PROVISORIO`  
 **Auditoria Matemática de Rastro:** `✅ 100% CONCILIADO`  
 
@@ -20,14 +20,14 @@
 ## 2. Métricas Consolidadas das Saídas
 - **Comissões por Lojista:** 35 registros (Total: R$ 243278.76)
 - **Notas Fiscais a Emitir:** 21 registros (Total: R$ 243284.26)
-- **Divergências de Taxa:** 115 operações contestadas (Total: R$ 3016.37)
+- **Divergências de Taxa:** 115 operações contestadas (Total: R$ 2995.11)
 - **Lançamentos Contábeis:** 184 conciliações bancárias
-- **Pendências Operacionais:** 190 itens para decisão
-- **Rastro Universal:** 4508 vínculos 1-para-1 auditáveis
+- **Pendências Operacionais:** 68 itens para decisão
+- **Rastro Universal:** 4386 vínculos 1-para-1 auditáveis
 
 ---
 ## 3. Validação da Prova Real do Rastro
-Todos os 545 identificadores de saída (`COM-XXXX`, `NF-XXXX` e `DIV-XXXX`) foram verificados.
+Todos os 423 identificadores de saída (`COM-XXXX`, `NF-XXXX` e `DIV-XXXX`) foram verificados.
 A soma das transações vinculadas no `rastro.csv` é identicamente igual ao valor total reportado em cada relatório oficial.
 
 ---

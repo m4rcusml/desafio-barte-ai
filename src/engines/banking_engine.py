@@ -124,7 +124,7 @@ def classificar_extratos(silver_dir: Path) -> ResultadoContabil:
             elif "DARF 0561 IRRF" in desc_upper or "IRRF" in desc_upper:
                 conta_codigo = "2.1.03.004"
             elif "DEVOLUCAO PIX" in desc_upper:
-                conta_codigo = "2.1.01.002"
+                conta_codigo = "2.1.01.001"
                 pendencias.append(
                     LinhaPendenciaContabil(
                         tipo="DEVOLUCAO_SEM_CAUSA",
@@ -156,6 +156,16 @@ def classificar_extratos(silver_dir: Path) -> ResultadoContabil:
                     )
             elif "PIX ENVIADO" in desc_upper:
                 conta_codigo = "2.1.01.001"
+                if "ATLAS" in desc_upper:
+                    pendencias.append(
+                        LinhaPendenciaContabil(
+                            tipo="REPASSE_LOJISTA_BLOQUEADO",
+                            ref_origem=ref_origem,
+                            valor_brl=abs(valor),
+                            motivo=f"Repasse via PIX de R$ {abs(valor):.2f} enviado para Atlas Idiomas (Lojista bloqueado para faturamento por ausência de contrato assinado). Requer averiguação da diretoria/comercial.",
+                            quem_decide="Helena / Comercial",
+                        )
+                    )
             else:
                 metodo = "HUMANO"
                 confianca = Decimal("0.00")

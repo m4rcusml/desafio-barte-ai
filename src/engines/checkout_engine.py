@@ -206,6 +206,9 @@ def processar_checkout(
                     if "01" in p.name or "principal" in p.name:
                         tx_primarias[r["id_transacao"].strip()] = r
 
+    tx_vistas: Dict[str, Dict[str, Any]] = {}
+    casa_isencao_txs: List[Tuple[str, Decimal]] = []
+
     for row, arq_origem in rows:
         id_transacao = row["id_transacao"].strip()
         data_mov = row["data_movimento"].strip()
@@ -221,6 +224,38 @@ def processar_checkout(
         data_venda_orig = row.get("data_venda_original", "").strip()
         id_referencia = row.get("id_referencia", "").strip()
 
+        # Deduplicação inteligente e bloqueio de duplicidades conflitantes (Prioridade 4)
+        if id_transacao in tx_vistas:
+            tx_antiga = tx_vistas[id_transacao]
+            mesmos_valores = (
+                tx_antiga["valor_bruto"] == valor_bruto
+                and tx_antiga["tipo_lancto"] == tipo_lancto
+                and tx_antiga["ec"] == ec
+            )
+            if mesmos_valores:
+                continue
+            else:
+                pendencias.append(
+                    LinhaPendencia(
+                        tipo="DUPLICIDADE_CONFLITANTE",
+                        ref_origem=id_transacao,
+                        valor_brl=round_half_up(valor_taxa),
+                        motivo=(
+                            f"Transação {id_transacao} encontrada com dados conflitantes entre fontes "
+                            f"(Anterior: R$ {tx_antiga['valor_bruto']}, Novo: R$ {valor_bruto}). Bloqueada para auditoria."
+                        ),
+                        quem_decide="Helena / Conciliação",
+                    )
+                )
+                continue
+
+        tx_vistas[id_transacao] = {
+            "valor_bruto": valor_bruto,
+            "tipo_lancto": tipo_lancto,
+            "ec": ec,
+            "data_mov": data_mov,
+        }
+
         # Nome de arquivo amigável canônico
         arq_amigavel = (
             "01_orbe_relatorio_comissoes_set2026.csv"
@@ -233,13 +268,14 @@ def processar_checkout(
         )
 
         # REGRA 1: ATLAS IDIOMAS (1076801732) - BLOQUEIO TOTAL
+        # Valor da pendência representa a taxa/comissão em disputa (não inflar com bruto)
         if ec == "1076801732":
             pendencias.append(
                 LinhaPendencia(
                     tipo="CADASTRO_PENDENTE",
                     ref_origem=id_transacao,
-                    valor_brl=round_half_up(valor_bruto),
-                    motivo="Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente. Não faturar até confirmação do Comercial.",
+                    valor_brl=round_half_up(valor_taxa),
+                    motivo=f"Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ {valor_bruto:.2f}, taxa em disputa R$ {valor_taxa:.2f}). Não faturar até confirmação do Comercial.",
                     quem_decide="Bia / Comercial",
                     cnpj="39566044000119",
                 )
@@ -253,7 +289,7 @@ def processar_checkout(
                 LinhaPendencia(
                     tipo="EC_NAO_CONTRATADO",
                     ref_origem=id_transacao,
-                    valor_brl=round_half_up(valor_bruto),
+                    valor_brl=round_half_up(valor_taxa),
                     motivo=f"EC {ec} ({nome_estab}) não possui contrato cadastrado.",
                     quem_decide="Bia / Comercial",
                 )
@@ -262,35 +298,27 @@ def processar_checkout(
 
         cnpj_default = contratos[0]["cnpj"]
 
-        # REGRA 2: CASA DO ESTUDANTE (1018325654) - ISENÇÃO SET-DEZ
+        # REGRA 2: CASA DO ESTUDANTE (1018325654) - ISENÇÃO SET-DEZ/2026
         if ec == "1018325654":
-            if tipo_lancto == 2 and data_venda_orig and data_venda_orig < "2026-09-01":
-                taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
-                    contratos, data_venda_orig, tipo_lancto, modalidade, qtd_parcelas
-                )
-                taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
-                comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)
-                regra_aplicada = f"Estorno anterior a set/2026 pela taxa da venda original ({data_venda_orig}) (Regra Helena)"
-                taxa_contratada_str = f"{taxa_contratada_pct:.2f}%"
-                detalhe_calc = f"Bruto R$ {valor_bruto:.2f} * {taxa_contratada_pct:.2f}% = R$ {comissao_linha:.2f}"
-
-                if cnpj not in comissoes_acumuladas:
-                    comissoes_acumuladas[cnpj] = {"cnpj": cnpj, "lojista": lojista, "total": Decimal("0.00"), "count": 0, "refs": []}
-                comissoes_acumuladas[cnpj]["total"] += comissao_linha
-                comissoes_acumuladas[cnpj]["count"] += 1
-                comissoes_acumuladas[cnpj]["refs"].append((id_transacao, comissao_linha, arq_amigavel, regra_aplicada, taxa_contratada_str, detalhe_calc))
-            else:
-                pendencias.append(
-                    LinhaPendencia(
-                        tipo="ISENCAO_NAO_AVISADA",
-                        ref_origem=id_transacao,
-                        valor_brl=round_half_up(valor_taxa),
-                        motivo=f"Casa do Estudante com isenção total (MDR e Antecipação = 0%) em set/2026 não comunicada à Orbe. Taxa cobrada indevidamente de {taxa_aplicada_pct}% deve ser devolvida ao lojista.",
-                        quem_decide="Helena / Comercial",
-                        cnpj="00520815000100",
+            if "2026-09-01" <= data_mov <= "2026-12-31":
+                if tipo_lancto == 2 and data_venda_orig and data_venda_orig < "2026-09-01":
+                    taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
+                        contratos, data_venda_orig, tipo_lancto, modalidade, qtd_parcelas
                     )
-                )
-            continue
+                    taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
+                    comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)
+                    regra_aplicada = f"Estorno anterior a set/2026 pela taxa da venda original ({data_venda_orig}) (Regra Helena)"
+                    taxa_contratada_str = f"{taxa_contratada_pct:.2f}%"
+                    detalhe_calc = f"Bruto R$ {valor_bruto:.2f} * {taxa_contratada_pct:.2f}% = R$ {comissao_linha:.2f}"
+
+                    if cnpj not in comissoes_acumuladas:
+                        comissoes_acumuladas[cnpj] = {"cnpj": cnpj, "lojista": lojista, "total": Decimal("0.00"), "count": 0, "refs": []}
+                    comissoes_acumuladas[cnpj]["total"] += comissao_linha
+                    comissoes_acumuladas[cnpj]["count"] += 1
+                    comissoes_acumuladas[cnpj]["refs"].append((id_transacao, comissao_linha, arq_amigavel, regra_aplicada, taxa_contratada_str, detalhe_calc))
+                else:
+                    casa_isencao_txs.append((id_transacao, valor_taxa))
+                continue
 
         # Obtenção da taxa contratual aplicável
         data_para_taxa = data_venda_orig if (tipo_lancto in (2, 4) and data_venda_orig) else data_mov
@@ -377,6 +405,23 @@ def processar_checkout(
                     diferenca_brl=diferenca_brl,
                 )
             )
+    # Consolidação da isenção da Casa do Estudante (elimina ruído de 118 pendências e apura taxa exata em jogo)
+    if casa_isencao_txs:
+        total_taxa_casa = sum(v for _, v in casa_isencao_txs)
+        pendencias.append(
+            LinhaPendencia(
+                tipo="ISENCAO_NAO_AVISADA",
+                ref_origem=f"LOTE_ISENCAO_{len(casa_isencao_txs)}_TX",
+                valor_brl=round_half_up(total_taxa_casa),
+                motivo=(
+                    f"Casa do Estudante (1018325654): Isenção total de MDR/Antecipação no período set-dez/2026 (taxa 0.00%) "
+                    f"não comunicada à Orbe. Lote consolidado de {len(casa_isencao_txs)} transações com taxa indevida de R$ {total_taxa_casa:.2f} "
+                    f"a ser devolvida ao lojista via negociação comercial."
+                ),
+                quem_decide="Helena / Comercial",
+                cnpj="00520815000100",
+            )
+        )
 
     lista_comissoes: List[LinhaComissaoLojista] = []
     totais_map: Dict[str, Decimal] = {}

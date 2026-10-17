@@ -137,3 +137,23 @@ A pergunta sobre as sete diferenças de bandeira foi enviada pelo usuário e res
 2. **Rastro Integral:** Inclui o rastreamento 1-para-1 de comissões (`COM-XXXX`), notas fiscais (`NF-XXXX`) e de todas as divergências de taxa (`DIV-XXXX`), amarrando a linha original que gerou a diferença.
 3. **Manifesto de Execução (`auditoria_execucao.json` e `auditoria_execucao.md`):** Gerado automaticamente a cada rodada do agente, registrando timestamp ISO, lista de arquivos processados, contagem física de linhas, status de fechamento, resumo das regras e a prova real matemática centavo a centavo.
 
+## Premissas Operacionais e Contábeis Específicas (Homologação 17/10)
+
+### P4 — Vínculo de Lojistas sem EC pelo Nome e Validação por Taxa
+- **Contexto:** Kiwi Experience, Horizonte Viagens e Novo Horizonte Intercâmbio constavam sem código de estabelecimento (`cod_estabelecimento`) explícito na planilha cadastral inicial.
+- **Tratamento:** As entidades foram associadas pelo nome comercial aos seus respectivos contratos. A validação comprobatória veio do próprio arquivo da Orbe: as taxas aplicadas pela adquirente (ex: 2,39% e 2,89% da Novo Horizonte) batem centavo a centavo com as condições da aba vigente, confirmando a exatidão cadastral.
+
+### P5 — Truncamento da Orbe vs Arredondamento Tarvo (`ROUND_HALF_UP`)
+- **Contexto:** A adquirente Orbe trunca a coluna `valor_taxa` no segundo dígito decimal, enquanto o contrato e a regra de Helena exigem arredondamento canônico por operação (`ROUND_HALF_UP`).
+- **Impacto:** Essa divergência gera exatamente R$ 0,01 de variação em 929 linhas do relatório de checkout, somando R$ 8,57 de resíduo. 
+- **Decisão:** Conforme orientação formal, diferença decorrente puramente de truncamento não constitui divergência contratual de taxa e não é cobrada do lojista nem contestada à adquirente.
+
+### P6 — Classificação da Folha de Salários de Agosto Paga em Setembro (`2.1.04.001`)
+- **Contexto:** Lançamento no Banco Aurora em 04/09/2026 (linha física L15) no valor de R$ -184.732,18 ("PAGTO SALARIOS - FOLHA 08/2026").
+- **Premissa Contábil:** A despesa de salários pertence ao mês trabalhado (agosto/2026) e já havia sido provisionada pela contabilidade. O pagamento no 5º dia útil de setembro opera estritamente a baixa do passivo exigível. Classificada na conta `2.1.04.001` (Salários a Pagar - Passivo Circulante), evitando a duplicidade de despesa em setembro.
+
+### P7 — Trânsito Bancário Aurora–Meridiano em 30/09 (R$ 300.000,00)
+- **Contexto:** O Banco Aurora registra quatro transferências entre contas para o Banco Meridiano em setembro. Três compensaram em setembro (02/09 R$ 350k, 10/09 R$ 100k, 17/09 R$ 150k).
+- **Tratamento:** A quarta transferência, de R$ 300.000,00 em 30/09 (L92), não possui crédito correspondente no extrato do Meridiano em setembro. Classificada na conta `1.1.09.001` (Valores em Trânsito Bancário) e enviada como pendência de conciliação para Caio acompanhar a compensação no extrato de outubro.
+
+

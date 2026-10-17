@@ -435,7 +435,7 @@ def emitir_todos_os_entregaveis(
         arq_orig = (
             "01_orbe_relatorio_comissoes_set2026.csv"
             if d["linha_negocio"] == "CHECKOUT"
-            else "03_ponte_cambio_operacoes_formatado.csv"
+            else "03_email_ponte_cambio_relatorio_set2026.eml"
         )
         rastro_completo.append({
             "id_saida": d["id_saida"],
@@ -468,7 +468,7 @@ def emitir_todos_os_entregaveis(
     for p in pendencias_rows:
         arq_pend = "01_orbe_relatorio_comissoes_set2026.csv"
         if "PC-0926" in p["ref_origem"]:
-            arq_pend = "03_ponte_cambio_operacoes_formatado.csv"
+            arq_pend = "03_email_ponte_cambio_relatorio_set2026.eml"
         elif p["ref_origem"].startswith("L") or p["tipo"] in ("CREDITO_NAO_IDENTIFICADO", "TRANSITO_BANCARIO", "REPASSE_DEVOLVIDO"):
             arq_pend = "05a_extrato_banco_aurora_cc4471_set2026.csv"
         rastro_completo.append({

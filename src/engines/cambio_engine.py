@@ -243,7 +243,7 @@ def processar_remessas(
             rastro.append(
                 LinhaRastroRemessa(
                     id_saida=cnpj,
-                    arquivo_origem="03_ponte_cambio_operacoes_formatado.csv",
+                    arquivo_origem="03_email_ponte_cambio_relatorio_set2026.eml",
                     ref_origem=num_op,
                     valor=v_op,
                     regra_aplicada=regra,

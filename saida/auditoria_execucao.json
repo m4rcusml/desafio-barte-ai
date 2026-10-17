@@ -1,21 +1,21 @@
 {
   "manifesto_versao": "2.0.0",
-  "data_hora_execucao": "2026-10-17T15:43:49.779334-03:00",
+  "data_hora_execucao": "2026-10-17T16:18:12.846052-03:00",
   "competencia": "2026-09",
   "status_fechamento": "PROVISORIO",
   "prova_real_rastro_valida": true,
-  "total_ids_auditados": 545,
+  "total_ids_auditados": 423,
   "erros_conciliacao": [],
   "metricas_financeiras": {
     "total_comissao_brl": "243278.76",
     "total_notas_a_emitir_brl": "243284.26",
-    "total_divergencias_taxa_brl": "3016.37",
+    "total_divergencias_taxa_brl": "2995.11",
     "qtd_comissoes": 35,
     "qtd_notas": 21,
     "qtd_divergencias": 115,
     "qtd_lancamentos_contabeis": 184,
-    "qtd_pendencias_operacionais": 190,
-    "qtd_linhas_rastro": 4508
+    "qtd_pendencias_operacionais": 68,
+    "qtd_linhas_rastro": 4386
   },
   "arquivos_entrada": [
     {

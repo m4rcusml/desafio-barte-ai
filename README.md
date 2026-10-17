@@ -66,7 +66,25 @@ python src/build_exe.py
 ```bash
 python -m unittest discover -s tests -v
 ```
-*(Todos os 15 testes rodam em ~0.08 segundos com 100% de aprovação).*
+*(Todos os 23 testes rodam em ~0.15 segundos com 100% de aprovação, cobrindo riscos financeiros, deduplicação, referências, arredondamento, simulação de outubro e fechamento parcial).*
+
+### Opção 4: Consultar o Subagente de Apresentação e Governança
+
+Para interagir com o subagente consultivo da equipe:
+
+```bash
+# Resumo executivo do fechamento
+python -m src.agent.consultant --summary
+
+# Explicar regras e vigências de um lojista específico
+python -m src.agent.consultant --lojista "Bridge Idiomas"
+
+# Listar pendências abertas agrupadas por tomador de decisão (Helena, Caio, Bia)
+python -m src.agent.consultant --pendencias "Helena"
+
+# Auditar a composição exata de qualquer ID de saída (COM, NF, DIV, LAN, PEN)
+python -m src.agent.consultant --explain "NF-0021"
+```
 
 ---
 
@@ -105,11 +123,11 @@ Ao executar, o agente gera os 6 CSVs obrigatórios com separador `;` e ponto dec
 | Arquivo | Registros Gerados | Descrição |
 | :--- | :---: | :--- |
 | `comissoes_por_lojista.csv` | 35 | Comissões apuradas por lojista em Checkout (R$ 203.735,34) e Remessa (R$ 39.543,42). |
-| `divergencias_taxa.csv` | 115 | Transações com divergência de taxa contratada (Checkout e Remessas Mundo Aberto). |
+| `divergencias_taxa.csv` | 115 | Transações com divergência de taxa contratada (Checkout Rota Global e Remessas Mundo Aberto R$ 1.418,88). |
 | `notas_a_emitir.csv` | 21 | Notas líquidas positivas de Checkout e Nota Única da Ponte Câmbio (CNPJ 75374179000146). |
 | `lancamentos_classificados.csv` | 184 | Classificação contábil dos extratos Aurora (L9 a L92) e Meridiano (FITID) no plano Fênix ERP. |
-| `pendencias.csv` | 190 | Casos que exigem decisão humana (Atlas, Casa do Estudante, 7 Bandeiras, Spreads Negativos, Trânsito 300k, Pix 7.350). |
-| `rastro.csv` | 4.508 | Vínculos auditáveis 1-para-1 com 100% de prova real matemática fechando centavo por centavo. |
+| `pendencias.csv` | 68 | Casos que exigem decisão humana com exposição real em disputa (Atlas R$ 7,9k, Casa R$ 15,4k, Spreads Negativos, Trânsito 300k, Pix 7.350, Devolução 12.4k, Repasses Atlas). |
+| `rastro.csv` | 4.386 | Vínculos auditáveis 1-para-1 até os arquivos brutos (.eml, .csv, .ofx) com 100% de prova real matemática. |
 | `auditoria_execucao.json` | 1 | Manifesto estruturado de metadados, contagem de linhas e hashes SHA-256. |
 | `auditoria_execucao.md` | 1 | Relatório executivo institucional para a diretoria e Helena. |
 
@@ -117,7 +135,8 @@ Ao executar, o agente gera os 6 CSVs obrigatórios com separador `;` e ponto dec
 
 ## ⚠️ Limitações Conhecidas & Governança
 
-1. **Atlas Idiomas (EC 1076801732):** Operações iniciadas em 10/09 sem contrato assinado retidas em 100% no arquivo `pendencias.csv` até liberação formal do Comercial (Bia).
-2. **Casa do Estudante (EC 1018325654):** Isenção de MDR acordada; taxas cobradas indevidamente pela Orbe são encaminhadas para devolução interna com Helena e Comercial.
-3. **Reversões de Antecipação no Arquivo 06:** Três reversões de antecipação (R$ 124.353,87 em volume) foram abatidas da receita da Tarvo e sinalizadas para conferência de liquidação bancária no extrato de outubro.
-4. **Política de Colisão de Linhas:** Se a Orbe reenviar um mesmo `id_transacao` no arquivo de ajustes tardios com valores corrigidos, a versão mais recente tem precedência, a linha anterior é preservada no histórico de auditoria e um alerta é emitido para Helena.
+1. **Atlas Idiomas (EC 1076801732):** Operações iniciadas em 10/09 sem contrato assinado retidas em 100% no arquivo `pendencias.csv` pelo valor da taxa em disputa (R$ 7.876,05) até liberação formal do Comercial (Bia). Repasses operacionais via PIX (L34 e L60) também sinalizados para averiguação.
+2. **Casa do Estudante (EC 1018325654):** Isenção de MDR acordada; taxas cobradas indevidamente pela Orbe (R$ 15.396,77) consolidadas em pendência única para devolução interna com Helena e Comercial, faturando apenas o abatimento do estorno de agosto (R$ -5,50).
+3. **Reversões de Antecipação no Arquivo 06:** Três reversões de antecipação (R$ 124.353,87 em volume) foram abatidas da receita da Tarvo e calculadas à taxa da antecipação original referenciada.
+4. **Política de Duplicidade e Colisão de Linhas:** Transações com o mesmo `id_transacao` e dados idênticos são deduplicadas; transações conflitantes são bloqueadas sem precedência cega e encaminhadas a `pendencias.csv`.
+5. **Guardrails Agênticos:** O subagente consultivo atua exclusivamente em modo consultivo/explicativo, sendo estritamente impedido de autorizar exceções financeiras ou emitir pagamentos externos.

@@ -83,6 +83,11 @@ class TestBankingAndAurora(unittest.TestCase):
         self.assertEqual(pen_transito.valor_brl, Decimal("300000.00"))
         self.assertEqual(pen_transito.quem_decide, "Caio / Conciliação Bancária")
 
+        # Verifica pendências de repasse Atlas no Aurora (L34 e L60)
+        pens_atlas = [p for p in res.pendencias if p.tipo == "REPASSE_LOJISTA_BLOQUEADO"]
+        self.assertEqual(len(pens_atlas), 2)
+        self.assertEqual({p.ref_origem for p in pens_atlas}, {"L34", "L60"})
+
     def test_ponte_cambio_cnpj_and_negatives(self):
         """Verifica se o tomador da Ponte possui o CNPJ 75374179000146 e negativos excluídos."""
         res = processar_remessas(self.f_ponte, self.f_taxas)
