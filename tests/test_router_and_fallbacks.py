@@ -58,7 +58,7 @@ class TestRouterAndFallbacks(unittest.TestCase):
     def test_deepseek_client_initialization_and_availability(self):
         """Verifica a inicialização e disponibilidade do cliente DeepSeek V1 Flash."""
         client = DeepSeekClient()
-        expected_model = os.getenv("DEEPSEEK_MODEL", "deepseek-v1-flash")
+        expected_model = os.getenv("DEEPSEEK_MODEL", "deepseek-flash")
         self.assertEqual(client.model, expected_model)
         self.assertIn("deepseek.com", client.api_url)
         # Sem chave de API no ambiente, is_available deve retornar False de forma graciosa

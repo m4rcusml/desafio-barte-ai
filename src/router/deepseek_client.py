@@ -20,7 +20,7 @@ class DeepSeekClient:
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.getenv("DEEPSEEK_API_KEY")
         self.api_url = os.getenv("DEEPSEEK_API_URL", "https://api.deepseek.com/chat/completions")
-        self.model = os.getenv("DEEPSEEK_MODEL", "deepseek-v1-flash")
+        self.model = os.getenv("DEEPSEEK_MODEL", "deepseek-flash")
 
     def is_available(self) -> bool:
         return bool(self.api_key)
@@ -72,7 +72,7 @@ Responda APENAS um JSON com o seguinte formato:
                 },
                 method="POST",
             )
-            with urllib.request.urlopen(req, timeout=4.0) as resp:
+            with urllib.request.urlopen(req, timeout=15.0) as resp:
                 res_data = json.loads(resp.read().decode("utf-8"))
                 text = res_data["choices"][0]["message"]["content"].strip()
                 parsed = json.loads(text)

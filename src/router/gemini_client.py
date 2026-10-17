@@ -19,7 +19,7 @@ class GeminiFlashClient:
 
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-        self.model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+        self.model = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 
     def is_available(self) -> bool:
         return bool(self.api_key)
@@ -60,7 +60,7 @@ Responda APENAS um JSON válido no seguinte formato:
                 headers={"Content-Type": "application/json"},
                 method="POST",
             )
-            with urllib.request.urlopen(req, timeout=4.0) as resp:
+            with urllib.request.urlopen(req, timeout=15.0) as resp:
                 res_data = json.loads(resp.read().decode("utf-8"))
                 text = res_data["candidates"][0]["content"]["parts"][0]["text"].strip()
                 parsed = json.loads(text)

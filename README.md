@@ -1,6 +1,6 @@
 # Tarvo Closing Agent — Hackathon Barte AI
 
-Solução autônoma de conciliação e fechamento financeiro mensal da **Tarvo Pagamentos**, desenvolvida com **LangGraph**, cascata de triagem de arquivos (**Jev / TypeSafe AI** -> **Gemini 2.5 Flash** -> **DeepSeek V1 Flash** -> **Heurística Local Offline**) e núcleo determinístico em Python com valores em `Decimal` e conferência das somas do rastro.
+Solução autônoma de conciliação e fechamento financeiro mensal da **Tarvo Pagamentos**, desenvolvida com **LangGraph**, cascata de triagem de arquivos (**Jev / TypeSafe AI** -> **Gemini 3.8 Flash** -> **DeepSeek V1 Flash** -> **Heurística Local Offline**) e núcleo determinístico em Python com valores em `Decimal` e conferência das somas do rastro.
 
 Cobertura funcional dos níveis **mínimo, alvo e extra** verificada no data pack de setembro e em cenários sintéticos de outubro. Isso não representa homologação da banca nem aprovação financeira de Helena. Os testes verificam as somas do rastro para comissões, notas, divergências, lançamentos e pendências; as limitações e os requisitos gerais de entrega ainda pendentes constam na auditoria em `PROMPTS/memoria/`.
 
@@ -14,7 +14,7 @@ A solução é construída sobre um **grafo de estados (LangGraph / StateGraph D
    - Varredura dinâmica da pasta onde o executável/script estiver rodando.
    - Triagem híbrida em cascata:
      1. **Tier 1 (Jev / TypeSafe AI):** Cliente opcional de classificação estruturada de arquivos; desempenho e calibração não homologados nesta revisão.
-     2. **Tier 2 (Gemini 2.5 Flash):** Cliente opcional de classificação de arquivos; um leitor ainda precisa validar o layout antes de calcular.
+     2. **Tier 2 (Gemini 3.8 Flash):** Cliente opcional de classificação de arquivos; um leitor ainda precisa validar o layout antes de calcular.
      3. **Tier 3 (DeepSeek V1 Flash):** Cliente opcional de contingência para classificação de arquivos, sem desempenho externo homologado.
      4. **Tier 4 (Heurística Local Offline):** Roteamento local por regras de nomes e conteúdo, disponível sem credenciais; falhas de fonte continuam sujeitas a diagnóstico e bloqueio.
 2. **Estágio 1 — Camada Silver, Cobertura de Fontes & Guardrail 1 (Error Detector):**
@@ -107,26 +107,29 @@ python -m src.agent.consultant --explain "PEN-0058"
 
 O fluxo determinístico foi verificado sem chaves de API e sem chamadas a modelos externos, usando a heurística local. Arquivos inválidos ou ausentes geram bloqueios explícitos; falhas de cálculo ou publicação podem interromper a execução preservando as saídas anteriores. Os testes de fallback não homologam os provedores em nuvem.
 
-Os clientes leem variáveis do ambiente do processo; a aplicação não carrega
-`src/.env` automaticamente. `src/.env.example` é uma referência de configuração.
-Para ativar clientes opcionais, configure as variáveis no terminal ou no hospedeiro
-antes de iniciar. Copiar o exemplo para `.env` sozinho não ativa as integrações.
+Os clientes leem variáveis do ambiente do processo. `src/utils.py` também carrega
+automaticamente o primeiro `.env` encontrado em `src/`, na raiz ou no diretório
+de execução; variáveis já definidas no processo têm precedência. Copie
+`src/.env.example` para `src/.env` e preencha suas chaves para ativar as integrações.
+Arquivos `.env` com credenciais não devem ser versionados. Se já possui um `.env`,
+atualize também os modelos e a rota Jev abaixo, pois ele sobrescreve os padrões
+dos clientes. `LOG_LEVEL` não possui consumidor no código atual.
 
 Variáveis suportadas:
 ```env
 # Tier 1: TypeSafe Jev AI
 JEV_API_KEY=
-JEV_API_URL=https://api.typesafe.ai/v1/decide
-JEV_MODEL=jev-1
+JEV_API_URL=https://api.typesafe.ai/v1/systemone
+JEV_MODEL=jev-latest
 
 # Tier 2: Google Gemini Flash
 GEMINI_API_KEY=
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.8-flash
 
 # Tier 3: DeepSeek V1 Flash
 DEEPSEEK_API_KEY=
 DEEPSEEK_API_URL=https://api.deepseek.com/chat/completions
-DEEPSEEK_MODEL=deepseek-v1-flash
+DEEPSEEK_MODEL=deepseek-flash
 ```
 
 ---
