@@ -1,0 +1,34 @@
+{
+  "checkout_comparacao_independente": {},
+  "checkout_rastro_erros": [],
+  "checkout_total": "203735.34",
+  "somas_rastro_erros": [],
+  "cnpj_erros": [],
+  "contas_invalidas": [],
+  "origem_orbe_incorreta": [],
+  "remessa_divergencias_com_base_distinta": [],
+  "remessa_total_exportado": "0",
+  "remessa_total_base_ptax": "0",
+  "pendencias_por_tipo": {
+    "CADASTRO_PENDENTE": 57,
+    "ISENCAO_NAO_AVISADA": 1,
+    "OPERACAO_DUPLICADA": 1,
+    "SPREAD_NEGATIVO_CONTESTACAO": 4,
+    "REPASSE_LOJISTA_BLOQUEADO": 2,
+    "CREDITO_NAO_IDENTIFICADO": 1,
+    "DEVOLUCAO_SEM_CAUSA": 1,
+    "TRANSITO_BANCARIO": 1
+  },
+  "remessa_comissoes_diferencas": {},
+  "remessa_total_comissao": "39543.42",
+  "notas_diferencas": {},
+  "datas_invalidas": [],
+  "metodo_confianca_invalidos": [],
+  "ids_saida_duplicados": {
+    "comissoes_por_lojista.csv": [],
+    "divergencias_taxa.csv": [],
+    "lancamentos_classificados.csv": [],
+    "notas_a_emitir.csv": [],
+    "pendencias.csv": []
+  }
+}

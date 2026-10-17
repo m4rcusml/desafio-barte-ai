@@ -2,7 +2,7 @@
 
 Este documento orienta o trabalho no caso fictício do Desafio Barte AI: contexto do negócio, regras confirmadas, escopo e decisões de desenvolvimento. Dados, empresas, pessoas e CNPJs do data pack são sintéticos.
 
-**Estado atual:** o desenvolvimento do sistema ainda não começou. Há levantamento de regras, planejamento e análises pontuais das fontes. Requisitos de processamento e validação abaixo orientam a implementação futura; não são funcionalidades existentes nem tarefas restantes para concluir a análise do `06`.
+**Estado atual — revisão de 17/10/2026, main `d5fd39a`:** mínimo e cobertura funcional do alvo foram verificados para setembro com `01 + 06`, sem equivaler à homologação da banca ou à aprovação financeira de Helena. Os seis CSVs foram reproduzidos offline, com somas de rastro conferidas para 423 resultados; as divergências de remessa foram corrigidas, as pendências indevidas de bandeira removidas e a repetição idêntica do `06` não duplica valores. Há consultor de resultados. Os 23 testes passaram com dados/caminhos preparados; sem essa preparação foram 13 aprovações e 10 erros. O extra permanece parcial: outubro ainda é identificado como setembro nas saídas, a pendência consolidada da Casa perdeu as contribuições de origem, conflitos não bloqueiam integralmente valores e faltam cobertura/alertas e versionamento adequados. Consulte o [reteste atual com evidências](PROMPTS/memoria/reteste-d5fd39a-2026-10-17.md) e a [memória do planejamento](PROMPTS/memoria/estado-planejado-vs-main-2026-10-17.md). As regras e os critérios abaixo continuam requisitos; não devem ser confundidos com funcionalidades verificadas nem tarefas restantes da análise pontual do `06`.
 
 ## Orientações para o desenvolvimento
 

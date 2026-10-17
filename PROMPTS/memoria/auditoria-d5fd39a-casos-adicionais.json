@@ -1,0 +1,42 @@
+{
+  "uma_transacao": {
+    "comissao": "48.92",
+    "pendencias": []
+  },
+  "conflito_bruto": {
+    "comissao": "48.92",
+    "pendencias": [
+      "DUPLICIDADE_CONFLITANTE"
+    ]
+  },
+  "conflito_taxa": {
+    "comissao": "48.92",
+    "pendencias": []
+  },
+  "outubro_cli": {
+    "exit_code": 0,
+    "competencia_manifesto": "2026-09",
+    "notas": [
+      {
+        "id_saida": "NF-0001",
+        "tomador_cnpj": "22224579000109",
+        "tomador": "Bridge Idiomas (NOVA)",
+        "linha_negocio": "CHECKOUT",
+        "valor_brl": "21.90",
+        "discriminacao": "Serviços de intermediação e facilitação de transações comerciais (Checkout) - Competência 09/2026. Lojista: Bridge Idiomas (NOVA)."
+      }
+    ],
+    "pendencias": []
+  },
+  "rastro_lote_virtual": [
+    {
+      "id_saida": "PEN-0058",
+      "arquivo_origem": "05a_extrato_banco_aurora_cc4471_set2026.csv",
+      "ref_origem": "LOTE_ISENCAO_118_TX",
+      "valor": "15396.77",
+      "regra_aplicada": "Pendência (ISENCAO_NAO_AVISADA): Casa do Estudante (1018325654): Isenção total de MDR/Antecipação no período set-dez/2026 (taxa 0.00%) não comunicada à Orbe. Lote consolidado de 118 transações com taxa indevida de R$ 15396.77 a ser devolvida ao lojista via negociação comercial.",
+      "taxa_contratada_aplicada": "N/A",
+      "detalhe_calculo": "Decisão requerida por: Helena / Comercial"
+    }
+  ]
+}
