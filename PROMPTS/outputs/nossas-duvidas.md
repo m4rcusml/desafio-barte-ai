@@ -1,8 +1,8 @@
 # Nossas dúvidas × Slack, documento do case, data pack e material de apoio
 
-## Pergunta pendente de resposta — variação dos inputs entre meses
+## Variação dos inputs entre meses — respondida
 
-**Situação:** rascunho registrado em 17/10/2026, pendente de resposta. Não há registro de envio ao Slack; não marcar como enviada. A pergunta não altera regras já confirmadas nem estabelece comportamento aprovado para mudanças nas fontes.
+**Situação:** resposta de Helena recebida e fornecida pelo usuário nesta conversa em 17/10/2026. Horário e permalink não informados; não houve nova leitura nem envio ao Slack pelo agente. O registro anterior era um rascunho sem envio registrado; a resposta abaixo o complementa sem inventar metadados do envio.
 
 **Texto preparado:**
 
@@ -10,9 +10,18 @@
 
 Quando faltar uma fonte ou chegar uma informação nova sem regra definida, vocês esperam que o fechamento inteiro aguarde ou que as partes independentes sejam concluídas, deixando explícitos os resultados provisórios, os bloqueios e as pendências? Quem decide quando esses casos podem ser liberados?
 
-**Contexto conhecido:** o LEIA-ME prevê arquivos novos no mesmo formato em outubro. A pergunta busca esclarecer quais variações ocorrem na prática e qual é a expectativa para fontes ausentes, adicionais ou corrigidas; essa abrangência e o tratamento de fechamento parcial ainda não foram confirmados.
+**Contexto:** o LEIA-ME prevê arquivos novos no mesmo formato em outubro. Helena confirmou a estrutura mensal esperada e esclareceu as exceções operacionais.
 
-**Resposta:** ainda não recebida.
+**Resposta recebida (transcrição):**
+
+> [Financeiro] Resposta para Turma do Barulho
+> A estrutura é a mesma todo mês: mesmas fontes, mesmas colunas. Mudam os registros, os lojistas e as condições. Mas na prática acontece de arquivo chegar atrasado, de a Orbe mandar ajuste depois do relatório, e já teve parceiro mudando o layout sem avisar. Prefiro que a solução avise a que quebre sem ninguém perceber.
+> Quando falta alguma coisa, eu não seguro o mês inteiro. Fecha o que não depende daquilo, marca o que é provisório e deixa claro o que está bloqueado e por quê. Quem libera sou eu. Se for taxa ou cadastro, o comercial decide antes.
+> — Helena
+
+**Confirmado:** mesmas fontes/colunas como contrato esperado; mudanças de registros, lojistas e condições; possibilidade de atraso, ajuste posterior da Orbe e mudança inesperada de layout. Continuar partes independentes, identificar provisórios e bloqueios com motivo e avisar sobre problemas. Helena libera; taxa/cadastro exigem decisão prévia do comercial.
+
+**Limites da resposta:** não define formato de ajustes Orbe, se são incrementais ou substitutivos, nem autoriza reabrir automaticamente períodos aprovados. Também não exige adaptação automática a layout desconhecido. O desenho técnico de dependências, alertas e versões está em `arquitetura-stack.md`.
 
 ## Situação atual — resposta da Tarvo às seis perguntas
 

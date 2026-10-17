@@ -32,6 +32,8 @@ O subagente pode conduzir o processamento técnico sem supervisão contínua. A 
 | Consultas | Serviços delimitados para resultados, regras, fontes, rastro e indicadores |
 | Subagente | Coordenação técnica, investigação de exceções, explicações e preparação de recomendações |
 | Integração humana | Registro de decisões com autor, justificativa, fonte e vigência; reprocessamento por nova execução |
+| Controle de dependências | Determinar quais etapas/resultados podem continuar e quais dependem de fonte, condição ou decisão ausente |
+| Validação de layout e avisos | Conferir estrutura esperada e registrar incompatibilidades com fonte, motivo, impacto e destinatário |
 
 ## Fronteiras da autonomia
 
@@ -69,7 +71,7 @@ Não há compromisso de construir Streamlit, uma API web ou infraestrutura exter
 
 Entrada proposta: competência, identificador da solicitação, referências dos arquivos disponíveis e versão das regras/decisões. Arquivos devem ser resolvidos pelo hospedeiro; o modelo não escolhe caminhos arbitrários.
 
-Saída proposta: identificador da execução, etapas concluídas, validações, resultados disponíveis, arquivos gerados, bloqueios, pendências e resumo com evidências. Conclusão técnica não significa aprovação humana do fechamento.
+Saída proposta: identificador da execução, etapas concluídas, validações, resultados disponíveis, arquivos gerados, bloqueios, pendências e resumo com evidências. Incluir cobertura das fontes, dependências ausentes, situação de cada resultado e versão de entradas/regras usada. Conclusão técnica não significa aprovação humana do fechamento.
 
 Exemplos de ferramentas a implementar:
 
@@ -96,7 +98,30 @@ Agregações, comparações e indicadores monetários são calculados por funç�
 - Preservar execuções anteriores. Mudança de arquivo, regra ou decisão gera nova execução identificada; repetição não duplica receita nem linhas exportadas.
 - Cada registro tem destino explicável: processado, duplicado, excluído por regra ou pendente. Valor desconhecido não é zero.
 - Regras têm fonte e vigência. Taxa confirmada para setembro não se torna exceção permanente para todos os meses.
-- Alterações inesperadas nos inputs devem ser detectadas. O comportamento de bloqueio global ou fechamento parcial permanece pendente da resposta registrada em `nossas-duvidas.md`; não apresentar isso como regra aprovada.
+- Alterações inesperadas nos inputs devem ser detectadas e avisadas. O fechamento parcial de partes independentes foi confirmado por Helena; estados, dependências e revisões propostos abaixo implementam esse requisito.
+
+## Fontes variáveis, fechamento parcial e revisões
+
+### Requisito confirmado
+
+Conforme resposta fornecida pelo usuário em 17/10/2026 e registrada em `nossas-duvidas.md`: mesmas fontes/colunas são o contrato mensal esperado; registros, lojistas e condições variam. Atrasos, ajustes Orbe posteriores e mudanças de layout podem ocorrer. A solução deve avisar, continuar partes independentes e identificar provisórios/bloqueios. Helena libera; para taxa/cadastro, o comercial decide antes.
+
+### Desenho técnico proposto
+
+1. **Inventário de entradas:** registrar fonte esperada, arquivo/versão recebido, competência declarada, hash e estado de leitura. Distinguir arquivo ausente, arquivo inválido e arquivo válido sem movimentos; nenhum deles equivale automaticamente a valor zero.
+2. **Contrato de layout por leitor:** validar cabeçalhos, abas necessárias, campos, tipos e unidades. Layout incompatível bloqueia a ingestão afetada com erro localizado e aviso persistido; não tentar correspondência arbitrária de colunas pela IA. Mudança compatível só é aceita por regra explícita do leitor. O mês continua pelas dependências válidas.
+3. **Dependências explícitas no Python:** cada cálculo declara fontes, condições e referências necessárias. Bloqueios propagam somente aos resultados dependentes, não ao mês inteiro por padrão. A decisão sobre prontidão é determinística, não opinião do subagente.
+4. **Estados por resultado:** `APURADO` quando calculado com suas dependências válidas; `PROVISORIO` quando há valor calculável, mas cobertura/decisão pendente pode alterá-lo; `BLOQUEADO` quando faltam dados ou regra para calcular. Guardar motivo, dependência e responsável. Aprovação é campo separado (`PENDENTE`/`LIBERADO`), com autor, momento e escopo. Uma etapa apurada pode continuar aguardando liberação.
+5. **Visão do agregado:** soma apenas das linhas conhecidas não é total completo. Exibir subtotal apurado e cobertura, marcar o agregado provisório ou bloqueado conforme suas dependências. Não preencher a parte desconhecida com zero nem emitir proposta de nota consolidada como definitiva se faltam contribuições necessárias.
+6. **Revisão humana:** decisão de taxa/cadastro deve ter evidência do comercial antes da liberação de Helena. Aprovação fica vinculada à versão e aos resultados aprovados. Nova informação não herda automaticamente liberação antiga para resultados alterados.
+7. **Arquivo atrasado ou corrigido:** manter a versão anterior; identificar se o novo arquivo é repetição exata, substituição ou ajuste incremental. Hash evita reingestão idêntica, mas hash diferente não prova que é complemento. Sem semântica conhecida, registrar pendência, não somar arquivos indiscriminadamente. Gerar nova execução e demonstrar diferenças; implementar recomputação integral por versão inicialmente, sem exigir mecanismo complexo de execução incremental.
+8. **Aviso ao hospedeiro:** persistir alertas estruturados com fonte, falha/alteração, resultados afetados, ação necessária e responsável; retorná-los também na saída estruturada. A entrega do aviso ao usuário depende do canal do hospedeiro ainda a definir. O subagente explica os alertas; não decide ignorá-los ou aprová-los.
+
+Exemplos de dependência: falta do relatório Ponte bloqueia remessas e sua nota, mas não impede checkout com fontes válidas; uma taxa desconhecida afeta o lojista correspondente, sem bloquear os demais. Classificar os extratos pode continuar quando os extratos e o plano de contas estão disponíveis, observadas as pendências específicas de classificação. Disponibilidade dessas partes não demonstra que o fechamento global está completo.
+
+Exportar resultados parciais preservando as colunas obrigatórias; acrescentar situação/cobertura quando aplicável e manifesto por execução com alertas e bloqueios. Uma saída sem linhas calculáveis não deve aparentar total zero aprovado: registrar explicitamente sua ausência de cobertura no manifesto/pendências. Exportações e propostas de notas não equivalem a emissão fiscal nem aprovação.
+
+Não alterar a regra já confirmada de ajustes Ponte no mês em que aparecem. A resposta nova menciona ajustes Orbe, sem estabelecer sua competência, formato ou reabertura automática; esses detalhes permanecem pendentes.
 
 ## Transparência e resultados do subagente
 
@@ -112,6 +137,7 @@ Respostas devem referenciar execução, resultados e evidências; sugestões dev
 - Mesmas entradas e regras reproduzem os mesmos resultados financeiros; texto do agente pode variar sem alterar os valores.
 - Os seis CSVs respeitam o contrato do desafio e as somas do rastro fecham por resultado.
 - Testes cobrem arredondamento negativo, vigências, estornos anteriores à isenção, Atlas sem taxa, duplicata Ponte, negativos excluídos e classificação de provisões.
+- Testes adicionais: Ponte ausente sem bloquear checkout; arquivo inválido distinto de vazio; layout incompatível gera aviso sem remapeamento silencioso; resultado incompleto não vira total definitivo; arquivo repetido não duplica valores; correção preserva versão e não herda aprovação dos resultados alterados.
 - O subagente não possui ferramentas de aprovação comercial ou de operação financeira externa.
 - Nova competência não exige trocar o algoritmo; evento sem regra conhecida produz pendência, sem inventar condição.
 - Dependências, comando real e limitações são documentados após verificação. Esses critérios ainda não constituem resultados de testes executados.
@@ -121,4 +147,4 @@ Respostas devem referenciar execução, resultados e evidências; sugestões dev
 - Sistema hospedeiro, ponto de acionamento e canal de entrega dos resultados/revisões.
 - Provedor/modelo e SDK agêntico; nenhuma integração ou contratação escolhida neste documento.
 - Versões fixadas, adaptador OFX e interface técnica final.
-- Tratamento de variação estrutural, fontes ausentes ou corrigidas, sujeito ao esclarecimento do financeiro e aos limites demonstráveis dos leitores.
+- Semântica dos ajustes Orbe (incrementais/substitutivos e competência), revisão de períodos aprovados, layouts suportados pelos leitores e canal do hospedeiro para avisos e aprovações. A diretriz de continuar partes independentes e explicitar provisórios/bloqueios já foi confirmada.

@@ -60,9 +60,16 @@ Resumo das confirmações relevantes. As perguntas completas, autores, datas e l
 
 ## Lacunas que permanecem
 
+- Formato e natureza incremental/substitutiva dos ajustes posteriores da Orbe e procedimento para revisar período já aprovado. A resposta sobre variação de inputs não definiu esses detalhes.
 - Contrato/taxa vigente da Atlas: bloqueio de faturamento já definido, percentual não conhecido.
 - Precedência para duplicidades futuras com valores conflitantes. O par concreto `PC-0926-0162` tem dados financeiros iguais e difere apenas na observação; não há conflito financeiro a resolver nesse caso.
 - Agenda detalhada de recebíveis e custos Orbe–Tarvo/conta garantida: não necessários à comissão definida no case, mas necessários a análises financeiras adicionais.
 - Contas específicas para casos bancários ambíguos e decisões sobre valores sem origem ou devolução sem motivo identificado.
 
 Os nove estornos de agosto analisados têm vigências contratuais aplicáveis nos arquivos, conforme `nossas-duvidas.md`; não registrar falta de histórico como bloqueio desses casos. Arredondamento, valor integral da contestação e rotina operacional já receberam resposta.
+
+## Confirmação posterior — inputs e fechamento parcial
+
+Helena confirmou mesmas fontes e colunas como estrutura mensal esperada, com mudança de registros, lojistas e condições. Atrasos, ajustes posteriores da Orbe e alterações inesperadas de layout acontecem e devem gerar aviso. Concluir partes independentes, marcar provisórios e explicitar bloqueios/motivos. A liberação cabe a Helena; taxa/cadastro passam antes pelo comercial.
+
+Fonte e transcrição: [nossas-duvidas.md](PROMPTS/outputs/nossas-duvidas.md), resposta fornecida pelo usuário em 17/10/2026, sem horário ou permalink. Esses comportamentos passam a ser requisitos confirmados, não novas premissas. A escolha de dependências, estados e mecanismos de reprocessamento é proposta técnica documentada em [arquitetura-stack.md](PROMPTS/outputs/arquitetura-stack.md).

@@ -1,5 +1,15 @@
 # Dúvidas e respostas do Slack — Tarvo
 
+## Resposta posterior — variação mensal dos inputs e fechamento parcial
+
+**Proveniência:** resposta de Helena fornecida pelo usuário nesta conversa em 17/10/2026, sem horário ou permalink informado. Não houve nova consulta nem envio ao Slack pelo agente. Transcrição preservada em [nossas-duvidas.md](nossas-duvidas.md), seção “Variação dos inputs entre meses — respondida”.
+
+**Pergunta:** o que muda nas fontes entre meses e como proceder diante de arquivos ausentes, novas informações ou alterações de layout? Quem libera os casos?
+
+**Resposta útil:** a estrutura esperada permanece: mesmas fontes e colunas; mudam registros, lojistas e condições. Há atrasos, ajustes Orbe posteriores ao relatório e mudanças de layout sem aviso. A solução deve avisar sobre esses problemas. O mês não deve parar inteiro: concluir partes independentes e marcar provisórios, bloqueios e motivos. Helena libera; em taxa ou cadastro, o comercial decide antes.
+
+**Ainda não definido:** formato e natureza incremental/substitutiva dos ajustes Orbe e tratamento de revisão de período já aprovado. Não presumir adaptação automática de layouts desconhecidos.
+
 Leitura inicial realizada em **17/10/2026**, pelo Slack no navegador, no canal [#duvidas-hackathon-ai](https://app.slack.com/client/T0CA2KVNG4U/C0CA0S5D37B). A busca sem termos adicionais, restrita ao canal, retornou **36 mensagens em duas páginas**, incluindo respostas nas conversas. Todas foram lidas com os textos expandidos. O histórico inicial encontrado vai de 16/10 às 19h46 a 17/10 às 8h43. Mensagens administrativas de entrada de membro e renomeação do canal não contêm dúvidas e foram omitidas. Uma leitura posterior incluiu atualizações até **17/10 às 9h49** e o HTML “Do Cartão ao Caixa”; os esclarecimentos relevantes às nossas dúvidas foram incorporados abaixo, com suas fontes.
 
 As perguntas abaixo são paráfrases organizadas por publicação, preservando suas partes relevantes. As respostas de `manuel.freitas` assinadas por **Helena, financeiro da Tarvo**, são tratadas como confirmação do cliente. Propostas e números de participantes são identificados como tais; silêncio não significa validação. As regras logísticas são respostas da organização. Este registro retrata o conteúdo disponível no momento da consulta.
