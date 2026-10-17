@@ -102,5 +102,145 @@
       "diferencas_metricas": {},
       "arquivos_saida_alterados": []
     }
+  },
+  {
+    "id_execucao": "EXEC-20261017T203634008361Z-832eea9e8ad8",
+    "execucao_dir": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\execucoes\\2026-09\\EXEC-20261017T203634008361Z-832eea9e8ad8",
+    "data_hora_execucao": "2026-10-17T17:36:34.302371-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "3.0.0-snapshots-por-execucao",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-2026-09-2fa31a-91fee9b8",
+      "versao_regras_anterior": "2.1.0-padrao-ouro",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": true,
+      "saidas_identicas": true,
+      "regras_identicas": false,
+      "codigo_identico": false,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    }
+  },
+  {
+    "id_execucao": "EXEC-20261017T203742447608Z-c6d435ce3e2c",
+    "execucao_dir": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\execucoes\\2026-09\\EXEC-20261017T203742447608Z-c6d435ce3e2c",
+    "data_hora_execucao": "2026-10-17T17:37:42.674857-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "3.0.0-snapshots-por-execucao",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-20261017T203634008361Z-832eea9e8ad8",
+      "versao_regras_anterior": "3.0.0-snapshots-por-execucao",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": true,
+      "saidas_identicas": true,
+      "regras_identicas": true,
+      "codigo_identico": false,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    }
+  },
+  {
+    "id_execucao": "EXEC-20261017T203830351237Z-d05d881b6992",
+    "execucao_dir": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\execucoes\\2026-09\\EXEC-20261017T203830351237Z-d05d881b6992",
+    "data_hora_execucao": "2026-10-17T17:38:30.704155-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "3.0.0-snapshots-por-execucao",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-20261017T203742447608Z-c6d435ce3e2c",
+      "versao_regras_anterior": "3.0.0-snapshots-por-execucao",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": true,
+      "saidas_identicas": true,
+      "regras_identicas": true,
+      "codigo_identico": false,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    }
+  },
+  {
+    "id_execucao": "EXEC-20261017T203905755563Z-3ce9464ec325",
+    "execucao_dir": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\execucoes\\2026-09\\EXEC-20261017T203905755563Z-3ce9464ec325",
+    "data_hora_execucao": "2026-10-17T17:39:05.982798-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "3.0.0-snapshots-por-execucao",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-20261017T203830351237Z-d05d881b6992",
+      "versao_regras_anterior": "3.0.0-snapshots-por-execucao",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": true,
+      "saidas_identicas": true,
+      "regras_identicas": true,
+      "codigo_identico": true,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    }
   }
 ]

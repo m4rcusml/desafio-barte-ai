@@ -184,6 +184,8 @@ def obter_taxa_contratada(
 
 
 def _nome_arq_orbe_amigavel(arq_origem: str) -> str:
+    if "formatado" not in arq_origem.lower():
+        return arq_origem
     low = arq_origem.lower()
     if "01" in low or "principal" in low:
         return "01_orbe_relatorio_comissoes_set2026.csv"
@@ -251,7 +253,7 @@ def processar_checkout(
             with open(p, mode="r", encoding="utf-8") as f:
                 reader = csv.DictReader(f, delimiter=";")
                 for r in reader:
-                    rows_all.append((r, p.name))
+                    rows_all.append((r, r.get("arquivo_origem") or p.name))
 
     # Pré-passo de agrupamento por id_transacao para detectar duplicatas exatas vs conflitantes
     # antes de acumular qualquer comissão ou divergência (evita First-Write-Wins).

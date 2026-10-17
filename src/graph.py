@@ -24,6 +24,7 @@ from .engines.checkout_engine import processar_checkout, LinhaPendencia, Resulta
 from .engines.cambio_engine import processar_remessas, LinhaPendenciaRemessa, ResultadoRemessas
 from .engines.banking_engine import classificar_extratos, LinhaPendenciaContabil, ResultadoContabil
 from .outputs.generator import emitir_todos_os_entregaveis
+from .outputs.execution_store import preparar_execucao
 
 
 DOMINIOS_ESPERADOS: Dict[str, Dict[str, Any]] = {
@@ -77,11 +78,13 @@ DOMINIOS_ESPERADOS: Dict[str, Dict[str, Any]] = {
 # =====================================================================
 
 def node_ingestao_triagem(state: ClosingState) -> ClosingState:
-    data_dir = Path(state["data_dir"])
+    # Processa as cópias capturadas, não arquivos que podem mudar durante o fechamento.
+    data_dir = preparar_execucao(state)
     router = TriTierRouter()
     descobertos = router.scan_directory(data_dir)
 
     cobertura: Dict[str, Dict[str, Any]] = {}
+    competencia = state.get("competencia", "2026-09")
     for dom_k, meta in DOMINIOS_ESPERADOS.items():
         cobertura[dom_k] = {
             "frente": meta["frente"],
@@ -93,6 +96,14 @@ def node_ingestao_triagem(state: ClosingState) -> ClosingState:
             "obrigatorio": meta["obrigatorio"],
             "linhas_validas": 0,
         }
+        # O envio concreto 06 complementa obrigatoriamente setembro/2026.
+        # Não pressupõe que outros meses terão um lote tardio.
+        if dom_k == "ORBE_AJUSTES_TARDIOS":
+            cobertura[dom_k]["obrigatorio"] = competencia == "2026-09"
+            cobertura[dom_k]["motivo"] = (
+                "Complemento 06 obrigatório de setembro/2026 ausente; fechamento parcial."
+                if competencia == "2026-09" else cobertura[dom_k]["motivo"]
+            )
 
     mapa_arquivos: Dict[str, str] = {}
     orbe_arquivos_lista: List[str] = []
@@ -403,6 +414,20 @@ def node_motores_dominio(state: ClosingState) -> ClosingState:
 
     # 4. Fontes inválidas ou de layout desconhecido geram pendência explícita (nunca viram zero silencioso)
     for dom_k, cob_v in cobertura.items():
+        if cob_v.get("estado") == "AUSENTE" and cob_v.get("obrigatorio"):
+            res_checkout.pendencias.append(
+                LinhaPendencia(
+                    tipo="FONTE_OBRIGATORIA_AUSENTE",
+                    ref_origem=dom_k,
+                    valor_brl=Decimal("0.00"),
+                    motivo=f"{dom_k}: {cob_v.get('motivo')} Resultados disponíveis são provisórios.",
+                    quem_decide=cob_v.get("responsavel", "Helena"),
+                    arquivo_origem=(
+                        "06_orbe_ajustes_tardios_set2026.csv"
+                        if dom_k == "ORBE_AJUSTES_TARDIOS" else dom_k
+                    ),
+                )
+            )
         if cob_v.get("estado") == "INVALIDA":
             ref_inv = cob_v.get("arquivo") or dom_k
             res_checkout.pendencias.append(

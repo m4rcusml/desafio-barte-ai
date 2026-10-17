@@ -15,7 +15,12 @@ fechamento_tarvo.exe
 # Diretórios de trabalho e intermediários
 fechamento-completo/
 dados_formatados/
+dados/entrada/
 work/
+
+# Histórico operacional local; manter cópia de segurança fora do Git.
+/execucoes/*
+!/execucoes/README.md
 
 # Environments
 .env

@@ -23,6 +23,7 @@ class LinhaLancamentoClassificado:
     metodo: str       # 'REGRA' ou 'IA'
     confianca: Decimal
     id_saida: str = ""
+    arquivo_origem: str = ""
 
 
 @dataclass
@@ -33,7 +34,7 @@ class LinhaPendenciaContabil:
     motivo: str
     quem_decide: str
     id_saida: str = ""
-    arquivo_origem: str = "05a_extrato_banco_aurora_cc4471_set2026.csv"
+    arquivo_origem: str = ""
 
 
 @dataclass
@@ -80,6 +81,10 @@ def classificar_extratos(silver_dir: Path, competencia: Optional[str] = None) ->
     with open(aurora_path, mode="r", encoding="utf-8") as f:
         reader = csv.DictReader(f, delimiter=";")
         for idx, row in enumerate(reader, start=2):
+            arquivo_origem = row.get("arquivo_origem", "").strip()
+            if not arquivo_origem:
+                raise ValueError("Extrato Aurora formatado sem arquivo_origem; reprocesse a fonte bruta.")
+            inicio_pendencias = len(pendencias)
             val_str = row.get("valor", "").strip()
             if not val_str:
                 continue
@@ -185,9 +190,13 @@ def classificar_extratos(silver_dir: Path, competencia: Optional[str] = None) ->
                     )
                 )
 
+            for pendencia in pendencias[inicio_pendencias:]:
+                pendencia.arquivo_origem = arquivo_origem
+
             lancamentos.append(
                 LinhaLancamentoClassificado(
                     banco="AURORA",
+                    arquivo_origem=arquivo_origem,
                     ref_origem=ref_origem,
                     data=data,
                     descricao=descricao,
@@ -200,6 +209,9 @@ def classificar_extratos(silver_dir: Path, competencia: Optional[str] = None) ->
 
     # 3. BANCO MERIDIANO (C/C 90233-5)
     for row in meridiano_rows:
+        arquivo_origem = row.get("arquivo_origem", "").strip()
+        if not arquivo_origem:
+            raise ValueError("Extrato Meridiano formatado sem arquivo_origem; reprocesse a fonte bruta.")
         val_str = row.get("valor", "").strip()
         if not val_str:
             continue
@@ -243,13 +255,14 @@ def classificar_extratos(silver_dir: Path, competencia: Optional[str] = None) ->
                     valor_brl=abs(valor),
                     motivo=f"Lançamento '{descricao}' não classificado por regras conhecidas. Encaminhado para decisão contábil.",
                     quem_decide="Helena / Contabilidade",
-                    arquivo_origem="05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+                    arquivo_origem=arquivo_origem,
                 )
             )
 
         lancamentos.append(
             LinhaLancamentoClassificado(
                 banco="MERIDIANO",
+                arquivo_origem=arquivo_origem,
                 ref_origem=ref_origem,
                 data=data,
                 descricao=descricao,

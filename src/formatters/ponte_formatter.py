@@ -81,7 +81,7 @@ def format_ponte_file(input_path: Path, output_path: Path) -> int:
         "num_operacao", "data_contratacao", "data_liquidacao", "cnpj_cliente",
         "cliente", "moeda", "valor_me", "taxa_cliente", "ptax_ref",
         "valor_brl", "spread_brl", "spread_pct", "spread_estimado_brl",
-        "iof_brl", "status_compliance", "observacao"
+        "iof_brl", "status_compliance", "observacao", "arquivo_origem"
     ]
 
     rows_processed = 0
@@ -98,6 +98,7 @@ def format_ponte_file(input_path: Path, output_path: Path) -> int:
             clean_cnpj = fmt_clean_cnpj(raw_cnpj)
 
             row_data = {
+                "arquivo_origem": input_path.name,
                 "num_operacao": op_num,
                 "data_contratacao": _excel_serial_to_date(r.get("B", "")),
                 "data_liquidacao": _excel_serial_to_date(r.get("C", "")),

@@ -36,7 +36,7 @@ def format_meridiano_file(input_path: Path, output_dir: Path) -> Tuple[Path, int
     output_path = output_dir / target_filename
 
     trns = re.findall(r"<STMTTRN>(.*?)</STMTTRN>", ofx_text, re.DOTALL)
-    fieldnames = ["data", "fitid", "tipo", "documento", "lancamento", "valor"]
+    fieldnames = ["data", "fitid", "tipo", "documento", "lancamento", "valor", "arquivo_origem"]
 
     rows_processed = 0
     with open(output_path, "w", encoding="utf-8", newline="") as outfile:
@@ -54,6 +54,7 @@ def format_meridiano_file(input_path: Path, output_dir: Path) -> Tuple[Path, int
             writer.writerow({
                 "data": fmt_date_iso(m_dt.group(1)) if m_dt else "",
                 "fitid": m_fitid.group(1).strip() if m_fitid else "",
+                "arquivo_origem": input_path.name,
                 "tipo": m_type.group(1).strip() if m_type else "",
                 "documento": m_chk.group(1).strip() if m_chk else "",
                 "lancamento": m_memo.group(1).strip() if m_memo else "",

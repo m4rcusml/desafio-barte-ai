@@ -109,7 +109,10 @@ def main():
     summary = final_state.get("resumo_execucao", {})
 
     print("\n" + "=" * 75)
-    print("🎉 FECHAMENTO CONCLUÍDO COM 100% DE PROVA REAL MATEMÁTICA!")
+    if final_state.get("estado_tecnico") == "PARCIAL_COM_BLOQUEIOS":
+        print("⚠️ FECHAMENTO PARCIAL COM BLOQUEIOS — revise fontes e pendências.")
+    else:
+        print("FECHAMENTO TECNICAMENTE CONCLUÍDO — sujeito à revisão financeira.")
     print("=" * 75)
     print(f"✓ comissoes_por_lojista.csv : {summary.get('comissoes_count', 0)} registros")
     print(f"✓ divergencias_taxa.csv     : {summary.get('divergencias_count', 0)} registros")
@@ -119,6 +122,7 @@ def main():
     print(f"✓ rastro.csv                : {summary.get('rastro_count', 0)} registros vinculados")
     print("=" * 75)
     print(f"Arquivos salvos com sucesso em:\n 1. {output_local}\n 2. {output_oficial}")
+    print(f"Execução preservada: {final_state['execucao_dir']}")
     print("=" * 75)
 
 

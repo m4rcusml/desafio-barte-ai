@@ -1,0 +1,274 @@
+{
+  "commit": "8b3c34c",
+  "cli_returncode": 0,
+  "arquivos": {
+    "comissoes_por_lojista.csv": {
+      "linhas": 35,
+      "soma": "243278.76",
+      "igual_ao_versionado": true
+    },
+    "divergencias_taxa.csv": {
+      "linhas": 115,
+      "soma": "2995.11",
+      "igual_ao_versionado": true
+    },
+    "notas_a_emitir.csv": {
+      "linhas": 21,
+      "soma": "243284.26",
+      "igual_ao_versionado": true
+    },
+    "lancamentos_classificados.csv": {
+      "linhas": 184,
+      "soma": "-1416088.18",
+      "igual_ao_versionado": true
+    },
+    "pendencias.csv": {
+      "linhas": 68,
+      "soma": "594980.52",
+      "igual_ao_versionado": true
+    },
+    "rastro.csv": {
+      "linhas": 4503,
+      "soma": "-331549.53",
+      "igual_ao_versionado": true
+    }
+  },
+  "erros": [],
+  "comissoes": {
+    "CHECKOUT": "203735.34",
+    "REMESSA": "39543.42"
+  },
+  "ids_conferidos": 423,
+  "manifesto": {
+    "manifesto_versao": "2.1.0",
+    "id_execucao": "EXEC-2026-09-2fa31a-91fee9b8",
+    "versao_regras": "2.1.0-padrao-ouro",
+    "data_hora_execucao": "2026-10-17T17:22:04.092251-03:00",
+    "competencia": "2026-09",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "status_fechamento": "PROVISORIO",
+    "prova_real_rastro_valida": true,
+    "total_ids_auditados": 423,
+    "erros_conciliacao": [],
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "cobertura_fontes": {
+      "ORBE_FECHAMENTO_PRINCIPAL": {
+        "frente": "CHECKOUT",
+        "estado": "PROCESSADA",
+        "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+        "motivo": "Fonte validada e processada com 1943 registros.",
+        "dependencia": "TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Caio / Operações Checkout",
+        "obrigatorio": true,
+        "linhas_validas": 1943
+      },
+      "ORBE_AJUSTES_TARDIOS": {
+        "frente": "CHECKOUT",
+        "estado": "PROCESSADA",
+        "arquivo": "06_orbe_ajustes_tardios_set2026.csv",
+        "motivo": "Fonte validada e processada com 14 registros.",
+        "dependencia": "ORBE_FECHAMENTO_PRINCIPAL, TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Helena / Conciliação",
+        "obrigatorio": false,
+        "linhas_validas": 14
+      },
+      "TABELA_TAXAS_CONTRATUAIS": {
+        "frente": "CHECKOUT, REMESSA",
+        "estado": "PROCESSADA",
+        "arquivo": "02_tabela_taxas_contratadas.xlsx",
+        "motivo": "Fonte validada e processada com 25 registros.",
+        "dependencia": "Nenhuma (Fonte Mestre de Contratos)",
+        "responsavel": "Bia / Comercial",
+        "obrigatorio": true,
+        "linhas_validas": 25
+      },
+      "EMAIL_PONTE_CAMBIO": {
+        "frente": "REMESSA",
+        "estado": "PROCESSADA",
+        "arquivo": "03_email_ponte_cambio_relatorio_set2026.eml",
+        "motivo": "Fonte validada e processada com 233 registros.",
+        "dependencia": "TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Caio / Câmbio",
+        "obrigatorio": true,
+        "linhas_validas": 233
+      },
+      "PLANO_CONTAS_FENIX": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "04_plano_de_contas_fenix_erp.csv",
+        "motivo": "Fonte validada e processada com 52 registros.",
+        "dependencia": "Nenhuma (Plano de Contas ERP)",
+        "responsavel": "Helena / Contabilidade",
+        "obrigatorio": true,
+        "linhas_validas": 52
+      },
+      "EXTRATO_AURORA": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "05a_extrato_banco_aurora_cc4471_set2026.csv",
+        "motivo": "Fonte validada e processada com 84 registros.",
+        "dependencia": "EXTRATO_MERIDIANO (Conferência de Trânsito)",
+        "responsavel": "Caio / Conciliação Bancária",
+        "obrigatorio": true,
+        "linhas_validas": 84
+      },
+      "EXTRATO_MERIDIANO": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+        "motivo": "Fonte validada e processada com 100 registros.",
+        "dependencia": "EXTRATO_AURORA (Conferência de Trânsito)",
+        "responsavel": "Caio / Conciliação Bancária",
+        "obrigatorio": true,
+        "linhas_validas": 100
+      }
+    },
+    "arquivos_entrada": [
+      {
+        "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+        "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\01_orbe_relatorio_comissoes_set2026.csv",
+        "dominio": "ORBE_FECHAMENTO_PRINCIPAL",
+        "estado": "PROCESSADA",
+        "linhas_lidas": 1944,
+        "tamanho_bytes": 221518,
+        "sha256": "fdbc2bad2dd38dde8bf3af9d5c1f21116f0eae8d71d6a5a16b0dfd82de3cc7ec",
+        "metodo_triagem": "HEURISTICA"
+      },
+      {
+        "arquivo": "02_tabela_taxas_contratadas.xlsx",
+        "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\02_tabela_taxas_contratadas.xlsx",
+        "dominio": "TABELA_TAXAS_CONTRATUAIS",
+        "estado": "PROCESSADA",
+        "linhas_lidas": 66,
+        "tamanho_bytes": 10092,
+        "sha256": "d0c7d2b13ac41c2a036a40362eb26c341666feef74d7199284742c255885dfc4",
+        "metodo_triagem": "HEURISTICA"
+      },
+      {
+        "arquivo": "03_email_ponte_cambio_relatorio_set2026.eml",
+        "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\03_email_ponte_cambio_relatorio_set2026.eml",
+        "dominio": "EMAIL_PONTE_CAMBIO",
+        "estado": "PROCESSADA",
+        "linhas_lidas": 569,
+        "tamanho_bytes": 42076,
+        "sha256": "e36808cab907df4b598d0022ae92af99c9b7c281a5d619d91e64d163f42e6f8f",
+        "metodo_triagem": "HEURISTICA"
+      },
+      {
+        "arquivo": "04_plano_de_contas_fenix_erp.csv",
+        "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\04_plano_de_contas_fenix_erp.csv",
+        "dominio": "PLANO_CONTAS_FENIX",
+        "estado": "PROCESSADA",
+        "linhas_lidas": 53,
+        "tamanho_bytes": 3205,
+        "sha256": "fb99c63b151c2a029c86475eb2551e4af7722a055dc24137244a2411e7876d72",
+        "metodo_triagem": "HEURISTICA"
+      },
+      {
+        "arquivo": "05a_extrato_banco_aurora_cc4471_set2026.csv",
+        "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\05a_extrato_banco_aurora_cc4471_set2026.csv",
+        "dominio": "EXTRATO_AURORA",
+        "estado": "PROCESSADA",
+        "linhas_lidas": 95,
+        "tamanho_bytes": 6896,
+        "sha256": "7303b72fa76d227a863279a36726411605d93fb63237f0cae638c111a70d2d92",
+        "metodo_triagem": "HEURISTICA"
+      },
+      {
+        "arquivo": "05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+        "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+        "dominio": "EXTRATO_MERIDIANO",
+        "estado": "PROCESSADA",
+        "linhas_lidas": 848,
+        "tamanho_bytes": 18306,
+        "sha256": "27f11fae20c1fb69e2ca47885f6082690fe5db5cd13ddf3e407ef3cb29e33283",
+        "metodo_triagem": "HEURISTICA"
+      },
+      {
+        "arquivo": "06_orbe_ajustes_tardios_set2026.csv",
+        "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\06_orbe_ajustes_tardios_set2026.csv",
+        "dominio": "ORBE_AJUSTES_TARDIOS",
+        "estado": "PROCESSADA",
+        "linhas_lidas": 15,
+        "tamanho_bytes": 2088,
+        "sha256": "b1cfd183945fb194e05cfbe9455ab364c31b676427e6653562f6821f57240292",
+        "metodo_triagem": "HEURISTICA"
+      }
+    ],
+    "arquivos_saida": [
+      {
+        "arquivo": "comissoes_por_lojista.csv",
+        "registros": 35,
+        "tamanho_bytes": 2348,
+        "sha256": "5d15634863c10cdf65959697762006be7c9118f1232e0e7bfb3519dadf49ff49"
+      },
+      {
+        "arquivo": "divergencias_taxa.csv",
+        "registros": 115,
+        "tamanho_bytes": 7102,
+        "sha256": "7daf3541782dc4611ca07987a772ae7c402d1e783df44c6b6bf07bbe5d8daa31"
+      },
+      {
+        "arquivo": "notas_a_emitir.csv",
+        "registros": 21,
+        "tamanho_bytes": 4359,
+        "sha256": "9672ffeb96db22ad73deac7d61c7667800e1891e622cd19cc44d9008ca43f5c6"
+      },
+      {
+        "arquivo": "lancamentos_classificados.csv",
+        "registros": 184,
+        "tamanho_bytes": 20143,
+        "sha256": "6c6cefec43f3b6e82c2f442bf3805b0687002d7233f6fb3e19d63e88febc67be"
+      },
+      {
+        "arquivo": "pendencias.csv",
+        "registros": 68,
+        "tamanho_bytes": 14698,
+        "sha256": "e4aec4b87179e6c04e55abf55f2328544c40786ba1ec83b86195816d9a2f5546"
+      },
+      {
+        "arquivo": "rastro.csv",
+        "registros": 4503,
+        "tamanho_bytes": 746731,
+        "sha256": "dcf59cadf8bbd2c7d38528e19a8e8bd55c28215949f4be9617390b70aa9742d7"
+      }
+    ],
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": false,
+      "id_execucao_anterior": null,
+      "entradas_identicas": null,
+      "saidas_identicas": null,
+      "regras_identicas": null,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    },
+    "regras_aplicadas_resumo": [
+      "Checkout: Comissões apuradas pela taxa contratada por modalidade/parcelamento e filtradas por competência.",
+      "Checkout: Bridge Idiomas (1075624862) split temporal de taxa em 15/09/2026 respeitando data da venda original em estornos.",
+      "Checkout: Atlas Idiomas (1076801732) bloqueio total por ausência de contrato assinado (Bia/Comercial).",
+      "Checkout: Casa do Estudante (1018325654) isenção set-dez consolidada em pendência com 118 transações reais no rastro.",
+      "Checkout/Remessas: Deduplicação estrita de cópias idênticas e bloqueio integral de todas as versões em IDs conflitantes.",
+      "Checkout: 7 divergências de bandeira no lote 06 vinculadas por referência sem abrir pendência indevida (homologado por Helena).",
+      "Checkout: Estornos órfãos sem referência no relatório principal aceitos pelo valor declarado com pendência para Helena.",
+      "Remessas: Split de 50% sobre o Spread BRL realizado (Ponte Câmbio).",
+      "Remessas: Exclusão de 4 operações com spread negativo para contestação integral com a Ponte.",
+      "Remessas: Deduplicação de PC-0926-0162 e contestação de spread contratual Mundo Aberto (1.20% vs 1.50%).",
+      "Contábil: Classificação contábil com dupla conciliação bancária (Aurora CC 44710 e Meridiano CC 902335)."
+    ]
+  },
+  "consultor_returncode": 0
+}

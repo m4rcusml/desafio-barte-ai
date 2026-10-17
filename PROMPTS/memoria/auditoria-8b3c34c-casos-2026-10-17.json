@@ -1,0 +1,161 @@
+{
+  "outubro_bancos": {
+    "estado_tecnico": "CONCLUIDO",
+    "cobertura": {
+      "ORBE_FECHAMENTO_PRINCIPAL": {
+        "frente": "CHECKOUT",
+        "estado": "PROCESSADA",
+        "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+        "motivo": "Fonte validada e processada com 1943 registros.",
+        "dependencia": "TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Caio / Operações Checkout",
+        "obrigatorio": true,
+        "linhas_validas": 1943
+      },
+      "ORBE_AJUSTES_TARDIOS": {
+        "frente": "CHECKOUT",
+        "estado": "PROCESSADA",
+        "arquivo": "06_orbe_ajustes_tardios_set2026.csv",
+        "motivo": "Fonte validada e processada com 14 registros.",
+        "dependencia": "ORBE_FECHAMENTO_PRINCIPAL, TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Helena / Conciliação",
+        "obrigatorio": false,
+        "linhas_validas": 14
+      },
+      "TABELA_TAXAS_CONTRATUAIS": {
+        "frente": "CHECKOUT, REMESSA",
+        "estado": "PROCESSADA",
+        "arquivo": "02_tabela_taxas_contratadas.xlsx",
+        "motivo": "Fonte validada e processada com 25 registros.",
+        "dependencia": "Nenhuma (Fonte Mestre de Contratos)",
+        "responsavel": "Bia / Comercial",
+        "obrigatorio": true,
+        "linhas_validas": 25
+      },
+      "EMAIL_PONTE_CAMBIO": {
+        "frente": "REMESSA",
+        "estado": "PROCESSADA",
+        "arquivo": "03_email_ponte_cambio_relatorio_set2026.eml",
+        "motivo": "Fonte validada e processada com 233 registros.",
+        "dependencia": "TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Caio / Câmbio",
+        "obrigatorio": true,
+        "linhas_validas": 233
+      },
+      "PLANO_CONTAS_FENIX": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "04_plano_de_contas_fenix_erp.csv",
+        "motivo": "Fonte validada e processada com 52 registros.",
+        "dependencia": "Nenhuma (Plano de Contas ERP)",
+        "responsavel": "Helena / Contabilidade",
+        "obrigatorio": true,
+        "linhas_validas": 52
+      },
+      "EXTRATO_AURORA": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "05a_extrato_banco_aurora_cc4471_out2026.csv",
+        "motivo": "Fonte validada e processada com 84 registros.",
+        "dependencia": "EXTRATO_MERIDIANO (Conferência de Trânsito)",
+        "responsavel": "Caio / Conciliação Bancária",
+        "obrigatorio": true,
+        "linhas_validas": 84
+      },
+      "EXTRATO_MERIDIANO": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "05b_extrato_banco_meridiano_cc90233_out2026.ofx",
+        "motivo": "Fonte validada e processada com 100 registros.",
+        "dependencia": "EXTRATO_AURORA (Conferência de Trânsito)",
+        "responsavel": "Caio / Conciliação Bancária",
+        "obrigatorio": true,
+        "linhas_validas": 100
+      }
+    },
+    "lancamentos": 184,
+    "arquivos_bancarios_inexistentes_no_rastro": [
+      "05a_extrato_banco_aurora_cc4471_set2026.csv",
+      "05b_extrato_banco_meridiano_cc90233_set2026.ofx"
+    ],
+    "pendencias_fonte": []
+  },
+  "sem_06": {
+    "estado_tecnico": "CONCLUIDO",
+    "cobertura": {
+      "ORBE_FECHAMENTO_PRINCIPAL": {
+        "frente": "CHECKOUT",
+        "estado": "PROCESSADA",
+        "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+        "motivo": "Fonte validada e processada com 1943 registros.",
+        "dependencia": "TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Caio / Operações Checkout",
+        "obrigatorio": true,
+        "linhas_validas": 1943
+      },
+      "ORBE_AJUSTES_TARDIOS": {
+        "frente": "CHECKOUT",
+        "estado": "AUSENTE",
+        "arquivo": "",
+        "motivo": "Fonte ausente no diretório de entrada.",
+        "dependencia": "ORBE_FECHAMENTO_PRINCIPAL, TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Helena / Conciliação",
+        "obrigatorio": false,
+        "linhas_validas": 0
+      },
+      "TABELA_TAXAS_CONTRATUAIS": {
+        "frente": "CHECKOUT, REMESSA",
+        "estado": "PROCESSADA",
+        "arquivo": "02_tabela_taxas_contratadas.xlsx",
+        "motivo": "Fonte validada e processada com 25 registros.",
+        "dependencia": "Nenhuma (Fonte Mestre de Contratos)",
+        "responsavel": "Bia / Comercial",
+        "obrigatorio": true,
+        "linhas_validas": 25
+      },
+      "EMAIL_PONTE_CAMBIO": {
+        "frente": "REMESSA",
+        "estado": "PROCESSADA",
+        "arquivo": "03_email_ponte_cambio_relatorio_set2026.eml",
+        "motivo": "Fonte validada e processada com 233 registros.",
+        "dependencia": "TABELA_TAXAS_CONTRATUAIS",
+        "responsavel": "Caio / Câmbio",
+        "obrigatorio": true,
+        "linhas_validas": 233
+      },
+      "PLANO_CONTAS_FENIX": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "04_plano_de_contas_fenix_erp.csv",
+        "motivo": "Fonte validada e processada com 52 registros.",
+        "dependencia": "Nenhuma (Plano de Contas ERP)",
+        "responsavel": "Helena / Contabilidade",
+        "obrigatorio": true,
+        "linhas_validas": 52
+      },
+      "EXTRATO_AURORA": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "05a_extrato_banco_aurora_cc4471_set2026.csv",
+        "motivo": "Fonte validada e processada com 84 registros.",
+        "dependencia": "EXTRATO_MERIDIANO (Conferência de Trânsito)",
+        "responsavel": "Caio / Conciliação Bancária",
+        "obrigatorio": true,
+        "linhas_validas": 84
+      },
+      "EXTRATO_MERIDIANO": {
+        "frente": "CONTABIL",
+        "estado": "PROCESSADA",
+        "arquivo": "05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+        "motivo": "Fonte validada e processada com 100 registros.",
+        "dependencia": "EXTRATO_AURORA (Conferência de Trânsito)",
+        "responsavel": "Caio / Conciliação Bancária",
+        "obrigatorio": true,
+        "linhas_validas": 100
+      }
+    },
+    "lancamentos": 184,
+    "arquivos_bancarios_inexistentes_no_rastro": [],
+    "pendencias_fonte": []
+  }
+}

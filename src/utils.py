@@ -146,7 +146,7 @@ def fmt_vigencia(val: Optional[str]) -> str:
     return iso_date
 
 
-VERSAO_REGRAS = "2.1.0-padrao-ouro"
+VERSAO_REGRAS = "3.0.0-snapshots-por-execucao"
 
 
 def sha256_file(path: Optional[Path | str]) -> str:

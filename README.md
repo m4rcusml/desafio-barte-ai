@@ -2,7 +2,7 @@
 
 Solução autônoma de conciliação e fechamento financeiro mensal da **Tarvo Pagamentos**, desenvolvida com **LangGraph**, quadrupla cascata de triagem semântica (**Jev / TypeSafe AI** -> **Gemini 2.5 Flash** -> **DeepSeek V1 Flash** -> **Heurística Local Offline**) e núcleo determinístico em Python com rigor matemático absoluto.
 
-Entrega homologada no **Nível Extra**, com 100% de prova real matemática no `rastro.csv` ($\sum \text{rastro.valor} \equiv \text{valor\_reportado}$ para `COM`, `NF`, `DIV`, `LAN` e `PEN`), tratamento de ajustes tardios (`06_orbe`), classificação de linhas físicas reais do Aurora (`L9` a `L92`), conciliação dinâmica de transferências em trânsito e arquitetura resiliente pronta para rodar em outubro sem retrabalho.
+Cobertura funcional dos níveis **mínimo, alvo e extra** verificada no data pack de setembro e em cenários sintéticos de outubro. Isso não representa homologação da banca nem aprovação financeira de Helena. Os testes verificam as somas do rastro para comissões, notas, divergências, lançamentos e pendências; as limitações e os requisitos gerais de entrega ainda pendentes constam na auditoria em `PROMPTS/memoria/`.
 
 ---
 
@@ -29,8 +29,8 @@ A solução é construída sobre um **grafo de estados (LangGraph / StateGraph D
    - Descarte de falsos positivos de truncamento/arredondamento de centavos ($|\text{taxa aplicada} - \text{contratada}| \ge 0.005\%$).
 5. **Estágio 4 — Emissor Atômico, Versionamento de Execução e Auditoria Universal:**
    - Validação matemática formal da Prova Real: $\forall id\_saida \in \{COM, NF, DIV, LAN, PEN\} : \sum \text{rastro.valor} \equiv \text{valor\_reportado}$.
-   - Gravação simultânea dos 6 CSVs oficiais e manifestos de execução tanto na pasta local (`fechamento-completo/`) quanto no diretório oficial canônico (`saida/`).
-   - Governança de execuções (`auditoria_execucao.json`, `auditoria_execucao.md` e `historico_execucoes.json`): registra `id_execucao`, `versao_regras`, hashes SHA-256 de entradas e saídas, `comparacao_execucao_anterior` e separa `estado_tecnico` (`CONCLUIDO` / `PARCIAL_COM_BLOQUEIOS`) de `status_aprovacao` (`PROVISORIO` / `APROVADO_POR_HELENA` / `REABERTO_PARA_REVISAO`). Resultados alterados rebaixam automaticamente aprovações anteriores para `REABERTO_PARA_REVISAO`.
+   - Geração e validação em uma pasta temporária, preservação em `execucoes/AAAA-MM/<id_execucao>/` e publicação dos CSVs e manifestos em `fechamento-completo/` e `saida/`, com restauração dos destinos se uma troca falhar.
+   - Cada execução guarda as entradas, uma cópia do código, resultados, manifesto, aprovação declarada e diferenças por lojista, nota e pendência. Uma nova execução com entradas, resultados, regras ou código alterados exige revisão; as versões anteriores e seus registros de aprovação permanecem intactos. Consulte [execucoes/README.md](execucoes/README.md).
 
 ---
 
@@ -41,14 +41,16 @@ A solução é construída sobre um **grafo de estados (LangGraph / StateGraph D
 Não requer bibliotecas pesadas ou compiladores C++. Roda direto com a biblioteca padrão do Python:
 
 ```bash
-# 1. Navegue até o diretório da solução
-cd barte-solution/desafio-barte-ai
+# Execute na raiz do repositório; Python 3.14 foi usado na verificação.
+# Prepare o data pack sem editar os arquivos:
+python -m zipfile -e dados/originais/Tarvo_Data_Pack_set2026.zip dados/entrada
+python -c "import shutil; shutil.copyfile('dados/originais/06_orbe_ajustes_tardios_set2026.csv', 'dados/entrada/06_orbe_ajustes_tardios_set2026.csv')"
 
 # 2. Execute o fechamento de setembro/2026 apontando para a pasta com os arquivos brutos
-python src/app.py --data-dir ../../Tarvo_Data_Pack_set2026
+python src/app.py --data-dir dados/entrada --competencia 2026-09
 
 # 3. (Opcional) Parametrizar explícita ou dinamicamente outra competência (ex: outubro/2026)
-python src/app.py --data-dir ../../Tarvo_Data_Pack_set2026 --competencia 2026-10
+python src/app.py --data-dir caminho/para/fontes_de_outubro --competencia 2026-10
 ```
 
 ### Opção 2: Compilação e Execução como Executável (.exe)
@@ -66,10 +68,17 @@ python src/build_exe.py
 
 ### Opção 3: Executar a Suíte de Testes Automatizados (100% Reproduzível do Zero)
 
+Para setembro/2026, o complemento `06_orbe_ajustes_tardios_set2026.csv` é obrigatório.
+Sem ele, as frentes disponíveis continuam sendo calculadas, mas o fechamento fica
+`PARCIAL_COM_BLOQUEIOS`, com pendência de fonte obrigatória ausente. Essa exigência
+é específica desse envio de setembro e não se estende automaticamente a outubro.
+O rastro bancário preserva o nome efetivo do arquivo bruto recebido, inclusive
+quando os extratos de outro mês têm nomes diferentes.
+
 ```bash
 python -m unittest discover -s tests -v
 ```
-*(Todos os 29 testes criam seus ambientes em diretórios temporários isolados a partir de `dados/originais/Tarvo_Data_Pack_set2026.zip` + `06`, cobrindo regressão de setembro, fluxo completo de outubro, conflitos de ID em Orbe e Ponte, repetição idempotente, revogação de aprovação em mudança de dados, fontes ausentes/inválidas/vazias e rastreabilidade 100% até os arquivos brutos).*
+*(Os testes usam ambientes temporários isolados e fixtures próprias ou extraídas do ZIP original + `06`. Cobrem setembro, as três frentes em outubro, conflitos, idempotência, preservação de versões e aprovação por execução, falhas de cálculo/publicação, fontes ausentes/inválidas/vazias e rastro até as fontes brutas. A ausência do `06` bloqueia a conclusão técnica de setembro.)*
 
 ### Opção 4: Consultar o Subagente de Apresentação e Governança
 

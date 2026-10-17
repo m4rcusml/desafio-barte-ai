@@ -64,7 +64,7 @@ class TestPartialClosing(unittest.TestCase):
         self.assertEqual(len(res_state["resultado_cambio"].comissoes), 0)
 
     def test_full_closing_without_arquivo_06(self):
-        """Verifica se o sistema executa o grafo completo com sucesso mesmo na ausência do arquivo 06."""
+        """Sem o complemento obrigatório 06, setembro continua parcial e gera pendência."""
         import tempfile
         import shutil
 
@@ -90,7 +90,11 @@ class TestPartialClosing(unittest.TestCase):
             self.assertIsNotNone(final_state.get("resultado_checkout"))
             self.assertGreater(len(final_state["resultado_checkout"].comissoes), 0)
             self.assertEqual(final_state["cobertura_fontes"]["ORBE_AJUSTES_TARDIOS"]["estado"], "AUSENTE")
-            self.assertEqual(final_state["estado_tecnico"], "CONCLUIDO")
+            self.assertTrue(final_state["cobertura_fontes"]["ORBE_AJUSTES_TARDIOS"]["obrigatorio"])
+            self.assertEqual(final_state["estado_tecnico"], "PARCIAL_COM_BLOQUEIOS")
+            faltantes = [p for p in final_state["resultado_checkout"].pendencias
+                         if p.tipo == "FONTE_OBRIGATORIA_AUSENTE"]
+            self.assertTrue(any(p.ref_origem == "ORBE_AJUSTES_TARDIOS" for p in faltantes))
 
             gerados = {p.name for p in Path(tmp_out).glob("*.csv")}
             esperados = {

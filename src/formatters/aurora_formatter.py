@@ -62,7 +62,7 @@ def format_aurora_file(input_path: Path, output_dir: Path) -> Tuple[Path, int]:
         raise ValueError("Linha de cabeçalho das transações do Banco Aurora não encontrada.")
 
     reader = csv.DictReader(lines[data_start_idx:], delimiter=";")
-    fieldnames = ["data", "lancamento", "documento", "valor", "saldo", "linha_fisica"]
+    fieldnames = ["data", "lancamento", "documento", "valor", "saldo", "linha_fisica", "arquivo_origem"]
 
     rows_processed = 0
     with open(output_path, mode="w", encoding="utf-8", newline="") as outfile:
@@ -100,6 +100,7 @@ def format_aurora_file(input_path: Path, output_dir: Path) -> Tuple[Path, int]:
                 "valor": fmt_money_br_to_dot(row.get("Valor (R$)", "")),
                 "saldo": fmt_money_br_to_dot(row.get("Saldo (R$)", "")),
                 "linha_fisica": str(linha_fisica),
+                "arquivo_origem": input_path.name,
             })
             rows_processed += 1
 

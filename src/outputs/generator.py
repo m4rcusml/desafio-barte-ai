@@ -18,6 +18,7 @@ from ..engines.checkout_engine import ResultadoCheckout
 from ..engines.cambio_engine import ResultadoRemessas
 from ..engines.banking_engine import ResultadoContabil
 from ..utils import VERSAO_REGRAS, sha256_file, format_competencia_br
+from .execution_store import preparar_execucao, finalizar_execucao
 
 
 def validar_prova_real(
@@ -121,8 +122,10 @@ def gerar_manifestos_auditoria(
     )
 
     # 1. Lê manifesto anterior (se existir) ANTES de sobrescrever para rastrear diferenças e governança de aprovação
-    manifesto_anterior: Optional[Dict[str, Any]] = None
+    manifesto_anterior: Optional[Dict[str, Any]] = state.get("manifesto_anterior") if state else None
     for d in output_dirs:
+        if manifesto_anterior is not None:
+            break
         cand_prev = d / "auditoria_execucao.json"
         if cand_prev.exists():
             try:
@@ -154,7 +157,8 @@ def gerar_manifestos_auditoria(
             pares_hash_in.append((nome_arq, digest_in))
             arquivos_inventario.append({
                 "arquivo": nome_arq,
-                "caminho": str(p),
+                "caminho": str(Path(state.get("data_dir_original", state["data_dir"])) / p.name),
+                "copia_preservada": f"entradas/{p.name}",
                 "dominio": dom_arq,
                 "estado": cob_info.get("estado", f.get("status", "PROCESSADA")),
                 "linhas_lidas": linhas_count,
@@ -189,7 +193,7 @@ def gerar_manifestos_auditoria(
         })
 
     hash_saidas_combinado = _combinar_hashes(pares_hash_out)
-    id_execucao = f"EXEC-{competencia}-{hash_entradas_combinado[:6]}-{hash_saidas_combinado[:8]}"
+    id_execucao = state["id_execucao"]
 
     total_comissao_brl = sum(Decimal(c["comissao_brl"]) for c in comissoes_rows)
     total_notas_brl = sum(Decimal(n["valor_brl"]) for n in notas_rows)
@@ -221,6 +225,10 @@ def gerar_manifestos_auditoria(
         entradas_identicas = (prev_hash_in == hash_entradas_combinado)
         saidas_identicas = (prev_hash_out == hash_saidas_combinado)
         regras_identicas = (prev_regras == versao_regras)
+        codigo_identico = (
+            manifesto_anterior.get("codigo_execucao", {}).get("sha256_fontes")
+            == state["codigo_execucao"]["sha256_fontes"]
+        )
 
         # Diferenças por métrica
         prev_metricas = manifesto_anterior.get("metricas_financeiras", {})
@@ -242,11 +250,10 @@ def gerar_manifestos_auditoria(
         ]
 
         # Governança: resultados alterados não herdam aprovação anterior!
-        if (not saidas_identicas or not entradas_identicas or not regras_identicas):
+        if (not saidas_identicas or not entradas_identicas or not regras_identicas or not codigo_identico):
             if prev_status_aprov == "APROVADO_POR_HELENA" or status_solicitado == "APROVADO_POR_HELENA":
-                if not (state and state.get("forcar_aprovacao_apos_mudanca") is True):
-                    status_aprovacao_final = "REABERTO_PARA_REVISAO"
-                    heranca_aprovacao_bloqueada = True
+                status_aprovacao_final = "REABERTO_PARA_REVISAO"
+                heranca_aprovacao_bloqueada = True
 
         comparacao_execucao = {
             "execucao_anterior_encontrada": True,
@@ -256,6 +263,7 @@ def gerar_manifestos_auditoria(
             "entradas_identicas": entradas_identicas,
             "saidas_identicas": saidas_identicas,
             "regras_identicas": regras_identicas,
+            "codigo_identico": codigo_identico,
             "heranca_aprovacao_bloqueada": heranca_aprovacao_bloqueada,
             "diferencas_metricas": diferencas_metricas,
             "arquivos_saida_alterados": arquivos_saida_alterados,
@@ -267,10 +275,15 @@ def gerar_manifestos_auditoria(
             "entradas_identicas": None,
             "saidas_identicas": None,
             "regras_identicas": None,
+            "codigo_identico": None,
             "heranca_aprovacao_bloqueada": False,
             "diferencas_metricas": {},
             "arquivos_saida_alterados": [],
         }
+
+    if estado_tecnico != "CONCLUIDO" and status_aprovacao_final == "APROVADO_POR_HELENA":
+        status_aprovacao_final = "REABERTO_PARA_REVISAO"
+        comparacao_execucao["heranca_aprovacao_bloqueada"] = True
 
     if state is not None:
         state["id_execucao"] = id_execucao
@@ -280,8 +293,11 @@ def gerar_manifestos_auditoria(
         state["comparacao_execucao_anterior"] = comparacao_execucao
 
     manifesto_data = {
-        "manifesto_versao": "2.1.0",
+        "manifesto_versao": "3.0.0",
         "id_execucao": id_execucao,
+        "execucao_dir": state["execucao_dir"],
+        "codigo_execucao": state["codigo_execucao"],
+        "aprovacao_registro": "Status informado pelo operador; não autentica Helena.",
         "versao_regras": versao_regras,
         "data_hora_execucao": now_iso,
         "competencia": competencia,
@@ -380,7 +396,7 @@ def gerar_manifestos_auditoria(
     for r in manifesto_data["regras_aplicadas_resumo"]:
         md_lines.append(f"- {r}")
 
-    md_content = "\n".join(md_lines) + "\n"
+    md_content = "\n".join(line.rstrip() for line in md_lines) + "\n"
 
     for d in output_dirs:
         # JSON atual
@@ -402,6 +418,7 @@ def gerar_manifestos_auditoria(
                 historico_lista = []
         historico_lista.append({
             "id_execucao": id_execucao,
+            "execucao_dir": state["execucao_dir"],
             "data_hora_execucao": now_iso,
             "competencia": competencia,
             "versao_regras": versao_regras,
@@ -426,8 +443,11 @@ def emitir_todos_os_entregaveis(
     output_dir_oficial: Path,
     state: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
-    output_dir_local.mkdir(parents=True, exist_ok=True)
-    output_dir_oficial.mkdir(parents=True, exist_ok=True)
+    if state is None:
+        raise ValueError("É necessário informar o estado e as fontes para preservar a execução.")
+    if not state.get("execucao_stage"):
+        state.setdefault("output_dir_oficial", str(output_dir_oficial))
+        preparar_execucao(state)
 
     competencia = state.get("competencia", "2026-09") if state else "2026-09"
     comp_label = format_competencia_br(competencia)
@@ -533,10 +553,14 @@ def emitir_todos_os_entregaveis(
 
     # 4. lancamentos_classificados.csv
     lancamentos_rows: List[Dict[str, str]] = []
+    origens_lancamentos: Dict[str, str] = {}
     idx_lan = 1
     for l in res_contabil.lancamentos:
         id_saida = f"LAN-{idx_lan:04d}"
         idx_lan += 1
+        if not l.arquivo_origem:
+            raise ValueError(f"Lançamento {id_saida} sem arquivo de origem bruto.")
+        origens_lancamentos[id_saida] = l.arquivo_origem
         lancamentos_rows.append({
             "id_saida": id_saida,
             "banco": l.banco,
@@ -668,11 +692,7 @@ def emitir_todos_os_entregaveis(
 
     # F) Lançamentos Bancários Classificados
     for l in lancamentos_rows:
-        arq_banco = (
-            "05a_extrato_banco_aurora_cc4471_set2026.csv"
-            if l["banco"] == "AURORA"
-            else "05b_extrato_banco_meridiano_cc90233_set2026.ofx"
-        )
+        arq_banco = origens_lancamentos[l["id_saida"]]
         rastro_completo.append({
             "id_saida": l["id_saida"],
             "arquivo_origem": arq_banco,
@@ -710,7 +730,7 @@ def emitir_todos_os_entregaveis(
                     "DEVOLUCAO_SEM_CAUSA",
                     "REPASSE_LOJISTA_BLOQUEADO",
                 ):
-                    arq_pend = "05a_extrato_banco_aurora_cc4471_set2026.csv"
+                    raise ValueError(f"Pendência bancária {p['id_saida']} sem arquivo de origem bruto.")
             rastro_completo.append({
                 "id_saida": p["id_saida"],
                 "arquivo_origem": arq_pend,
@@ -732,9 +752,7 @@ def emitir_todos_os_entregaveis(
     )
 
     if not prova_real["valido"]:
-        print("⚠️ ALERTA DE AUDITORIA: Inconsistências na Prova Real:")
-        for err in prova_real["erros"]:
-            print(f"  - {err}")
+        raise ValueError("Prova real inválida; saídas anteriores preservadas: " + "; ".join(prova_real["erros"]))
 
     # Salva todos os entregáveis canônicos em ambos os destinos ANTES de calcular hashes de saída no manifesto
     outputs_map = {
@@ -747,8 +765,16 @@ def emitir_todos_os_entregaveis(
     }
 
     destinos_unicos = list({output_dir_local.resolve(): output_dir_local, output_dir_oficial.resolve(): output_dir_oficial}.values())
+    staged_output = Path(state["execucao_stage"]) / "saida"
+    # Histórico de consulta é copiado para o staging; o destino atual permanece intocado.
+    for dest in destinos_unicos:
+        historico = dest / "historico_execucoes.json"
+        if historico.exists():
+            import shutil
+            shutil.copyfile(historico, staged_output / historico.name)
+            break
     for fname, (rows, header) in outputs_map.items():
-        for dest_dir in destinos_unicos:
+        for dest_dir in [staged_output]:
             fpath = dest_dir / fname
             with open(fpath, mode="w", encoding="utf-8", newline="") as f:
                 writer = csv.DictWriter(f, fieldnames=header, delimiter=";")
@@ -765,8 +791,9 @@ def emitir_todos_os_entregaveis(
         pendencias_rows=pendencias_rows,
         rastro_rows=rastro_completo,
         prova_real=prova_real,
-        output_dirs=destinos_unicos,
+        output_dirs=[staged_output],
     )
+    finalizar_execucao(state, manifesto_gerado, destinos_unicos)
 
     return {
         "id_execucao": manifesto_gerado["id_execucao"],

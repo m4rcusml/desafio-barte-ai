@@ -1,0 +1,29 @@
+Correções dos itens 1, 2 e 5 da auditoria de 8b3c34c — 17/10/2026
+
+1. Arquivos bancários de origem são preservados nos intermediários pelos
+formatadores e propagados para lançamentos e pendências. O emissor usa a origem
+real e rejeita lançamento/pendência bancária sem origem, sem inventar um nome
+de arquivo de setembro. Novo teste cobre 184 lançamentos de outubro com nomes
+out2026, linhas físicas/FITIDs, valores e pendências de ambos os bancos.
+
+2. ORBE_AJUSTES_TARDIOS é obrigatório somente para setembro/2026, conforme o
+anúncio específico do complemento 06. A ausência mantém o cálculo disponível,
+mas gera FONTE_OBRIGATORIA_AUSENTE e PARCIAL_COM_BLOQUEIOS no manifesto.
+A CLI anuncia o fechamento parcial. O teste de outubro confirma que outros
+meses não herdam essa exigência. Fontes obrigatórias ausentes também geram
+pendências com responsável e valor zero, sem inferência de exposição financeira.
+
+5. MOMENTOS.md agora contém quatro momentos, com duas frases por momento,
+incluindo pedido, resposta da IA, intervenção da equipe e episódios de erro.
+Trata-se de índice; não substitui o histórico integral das sessões.
+
+Validação: 30 testes passaram em 1,539 s com temporários na pasta permitida do
+workspace. Log: correcoes-itens-1-2-5-testes-2026-10-17.txt.
+A CLI de setembro com 01 + 06 reproduziu os seis CSVs versionados byte a byte:
+35 comissões, 115 divergências, 21 notas, 184 lançamentos, 68 pendências e 4503
+linhas de rastro. A CLI sem 06 foi executada e confirmou o estado parcial.
+Versão das regras atualizada para 2.1.1-origens-bancarias-e-complemento-setembro.
+
+O item 3 não foi implementado nesta alteração: metadados e hashes ainda não
+substituem cópias recuperáveis das entradas, saídas e manifesto por execução.
+Nenhum commit, push ou envio à organização foi realizado nesta correção.

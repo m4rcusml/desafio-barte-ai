@@ -1,0 +1,143 @@
+REAVALIAÇÃO FINAL DA ENTREGA — 17/10/2026
+
+Conclusão: mínimo, alvo e cobertura funcional do extra atendidos nos cenários
+auditados nesta árvore de trabalho. A entrega geral ainda não está comprovada
+como integralmente cumprida: faltam históricos integrais de IA, alinhamento do
+pitch e confirmação dos envios/checkpoints nos prazos. Isso não é homologação
+da banca, comparação com gabarito oficial nem aprovação financeira de Helena.
+
+BASE E FONTES
+
+- Base Git: main 8b3c34cfd4a0ff447571c6e95cc58e7859d0c6b1, previamente
+  sincronizada com origin/main. Correções desta sessão ainda locais, sem commit
+  ou push; a cobertura descrita é da árvore de trabalho, não da main publicada.
+- Instruções oficiais relidas via Google Drive nesta sessão:
+  https://docs.google.com/document/d/1GwHs0lgLWXdw-jIrPyYAxyJ_xEJJxViE/edit
+- Repositório confirmado como público pelo conector GitHub:
+  https://github.com/m4rcusml/desafio-barte-ai
+- Pitch consultado por leitura de texto e notas dos 15 slides:
+  https://docs.google.com/presentation/d/1SK2073ylh-1EjDinC110lk_pzZGxgsShhd1Huu2Opv8
+  Sem edição nem envio. A revisão foi de conteúdo, não de layout visual.
+
+ITEM 3 IMPLEMENTADO
+
+A pasta execucoes/ está na raiz, ao lado de src/ e saida/. Cada competência
+contém diretórios exclusivos EXEC-<data/hora UTC>-<id aleatório>, preservando:
+- entradas brutas usadas no cálculo, copiadas antes de iniciar o processamento;
+- cópia dos fontes Python em codigo/src/, inclusive modificações sem commit;
+- seis CSVs, manifesto e histórico de consulta em saida/;
+- manifesto.json: competência, identidade, versão das regras, commit, hash do
+  código, inventários, hashes de entrada/saída e referência à execução anterior;
+- aprovacao.json: declaração de status vinculada àquela identidade e hashes;
+- diferencas.json: alterações de comissão por lojista/linha, notas por tomador
+  e pendências por tipo/referência/responsável;
+- captura_entradas.json: integridade das cópias originais.
+
+Repetir os dados gera uma nova pasta, preservando as antigas e os mesmos CSVs.
+A aplicação não modifica snapshots finalizados. Entradas, regras, código ou
+resultados alterados não herdam uma aprovação anterior. O novo fechamento fica
+REABERTO_PARA_REVISAO quando essa aprovação estaria sendo reutilizada; o registro
+de aprovação da execução antiga permanece intacto. Um fechamento parcial não é
+registrado como aprovado mesmo que esse status tenha sido solicitado.
+
+O status é uma declaração do operador, sem autenticação da identidade de Helena.
+Os casos aprovados dos testes são simulações. O fechamento real continua
+PROVISORIO; não foi registrada uma aprovação financeira fictícia.
+
+As saídas são geradas e validadas em staging; falha matemática interrompe sem
+substituir os destinos. A publicação troca diretórios completos e restaura os
+destinos já trocados quando uma troca seguinte falha. Snapshots finalizados
+continuam recuperáveis mesmo se a publicação falhar. Na primeira migração,
+saídas anteriores foram copiadas para LEGADO-*, identificadas como preservação
+apenas das saídas, sem inventar entradas ou código que não foram capturados.
+
+Limites: histórico local, fora do Git, requer backup da pasta completa. Não há
+armazenamento inviolável, autenticação de aprovadores, garantia transacional
+entre volumes, proteção contra queda de energia ou publicação concorrente por
+vários processos. Pastas .pendente-* podem permanecer para investigação.
+
+TESTES E REPRODUÇÃO
+
+- 40 testes passaram (Python 3.14; 11,834 s no último log).
+- Cobertura nova: snapshots e aprovação preservados após alterações; repetição
+  idempotente dos valores com IDs exclusivos; mudanças de regras/código mesmo
+  sem alteração de valores; revisão localizada por competência após executar
+  outro mês; cálculo sobre a cópia capturada; migração legada; proteção contra
+  aprovação de setembro sem 06; falhas de prova real e publicação do segundo
+  destino, mantendo as duas saídas anteriores.
+- Outubro: cenário sintético percorreu checkout, remessas e ambos os bancos,
+  com nomes de arquivos out2026 e rastro apontando a fontes existentes. Isso
+  também revelou e corrigiu nomes fixos da Orbe/Ponte, além dos bancos.
+- Setembro foi executado pela CLI com ZIP original extraído sem limpeza + 06.
+  Os seis CSVs permanecem idênticos aos da versão anterior em disco; comparados
+  ao Git, o conteúdo é igual normalizando finais de linha LF/CRLF do checkout.
+- 423 IDs de saída conferidos independentemente: soma exata do rastro e origem
+  existente no snapshot, incluindo IDs Orbe, operações do anexo Ponte, linhas
+  físicas Aurora e FITIDs Meridiano. Cabeçalhos, enums, CNPJ, datas, separador,
+  decimais e confiança verificados. Sem erros encontrados.
+- A repetição real preservou todos os hashes da execução anterior e apresentou
+  entradas, saídas, regras e código idênticos, sem diferenças financeiras.
+- Consultor executou e apresentou setembro, CONCLUIDO e PROVISORIO.
+
+Arquivo                          Registros
+comissoes_por_lojista.csv          35
+divergencias_taxa.csv              115
+notas_a_emitir.csv                 21
+lancamentos_classificados.csv     184
+pendencias.csv                    68
+rastro.csv                        4503
+
+Checkout: 203735.34; remessas: 39543.42; total de comissões: 243278.76.
+Divergências: 2995.11. Notas propostas: 243284.26. A diferença de 5.50 entre
+notas e comissão ocorre porque a comissão negativa da Casa não gera nota.
+Os valores de pendências não devem ser somados a receita, notas ou divergências
+como se representassem um único benefício financeiro sem sobreposição.
+
+NÍVEIS DO DOCUMENTO OFICIAL
+
+Mínimo — ATENDIDO no conjunto auditado: checkout por lojista e rastro.
+Alvo — ATENDIDO funcionalmente: duas linhas, divergências por transação, notas
+propostas e classificação dos dois bancos, além de todos os itens do mínimo.
+Extra — ATENDIDO funcionalmente nos cenários testados: rastro dos resultados,
+pendências explicadas e processamento parametrizado de outubro sem mudança do
+algoritmo. Fontes desconhecidas ou regras ausentes continuam sujeitas a bloqueio
+e revisão humana; não se promete funcionamento irrestrito para qualquer envio.
+Os níveis são cumulativos nesta implementação: atender o extra não dispensa e
+não substitui a conferência do alvo e do mínimo. Não há nível chamado "médio".
+
+REQUISITOS GERAIS E PONTOS AINDA PENDENTES
+
+- README, HIPOTESES, PROMPTS/MOMENTOS, saida/ e src/: presentes. README atualizado
+  com preparação do ZIP + 06, execução, preservação e limites; retirado o anúncio
+  de homologação extra. MOMENTOS possui quatro registros, com erros/intervenções.
+- Histórico integral de todas as sessões de IA: NÃO LOCALIZADO. Resumos, memórias
+  e este relatório não equivalem aos transcripts/exports/links exigidos.
+- Repositório público: CONFIRMADO. As correções ainda precisam ser commitadas e
+  publicadas para integrar a entrega remota. Nada foi enviado automaticamente.
+- Pitch: EXISTE e tem valores atuais nos slides, mas as notas de vários slides
+  continuam dizendo que não havia implementação/execução validada. Há slide com
+  29 testes, enquanto a suíte atual tem 40. O exemplo Bridge agora é real no slide,
+  mas suas notas ainda descrevem o exemplo fictício 20 - 4 = 16. Revisar o deck e
+  o roteiro antes de apresentar; a auditoria não os alterou.
+- Dossiê DOCUMENTO_DE_LEITURA ainda contém alegações não sustentadas nesta
+  auditoria, como duração inferior a 0,1 s, apresentação por executável e partidas
+  dobradas completas. Não usar essas afirmações como evidência da entrega atual.
+- A ausência de divergência em somas não substitui o gabarito da banca. As contas
+  contábeis adotadas e exceções financeiras continuam sujeitas à revisão humana.
+- Provedores de IA em nuvem não foram homologados nesta rodada; a execução
+  determinística e as contingências testadas não comprovam desempenho externo.
+- Checkpoints, postagem do link do repositório e do pitch no thread do time e
+  cumprimento dos horários: NÃO ATESTADOS por esta auditoria. O documento exige
+  repositório até 18h30 e pitch até 19h de 17/10/2026. Nenhuma postagem realizada.
+
+ANEXOS
+
+reavaliacao-final-execucoes-2026-10-17.json: execução, formatos, totais e identidade
+do snapshot real; execucao_anterior_preservada e comparação com o Git.
+testes-execucoes-2026-10-17.txt: log com 40 aprovações.
+execucoes/README.md: estrutura, consulta de versões, aprovação declarada e limites.
+
+O critério técnico de extra está demonstrado nos testes; o pacote geral ainda
+exige as providências documentais e de publicação acima para ser considerado
+integralmente entregue. Não foi emitida nota, realizado pagamento ou aprovada
+exceção financeira.

@@ -1,0 +1,61 @@
+{
+  "base_git": "8b3c34cfd4a0ff447571c6e95cc58e7859d0c6b1",
+  "execucao": "EXEC-20261017T203905755563Z-3ce9464ec325",
+  "snapshot": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\execucoes\\2026-09\\EXEC-20261017T203905755563Z-3ce9464ec325",
+  "execucao_anterior_preservada": true,
+  "arquivos": {
+    "comissoes_por_lojista.csv": {
+      "registros": 35,
+      "igual_a_execucao_anterior": true,
+      "igual_ao_git_normalizando_finais_de_linha": true
+    },
+    "divergencias_taxa.csv": {
+      "registros": 115,
+      "igual_a_execucao_anterior": true,
+      "igual_ao_git_normalizando_finais_de_linha": true
+    },
+    "notas_a_emitir.csv": {
+      "registros": 21,
+      "igual_a_execucao_anterior": true,
+      "igual_ao_git_normalizando_finais_de_linha": true
+    },
+    "lancamentos_classificados.csv": {
+      "registros": 184,
+      "igual_a_execucao_anterior": true,
+      "igual_ao_git_normalizando_finais_de_linha": true
+    },
+    "pendencias.csv": {
+      "registros": 68,
+      "igual_a_execucao_anterior": true,
+      "igual_ao_git_normalizando_finais_de_linha": true
+    },
+    "rastro.csv": {
+      "registros": 4503,
+      "igual_a_execucao_anterior": true,
+      "igual_ao_git_normalizando_finais_de_linha": true
+    }
+  },
+  "erros": [],
+  "ids_verificados": 423,
+  "comissoes": {
+    "CHECKOUT": "203735.34",
+    "REMESSA": "39543.42"
+  },
+  "notas_total": "243284.26",
+  "divergencias_total": "2995.11",
+  "status": "PROVISORIO",
+  "comparacao": {
+    "execucao_anterior_encontrada": true,
+    "id_execucao_anterior": "EXEC-20261017T203830351237Z-d05d881b6992",
+    "versao_regras_anterior": "3.0.0-snapshots-por-execucao",
+    "status_aprovacao_anterior": "PROVISORIO",
+    "entradas_identicas": true,
+    "saidas_identicas": true,
+    "regras_identicas": true,
+    "codigo_identico": true,
+    "heranca_aprovacao_bloqueada": false,
+    "diferencas_metricas": {},
+    "arquivos_saida_alterados": []
+  },
+  "momentos": 4
+}

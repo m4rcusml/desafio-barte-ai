@@ -1,0 +1,65 @@
+test_aurora_formatter_physical_lines_and_descriptions (test_banking_and_aurora.TestBankingAndAurora.test_aurora_formatter_physical_lines_and_descriptions)
+Verifica se o formatador do Aurora preserva a linha física e descrição preenchida. ... ok
+test_banking_engine_rules_and_pendencias (test_banking_and_aurora.TestBankingAndAurora.test_banking_engine_rules_and_pendencias)
+Verifica classificação de regras bancárias, ausência de fake IA e pendências ativadas. ... ok
+test_ponte_cambio_cnpj_and_negatives (test_banking_and_aurora.TestBankingAndAurora.test_ponte_cambio_cnpj_and_negatives)
+Verifica se o tomador da Ponte possui o CNPJ 75374179000146 e negativos excluídos. ... ok
+test_7_divergencias_bandeira_detectadas_e_vinculadas (test_checkout_and_bandeiras.TestCheckoutAndBandeiras.test_7_divergencias_bandeira_detectadas_e_vinculadas)
+Verifica se os 7 estornos com bandeira divergente mantêm a taxa original e preservam evidência no rastro. ... ok
+test_bloqueio_atlas_idiomas (test_checkout_and_bandeiras.TestCheckoutAndBandeiras.test_bloqueio_atlas_idiomas)
+Verifica se a Atlas Idiomas é bloqueada e encaminhada integralmente a pendências. ... ok
+test_deduplicacao_exata_vs_bloqueio_conflito_orbe (test_checkout_and_bandeiras.TestCheckoutAndBandeiras.test_deduplicacao_exata_vs_bloqueio_conflito_orbe)
+Verifica que duplicatas idênticas na Orbe são deduplicadas com evidência e IDs conflitantes bloqueiam AMBAS as versões. ... ok
+test_deduplicacao_exata_vs_bloqueio_conflito_ponte (test_checkout_and_bandeiras.TestCheckoutAndBandeiras.test_deduplicacao_exata_vs_bloqueio_conflito_ponte)
+Verifica que na Ponte Câmbio cópias exatas entram 1 vez e IDs conflitantes têm AMBAS as ocorrências bloqueadas. ... ok
+test_isencao_casa_do_estudante_e_118_itens_no_rastro (test_checkout_and_bandeiras.TestCheckoutAndBandeiras.test_isencao_casa_do_estudante_e_118_itens_no_rastro)
+Verifica se a Casa do Estudante preserva a pendência consolidada com as 118 transações Orbe no rastro. ... ok
+test_explain_id_rastro_audit (test_consultant_agent.TestConsultantAgent.test_explain_id_rastro_audit)
+Verifica a auditoria 1-para-1 de um ID de saída. ... ok
+test_explain_lojista_bridge (test_consultant_agent.TestConsultantAgent.test_explain_lojista_bridge)
+Verifica se o consultor explica as regras e vigências de Bridge Idiomas. ... ok
+test_guardrails_prevent_autonomous_actions (test_consultant_agent.TestConsultantAgent.test_guardrails_prevent_autonomous_actions)
+Verifica se tentativas de aprovação ou operações financeiras externas disparam exceção. ... ok
+test_summary_returns_valid_metrics (test_consultant_agent.TestConsultantAgent.test_summary_returns_valid_metrics)
+Verifica se o sumário executivo retorna dados coerentes e status provisório. ... ok
+test_fluxo_completo_outubro_end_to_end_sem_contaminar_setembro (test_outubro_simulation.TestOutubroSimulation.test_fluxo_completo_outubro_end_to_end_sem_contaminar_setembro)
+Executa o grafo completo para 2026-10 validando notas, manifesto, consultor e busca histórica de setembro. ... ok
+test_janeiro_2027_isencao_casa_expira (test_outubro_simulation.TestOutubroSimulation.test_janeiro_2027_isencao_casa_expira)
+Verifica se após 31/12/2026 a isenção da Casa do Estudante cessa e taxa contratual passa a ser cobrada. ... ok
+test_outubro_bancos_preserva_nomes_brutos_e_referencias (test_outubro_simulation.TestOutubroSimulation.test_outubro_bancos_preserva_nomes_brutos_e_referencias)
+Extratos renomeados mantêm arquivo, linha/FITID e valores no rastro de LAN/PEN. ... ok
+test_outubro_bridge_idiomas_aplica_taxa_pos_15_setembro (test_outubro_simulation.TestOutubroSimulation.test_outubro_bridge_idiomas_aplica_taxa_pos_15_setembro)
+Verifica se em outubro a Bridge Idiomas aplica integralmente a vigência contratual mais recente. ... ok
+test_outubro_isencao_casa_do_estudante_permanece_ativa (test_outubro_simulation.TestOutubroSimulation.test_outubro_isencao_casa_do_estudante_permanece_ativa)
+Verifica se em outubro/2026 a Casa do Estudante continua isenta (período set-dez/2026). ... ok
+test_distincao_ausente_invalida_valida_sem_movimentos_e_dependencia (test_partial_closing.TestPartialClosing.test_distincao_ausente_invalida_valida_sem_movimentos_e_dependencia)
+Verifica distinção entre fonte AUSENTE, INVALIDA, VALIDA_SEM_MOVIMENTOS e BLOQUEADA_POR_DEPENDENCIA. ... ok
+test_full_closing_without_arquivo_06 (test_partial_closing.TestPartialClosing.test_full_closing_without_arquivo_06)
+Sem o complemento obrigatório 06, setembro continua parcial e gera pendência. ... ok
+test_partial_closing_without_remessas (test_partial_closing.TestPartialClosing.test_partial_closing_without_remessas)
+Verifica se o fechamento executa checkout mesmo sem arquivos de remessas ou câmbio. ... ok
+test_casa_do_estudante_118_contribuicoes_orbe_sem_vinculo_aurora (test_rastro_padrao_ouro.TestRastroPadraoOuro.test_casa_do_estudante_118_contribuicoes_orbe_sem_vinculo_aurora)
+Verifica que a pendência consolidada da Casa tem 118 linhas Orbe reais no rastro e nenhum vínculo com Aurora. ... ok
+test_prova_real_matematica_todos_os_ids (test_rastro_padrao_ouro.TestRastroPadraoOuro.test_prova_real_matematica_todos_os_ids)
+Verifica centavo a centavo que sum(rastro) == valor reportado para COM, NF, DIV, LAN e PEN. ... ok
+test_rastreabilidade_100_porcento_ate_arquivos_originais_brutos (test_rastro_padrao_ouro.TestRastroPadraoOuro.test_rastreabilidade_100_porcento_ate_arquivos_originais_brutos)
+Verifica que todas as referências do rastro.csv existem fisicamente nos arquivos originais brutos. ... ok
+test_rastro_csv_headers_and_columns (test_rastro_padrao_ouro.TestRastroPadraoOuro.test_rastro_csv_headers_and_columns)
+Verifica se o rastro.csv contém as 4 colunas obrigatórias seguidas das colunas de auditoria. ... ok
+test_regressao_setembro_2026_valores_verificados (test_rastro_padrao_ouro.TestRastroPadraoOuro.test_regressao_setembro_2026_valores_verificados)
+Verifica os totais de regressão de setembro/2026 (Checkout R$ 203.735,34, Remessa R$ 39.543,42, Div Remessa R$ 1.418,88). ... ok
+test_repeticao_idempotente_e_governanca_aprovacao_em_mudanca (test_rastro_padrao_ouro.TestRastroPadraoOuro.test_repeticao_idempotente_e_governanca_aprovacao_em_mudanca)
+Verifica hashes, comparação entre execuções e revogação de aprovação quando dados mudam. ... ok
+test_cascade_falls_through_to_heuristics_when_all_llms_fail (test_router_and_fallbacks.TestRouterAndFallbacks.test_cascade_falls_through_to_heuristics_when_all_llms_fail)
+Testa se o roteador cai com segurança na heurística local quando todos os LLMs falham. ... ok
+test_deepseek_client_initialization_and_availability (test_router_and_fallbacks.TestRouterAndFallbacks.test_deepseek_client_initialization_and_availability)
+Verifica a inicialização e disponibilidade do cliente DeepSeek V1 Flash. ... ok
+test_deepseek_fallback_called_when_jev_and_gemini_unavailable (test_router_and_fallbacks.TestRouterAndFallbacks.test_deepseek_fallback_called_when_jev_and_gemini_unavailable)
+Testa se o DeepSeek V1 Flash é acionado quando Jev e Gemini falham ou não estão disponíveis. ... ok
+test_heuristic_fallback_classifies_correctly (test_router_and_fallbacks.TestRouterAndFallbacks.test_heuristic_fallback_classifies_correctly)
+Verifica se o fallback offline classifica todos os padrões de arquivos do fechamento. ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 1.539s
+
+OK

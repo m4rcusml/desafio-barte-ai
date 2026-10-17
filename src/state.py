@@ -29,7 +29,14 @@ class ClosingState(TypedDict, total=False):
     status_aprovacao: str       # 'PROVISORIO', 'APROVADO_POR_HELENA', 'REABERTO_PARA_REVISAO'
     estado_tecnico: str         # 'CONCLUIDO', 'PARCIAL_COM_BLOQUEIOS'
     competencia: str            # '2026-09'
-    id_execucao: str            # Identificador determinístico/rastreável da execução
+    id_execucao: str            # Identificador único por tentativa de execução
+    execucoes_dir: str          # Padrão: execucoes/ ao lado de saida/
+    execucao_stage: str
+    execucao_dir: str
+    data_dir_original: str
+    codigo_execucao: Dict[str, Any]
+    manifesto_anterior: Optional[Dict[str, Any]]
+    execucao_anterior_dir: Optional[str]
     versao_regras: str          # Versão das regras contratuais e de conciliação
 
     # Ingestão, Cobertura e Triagem Tripla

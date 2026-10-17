@@ -69,6 +69,78 @@ class TestOutubroSimulation(unittest.TestCase):
             self.assertEqual(len(pends_casa), 1)
             self.assertEqual(pends_casa[0].valor_brl, Decimal("26.90"))
 
+    def test_outubro_bancos_preserva_nomes_brutos_e_referencias(self):
+        """Extratos renomeados mantêm arquivo, linha/FITID e valores no rastro de LAN/PEN."""
+        import json
+        import shutil
+        from collections import defaultdict
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            folder = Path(tmpdir)
+            inputs = folder / "inputs"
+            shutil.copytree(self.raw_dir, inputs)
+            nomes = {}
+            for banco, pattern, encoding in (
+                ("AURORA", "05a_*", "utf-8"),
+                ("MERIDIANO", "05b_*", "latin1"),
+            ):
+                original = next(inputs.glob(pattern))
+                content = original.read_text(encoding=encoding)
+                content = content.replace("/09/2026", "/10/2026").replace("202609", "202610")
+                # Exercita também uma pendência Meridiano sem regra conhecida.
+                if banco == "MERIDIANO":
+                    import re
+                    content = re.sub(r"<MEMO>[^<\r\n]+", "<MEMO>MOVIMENTO A INVESTIGAR", content, count=1)
+                target = original.with_name(original.name.replace("set2026", "out2026"))
+                target.write_text(content, encoding=encoding)
+                original.unlink()
+                nomes[banco] = target.name
+
+            output = folder / "saida"
+            state = build_closing_graph().invoke({
+                "data_dir": str(inputs), "output_dir_local": str(folder / "local"),
+                "output_dir_oficial": str(output), "competencia": "2026-10",
+                "status_aprovacao": "PROVISORIO",
+            })
+            self.assertFalse(state["cobertura_fontes"]["ORBE_AJUSTES_TARDIOS"]["obrigatorio"])
+            self.assertEqual(state["estado_tecnico"], "CONCLUIDO")
+            lancamentos = state["resultado_bancario"].lancamentos
+            self.assertEqual(len(lancamentos), 184)
+            for lancamento in lancamentos:
+                self.assertEqual(lancamento.arquivo_origem, nomes[lancamento.banco])
+                self.assertTrue(lancamento.data.startswith("2026-10"))
+
+            def read_csv(name):
+                with (output / name).open(encoding="utf-8", newline="") as f:
+                    return list(csv.DictReader(f, delimiter=";"))
+
+            trace = defaultdict(list)
+            for row in read_csv("rastro.csv"):
+                trace[row["id_saida"]].append(row)
+            for row in read_csv("lancamentos_classificados.csv"):
+                links = trace[row["id_saida"]]
+                self.assertEqual(len(links), 1)
+                link = links[0]
+                self.assertEqual(link["arquivo_origem"], nomes[row["banco"]])
+                self.assertEqual(link["ref_origem"], row["ref_origem"])
+                self.assertEqual(Decimal(link["valor"]), Decimal(row["valor"]))
+                raw = inputs / link["arquivo_origem"]
+                if row["banco"] == "AURORA":
+                    physical = raw.read_text(encoding="utf-8").splitlines()[int(row["ref_origem"][1:]) - 1]
+                    self.assertIn(row["descricao"], physical)
+                else:
+                    self.assertIn("<FITID>" + row["ref_origem"], raw.read_text(encoding="latin1"))
+
+            pendencias_bancarias = state["resultado_bancario"].pendencias
+            self.assertTrue(any(p.arquivo_origem == nomes["MERIDIANO"] for p in pendencias_bancarias))
+            for row in read_csv("pendencias.csv"):
+                if any(p.ref_origem == row["ref_origem"] for p in pendencias_bancarias):
+                    links = trace[row["id_saida"]]
+                    self.assertTrue(all(link["arquivo_origem"] in nomes.values() for link in links))
+                    self.assertEqual(sum(Decimal(link["valor"]) for link in links), Decimal(row["valor_brl"]))
+            manifesto = json.loads((output / "auditoria_execucao.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifesto["competencia"], "2026-10")
+
     def test_janeiro_2027_isencao_casa_expira(self):
         """Verifica se após 31/12/2026 a isenção da Casa do Estudante cessa e taxa contratual passa a ser cobrada."""
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -90,6 +162,75 @@ class TestOutubroSimulation(unittest.TestCase):
             comissao_casa = next((c for c in res.comissoes if c.cnpj == "00520815000100"), None)
             self.assertIsNotNone(comissao_casa)
             self.assertGreater(comissao_casa.comissao_brl, Decimal("0.00"))
+
+    def test_outubro_todas_as_frentes_com_nomes_de_origem_reais(self):
+        """Dados sintéticos de outubro percorrem checkout, remessas e bancos com rastro recuperável."""
+        import base64
+        import email
+        import io
+        import shutil
+        import zipfile
+        import xml.etree.ElementTree as ET
+        from email import policy
+        from collections import defaultdict
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            folder = Path(tmpdir)
+            inputs = folder / "inputs"
+            shutil.copytree(self.raw_dir, inputs)
+            for pattern, encoding in (("01_*", "utf-8"), ("05a_*", "utf-8"), ("05b_*", "latin1")):
+                source = next(inputs.glob(pattern))
+                content = source.read_text(encoding=encoding).replace("/09/2026", "/10/2026").replace("202609", "202610")
+                target = source.with_name(source.name.replace("set2026", "out2026"))
+                target.write_text(content, encoding=encoding)
+                source.unlink()
+
+            source = next(inputs.glob("03_*.eml"))
+            msg = email.message_from_bytes(source.read_bytes(), policy=policy.default)
+            for part in msg.walk():
+                if (part.get_filename() or "").endswith(".xlsx"):
+                    buff = io.BytesIO()
+                    with zipfile.ZipFile(io.BytesIO(part.get_payload(decode=True))) as old, zipfile.ZipFile(buff, "w") as new:
+                        for name in old.namelist():
+                            data = old.read(name)
+                            if name == "xl/worksheets/sheet1.xml":
+                                doc = ET.fromstring(data)
+                                ns = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
+                                for cell in doc.iter(ns + "c"):
+                                    if cell.get("r", "").startswith(("B", "C")):
+                                        value = cell.find(ns + "v")
+                                        if value is not None and value.text and value.text.isdigit() and 40000 < int(value.text) < 60000:
+                                            value.text = str(int(value.text) + 30)
+                                data = ET.tostring(doc, encoding="utf-8", xml_declaration=True)
+                            new.writestr(name, data)
+                    part.set_payload(base64.b64encode(buff.getvalue()).decode("ascii"))
+                    if part.get("Content-Transfer-Encoding"):
+                        part.replace_header("Content-Transfer-Encoding", "base64")
+                    else:
+                        part["Content-Transfer-Encoding"] = "base64"
+            target = source.with_name(source.name.replace("set2026", "out2026"))
+            target.write_bytes(msg.as_bytes())
+            source.unlink()
+
+            output = folder / "saida"
+            state = build_closing_graph().invoke({
+                "data_dir": str(inputs), "output_dir_local": str(folder / "local"),
+                "output_dir_oficial": str(output), "competencia": "2026-10",
+            })
+            self.assertEqual(state["estado_tecnico"], "CONCLUIDO")
+            self.assertGreater(len(state["resultado_checkout"].comissoes), 0)
+            self.assertEqual(state["resultado_cambio"].total_comissao_tarvo, Decimal("39543.42"))
+            self.assertEqual(len(state["resultado_bancario"].lancamentos), 184)
+            self.assertTrue(state["prova_real_valida"])
+            snapshot = Path(state["execucao_dir"])
+            with (output / "rastro.csv").open(encoding="utf-8") as f:
+                for row in csv.DictReader(f, delimiter=";"):
+                    self.assertTrue((snapshot / "entradas" / row["arquivo_origem"]).is_file(), row)
+                    self.assertNotIn("set2026", row["arquivo_origem"])
+            with (output / "notas_a_emitir.csv").open(encoding="utf-8") as f:
+                notes = list(csv.DictReader(f, delimiter=";"))
+            self.assertTrue(any(row["linha_negocio"] == "REMESSA" for row in notes))
+            self.assertTrue(all("10/2026" in row["discriminacao"] for row in notes))
 
     def test_outubro_bridge_idiomas_aplica_taxa_pos_15_setembro(self):
         """Verifica se em outubro a Bridge Idiomas aplica integralmente a vigência contratual mais recente."""

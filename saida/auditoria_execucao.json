@@ -1,8 +1,141 @@
 {
-  "manifesto_versao": "2.1.0",
-  "id_execucao": "EXEC-2026-09-2fa31a-91fee9b8",
-  "versao_regras": "2.1.0-padrao-ouro",
-  "data_hora_execucao": "2026-10-17T17:14:01.910167-03:00",
+  "manifesto_versao": "3.0.0",
+  "id_execucao": "EXEC-20261017T203905755563Z-3ce9464ec325",
+  "execucao_dir": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\execucoes\\2026-09\\EXEC-20261017T203905755563Z-3ce9464ec325",
+  "codigo_execucao": {
+    "commit": "8b3c34cfd4a0ff447571c6e95cc58e7859d0c6b1",
+    "sha256_fontes": "39761251b22d236e1a5fb8b52a932ad2fca60c7ba0c985e93bca26063779b134",
+    "arquivos": [
+      [
+        "src/__init__.py",
+        "46dd4d6e84823b3dd2782c5d1ccbd6cbb8be01e9c4a473e8b88e9e2fc06c48e7"
+      ],
+      [
+        "src/agent/__init__.py",
+        "4eb967a1dc6774f378bf101322caf39d1c3659a591a1b6e77a5eddcf7ddaec04"
+      ],
+      [
+        "src/agent/consultant.py",
+        "8849818870c1283484b1a6662defb85a44a6d6761ab57d533076501b3aaa0aa9"
+      ],
+      [
+        "src/app.py",
+        "b225bd6dcf389db1c91c1fdba1c0a118f096c36710ed30de54edb2cee5ecd237"
+      ],
+      [
+        "src/build_exe.py",
+        "1e0d3438d0785e9cdfaf1b580482cdd4905a50b0f66deed99efcdbf3935f25c9"
+      ],
+      [
+        "src/engines/__init__.py",
+        "d6f34db238b1cb71aec6798bf50fabe6bf1fbe7e3f5ce7782a76a93fafc1b324"
+      ],
+      [
+        "src/engines/banking_engine.py",
+        "60953961ae0864cb002937e065b8c82a1c875d1d13590af1298b37ec7e5f67e3"
+      ],
+      [
+        "src/engines/cambio_engine.py",
+        "330377b525c6ca6e59bfee3ca2ae8b5d3956750a09f28da2f3259b9c1f1afc2a"
+      ],
+      [
+        "src/engines/checkout_engine.py",
+        "c531396675f14724c4968eed9e0c836b901e91bcbdd6369de288fef8ba6fe1f9"
+      ],
+      [
+        "src/formatters/__init__.py",
+        "bf50f82750fd76293877210630b1c48c65f92feb67c9365fa0016a293da60057"
+      ],
+      [
+        "src/formatters/aurora_formatter.py",
+        "f8740967d9bbf4d9180085929715190ad4818e7a608d165d13e0c9d282787747"
+      ],
+      [
+        "src/formatters/fenix_formatter.py",
+        "b69761abb7e29969f420b97909a15be9ceb2a1053601040d70d15d88fdd19890"
+      ],
+      [
+        "src/formatters/meridiano_formatter.py",
+        "2c1f42838e59d8a78bd62c96a52897a88fc7f5dad498f90da8ff3be61c32bfbd"
+      ],
+      [
+        "src/formatters/orbe_formatter.py",
+        "eae52082d569bb78466860cc9ed0b80da369b08abe4abb2d549c1e07f0eb1da2"
+      ],
+      [
+        "src/formatters/ponte_formatter.py",
+        "85ec3ba98961be5d1aa4913d8320634cbeca04bd7326c0c16b08361bae7b3152"
+      ],
+      [
+        "src/formatters/taxas_formatter.py",
+        "cb5ce5933d06538c8b7ea32d25334ff0ab199a798661b0512e628ccf59bf323f"
+      ],
+      [
+        "src/graph.py",
+        "ffb277d217d174df661295c109d055aaf168728baea67b0ed0c78f6ea4c4f40a"
+      ],
+      [
+        "src/guardrails/__init__.py",
+        "e1edbb370b62585482d9ffedad9a4ff297e413b551fa27ed3d6f24b1f9048797"
+      ],
+      [
+        "src/guardrails/divergence_detector.py",
+        "ff11e8e2d08f93a2aaf55ce92cc20e5d800e8c403d758380b8f16d5c32094ad9"
+      ],
+      [
+        "src/guardrails/error_detector.py",
+        "5d8dea764448260f7573f53e5df82ea5a06d0c157c4593e47ec6cf77590af7b0"
+      ],
+      [
+        "src/outputs/__init__.py",
+        "5f4a95c6a6d914e75718c6c2b4d41f211710216206366d63c741ba35cafb5eda"
+      ],
+      [
+        "src/outputs/execution_store.py",
+        "ca1f299a5be236b3f8b497489769acb4323470cff6c07a47c36026a517b00fb7"
+      ],
+      [
+        "src/outputs/generator.py",
+        "d981bace78558b1486571d870fe8153712e132c2d67443c1a9da22515b9f330a"
+      ],
+      [
+        "src/router/__init__.py",
+        "342c0a3d3eae317da21843d5249c9ca53c413646f560d4d62298ffb064018826"
+      ],
+      [
+        "src/router/deepseek_client.py",
+        "73cad96bbab2b6665711f1bad766394cf6e4401c299fd464ff0979767905be0e"
+      ],
+      [
+        "src/router/gemini_client.py",
+        "0e6f7ea3d4b1961a58c2c601f44b7a8c4a210d712c66cda9e9e6ff08d3a00814"
+      ],
+      [
+        "src/router/heuristic_matcher.py",
+        "9e45378e34663a82a468ea38a8aec13672ee6b7c51b3dc55ecca9c91cf611061"
+      ],
+      [
+        "src/router/jev_client.py",
+        "41e33ea5a46b91bd32727aef5af0061f6af7a7e03b838597734c26d100731435"
+      ],
+      [
+        "src/router/triage.py",
+        "19d23dfea63c578f7b29ba1ade112a987efc0a5973c99bdc898353a8cacd2902"
+      ],
+      [
+        "src/state.py",
+        "ec57b496b45f7da515b91f74ed4a445f0f384f5f1cde561677373fa29e9e710a"
+      ],
+      [
+        "src/utils.py",
+        "916190dd4ed1d1d63834a0b46f3c3c5df8f58fb6931f5e7a7e6759eea17c571f"
+      ]
+    ],
+    "observacao": "A cópia em codigo/ registra também alterações locais ainda sem commit."
+  },
+  "aprovacao_registro": "Status informado pelo operador; não autentica Helena.",
+  "versao_regras": "3.0.0-snapshots-por-execucao",
+  "data_hora_execucao": "2026-10-17T17:39:05.982798-03:00",
   "competencia": "2026-09",
   "estado_tecnico": "CONCLUIDO",
   "status_aprovacao": "PROVISORIO",
@@ -41,7 +174,7 @@
       "motivo": "Fonte validada e processada com 14 registros.",
       "dependencia": "ORBE_FECHAMENTO_PRINCIPAL, TABELA_TAXAS_CONTRATUAIS",
       "responsavel": "Helena / Conciliação",
-      "obrigatorio": false,
+      "obrigatorio": true,
       "linhas_validas": 14
     },
     "TABELA_TAXAS_CONTRATUAIS": {
@@ -98,7 +231,8 @@
   "arquivos_entrada": [
     {
       "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
-      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\01_orbe_relatorio_comissoes_set2026.csv",
+      "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\01_orbe_relatorio_comissoes_set2026.csv",
+      "copia_preservada": "entradas/01_orbe_relatorio_comissoes_set2026.csv",
       "dominio": "ORBE_FECHAMENTO_PRINCIPAL",
       "estado": "PROCESSADA",
       "linhas_lidas": 1944,
@@ -108,7 +242,8 @@
     },
     {
       "arquivo": "02_tabela_taxas_contratadas.xlsx",
-      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\02_tabela_taxas_contratadas.xlsx",
+      "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\02_tabela_taxas_contratadas.xlsx",
+      "copia_preservada": "entradas/02_tabela_taxas_contratadas.xlsx",
       "dominio": "TABELA_TAXAS_CONTRATUAIS",
       "estado": "PROCESSADA",
       "linhas_lidas": 66,
@@ -118,7 +253,8 @@
     },
     {
       "arquivo": "03_email_ponte_cambio_relatorio_set2026.eml",
-      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\03_email_ponte_cambio_relatorio_set2026.eml",
+      "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\03_email_ponte_cambio_relatorio_set2026.eml",
+      "copia_preservada": "entradas/03_email_ponte_cambio_relatorio_set2026.eml",
       "dominio": "EMAIL_PONTE_CAMBIO",
       "estado": "PROCESSADA",
       "linhas_lidas": 569,
@@ -128,7 +264,8 @@
     },
     {
       "arquivo": "04_plano_de_contas_fenix_erp.csv",
-      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\04_plano_de_contas_fenix_erp.csv",
+      "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\04_plano_de_contas_fenix_erp.csv",
+      "copia_preservada": "entradas/04_plano_de_contas_fenix_erp.csv",
       "dominio": "PLANO_CONTAS_FENIX",
       "estado": "PROCESSADA",
       "linhas_lidas": 53,
@@ -138,7 +275,8 @@
     },
     {
       "arquivo": "05a_extrato_banco_aurora_cc4471_set2026.csv",
-      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\05a_extrato_banco_aurora_cc4471_set2026.csv",
+      "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\05a_extrato_banco_aurora_cc4471_set2026.csv",
+      "copia_preservada": "entradas/05a_extrato_banco_aurora_cc4471_set2026.csv",
       "dominio": "EXTRATO_AURORA",
       "estado": "PROCESSADA",
       "linhas_lidas": 95,
@@ -148,7 +286,8 @@
     },
     {
       "arquivo": "05b_extrato_banco_meridiano_cc90233_set2026.ofx",
-      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+      "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+      "copia_preservada": "entradas/05b_extrato_banco_meridiano_cc90233_set2026.ofx",
       "dominio": "EXTRATO_MERIDIANO",
       "estado": "PROCESSADA",
       "linhas_lidas": 848,
@@ -158,7 +297,8 @@
     },
     {
       "arquivo": "06_orbe_ajustes_tardios_set2026.csv",
-      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\06_orbe_ajustes_tardios_set2026.csv",
+      "caminho": "C:\\Users\\marcus\\Documents\\Github\\desafio-barte-ai\\work\\auditoria-8b3c34c\\raw\\06_orbe_ajustes_tardios_set2026.csv",
+      "copia_preservada": "entradas/06_orbe_ajustes_tardios_set2026.csv",
       "dominio": "ORBE_AJUSTES_TARDIOS",
       "estado": "PROCESSADA",
       "linhas_lidas": 15,
@@ -207,12 +347,13 @@
   ],
   "comparacao_execucao_anterior": {
     "execucao_anterior_encontrada": true,
-    "id_execucao_anterior": "EXEC-2026-09-2fa31a-91fee9b8",
-    "versao_regras_anterior": "2.1.0-padrao-ouro",
+    "id_execucao_anterior": "EXEC-20261017T203830351237Z-d05d881b6992",
+    "versao_regras_anterior": "3.0.0-snapshots-por-execucao",
     "status_aprovacao_anterior": "PROVISORIO",
     "entradas_identicas": true,
     "saidas_identicas": true,
     "regras_identicas": true,
+    "codigo_identico": true,
     "heranca_aprovacao_bloqueada": false,
     "diferencas_metricas": {},
     "arquivos_saida_alterados": []

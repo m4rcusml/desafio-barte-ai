@@ -26,6 +26,9 @@ def format_orbe_file(input_path: Path, output_path: Path) -> int:
             raise ValueError(
                 f"Layout inválido no arquivo Orbe '{input_path.name}': colunas obrigatórias {sorted(obrigatorias)} ausentes em {fieldnames}."
             )
+        fieldnames = list(fieldnames)
+        if "arquivo_origem" not in fieldnames:
+            fieldnames.append("arquivo_origem")
 
         with open(output_path, mode="w", encoding="utf-8", newline="") as outfile:
             writer = csv.DictWriter(outfile, fieldnames=fieldnames, delimiter=";")
@@ -37,6 +40,7 @@ def format_orbe_file(input_path: Path, output_path: Path) -> int:
                 band_str = row.get("bandeira", "").strip()
 
                 formatted_row = {
+                    "arquivo_origem": input_path.name,
                     "id_transacao": row.get("id_transacao", "").strip(),
                     "data_movimento": fmt_date_iso(row.get("data_movimento")),
                     "cod_estabelecimento": row.get("cod_estabelecimento", "").strip(),

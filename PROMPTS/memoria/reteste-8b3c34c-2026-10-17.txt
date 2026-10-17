@@ -1,0 +1,126 @@
+AUDITORIA DE ENTREGA — MAIN 8b3c34c — 17/10/2026
+
+Conclusão: mínimo atendido e alvo funcionalmente atendido no data pack de
+setembro, incluindo 01 + 06. Extra parcialmente atendido; ainda não completo.
+Isso não representa homologação pela banca nem aprovação financeira de Helena.
+O documento oficial não tem nível "médio": o nível intermediário é "alvo".
+
+BASE E SINCRONIZAÇÃO
+
+- Documento oficial consultado novamente via Google Drive nesta sessão:
+  https://docs.google.com/document/d/1GwHs0lgLWXdw-jIrPyYAxyJ_xEJJxViE/edit
+- main local inicialmente limpa em 10430de. git fetch origin e
+  git merge --ff-only origin/main concluídos. HEAD e origin/main iguais:
+  8b3c34cfd4a0ff447571c6e95cc58e7859d0c6b1.
+- Nenhuma correção de código ou alteração dos CSVs oficiais nesta auditoria.
+  Testes e reproduções foram feitos em pastas isoladas.
+
+EVIDÊNCIAS DA EXECUÇÃO
+
+- Python 3.14. Suíte: 29 testes passaram em 1,403 s.
+  A primeira execução teve erros de permissão ao criar subpastas no temporário
+  do sandbox. Com TEMP/TMP em pasta gravável do workspace, passou sem alteração
+  dos testes nem preparação manual de fixtures. Log anexado nesta pasta.
+- ZIP original extraído sem limpeza, acrescido do CSV 06 original.
+- CLI real executada sem chaves dos provedores:
+  python <repo>/src/app.py --data-dir <pasta extraída com 06> --competencia 2026-09
+- Resultado: os seis CSVs reproduzidos são byte a byte iguais aos versionados.
+- Conferência independente de cabeçalhos obrigatórios, formato decimal, datas,
+  CNPJ, enums e confiança: sem erros encontrados nos seis CSVs de setembro.
+- Os 423 IDs de resultados têm rastro e somas iguais ao valor reportado.
+- Consultor --summary executou com sucesso e apresentou setembro PROVISORIO.
+
+Arquivo                         Registros   Resultado
+comissoes_por_lojista.csv         35          Checkout 203735.34; remessa 39543.42
+divergencias_taxa.csv             115         Total 2995.11
+notas_a_emitir.csv                21          Total 243284.26
+lancamentos_classificados.csv    184         84 Aurora e 100 Meridiano
+pendencias.csv                   68          Motivo e responsável presentes
+rastro.csv                       4503        423 IDs financeiros conferidos
+
+As notas excedem as comissões em 5.50 porque a comissão negativa da Casa não
+gera nota. Exposição de pendências não é receita nem valor a faturar; não deve
+ser somada aos demais totais. Igualdade com rastro verifica consistência, mas
+não substitui comparação com gabarito oficial, que não estava disponível.
+
+COMPARAÇÃO COM OS NÍVEIS OFICIAIS
+
+MÍNIMO — ATENDIDO NO CONJUNTO AUDITADO
+Comissão de checkout por lojista com rastro: gerada e reproduzida, incluindo
+vigências, ajustes tardios, estornos e reversões. Atlas continua bloqueada.
+
+ALVO — ATENDIDO FUNCIONALMENTE NO CONJUNTO AUDITADO
+Comissões de checkout e remessa, divergências por transação, propostas de notas
+e classificação dos dois extratos estão presentes e reproduzidos. Os testes
+internos passaram; contas assumidas continuam sujeitas à revisão humana e ao
+gabarito da banca. Cumprir o alvo inclui cumprir o mínimo; aqui ambos passaram.
+
+EXTRA — PARCIAL
+Avanços confirmados: 118 contribuições reais da Casa restauradas; parametrização
+de competência; teste de checkout de outubro com venda e estorno histórico;
+conflitos bloqueados nos cenários cobertos; cobertura de fontes e comparação
+entre execuções. Ainda existem os seguintes limites demonstrados:
+
+1. Outubro bancário perde a origem correta. Copiei o data pack para outra pasta,
+   troquei datas bancárias de setembro por outubro e renomeei ambos os extratos
+   de set2026 para out2026. Executei o mesmo grafo com competencia=2026-10.
+   Foram gerados 184 lançamentos e estado_tecnico=CONCLUIDO, mas o rastro dos
+   lançamentos aponta para os nomes set2026, ausentes daquela pasta de entrada.
+   Causa: nomes bancários fixos em src/outputs/generator.py e em pendências de
+   src/engines/banking_engine.py. O teste de outubro atual cobre checkout,
+   manifesto e consultor; não prova outubro completo de bancos/remessas.
+   Portanto não é defensável afirmar "outubro sem retrabalho" com rastro pleno.
+
+2. Retirei somente o 06 de uma cópia do setembro: estado_tecnico=CONCLUIDO e
+   nenhuma pendência de fonte ausente. ORBE_AJUSTES_TARDIOS está marcado como
+   opcional no grafo. Para este envio concreto, o complemento é obrigatório.
+   O conjunto entregue inclui o 06, logo isso não invalida a reprodução atual,
+   mas permite anunciar conclusão técnica de um setembro incompleto.
+
+3. O histórico acumula metadados e hashes, mas os seis CSVs e os manifestos
+   atuais são sobrescritos. Não há snapshot automático das entradas/resultados
+   por execução no gerador. Hashes detectam mudança; não recuperam a versão
+   anterior. A preservação de versões pedida pela equipe ainda é parcial.
+
+REQUISITOS GERAIS DE ENTREGA
+
+- Estrutura raiz README.md, HIPOTESES.md, PROMPTS/, saida/ e src/: presente.
+- Seis CSVs e contrato de colunas/formato: conferidos em setembro.
+- Consumo de arquivos brutos sem limpeza: reproduzido a partir de ZIP + 06.
+- README: contém execução, chaves e limitações, porém usa caminho de checkout
+  específico (barte-solution/desafio-barte-ai e ../../Tarvo_Data_Pack_set2026),
+  não explica extração do ZIP do próprio repositório e afirma homologação extra
+  sem evidência da banca. Deve distinguir capacidade testada de homologação.
+- HIPOTESES: contém premissas, justificativas e perguntas/respostas com fontes.
+- Histórico integral de TODAS as sessões de IA: não localizado no repositório.
+  Resumos de prompts, outputs e memórias não substituem transcript/export/link
+  integral exigido. Não foi possível atestar completude desse requisito.
+- MOMENTOS: há CINCO momentos numerados, apesar da introdução dizer quatro.
+  A regra oficial exige de dois a quatro, com pelo menos um erro da IA.
+  Há erros documentados, mas a quantidade e o texto precisam ser ajustados.
+- Pitch: há link de Slides e roteiro em apresentacao/entrega, mas LEIA-ME diz
+  que implementação/valores ainda aguardam evidências e o exemplo é fictício.
+  Esta auditoria não abriu o deck; a atualização final do pitch não foi atestada.
+- Repositório público, postagem do link no thread, checkpoints enviados nos
+  horários e link final do pitch: não atestados por esta auditoria local.
+  CLI gh indisponível. Nenhuma mensagem foi enviada à organização.
+- Prazos oficiais em 17/10: repositório até 18h30, pitch em PDF/slides/vídeo
+  até 19h no thread do time. Não confundir arquivos locais com envio realizado.
+
+PRIORIDADE PARA ENCERRAR A ENTREGA
+
+1. Remover nomes de setembro fixos do rastro bancário e validar outubro com
+   bancos/remessas e nomes de origem reais.
+2. Exigir/avisar ausência do 06 para este fechamento de setembro; manter
+   tratamento de outros complementos dependente da regra correspondente.
+3. Preservar versões efetivas das entradas e saídas por execução.
+4. Reunir históricos integrais, limitar MOMENTOS a 2–4, revisar alegação de
+   homologação e atualizar o pitch com números/demonstração atuais.
+5. Confirmar visibilidade pública e envios exigidos nos canais e prazos.
+
+ANEXOS
+
+- auditoria-8b3c34c-2026-10-17.json: reprodução, formatos, totais e manifesto.
+- auditoria-8b3c34c-casos-2026-10-17.json: outubro bancário e ausência do 06.
+- auditoria-8b3c34c-testes-2026-10-17.txt: log da suíte com 29 aprovações.
+- Scripts e logs de CLI disponíveis localmente em work/auditoria-8b3c34c/.

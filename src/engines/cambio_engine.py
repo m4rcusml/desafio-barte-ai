@@ -31,6 +31,7 @@ class LinhaDivergenciaRemessa:
     taxa_aplicada_pct: Decimal
     diferenca_brl: Decimal
     id_saida: str = ""
+    arquivo_origem: str = ""
 
 
 @dataclass
@@ -145,11 +146,13 @@ def processar_remessas(
     rastro: List[LinhaRastroRemessa] = []
 
     total_comissao_acumulada = Decimal("0.00")
-    arq_ponte_orig = "03_email_ponte_cambio_relatorio_set2026.eml"
+    arq_ponte_orig = ponte_csv_path.name
 
     with open(ponte_csv_path, mode="r", encoding="utf-8") as f:
         reader = csv.DictReader(f, delimiter=";")
         rows = list(reader)
+    if rows:
+        arq_ponte_orig = rows[0].get("arquivo_origem") or arq_ponte_orig
 
     # Pré-passo de agrupamento por num_operacao para detectar duplicatas exatas vs conflitantes
     # antes de acumular qualquer comissão, divergência ou nota fiscal (evita First-Write-Wins).
@@ -332,6 +335,7 @@ def processar_remessas(
 
                 divergencias.append(
                     LinhaDivergenciaRemessa(
+                        arquivo_origem=arq_ponte_orig,
                         cnpj=cnpj,
                         linha_negocio="REMESSA",
                         ref_origem=num_op,
