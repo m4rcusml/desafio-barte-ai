@@ -1,0 +1,59 @@
+Revisão 2 do pitch Tarvo / 17 de outubro de 2026
+
+Registro resumido de preparação. Não substitui a transcrição integral desta
+conversa, que deve integrar o histórico de IA da entrega.
+
+Autorização e fatos posteriores fornecidos pelo usuário:
+- Atualizar slides, notas, roteiro e respostas à banca.
+- Desenvolvimento em andamento. Capacidades dependem de evidência do responsável.
+- Sete bandeiras do 06 esclarecidas por Helena: id_referencia, originais
+  preservados, sem pendência ou contestação apenas pela bandeira.
+- Números, demonstração e funcionamento só mudam com evidência da implementação.
+- Perguntado sobre localização das evidências, o usuário respondeu:
+  “ainda não foram commitadas, trabalhe apenas com o que temos aqui localmente”.
+Não foram fornecidos horário ou permalink dessas mensagens.
+
+Evidências locais consultadas:
+- Checkout e branch local main; documentação e dados, sem código do núcleo,
+  comando verificado ou saídas financeiras validadas disponíveis nesta revisão.
+- README, AGENTS e HIPOTESES ainda contêm descrição anterior do andamento.
+  A informação posterior do usuário prevalece para o estado do pitch.
+- Relatório de cruzamento Orbe documenta 1.957 IDs e 13 referências, sem
+  apuração financeira, e já registra a resposta de Helena sobre bandeiras.
+- Apresentação nativa lida antes da edição, preservando os 15 slides,
+  objetos, estilos e tabelas editáveis. Notas dos 15 slides atualizadas.
+
+Atualizações:
+- Estado “em andamento”, sem inferir ausência ou disponibilidade de módulos.
+- Bandeiras tratadas como esclarecidas, sem revisão pendente.
+- Slide 6 identifica set/2026, execução não recebida e cobertura financeira
+  não validada; totais continuam a apurar. A linha sem comprovação de receita
+  omitida deu lugar às pendências que podem alterar valores.
+- Slide 7 continua didático, com pendência Atlas real e separada do exemplo.
+- Diferenças efetivas por lojista e efeito nas notas aguardam cálculo validado.
+- Papéis do subagente e execução sem modelo identificados como a demonstrar.
+- Outubro descreve receber resultados, abrir evidências, revisar pendências,
+  registrar decisões e conferir nova execução, com disponibilidade não comprovada.
+- Mês adicional reservado a integração, outubro acompanhado e melhorias de uso.
+- Apoio 15 documenta erro real de inferência do estado do projeto, revisão
+  humana e correção. Dois momentos reais registrados em PROMPTS/MOMENTOS.md.
+- Respostas à banca e instruções de atualização alinhadas ao mesmo estado.
+
+Apresentação editada em seu endereço original:
+https://docs.google.com/presentation/d/1SK2073ylh-1EjDinC110lk_pzZGxgsShhd1Huu2Opv8/edit?usp=drivesdk
+Roteiro: apresentacao/entrega/roteiro-pitch-tarvo.txt
+
+Não houve apuração de comissões, alteração de código de fechamento, contato
+com terceiros, envio ao desafio ou acesso à implementação fora deste checkout.
+Os documentos centrais que descrevem o estado anterior não foram reescritos
+nesta revisão do pitch; a divergência de atualização foi explicitada nas notas
+e no roteiro. O registro inicial do pitch foi preservado como histórico.
+
+Conferência desta revisão:
+- Mantidos os 15 slides e quatro tabelas editáveis da apresentação nativa.
+- Verificador estrutural sem achados no readback da atualização principal.
+- PDF exportado do Google Slides e todas as 15 páginas inspecionadas.
+- Ajuste final de texto nos slides 5 e 8, com nova inspeção das duas páginas.
+- Falas dos 15 slides verificadas entre notas nativas e roteiro local.
+- Exemplo didático conferido: R$ 20 - R$ 4 = R$ 16, sem natureza de resultado
+  financeiro da Tarvo. Nenhuma apuração real foi executada nesta revisão.

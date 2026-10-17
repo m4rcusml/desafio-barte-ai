@@ -1,0 +1,65 @@
+Preparação do pitch base / 17 de outubro de 2026
+
+Registro resumido de preparação. Não é transcrição integral da sessão e não
+substitui o histórico de IA exigido pelo desafio. A conversa original está
+no chat do Codex e deve integrar o export do histórico da equipe.
+
+Pedido do usuário:
+Ler as instruções do desafio Barte, adaptar uma referência de pitch VC ao
+público e ao formato do case, analisar os anexos e produzir uma nova
+apresentação e um roteiro base. Preservar o template original. Preferência
+por uma identidade visual própria e mais bem resolvida.
+
+Materiais consultados:
+- Instruções do desafio, obtidas pelo conector Google Drive no documento
+  1GwHs0lgLWXdw-jIrPyYAxyJ_xEJJxViE.
+- Conteúdo da referência de pitch, somente leitura, arquivo
+  1PUzY_hY5vRZO-VsbPykNorNlojd9POrH (PowerPoint armazenado no Drive).
+- AGENTS.md, README.md, feedback do Checkpoint 1, arquitetura-stack.md e
+  relatório de verificação Orbe 01 + 06.
+- Triagem dos 19 TXT fornecidos em Downloads. Leitura local e seleção de
+  passagens sobre pitch, clareza, evidência e casos de uso. As transcrições
+  têm falhas de reconhecimento e não são fontes de regras da Tarvo.
+- Conteúdo do skills.rar extraído apenas no diretório privado de trabalho.
+  Material tratado como referência, sem instalação ou adoção de persona.
+
+Decisões da preparação:
+- Público financeiro e CFO, 15 minutos e 5 de perguntas para finalistas.
+- Preservar abertura concreta e evidência precoce da referência VC.
+- Retirar mercado, rodada, cap table e credenciais alheias ao case.
+- Cobrir os sete pontos pedidos pela Barte em 12 slides principais.
+- Acrescentar 3 slides de apoio e roteiro com divisão sugerida de falas.
+- Manter explícitos o estado sem implementação, os valores ainda a apurar
+  e o caráter fictício do exemplo didático de rastreabilidade.
+- Não executar apuração financeira nem declarar níveis de entrega atingidos.
+
+Entregas:
+- Nova apresentação Google Slides, com 15 slides, texto e quatro tabelas
+  editáveis, notas de fala e proveniência por slide:
+  https://docs.google.com/presentation/d/1SK2073ylh-1EjDinC110lk_pzZGxgsShhd1Huu2Opv8/edit?usp=drivesdk
+- apresentacao/entrega/roteiro-pitch-tarvo.txt
+- apresentacao/entrega/LEIA-ME.txt
+
+Conferência:
+- PPTX intermediário validado quanto a estrutura, geometria, fonte Arial,
+  15 slides, tabelas nativas e reimportação pelo Artifact Tool.
+- Google Slides lido após importação: 15 slides, 4 tabelas e notas nos 15.
+- Verificador estrutural da saída nativa sem achados na leitura inicial.
+- Slides exportados para PDF e renderizados, com inspeção visual de todos.
+- Quadro financeiro ajustado para explicitar receita antes omitida, que
+  permanece a comprovar por comparação reproduzível, e formatação revisada.
+- Aritmética do exemplo didático conferida: 1.000 x 2% = 20; -200 x 2% = -4;
+  total = 16. Nenhum total financeiro real da Tarvo foi calculado aqui.
+
+Limitações técnicas da preparação:
+- O helper de exportação/renderização do Google Slides pressupõe caminhos
+  e comandos Unix; neste ambiente Windows a mesma revisão foi feita com
+  exportação do conector, cópia autenticada do PDF e renderização local.
+- Os validadores de PPTX exigiram ajuste de variável do runtime e liberação
+  da operação de hardlink dentro do diretório de trabalho. A validação do
+  intermediário foi concluída. Não houve rejeição de aprovação automática.
+- Os anexos não tiveram revisão humana linha a linha. A seleção do que foi
+  aproveitado, com arquivos e trechos aproximados, consta no roteiro.
+
+Nenhuma mensagem, compartilhamento adicional ou envio ao canal do desafio
+foi realizado. Não houve alteração no arquivo original do orientador.

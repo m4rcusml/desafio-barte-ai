@@ -1,0 +1,21 @@
+Tarvo / Pitch base para o financeiro e CFO
+
+Apresentação editável no Google Slides:
+https://docs.google.com/presentation/d/1SK2073ylh-1EjDinC110lk_pzZGxgsShhd1Huu2Opv8/edit?usp=drivesdk
+
+12 slides principais para uma apresentação de até 15 minutos e 3 de apoio.
+As notas do apresentador contêm falas, tempos e fontes.
+O roteiro-pitch-tarvo.txt inclui as falas completas, condução, transições,
+perguntas prováveis e orientações para inserir os resultados finais.
+
+O arquivo de referência do orientador foi preservado.
+Revisão 2: desenvolvimento em andamento, conforme atualização do usuário.
+As evidências da implementação ainda não foram recebidas neste checkout.
+Valores, demonstração real e capacidades só entram após evidência verificável.
+As sete bandeiras do 06 estão esclarecidas por Helena: seguir id_referencia,
+preservar originais, sem pendência ou contestação apenas pela bandeira.
+O exemplo de rastreabilidade permanece didático, com valores e taxa fictícios.
+O mês adicional prioriza integração, outubro acompanhado e melhorias de uso.
+O episódio real de erro da IA consta no apoio 15 e em PROMPTS/MOMENTOS.md.
+
+Preparação em 17/10/2026. Nenhum envio à organização foi realizado.
