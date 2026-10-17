@@ -1,5 +1,19 @@
 # Nossas dúvidas × Slack, documento do case, data pack e material de apoio
 
+## Pergunta pendente de resposta — variação dos inputs entre meses
+
+**Situação:** rascunho registrado em 17/10/2026, pendente de resposta. Não há registro de envio ao Slack; não marcar como enviada. A pergunta não altera regras já confirmadas nem estabelece comportamento aprovado para mudanças nas fontes.
+
+**Texto preparado:**
+
+[financeiro] Turma do Barulho: para entender como o fechamento muda de um mês para outro, em outubro podemos receber arquivos com colunas, abas ou formatos diferentes, novas fontes, arquivos ausentes ou correções de arquivos já enviados? Ou a estrutura permanece igual e mudam apenas os registros, lojistas e condições comerciais?
+
+Quando faltar uma fonte ou chegar uma informação nova sem regra definida, vocês esperam que o fechamento inteiro aguarde ou que as partes independentes sejam concluídas, deixando explícitos os resultados provisórios, os bloqueios e as pendências? Quem decide quando esses casos podem ser liberados?
+
+**Contexto conhecido:** o LEIA-ME prevê arquivos novos no mesmo formato em outubro. A pergunta busca esclarecer quais variações ocorrem na prática e qual é a expectativa para fontes ausentes, adicionais ou corrigidas; essa abrangência e o tratamento de fechamento parcial ainda não foram confirmados.
+
+**Resposta:** ainda não recebida.
+
 ## Situação atual — resposta da Tarvo às seis perguntas
 
 As seis perguntas enviadas pela Turma do Barulho foram respondidas por Helena. O texto foi fornecido pelo usuário nesta conversa em 17/10/2026; não houve nova leitura do Slack para esta atualização, e não foi fornecido o horário ou permalink da resposta. [Mensagem enviada às 10h32](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792243935921379).

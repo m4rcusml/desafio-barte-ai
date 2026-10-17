@@ -1,0 +1,7 @@
+Resposta ao Checkpoint 1
+
+Proveniência: texto fornecido pelo usuário nesta conversa em 17/10/2026. Autor, horário e permalink da resposta não informados. Transcrição abaixo, sem nova consulta ao Slack.
+
+Marcus, Raphael e Carlos, boa leitura do processo atual: a causa raiz parte de como a Tarvo fecha hoje, e vocês separaram bem o que já foi confirmado do que é premissa.
+ Antes das 18h30: (1) escolham agora uma das três formas (a escolha é de vocês) e só invistam nela depois de o mínimo rodar com um comando; (2) premissa que vale é a que muda o número do fechamento, e a hipótese de caixa está fora das entregas.
+ Pergunta para levar ao pitch: o que a Helena faz diferente no próximo fechamento com a solução de vocês?
