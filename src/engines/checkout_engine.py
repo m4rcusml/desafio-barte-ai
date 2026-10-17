@@ -293,7 +293,10 @@ def processar_checkout(
             continue
 
         # Obtenção da taxa contratual aplicável
-        data_para_taxa = data_venda_orig if (tipo_lancto == 2 and data_venda_orig) else data_mov
+        data_para_taxa = data_venda_orig if (tipo_lancto in (2, 4) and data_venda_orig) else data_mov
+        if not data_para_taxa and id_referencia and id_referencia in tx_primarias:
+            data_para_taxa = tx_primarias[id_referencia].get("data_movimento", data_mov)
+
         taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
             contratos, data_para_taxa, tipo_lancto, modalidade, qtd_parcelas
         )
@@ -314,7 +317,7 @@ def processar_checkout(
         elif tipo_lancto == 3:
             regra_aplicada = "Taxa contratual de antecipação"
         elif tipo_lancto == 4:
-            regra_aplicada = "Reversão de antecipação à taxa da antecipação original"
+            regra_aplicada = f"Reversão de antecipação à taxa da antecipação original ({data_para_taxa})"
         else:
             regra_aplicada = "Operação comercial padrão"
 
@@ -325,7 +328,7 @@ def processar_checkout(
         if "06" in arq_origem or "tardio" in arq_origem:
             if id_referencia:
                 if id_referencia in tx_primarias:
-                    # Auditoria de Divergência Cadastral de Bandeira (Confirmação 17/10)
+                    # Auditoria de Divergência Cadastral de Bandeira (Confirmação 17/10 - Homologado por Helena)
                     if tipo_lancto == 2:
                         tx_orig = tx_primarias[id_referencia]
                         b_v = int(tx_orig.get("bandeira", "0") or "0")
@@ -333,20 +336,9 @@ def processar_checkout(
                         if b_v != b_e:
                             b_v_nome = MAPA_BANDEIRAS.get(b_v, str(b_v))
                             b_e_nome = MAPA_BANDEIRAS.get(b_e, str(b_e))
-                            pendencias.append(
-                                LinhaPendencia(
-                                    tipo="DIVERGENCIA_CADASTRO_BANDEIRA",
-                                    ref_origem=id_transacao,
-                                    valor_brl=round_half_up(valor_bruto),
-                                    motivo=(
-                                        f"Estorno {id_transacao} referenciando venda original {id_referencia} com bandeira divergente "
-                                        f"({b_v_nome} na venda -> {b_e_nome} no estorno). Vínculo mantido e taxa contratual da "
-                                        f"venda original aplicada ({taxa_contratada_pct:.2f}%); pendente correção cadastral com a Orbe."
-                                    ),
-                                    quem_decide="Helena",
-                                    cnpj=cnpj,
-                                )
-                            )
+                            # Conforme homologado por Helena: "Bandeira não muda a taxa... não precisa contestar nem abrir pendência"
+                            # Preserva evidência documental sem gerar pendência indevida
+                            detalhe_calc += f" [Estorno bandeira {b_e_nome} vs venda {b_v_nome} - vínculo por referência homologado por Helena]"
                 else:
                     # Regra Helena 14h10: Estorno Órfão entra pelo valor declarado e vira pendência
                     if tipo_lancto in (2, 4):

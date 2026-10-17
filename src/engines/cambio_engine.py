@@ -200,17 +200,28 @@ def processar_remessas(
         comissoes_por_cliente[cnpj]["count"] += 1
         comissoes_por_cliente[cnpj]["refs"].append((num_op, comissao_tarvo_linha, regra_aplicada, taxa_contratada_str, detalhe_calc))
 
-        # 4. Auditoria de Taxas (Mundo Aberto: 1.20% acordado vs 1.50% aplicado)
+        # 4. Auditoria de Taxas (ex: Mundo Aberto: 1.20% acordado vs 1.50% aplicado)
         if contrato:
-            diff_spread_pct = spread_pct_aplicado - taxa_contratada_pct
-            if diff_spread_pct >= Decimal("0.01"):
-                diferenca_cheia = round_half_up(valor_brl * (diff_spread_pct / Decimal("100")))
+            spread_contratado_prop = contrato["spread_contratado_prop"]
+            spread_contratado_pct = spread_contratado_prop * Decimal("100")
+            if (spread_pct_aplicado - spread_contratado_pct) >= Decimal("0.01"):
+                # Fórmula canônica Tarvo: valor_me * (taxa_cliente - ptax_ref * (1 + spread_contratado))
+                valor_me_str = row.get("valor_me", "0.00").strip()
+                taxa_cliente_str = row.get("taxa_cliente", "0.00").strip()
+                ptax_ref_str = row.get("ptax_ref", "0.00").strip()
+                valor_me = Decimal(valor_me_str) if valor_me_str else Decimal("0.00")
+                taxa_cliente = Decimal(taxa_cliente_str) if taxa_cliente_str else Decimal("0.00")
+                ptax_ref = Decimal(ptax_ref_str) if ptax_ref_str else Decimal("0.00")
+
+                diff_unitario = taxa_cliente - (ptax_ref * (Decimal("1") + spread_contratado_prop))
+                diferenca_cheia = round_half_up(valor_me * diff_unitario)
+
                 divergencias.append(
                     LinhaDivergenciaRemessa(
                         cnpj=cnpj,
                         linha_negocio="REMESSA",
                         ref_origem=num_op,
-                        taxa_contratada_pct=taxa_contratada_pct.quantize(Decimal("0.01")),
+                        taxa_contratada_pct=spread_contratado_pct.quantize(Decimal("0.01")),
                         taxa_aplicada_pct=spread_pct_aplicado.quantize(Decimal("0.01")),
                         diferenca_brl=diferenca_cheia,
                     )

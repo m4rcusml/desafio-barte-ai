@@ -35,7 +35,8 @@ class TestCheckoutAndBandeiras(unittest.TestCase):
         pendencias_bandeira = [
             p for p in res.pendencias if p.tipo == "DIVERGENCIA_CADASTRO_BANDEIRA"
         ]
-        self.assertEqual(len(pendencias_bandeira), 7)
+        # Conforme homologado por Helena: bandeiras divergentes não geram pendência nem contestação
+        self.assertEqual(len(pendencias_bandeira), 0)
         
         refs_esperadas = {
             "TX88447011",
@@ -46,12 +47,13 @@ class TestCheckoutAndBandeiras(unittest.TestCase):
             "TX88447093",
             "TX88447109",
         }
-        refs_obtidas = {p.ref_origem for p in pendencias_bandeira}
-        self.assertEqual(refs_obtidas, refs_esperadas)
         
-        for p in pendencias_bandeira:
-            self.assertEqual(p.quem_decide, "Helena")
-            self.assertIn("bandeira divergente", p.motivo)
+        # Verificar que os 7 estornos estão devidamente processados no rastro com a evidência preservada
+        rastro_map = {r.ref_origem: r for r in res.rastro}
+        for ref_id in refs_esperadas:
+            self.assertIn(ref_id, rastro_map)
+            detalhe = rastro_map[ref_id].detalhe_calculo
+            self.assertIn("vínculo por referência homologado por Helena", detalhe)
 
     def test_bloqueio_atlas_idiomas(self):
         """Verifica se a Atlas Idiomas é bloqueada e encaminhada integralmente a pendências."""
