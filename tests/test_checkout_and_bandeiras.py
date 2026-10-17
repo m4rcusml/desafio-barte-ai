@@ -69,7 +69,7 @@ class TestCheckoutAndBandeiras(unittest.TestCase):
         res = processar_checkout([self.f_01, self.f_06], self.f_taxas)
         
         pendencias_isencao = [
-            p for p in res.pendencias if p.tipo == "ISENCAO_NAO_AVISADA" and p.cnpj == "11802934000190"
+            p for p in res.pendencias if p.tipo == "ISENCAO_NAO_AVISADA" and p.cnpj == "00520815000100"
         ]
         self.assertTrue(len(pendencias_isencao) > 0)
 

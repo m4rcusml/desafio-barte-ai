@@ -62,24 +62,44 @@ def format_aurora_file(input_path: Path, output_dir: Path) -> Tuple[Path, int]:
         raise ValueError("Linha de cabeçalho das transações do Banco Aurora não encontrada.")
 
     reader = csv.DictReader(lines[data_start_idx:], delimiter=";")
-    fieldnames = ["data", "lancamento", "documento", "valor", "saldo"]
+    fieldnames = ["data", "lancamento", "documento", "valor", "saldo", "linha_fisica"]
 
     rows_processed = 0
     with open(output_path, mode="w", encoding="utf-8", newline="") as outfile:
         writer = csv.DictWriter(outfile, fieldnames=fieldnames, delimiter=";")
         writer.writeheader()
 
-        for row in reader:
+        for idx_row, row in enumerate(reader, start=1):
             dt = row.get("Data", "").strip()
             if not dt or dt.lower().startswith("saldo") or dt.lower().startswith("total"):
                 continue
 
+            # A linha do header é data_start_idx + 1 (1-indexed)
+            # Cada linha do DictReader corresponde à linha física data_start_idx + 1 + idx_row
+            linha_fisica = data_start_idx + 1 + idx_row
+
+            lancamento_desc = (
+                row.get("Lançamento")
+                or row.get("Lancamento")
+                or row.get("Histórico")
+                or row.get("Historico")
+                or ""
+            ).strip()
+
+            # Linha de saldo anterior não é transação financeira movimentada
+            if "SALDO ANTERIOR" in lancamento_desc.upper() or not row.get("Valor (R$)", "").strip():
+                continue
+
+            if not lancamento_desc:
+                raise ValueError(f"Layout do Banco Aurora desconhecido: linha física {linha_fisica} sem descrição/lançamento.")
+
             writer.writerow({
                 "data": fmt_date_iso(dt),
-                "lancamento": row.get("Histórico", "").strip(),
+                "lancamento": lancamento_desc,
                 "documento": row.get("Documento", "").strip(),
                 "valor": fmt_money_br_to_dot(row.get("Valor (R$)", "")),
                 "saldo": fmt_money_br_to_dot(row.get("Saldo (R$)", "")),
+                "linha_fisica": str(linha_fisica),
             })
             rows_processed += 1
 

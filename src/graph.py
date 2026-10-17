@@ -124,9 +124,9 @@ def node_motores_dominio(state: ClosingState) -> ClosingState:
     silver = state.get("silver_paths", {})
     tabela_taxas_p = Path(silver["taxas"])
 
-    # 1. Checkout (consolida 01 e 06 se provisório)
+    # 1. Checkout (consolida 01 e 06 em setembro conforme AGENTS.md)
     orbe_files = [Path(silver["orbe_principal"])]
-    if "orbe_tardios" in silver and state.get("status_aprovacao") != "APROVADO_POR_HELENA":
+    if "orbe_tardios" in silver:
         orbe_files.append(Path(silver["orbe_tardios"]))
 
     res_checkout = processar_checkout(orbe_files, tabela_taxas_p)

@@ -73,7 +73,7 @@ def validar_silver_files(silver_dir: Path) -> RelatorioSanidade:
                         "id_transacao": tx_id,
                         "arquivo": f_06.name,
                         "linha": str(idx),
-                        "acao": "OVERRIDE_PRESERVING_HISTORY",
+                        "acao": "PENDENCIA_SEM_PRECEDENCIA_AUTOMATICA",
                     })
 
                 # Integridade referencial: estornos devem apontar para ID válido se houver histórico

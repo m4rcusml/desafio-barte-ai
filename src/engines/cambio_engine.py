@@ -113,7 +113,7 @@ def processar_remessas(
     pendencias: List[LinhaPendenciaRemessa] = []
     rastro: List[LinhaRastroRemessa] = []
 
-    operacoes_vistas: Set[str] = set()
+    operacoes_vistas: Dict[str, Dict[str, Any]] = {}
     total_comissao_acumulada = Decimal("0.00")
 
     with open(ponte_csv_path, mode="r", encoding="utf-8") as f:
@@ -133,22 +133,37 @@ def processar_remessas(
         spread_pct_aplicado = (Decimal(spread_pct_str) * Decimal("100")) if spread_pct_str else Decimal("0.00")
         valor_brl = Decimal(valor_brl_str) if valor_brl_str else Decimal("0.00")
 
-        # 1. Deduplicação: PC-0926-0162
+        # 1. Deduplicação inteligente de operações
         if num_op in operacoes_vistas:
+            op_anterior = operacoes_vistas[num_op]
+            mesmos_valores = (
+                op_anterior["valor_brl"] == valor_brl
+                and op_anterior["spread_brl"] == spread_brl
+                and op_anterior["cnpj"] == cnpj
+            )
+            motivo_dup = (
+                f"Operação {num_op} duplicada (cópia exata) no relatório da Ponte ('{obs}'). Desconsiderada da apuração."
+                if mesmos_valores
+                else f"Operação {num_op} duplicada com valores conflitantes no relatório da Ponte (Anterior: {op_anterior['valor_brl']}, Atual: {valor_brl}). Requer auditoria."
+            )
             pendencias.append(
                 LinhaPendenciaRemessa(
                     tipo="OPERACAO_DUPLICADA",
                     ref_origem=num_op,
                     valor_brl=spread_brl,
-                    motivo=f"Operação {num_op} duplicada no relatório da Ponte ('{obs}'). Desconsiderada da apuração.",
+                    motivo=motivo_dup,
                     quem_decide="Caio / Helena",
                 )
             )
             continue
-        operacoes_vistas.add(num_op)
+        operacoes_vistas[num_op] = {
+            "valor_brl": valor_brl,
+            "spread_brl": spread_brl,
+            "cnpj": cnpj,
+        }
 
         # 2. Exclusão de Negativos
-        if num_op in OPS_SPREAD_NEGATIVO:
+        if spread_brl < Decimal("0.00") or num_op in OPS_SPREAD_NEGATIVO:
             pendencias.append(
                 LinhaPendenciaRemessa(
                     tipo="SPREAD_NEGATIVO_CONTESTACAO",
@@ -227,7 +242,7 @@ def processar_remessas(
             )
 
     nota_ponte = LinhaNotaRemessa(
-        tomador_cnpj="40892317000144",
+        tomador_cnpj="75374179000146",
         tomador="Ponte Câmbio Soluções Financeiras S.A.",
         linha_negocio="REMESSA",
         valor_brl=round_half_up(total_comissao_acumulada),

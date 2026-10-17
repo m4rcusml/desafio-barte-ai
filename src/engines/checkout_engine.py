@@ -216,6 +216,8 @@ def processar_checkout(
         qtd_parcelas = int(row["qtd_parcelas"]) if row["qtd_parcelas"] else 1
         valor_bruto = Decimal(row["valor_bruto"])
         taxa_aplicada_pct = Decimal(row["taxa_aplicada_pct"]) if row["taxa_aplicada_pct"] else Decimal("0.00")
+        valor_taxa_str = row.get("valor_taxa", "").strip()
+        valor_taxa = Decimal(valor_taxa_str) if valor_taxa_str else round_half_up(valor_bruto * (taxa_aplicada_pct / Decimal("100")))
         data_venda_orig = row.get("data_venda_original", "").strip()
         id_referencia = row.get("id_referencia", "").strip()
 
@@ -282,10 +284,10 @@ def processar_checkout(
                     LinhaPendencia(
                         tipo="ISENCAO_NAO_AVISADA",
                         ref_origem=id_transacao,
-                        valor_brl=round_half_up(valor_bruto),
-                        motivo="Casa do Estudante possui acordo de isenção de taxas (set-dez/2026). Tratar devolução internamente.",
+                        valor_brl=round_half_up(valor_taxa),
+                        motivo=f"Casa do Estudante com isenção total (MDR e Antecipação = 0%) em set/2026 não comunicada à Orbe. Taxa cobrada indevidamente de {taxa_aplicada_pct}% deve ser devolvida ao lojista.",
                         quem_decide="Helena / Comercial",
-                        cnpj="11802934000190",
+                        cnpj="00520815000100",
                     )
                 )
             continue

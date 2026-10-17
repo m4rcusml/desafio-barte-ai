@@ -21,6 +21,8 @@ def validar_prova_real(
     comissoes_rows: List[Dict[str, str]],
     notas_rows: List[Dict[str, str]],
     divergencias_rows: List[Dict[str, str]],
+    lancamentos_rows: List[Dict[str, str]],
+    pendencias_rows: List[Dict[str, str]],
     rastro_rows: List[Dict[str, str]],
 ) -> Dict[str, Any]:
     """Verifica matematicamente que a soma do rastro por id_saida bate 100% com o valor reportado."""
@@ -56,10 +58,34 @@ def validar_prova_real(
         if abs(esp - obt) > Decimal("0.001"):
             erros.append(f"DIV {sid} ({d['ref_origem']}): esperado {esp:.2f}, rastro somou {obt:.2f}")
 
+    # 4. Lançamentos Classificados
+    for l in lancamentos_rows:
+        sid = l["id_saida"]
+        esp = Decimal(l["valor"])
+        obt = somas_rastro.get(sid, Decimal("0.00"))
+        if abs(esp - obt) > Decimal("0.001"):
+            erros.append(f"LAN {sid} ({l['ref_origem']}): esperado {esp:.2f}, rastro somou {obt:.2f}")
+
+    # 5. Pendências Operacionais
+    for p in pendencias_rows:
+        sid = p["id_saida"]
+        esp = Decimal(p["valor_brl"])
+        obt = somas_rastro.get(sid, Decimal("0.00"))
+        if abs(esp - obt) > Decimal("0.001"):
+            erros.append(f"PEN {sid} ({p['ref_origem']}): esperado {esp:.2f}, rastro somou {obt:.2f}")
+
+    total_validados = (
+        len(comissoes_rows)
+        + len(notas_rows)
+        + len(divergencias_rows)
+        + len(lancamentos_rows)
+        + len(pendencias_rows)
+    )
+
     return {
         "valido": len(erros) == 0,
         "erros": erros,
-        "total_ids_validados": len(comissoes_rows) + len(notas_rows) + len(divergencias_rows),
+        "total_ids_validados": total_validados,
     }
 
 
@@ -421,11 +447,47 @@ def emitir_todos_os_entregaveis(
             "detalhe_calculo": f"Diferença apurada a favor da Tarvo/Lojista: R$ {d['diferenca_brl']}",
         })
 
+    # F) Lançamentos Bancários Classificados
+    for l in lancamentos_rows:
+        arq_banco = (
+            "05a_extrato_banco_aurora_cc4471_set2026.csv"
+            if l["banco"] == "AURORA"
+            else "05b_extrato_banco_meridiano_cc90233_set2026.ofx"
+        )
+        rastro_completo.append({
+            "id_saida": l["id_saida"],
+            "arquivo_origem": arq_banco,
+            "ref_origem": l["ref_origem"],
+            "valor": l["valor"],
+            "regra_aplicada": f"Classificação contábil ({l['banco']}): conta {l['conta_codigo']} ({l['metodo']})",
+            "taxa_contratada_aplicada": "N/A",
+            "detalhe_calculo": f"Extrato {l['data']}: {l['descricao']}",
+        })
+
+    # G) Pendências Operacionais
+    for p in pendencias_rows:
+        arq_pend = "01_orbe_relatorio_comissoes_set2026.csv"
+        if "PC-0926" in p["ref_origem"]:
+            arq_pend = "03_ponte_cambio_operacoes_formatado.csv"
+        elif p["ref_origem"].startswith("L") or p["tipo"] in ("CREDITO_NAO_IDENTIFICADO", "TRANSITO_BANCARIO", "REPASSE_DEVOLVIDO"):
+            arq_pend = "05a_extrato_banco_aurora_cc4471_set2026.csv"
+        rastro_completo.append({
+            "id_saida": p["id_saida"],
+            "arquivo_origem": arq_pend,
+            "ref_origem": p["ref_origem"],
+            "valor": p["valor_brl"],
+            "regra_aplicada": f"Pendência ({p['tipo']}): {p['motivo']}",
+            "taxa_contratada_aplicada": "N/A",
+            "detalhe_calculo": f"Decisão requerida por: {p['quem_decide']}",
+        })
+
     # Validação matemática da Prova Real
     prova_real = validar_prova_real(
         comissoes_rows=comissoes_rows,
         notas_rows=notas_rows,
         divergencias_rows=divergencias_rows,
+        lancamentos_rows=lancamentos_rows,
+        pendencias_rows=pendencias_rows,
         rastro_rows=rastro_completo,
     )
 
