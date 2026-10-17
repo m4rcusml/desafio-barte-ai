@@ -21,7 +21,7 @@ Regras confirmadas pelo financeiro:
 - **Estorno:** devolve a taxa e reduz a comissão no mês do estorno, usando a taxa contratada na data da venda original. Venda de agosto estornada em setembro afeta setembro; agosto não é reaberto.
 - **Antecipação:** sua comissão integra o checkout. Reversão anula a taxa da antecipação referenciada.
 - **Bridge:** há condições até 14/09/2026 e novas condições a partir de 15/09/2026; a vigência precisa ser respeitada.
-- **Casa do Estudante:** MDR e antecipação zerados de setembro a dezembro/2026 por acordo comercial. Remessa segue normal. A Orbe não foi avisada e continuou cobrando; financeiro e comercial tratam a devolução.
+- **Casa do Estudante:** MDR e antecipação zerados de setembro a dezembro/2026 por acordo comercial. Remessa segue normal. A Orbe não foi avisada e cobrou conforme a planilha. Conforme esclarecimento do financeiro em 17/10 às 9h44, não há valor a cobrar da Orbe por essa isenção não comunicada: registrar separadamente das divergências contratuais, com o valor a devolver ao lojista, como pendência de Helena com o comercial. Estorno de venda anterior à isenção usa a taxa vigente na data da venda original.
 - **Rota Global:** não houve alteração contratual em 2026; aumento aplicado pela Orbe não comprova reajuste válido.
 - **Atlas:** começou a transacionar em 10/09, mas não há contrato vigente assinado nem taxa confirmada. Não faturar até confirmação comercial; a presença na aba antiga não confirma a condição atual.
 
@@ -91,4 +91,5 @@ Até a verificação feita no dia 16/10, faltam especificações completas de ar
 - [Notas fiscais](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792193219408319).
 - [Remessas](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792193429257939).
 - [Condições especiais e bancos](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792193803331999).
+- [Casa do Estudante: devolução separada, sem cobrança à Orbe pela isenção não comunicada](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792241097683849).
 - [Dúvida de divergência e tolerância ainda aberta na consulta](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792194771073879).
