@@ -36,25 +36,46 @@ def main():
 
     args = parser.parse_args()
 
-    # Se estiver rodando como executável congelado (PyInstaller), usa a pasta do .exe
+    cwd = Path.cwd().resolve()
     if getattr(sys, "frozen", False):
         exec_dir = Path(sys.executable).resolve().parent
     else:
-        exec_dir = Path.cwd().resolve()
+        exec_dir = cwd
 
-    data_dir = Path(args.data_dir).resolve() if args.data_dir != "." else exec_dir
+    # Diretório dos dados de entrada
+    if args.data_dir != ".":
+        data_dir = Path(args.data_dir).resolve()
+    elif any(cwd.glob("01_orbe*")):
+        data_dir = cwd
+    elif any(exec_dir.glob("01_orbe*")):
+        data_dir = exec_dir
+    else:
+        # Busca nas pastas candidatas
+        candidatos = [
+            cwd / "Tarvo_Data_Pack_set2026",
+            exec_dir / "Tarvo_Data_Pack_set2026",
+            exec_dir.parent / "Tarvo_Data_Pack_set2026",
+            exec_dir.parent.parent / "Tarvo_Data_Pack_set2026",
+        ]
+        data_dir = cwd
+        for c in candidatos:
+            if c.exists() and any(c.glob("01_orbe*")):
+                data_dir = c
+                break
 
-    # Se no diretório não houver arquivos do data pack, tenta a pasta padrão do projeto
-    # Resolução correta dos diretórios
-    repo_root = Path(__file__).resolve().parent.parent
-    workspace_root = repo_root.parent
-    if not any(data_dir.glob("*.csv")):
-        fallback_data = workspace_root / "Tarvo_Data_Pack_set2026"
-        if fallback_data.exists():
-            data_dir = fallback_data
+    output_local = cwd / "fechamento-completo"
 
-    output_local = exec_dir / "fechamento-completo"
-    output_oficial = repo_root / "saida"
+    # Encontra o diretório oficial 'saida' do repositório
+    candidatos_oficial = [
+        cwd / "barte-solution" / "desafio-barte-ai" / "saida",
+        exec_dir.parent / "saida",
+        cwd / "saida",
+    ]
+    output_oficial = cwd / "saida"
+    for cand in candidatos_oficial:
+        if cand.exists() or cand.parent.exists():
+            output_oficial = cand
+            break
 
     print("=" * 75)
     print("🚀 INICIANDO AGENTE AUTÔNOMO DE FECHAMENTO (LANGGRAPH + JEV + GEMINI)")

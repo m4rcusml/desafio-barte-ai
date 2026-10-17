@@ -1,0 +1,91 @@
+{
+  "manifesto_versao": "2.0.0",
+  "data_hora_execucao": "2026-10-17T14:52:58.326968-03:00",
+  "competencia": "2026-09",
+  "status_fechamento": "PROVISORIO",
+  "prova_real_rastro_valida": true,
+  "total_ids_auditados": 171,
+  "erros_conciliacao": [],
+  "metricas_financeiras": {
+    "total_comissao_brl": "243278.76",
+    "total_notas_a_emitir_brl": "243284.26",
+    "total_divergencias_taxa_brl": "3016.37",
+    "qtd_comissoes": 35,
+    "qtd_notas": 21,
+    "qtd_divergencias": 115,
+    "qtd_lancamentos_contabeis": 184,
+    "qtd_pendencias_operacionais": 187,
+    "qtd_linhas_rastro": 4134
+  },
+  "arquivos_entrada": [
+    {
+      "arquivo": "01_orbe_relatorio_comissoes_set2026.csv",
+      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\01_orbe_relatorio_comissoes_set2026.csv",
+      "dominio": "ORBE_FECHAMENTO_PRINCIPAL",
+      "linhas_lidas": 1944,
+      "tamanho_bytes": 221518,
+      "metodo_triagem": "HEURISTICA"
+    },
+    {
+      "arquivo": "02_tabela_taxas_contratadas.xlsx",
+      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\02_tabela_taxas_contratadas.xlsx",
+      "dominio": "TABELA_TAXAS_CONTRATUAIS",
+      "linhas_lidas": 66,
+      "tamanho_bytes": 10092,
+      "metodo_triagem": "HEURISTICA"
+    },
+    {
+      "arquivo": "03_email_ponte_cambio_relatorio_set2026.eml",
+      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\03_email_ponte_cambio_relatorio_set2026.eml",
+      "dominio": "EMAIL_PONTE_CAMBIO",
+      "linhas_lidas": 569,
+      "tamanho_bytes": 42076,
+      "metodo_triagem": "HEURISTICA"
+    },
+    {
+      "arquivo": "04_plano_de_contas_fenix_erp.csv",
+      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\04_plano_de_contas_fenix_erp.csv",
+      "dominio": "PLANO_CONTAS_FENIX",
+      "linhas_lidas": 53,
+      "tamanho_bytes": 3205,
+      "metodo_triagem": "HEURISTICA"
+    },
+    {
+      "arquivo": "05a_extrato_banco_aurora_cc4471_set2026.csv",
+      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\05a_extrato_banco_aurora_cc4471_set2026.csv",
+      "dominio": "EXTRATO_AURORA",
+      "linhas_lidas": 95,
+      "tamanho_bytes": 6896,
+      "metodo_triagem": "HEURISTICA"
+    },
+    {
+      "arquivo": "05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\05b_extrato_banco_meridiano_cc90233_set2026.ofx",
+      "dominio": "EXTRATO_MERIDIANO",
+      "linhas_lidas": 848,
+      "tamanho_bytes": 18306,
+      "metodo_triagem": "HEURISTICA"
+    },
+    {
+      "arquivo": "06_orbe_ajustes_tardios_set2026.csv",
+      "caminho": "C:\\projetosdaniel\\desafio-barte-ai\\Tarvo_Data_Pack_set2026\\06_orbe_ajustes_tardios_set2026.csv",
+      "dominio": "ORBE_AJUSTES_TARDIOS",
+      "linhas_lidas": 15,
+      "tamanho_bytes": 2088,
+      "metodo_triagem": "HEURISTICA"
+    }
+  ],
+  "regras_aplicadas_resumo": [
+    "Checkout: Comissões apuradas pela taxa contratada por modalidade/parcelamento.",
+    "Checkout: Bridge Idiomas (1075624862) split temporal de taxa em 15/09/2026.",
+    "Checkout: Atlas Idiomas (1076801732) bloqueio total por ausência de contrato assinado (Bia/Comercial).",
+    "Checkout: Casa do Estudante (1018325654) isenção set-dez com estornos anteriores respeitados à taxa original.",
+    "Checkout: Ajustes tardios (06) consolidados em setembro como lote complementar.",
+    "Checkout: 7 divergências de bandeira no lote 06 vinculadas e reportadas em pendências para correção Orbe.",
+    "Checkout: Estornos órfãos sem referência no relatório principal aceitos pelo valor declarado com pendência para Helena.",
+    "Remessas: Split de 50% sobre o Spread BRL realizado (Ponte Câmbio).",
+    "Remessas: Exclusão de 4 operações com spread negativo para contestação integral com a Ponte.",
+    "Remessas: Deduplicação de PC-0926-0162 e contestação de spread contratual Mundo Aberto (1.20% vs 1.50%).",
+    "Contábil: Classificação contábil com dupla conciliação bancária (Aurora CC 44710 e Meridiano CC 902335)."
+  ]
+}

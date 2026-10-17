@@ -16,7 +16,7 @@ class FileMetadata(TypedDict, total=False):
     extensao: str
     dominio: str           # 'ORBE_CHECKOUT', 'ORBE_AJUSTES_TARDIOS', 'PONTE_CAMBIO', 'EXTRATO_AURORA', 'EXTRATO_MERIDIANO', 'PLANO_FENIX', 'TABELA_TAXAS'
     confianca: float
-    metodo_triagem: str    # 'JEV', 'GEMINI_FLASH', 'HEURISTICA'
+    metodo_triagem: str    # 'JEV', 'GEMINI_FLASH', 'DEEPSEEK_V1_FLASH', 'HEURISTICA'
     status: str            # 'VALIDO', 'AVISO', 'BLOQUEADO'
     motivo_bloqueio: Optional[str]
 

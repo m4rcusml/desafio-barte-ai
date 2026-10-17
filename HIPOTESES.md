@@ -115,4 +115,25 @@ A pergunta sobre as sete diferenças de bandeira foi enviada pelo usuário e res
 | Útil antes de automatizar revisão de período aprovado | Se um ajuste chegar depois da aprovação, quem autoriza a reabertura e como tratar resultado já faturado? Qual registro documenta a decisão? | Preservar execução/aprovação anteriores; gerar revisão técnica sem emitir nota, reabrir ou aprovar automaticamente |
 | Útil para declarar cobertura do fechamento | Como Helena confirma que as fontes do mês estão completas para revisão, e como registrar ressalvas quando ainda podem chegar ajustes? | Arquivo recebido não prova completude; registrar cobertura conhecida e pendências, sem inventar prazo de corte |
 
-Atlas continua dependente de confirmação comercial; a orientação de não faturar já existe. A tolerância de remessa cabe à equipe justificar, não exige pedir novamente homologação de regra já delegada. Contas bancárias ambíguas exigem proposta fundamentada no plano e pergunta apenas quando faltar fato necessário. Agenda de recebíveis e custos permanecem fora da apuração solicitada; não ampliar perguntas para margem ou caixa.
+## Confirmação — Estornos Órfãos Sem Referência (Helena, 14h10)
+
+> *"Em setembro isso não acontece: todas as referências do arquivo de ajustes estão no relatório. Se um dia acontecer, o ajuste entra pelo valor que veio e vira pendência para eu pedir a original à Orbe.*
+> *— Helena"*
+
+- **Tratamento:** Se um ajuste tardio trouxer estorno ou reversão de transação que não conste do relatório principal, a operação entra na apuração pelo valor declarado e o sistema gera automaticamente uma pendência do tipo `ESTORNO_ORFAO_SEM_ORIGEM` para Helena notificar a adquirente.
+
+## Padrão Ouro de Auditabilidade e Rastro (Organização Barte, 14h11)
+
+> *"O mínimo é o rastro.csv no formato das instruções (id_saida; arquivo_origem; ref_origem; valor): toda comissão e toda nota com um id_saida, e a soma de valor por id_saida batendo com o número reportado.*
+> *Para ficar auditável de verdade, ajuda ter:*
+> *1. rastro também das divergências e da nota da Ponte;*
+> *2. um registro de cada execução: quais arquivos entraram, quantas linhas de cada, data e hora;*
+> *3. em cada linha, a regra aplicada (taxa contratada usada, isenção, estorno pela venda original).*
+> *Quem abrir tem que conseguir refazer qualquer número sem perguntar para vocês.*
+> *— Organização"*
+
+### Implementação do Padrão Ouro na Solução:
+1. **Rastro Universal Expandido (`rastro.csv`):** Mantém as 4 colunas canônicas obrigatórias (`id_saida; arquivo_origem; ref_origem; valor`) e adiciona as colunas de alta auditabilidade: `regra_aplicada; taxa_contratada_aplicada; detalhe_calculo`.
+2. **Rastro Integral:** Inclui o rastreamento 1-para-1 de comissões (`COM-XXXX`), notas fiscais (`NF-XXXX`) e de todas as divergências de taxa (`DIV-XXXX`), amarrando a linha original que gerou a diferença.
+3. **Manifesto de Execução (`auditoria_execucao.json` e `auditoria_execucao.md`):** Gerado automaticamente a cada rodada do agente, registrando timestamp ISO, lista de arquivos processados, contagem física de linhas, status de fechamento, resumo das regras e a prova real matemática centavo a centavo.
+

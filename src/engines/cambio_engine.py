@@ -59,6 +59,9 @@ class LinhaRastroRemessa:
     arquivo_origem: str
     ref_origem: str
     valor: Decimal
+    regra_aplicada: str = ""
+    taxa_contratada_aplicada: str = ""
+    detalhe_calculo: str = ""
 
 
 @dataclass
@@ -161,6 +164,13 @@ def processar_remessas(
         comissao_tarvo_linha = round_half_up(spread_brl * Decimal("0.50"))
         total_comissao_acumulada += comissao_tarvo_linha
 
+        contrato = contratos_remessa.get(cnpj)
+        taxa_contratada_prop = contrato["spread_contratado_prop"] if contrato else Decimal("0.015")
+        taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
+        regra_aplicada = "Split 50% spread BRL realizado"
+        taxa_contratada_str = f"{taxa_contratada_pct:.2f}%"
+        detalhe_calc = f"Spread apurado R$ {spread_brl:.2f} * 50% = R$ {comissao_tarvo_linha:.2f}"
+
         if cnpj not in comissoes_por_cliente:
             nome_lojista = contratos_remessa.get(cnpj, {}).get("lojista", cliente)
             comissoes_por_cliente[cnpj] = {
@@ -173,13 +183,10 @@ def processar_remessas(
 
         comissoes_por_cliente[cnpj]["total"] += comissao_tarvo_linha
         comissoes_por_cliente[cnpj]["count"] += 1
-        comissoes_por_cliente[cnpj]["refs"].append((num_op, comissao_tarvo_linha))
+        comissoes_por_cliente[cnpj]["refs"].append((num_op, comissao_tarvo_linha, regra_aplicada, taxa_contratada_str, detalhe_calc))
 
         # 4. Auditoria de Taxas (Mundo Aberto: 1.20% acordado vs 1.50% aplicado)
-        contrato = contratos_remessa.get(cnpj)
         if contrato:
-            taxa_contratada_prop = contrato["spread_contratado_prop"]
-            taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
             diff_spread_pct = spread_pct_aplicado - taxa_contratada_pct
             if diff_spread_pct >= Decimal("0.01"):
                 diferenca_cheia = round_half_up(valor_brl * (diff_spread_pct / Decimal("100")))
@@ -206,13 +213,16 @@ def processar_remessas(
                 operacoes_count=dados["count"],
             )
         )
-        for num_op, v_op in dados["refs"]:
+        for num_op, v_op, regra, tx_str, det_calc in dados["refs"]:
             rastro.append(
                 LinhaRastroRemessa(
                     id_saida=cnpj,
                     arquivo_origem="03_ponte_cambio_operacoes_formatado.csv",
                     ref_origem=num_op,
                     valor=v_op,
+                    regra_aplicada=regra,
+                    taxa_contratada_aplicada=tx_str,
+                    detalhe_calculo=det_calc,
                 )
             )
 

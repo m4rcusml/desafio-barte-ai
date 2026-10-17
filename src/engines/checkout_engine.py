@@ -51,6 +51,9 @@ class LinhaRastro:
     arquivo_origem: str
     ref_origem: str
     valor: Decimal
+    regra_aplicada: str = ""
+    taxa_contratada_aplicada: str = ""
+    detalhe_calculo: str = ""
 
 
 @dataclass
@@ -183,18 +186,25 @@ def processar_checkout(
 ) -> ResultadoCheckout:
     contratos_map = carregar_contratos(tabela_taxas_path)
 
+    MAPA_BANDEIRAS = {0: "OUTROS", 1: "MASTERCARD", 2: "ELO", 3: "VISA", 4: "AMEX", 5: "HIPERCARD"}
+    MAPA_MODALIDADES = {0: "Operação", 1: "Crédito à vista", 2: "Crédito parcelado", 3: "PIX", 4: "Débito"}
+
     comissoes_acumuladas: Dict[str, Dict[str, Any]] = {}
     divergencias: List[LinhaDivergenciaTaxa] = []
     pendencias: List[LinhaPendencia] = []
     rastro: List[LinhaRastro] = []
 
     rows: List[Tuple[Dict[str, str], str]] = []
+    tx_primarias: Dict[str, Dict[str, str]] = {}
+
     for p in orbe_csv_paths:
         if p.exists():
             with open(p, mode="r", encoding="utf-8") as f:
                 reader = csv.DictReader(f, delimiter=";")
                 for r in reader:
                     rows.append((r, p.name))
+                    if "01" in p.name or "principal" in p.name:
+                        tx_primarias[r["id_transacao"].strip()] = r
 
     for row, arq_origem in rows:
         id_transacao = row["id_transacao"].strip()
@@ -207,6 +217,18 @@ def processar_checkout(
         valor_bruto = Decimal(row["valor_bruto"])
         taxa_aplicada_pct = Decimal(row["taxa_aplicada_pct"]) if row["taxa_aplicada_pct"] else Decimal("0.00")
         data_venda_orig = row.get("data_venda_original", "").strip()
+        id_referencia = row.get("id_referencia", "").strip()
+
+        # Nome de arquivo amigável canônico
+        arq_amigavel = (
+            "01_orbe_relatorio_comissoes_set2026.csv"
+            if ("01" in arq_origem or "principal" in arq_origem)
+            else (
+                "06_orbe_ajustes_tardios_set2026.csv"
+                if ("06" in arq_origem or "tardio" in arq_origem)
+                else arq_origem
+            )
+        )
 
         # REGRA 1: ATLAS IDIOMAS (1076801732) - BLOQUEIO TOTAL
         if ec == "1076801732":
@@ -222,32 +244,7 @@ def processar_checkout(
             )
             continue
 
-        # REGRA 2: CASA DO ESTUDANTE (1018325654) - ISENÇÃO SET-DEZ
-        if ec == "1018325654":
-            if tipo_lancto == 2 and data_venda_orig and data_venda_orig < "2026-09-01":
-                contratos = contratos_map.get(ec, [])
-                taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
-                    contratos, data_venda_orig, tipo_lancto, modalidade, qtd_parcelas
-                )
-                comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)
-                if cnpj not in comissoes_acumuladas:
-                    comissoes_acumuladas[cnpj] = {"cnpj": cnpj, "lojista": lojista, "total": Decimal("0.00"), "count": 0, "refs": []}
-                comissoes_acumuladas[cnpj]["total"] += comissao_linha
-                comissoes_acumuladas[cnpj]["count"] += 1
-                comissoes_acumuladas[cnpj]["refs"].append((id_transacao, comissao_linha, arq_origem))
-            else:
-                pendencias.append(
-                    LinhaPendencia(
-                        tipo="ISENCAO_NAO_AVISADA",
-                        ref_origem=id_transacao,
-                        valor_brl=round_half_up(valor_bruto),
-                        motivo="Casa do Estudante possui acordo de isenção de taxas (set-dez/2026). Tratar devolução internamente.",
-                        quem_decide="Helena / Comercial",
-                        cnpj="11802934000190",
-                    )
-                )
-            continue
-
+        # Identifica contrato cadastrado para o EC
         contratos = contratos_map.get(ec)
         if not contratos:
             pendencias.append(
@@ -261,6 +258,39 @@ def processar_checkout(
             )
             continue
 
+        cnpj_default = contratos[0]["cnpj"]
+
+        # REGRA 2: CASA DO ESTUDANTE (1018325654) - ISENÇÃO SET-DEZ
+        if ec == "1018325654":
+            if tipo_lancto == 2 and data_venda_orig and data_venda_orig < "2026-09-01":
+                taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
+                    contratos, data_venda_orig, tipo_lancto, modalidade, qtd_parcelas
+                )
+                taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
+                comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)
+                regra_aplicada = f"Estorno anterior a set/2026 pela taxa da venda original ({data_venda_orig}) (Regra Helena)"
+                taxa_contratada_str = f"{taxa_contratada_pct:.2f}%"
+                detalhe_calc = f"Bruto R$ {valor_bruto:.2f} * {taxa_contratada_pct:.2f}% = R$ {comissao_linha:.2f}"
+
+                if cnpj not in comissoes_acumuladas:
+                    comissoes_acumuladas[cnpj] = {"cnpj": cnpj, "lojista": lojista, "total": Decimal("0.00"), "count": 0, "refs": []}
+                comissoes_acumuladas[cnpj]["total"] += comissao_linha
+                comissoes_acumuladas[cnpj]["count"] += 1
+                comissoes_acumuladas[cnpj]["refs"].append((id_transacao, comissao_linha, arq_amigavel, regra_aplicada, taxa_contratada_str, detalhe_calc))
+            else:
+                pendencias.append(
+                    LinhaPendencia(
+                        tipo="ISENCAO_NAO_AVISADA",
+                        ref_origem=id_transacao,
+                        valor_brl=round_half_up(valor_bruto),
+                        motivo="Casa do Estudante possui acordo de isenção de taxas (set-dez/2026). Tratar devolução internamente.",
+                        quem_decide="Helena / Comercial",
+                        cnpj="11802934000190",
+                    )
+                )
+            continue
+
+        # Obtenção da taxa contratual aplicável
         data_para_taxa = data_venda_orig if (tipo_lancto == 2 and data_venda_orig) else data_mov
         taxa_contratada_prop, cnpj, lojista = obter_taxa_contratada(
             contratos, data_para_taxa, tipo_lancto, modalidade, qtd_parcelas
@@ -269,12 +299,75 @@ def processar_checkout(
         taxa_contratada_pct = taxa_contratada_prop * Decimal("100")
         comissao_linha = round_half_up(valor_bruto * taxa_contratada_prop)
 
+        # Regra textual explicativa para auditoria
+        if tipo_lancto == 1:
+            mod_str = MAPA_MODALIDADES.get(modalidade, "Venda")
+            if modalidade == 2:
+                mod_str += f" ({qtd_parcelas}x)"
+            regra_aplicada = f"Taxa contratual {mod_str}"
+            if ec == "1075624862":  # Bridge Idiomas vigência 15/09
+                regra_aplicada += f" (Corte vigência {'pós-15/09' if data_mov >= '2026-09-15' else 'pré-15/09'})"
+        elif tipo_lancto == 2:
+            regra_aplicada = f"Estorno à taxa da venda original ({data_para_taxa})"
+        elif tipo_lancto == 3:
+            regra_aplicada = "Taxa contratual de antecipação"
+        elif tipo_lancto == 4:
+            regra_aplicada = "Reversão de antecipação à taxa da antecipação original"
+        else:
+            regra_aplicada = "Operação comercial padrão"
+
+        taxa_contratada_str = f"{taxa_contratada_pct:.2f}%"
+        detalhe_calc = f"Bruto R$ {valor_bruto:.2f} * {taxa_contratada_pct:.2f}% = R$ {comissao_linha:.2f}"
+
+        # AUDITORIA DE AJUSTES TARDIOS (ARQUIVO 06)
+        if "06" in arq_origem or "tardio" in arq_origem:
+            if id_referencia:
+                if id_referencia in tx_primarias:
+                    # Auditoria de Divergência Cadastral de Bandeira (Confirmação 17/10)
+                    if tipo_lancto == 2:
+                        tx_orig = tx_primarias[id_referencia]
+                        b_v = int(tx_orig.get("bandeira", "0") or "0")
+                        b_e = int(row.get("bandeira", "0") or "0")
+                        if b_v != b_e:
+                            b_v_nome = MAPA_BANDEIRAS.get(b_v, str(b_v))
+                            b_e_nome = MAPA_BANDEIRAS.get(b_e, str(b_e))
+                            pendencias.append(
+                                LinhaPendencia(
+                                    tipo="DIVERGENCIA_CADASTRO_BANDEIRA",
+                                    ref_origem=id_transacao,
+                                    valor_brl=round_half_up(valor_bruto),
+                                    motivo=(
+                                        f"Estorno {id_transacao} referenciando venda original {id_referencia} com bandeira divergente "
+                                        f"({b_v_nome} na venda -> {b_e_nome} no estorno). Vínculo mantido e taxa contratual da "
+                                        f"venda original aplicada ({taxa_contratada_pct:.2f}%); pendente correção cadastral com a Orbe."
+                                    ),
+                                    quem_decide="Helena",
+                                    cnpj=cnpj,
+                                )
+                            )
+                else:
+                    # Regra Helena 14h10: Estorno Órfão entra pelo valor declarado e vira pendência
+                    if tipo_lancto in (2, 4):
+                        pendencias.append(
+                            LinhaPendencia(
+                                tipo="ESTORNO_ORFAO_SEM_ORIGEM",
+                                ref_origem=id_transacao,
+                                valor_brl=round_half_up(valor_bruto),
+                                motivo=(
+                                    f"Ajuste tardio {id_transacao} referencia transação original {id_referencia} ausente do relatório principal. "
+                                    f"Incluído na apuração pelo valor declarado; pendente solicitação da transação original à Orbe."
+                                ),
+                                quem_decide="Helena",
+                                cnpj=cnpj,
+                            )
+                        )
+
         if cnpj not in comissoes_acumuladas:
             comissoes_acumuladas[cnpj] = {"cnpj": cnpj, "lojista": lojista, "total": Decimal("0.00"), "count": 0, "refs": []}
 
         comissoes_acumuladas[cnpj]["total"] += comissao_linha
         comissoes_acumuladas[cnpj]["count"] += 1
-        comissoes_acumuladas[cnpj]["refs"].append((id_transacao, comissao_linha, arq_origem))
+        comissoes_acumuladas[cnpj]["refs"].append((id_transacao, comissao_linha, arq_amigavel, regra_aplicada, taxa_contratada_str, detalhe_calc))
 
         # Divergência de Taxa (Tolerância descartada; apenas se taxa aplicada != contratada)
         diff_taxa_pct = taxa_aplicada_pct - taxa_contratada_pct
@@ -306,13 +399,16 @@ def processar_checkout(
                 transacoes_count=dados["count"],
             )
         )
-        for ref, v_linha, arq in dados["refs"]:
+        for ref, v_linha, arq, regra, tx_str, det_calc in dados["refs"]:
             rastro.append(
                 LinhaRastro(
                     id_saida=cnpj,
                     arquivo_origem=arq,
                     ref_origem=ref,
                     valor=v_linha,
+                    regra_aplicada=regra,
+                    taxa_contratada_aplicada=tx_str,
+                    detalhe_calculo=det_calc,
                 )
             )
 

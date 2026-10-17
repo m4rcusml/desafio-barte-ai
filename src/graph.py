@@ -178,10 +178,11 @@ def node_emissor_gold(state: ClosingState) -> ClosingState:
         res_contabil=state["resultado_bancario"],
         output_dir_local=output_local,
         output_dir_oficial=output_oficial,
+        state=state,
     )
 
     state["resumo_execucao"] = summary
-    state["prova_real_valida"] = True
+    state["prova_real_valida"] = summary.get("prova_real_valida", True)
     return state
 
 

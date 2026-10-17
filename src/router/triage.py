@@ -9,30 +9,30 @@ from typing import Any, Dict, List
 
 from .jev_client import JevClient
 from .gemini_client import GeminiFlashClient
+from .deepseek_client import DeepSeekClient
 from .heuristic_matcher import HeuristicMatcher
 
 
 class TriTierRouter:
     """
-    Roteador híbrido triplo:
-    1. Tenta Jev (TypeSafe AI) - sub-500ms, System One tipado.
-    2. Se falhar ou indisponível, tenta Gemini Flash (Google GenAI).
-    3. Se falhar ou indisponível, aciona o Classificador Heurístico Local (0ms, 100% offline).
+    Roteador híbrido multi-tier:
+    1. Tier 1: Jev (TypeSafe AI) - sub-500ms, System One tipado.
+    2. Tier 2: Gemini Flash (Google GenAI) - Raciocínio semântico contextual.
+    3. Tier 3: DeepSeek V1 Flash - Fallback semântico de alta eficiência e baixo custo.
+    4. Tier 4: Heurística Local (0ms, 100% offline, zero dependências).
     """
 
     def __init__(self):
         self.jev = JevClient()
         self.gemini = GeminiFlashClient()
+        self.deepseek = DeepSeekClient()
         self.heuristic = HeuristicMatcher()
 
     def classify(self, filepath: Path) -> Dict[str, Any]:
         sample_text = ""
         try:
             # Amostra inicial dos primeiros 2KB
-            if filepath.suffix in (".csv", ".txt", ".eml"):
-                with open(filepath, mode="r", encoding="utf-8", errors="ignore") as f:
-                    sample_text = f.read(2048)
-            elif filepath.suffix == ".ofx":
+            if filepath.suffix in (".csv", ".txt", ".eml", ".ofx"):
                 with open(filepath, mode="r", encoding="utf-8", errors="ignore") as f:
                     sample_text = f.read(2048)
         except Exception:
@@ -56,7 +56,16 @@ class TriTierRouter:
                 res_gem["extensao"] = filepath.suffix
                 return res_gem
 
-        # Tier 3: Heurística Local (Garantia de 100% de disponibilidade)
+        # Tier 3: DeepSeek V1 Flash
+        if self.deepseek.is_available():
+            res_ds = self.deepseek.classify_file(filepath.name, sample_text)
+            if res_ds and res_ds.get("confidence", 0) >= 0.85:
+                res_ds["caminho"] = str(filepath)
+                res_ds["nome"] = filepath.name
+                res_ds["extensao"] = filepath.suffix
+                return res_ds
+
+        # Tier 4: Heurística Local (Garantia de 100% de disponibilidade)
         res_heu = self.heuristic.classify_file(filepath, sample_text)
         res_heu["caminho"] = str(filepath)
         res_heu["nome"] = filepath.name
