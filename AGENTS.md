@@ -8,9 +8,15 @@ A Tarvo Pagamentos é uma subadquirente voltada à educação internacional: ag�
 
 A operação cresceu três vezes em um ano. O financeiro tem três pessoas e o fechamento leva oito dias úteis. Os arquivos são conferidos manualmente, sobretudo no Excel. Uma pessoa mantém a planilha de taxas e concentra regras não documentadas; sua ausência compromete o fechamento. Cobranças indevidas já foram descobertas apenas após reclamação de lojista.
 
+Composição confirmada por Helena em resposta à Turma do Barulho, copiada pelo usuário em 17/10/2026: **Bia** cuida do checkout e mantém a planilha de taxas; **Caio** cuida dos bancos e das remessas; **Helena** confere, aprova, decide exceções e fala com comercial, Orbe e Ponte. As condições comerciais, correspondências de nomes/EC/CNPJ, critérios de contestação e provisões estavam concentrados em Helena; sua ausência impede aplicar essas regras.
+
 ## Checkout: recebimento de alunos
 
 O aluno paga por cartão ou Pix, pela estrutura Tarvo/Orbe. A Orbe registra pagamentos e demais movimentos, com estabelecimento, modalidade, parcelas, valor bruto, taxa aplicada, valor da taxa e valor líquido. Os extratos mostram recebimentos da Orbe e repasses; os materiais não descrevem todo o percurso de custódia, liquidação e transferência dos recursos.
+
+A Orbe desconta a taxa quando paga e liquida o líquido. O lojista vê o desconto no extrato de repasse enviado pela Tarvo. A nota documenta a taxa já descontada e não gera cobrança adicional.
+
+Pela regra, os repasses ocorrem duas vezes por mês, perto dos dias 10 e 24, pelo que a Orbe já liquidou. A regra consta do contrato de adesão de cada lojista, em pasta do comercial. Em esclarecimento posterior, Helena confirmou a exceção prática: quando um lojista pressiona, Bia às vezes paga antes da liquidação Orbe usando a conta garantida do Aurora. Essa exceção não está documentada, não tem limite definido e depende de quem executa. Isso esclarece a aparente contradição entre as respostas anteriores. Não equiparar automaticamente esse pagamento antecipado às operações de antecipação tarifadas no relatório da Orbe.
 
 As taxas contratadas variam por lojista, modalidade e vigência: débito, crédito à vista, crédito de 2–6 parcelas, crédito de 7–12 parcelas, Pix e antecipação. MDR é a taxa sobre o pagamento. Antecipação permite receber antes valores futuros, mediante taxa.
 
@@ -42,6 +48,8 @@ Regras confirmadas:
 - Os spreads negativos questionados foram rejeitados: a trava contratual dura duas horas e essas operações passaram do prazo. Ficam fora da comissão e da nota, com contestação pelo financeiro. Não extrapolar essa explicação para situações novas sem evidência.
 
 O e-mail da Ponte prevê o repasse de setembro em 06/10/2026, condicionado ao recebimento da nota fiscal de intermediação. A Ponte paga a participação à Tarvo; o lojista identifica a origem comercial da comissão.
+
+Após uma contestação, a Ponte responde por e-mail e envia o ajuste como crédito ou débito no relatório do mês seguinte. Helena confere e registra no fechamento do mês em que o ajuste aparece.
 
 ## Faturamento
 
@@ -78,9 +86,15 @@ O financeiro esclareceu os fatos, mas deixou a proposta dos lançamentos e o tra
 
 A rotina descrita envolve baixar relatórios, abrir anexos, consultar taxas, identificar lojistas, conferir vigências e movimentos, apurar comissões, investigar divergências, preparar notas e classificar extratos. Nomes inconsistentes, contratos incompletos, acordos não comunicados, duplicidades e diferenças entre competência e caixa exigem investigação e conhecimento humano.
 
+Sequência confirmada: baixar Orbe, e-mail Ponte e extratos → casar transações Orbe com taxas e apurar checkout por lojista → apurar remessa → classificar extratos no ERP → montar notas. Bia e Caio executam; Helena confere e aprova. O único registro de conclusão é uma aba de controle na mesma planilha, com “ok” e data por etapa.
+
+Distribuição aproximada dos oito dias: checkout, 3 dias (metade de associação manual de nomes/EC/CNPJ e metade de retrabalho por planilha desatualizada); remessa, 2 dias (principalmente espera por Ponte e comercial); classificação bancária, 2 dias (quase tudo manual, linha por linha); último dia para notas e revisão de Helena. Esses tempos são estimativas do financeiro, não medições independentes.
+
 ## Lacunas conhecidas
 
 Até a verificação feita no dia 16/10, faltam especificações completas de arredondamento, histórico contratual necessário a certos estornos, precedência de duplicidades conflitantes, fluxo de liquidação/repasse, custos da adquirência, procedimentos fiscais e lançamentos efetivamente realizados no ERP.
+
+As revisões de 17/10 documentadas em `PROMPTS/outputs/duvidas-slack.md` e `PROMPTS/outputs/nossas-duvidas.md` complementam esse retrato inicial, incluindo arredondamento, rotina, responsáveis, esforço, desconto da taxa, calendário aproximado de repasses e retorno de contestações. A relação entre repasses do já liquidado e uso da conta garantida foi esclarecida: o primeiro é a regra; o segundo financia exceções práticas sob pressão de lojistas, sem documentação ou limite definido.
 
 ## Referências
 

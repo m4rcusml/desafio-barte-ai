@@ -1,5 +1,26 @@
 # Nossas dúvidas × Slack, documento do case, data pack e material de apoio
 
+## Situação atual — resposta da Tarvo às seis perguntas
+
+As seis perguntas enviadas pela Turma do Barulho foram respondidas por Helena. O texto foi fornecido pelo usuário nesta conversa em 17/10/2026; não houve nova leitura do Slack para esta atualização, e não foi fornecido o horário ou permalink da resposta. [Mensagem enviada às 10h32](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792243935921379).
+
+| Pergunta | Resposta confirmada |
+|---|---|
+| 1. Sequência, execução, conferência e registro | Baixar Orbe, e-mail Ponte e extratos → casar Orbe com taxas e apurar checkout por lojista → apurar remessa → classificar extratos no ERP → montar notas. Bia e Caio executam; Helena confere e aprova. A conclusão é marcada com “ok” e data numa aba de controle da mesma planilha. |
+| 2. Equipe e duração | Bia cuida do checkout e da planilha de taxas; Caio, de bancos e remessas; Helena revisa, decide exceções e fala com comercial, Orbe e Ponte. Checkout: cerca de 3 dias, metade manual para casar nomes/EC/CNPJ e metade retrabalho por planilha desatualizada. Remessa: cerca de 2 dias, principalmente espera por Ponte e comercial. Extratos: cerca de 2 dias, quase tudo manual, linha por linha. Último dia: notas e revisão de Helena. |
+| 3. Regras tácitas | Quase tudo já descoberto no canal estava concentrado em Helena: condições combinadas pelo comercial, correspondência entre nomes/EC/CNPJ, aceitação ou contestação da Ponte e provisões anteriores. São usadas na comissão, remessa e classificação. Sua ausência impede aplicar essas regras. A resposta identifica os grupos de conhecimento; não fornece uma contagem exaustiva de regras. |
+| 4. Desconto e nota | A Orbe liquida o líquido: a taxa é descontada quando ela paga. O lojista vê o desconto no extrato de repasse enviado pela Tarvo. A nota documenta a taxa já descontada e não gera nova cobrança. Cobrança a maior reduz o valor recebido e exige devolução, observada a exceção da Casa do Estudante já registrada. |
+| 5. Repasse | Pela regra, a Tarvo repassa duas vezes por mês, perto dos dias 10 e 24, o que a Orbe já liquidou. A condição consta do contrato de adesão de cada lojista, guardado em pasta do comercial. Helena esclareceu depois que Bia às vezes paga antes da liquidação, sob pressão do lojista, usando a conta garantida. Essa exceção não está documentada e não tem limite definido. “Perto” não define dias exatos nem regra de feriados. |
+| 6. Contestação Ponte | A Ponte responde por e-mail e envia o ajuste como crédito ou débito no relatório do mês seguinte. Helena confere e registra no fechamento do mês em que o ajuste aparece. |
+
+**Contradição esclarecida por Helena:** repassar o já liquidado é a regra. Na prática, quando um lojista pressiona, Bia às vezes paga antes de a Orbe liquidar, usando a conta garantida. Essa exceção não está escrita e não tem limite definido; depende de quem executa. Portanto, as respostas anteriores descreviam a regra e uma exceção operacional, sem que uma revogasse a outra. A falta de documentação e de limite é um fato confirmado sobre a operação, não uma regra a ser inventada pela solução. Não equiparar automaticamente esse adiantamento de caixa às operações de antecipação tarifadas no CSV Orbe. A conciliação parcela por parcela continua fora do escopo já delimitado.
+
+**Proveniência do esclarecimento:** resposta “[Financeiro] Resposta para Turma do Barulho (repasse)”, copiada pelo usuário nesta conversa em 17/10/2026, sem horário ou permalink informado. Não foi feita nova consulta ou postagem no Slack nesta atualização.
+
+As perguntas gerais abaixo ficam como histórico da investigação, não como lista pendente para reenvio. O maior consumo de tempo e o retorno da contestação, antes não respondidos, agora estão esclarecidos. Os custos Orbe–Tarvo continuam sem valores informados, mas não são necessários para a comissão definida no case. Nenhuma nova mensagem foi enviada ao Slack nesta atualização.
+
+## Histórico da análise anterior à resposta da Turma do Barulho
+
 Comparação feita em **17/10/2026**, inicialmente com as 36 mensagens retornadas pela busca do [canal de dúvidas](https://app.slack.com/client/T0CA2KVNG4U/C0CA0S5D37B), incluindo respostas nas conversas, e atualizada com as mensagens lidas até **9h49** e o HTML “Do Cartão ao Caixa”. O registro das perguntas e respostas úteis está em [duvidas-slack.md](duvidas-slack.md).
 
 **Critério:** confirmado = resposta explícita suficiente para aquele ponto; ambíguo = há esclarecimento parcial, mas falta uma distinção ou detalhe para resolver a pergunta inteira; não respondido = não foi encontrada resposta direta. Uma pergunta composta pode ter partes em categorias diferentes. Propostas de participantes não são tratadas como confirmação do cliente.
@@ -235,7 +256,7 @@ Com a leitura até 9h49, também ficaram confirmados os responsáveis por aprova
 
 As seis lacunas restantes foram consolidadas na mensagem abaixo. Nenhuma pergunta foi enviada ao Slack.
 
-## Lista final de perguntas à Tarvo — pronta para copiar no Slack
+## Histórico das seis perguntas enviadas — respondidas
 
 [financeiro] Turma do Barulho: lemos o case, o data pack, o material “Do Cartão ao Caixa” e as respostas do canal até 9h49. Restaram estas dúvidas:
 

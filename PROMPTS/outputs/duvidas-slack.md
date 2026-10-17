@@ -237,3 +237,24 @@ O HTML compartilhado por Leandro Kauffmann às 9h15 foi lido integralmente. Expl
 ## Esclarecimentos posteriores ao contexto do AGENTS.md
 
 O canal contém respostas que complementam lacunas do resumo local: regra completa de arredondamento (item 11), contrapartida e provisões na classificação (12), tratamento do excesso de spread no realizado (13), orientação de prazo para contestação (15) e fluxo de liquidação/conta garantida (16). A tolerância de remessa recebeu resposta (9), mas seu limite numérico foi delegado aos participantes. Esses esclarecimentos não resolvem a precedência de duplicatas conflitantes, a agenda detalhada de recebíveis ou o procedimento fiscal completo.
+
+## Resposta para Turma do Barulho — operação atual e fechamento
+
+**Proveniência:** resposta de Helena copiada pelo usuário nesta conversa em 17/10/2026, após o envio das seis perguntas. Sem horário ou permalink da resposta informado; não foi feita nova consulta ao Slack nesta atualização. [Perguntas enviadas às 10h32](https://bartehackathonai.slack.com/archives/C0CA0S5D37B/p1792243935921379).
+
+1. **Sequência e controle:** baixar relatório Orbe, e-mail Ponte e exportar os extratos; casar Orbe com taxas e calcular checkout por lojista; apurar remessa; classificar extratos no ERP; montar notas. Bia e Caio executam. Helena confere e aprova. Uma aba de controle da mesma planilha contém “ok” e data de conclusão de cada etapa.
+2. **Equipe e esforço:** Bia mantém taxas e cuida do checkout. Caio cuida de bancos e remessas. Helena revisa, decide exceções e se comunica com comercial e parceiros. Checkout consome cerca de 3 dias: metade de associação manual nome/EC/CNPJ e metade de retrabalho por desatualização da planilha. Remessa consome cerca de 2 dias, principalmente esperando Ponte e comercial. Classificação dos extratos consome cerca de 2 dias, quase toda manual. O último dia é para notas e revisão.
+3. **Conhecimento concentrado:** quase tudo já descoberto no canal estava com Helena: condições comerciais, identificação dos lojistas, aceitação/contestação de operações Ponte e provisões. Aplica-se a comissão, remessa e classificação; sua ausência impede aplicar essas regras. Não foi dada contagem exaustiva.
+4. **Desconto e faturamento:** Orbe desconta a taxa quando paga e liquida o líquido. O lojista vê no extrato de repasse enviado pela Tarvo. Nota apenas documenta a taxa descontada, sem cobrança adicional. Cobrança a maior significa recebimento a menor e necessidade de devolução; o tratamento específico da Casa do Estudante permanece separado conforme esclarecimento das 9h44.
+5. **Repasses:** pela regra, duas vezes por mês, perto dos dias 10 e 24, pelo que a Orbe já liquidou. Condição no contrato de adesão de cada lojista, em pasta do comercial. A exceção prática foi esclarecida na resposta complementar abaixo.
+6. **Correção Ponte:** retorno por e-mail e ajuste no relatório do mês seguinte, como crédito ou débito. Helena confere e registra no fechamento em que o ajuste aparece.
+
+### Esclarecimento complementar — repasse e conta garantida
+
+**Pergunta:** os repasses próximos dos dias 10 e 24 incluem apenas valores já liquidados pela Orbe ou também valores ainda a receber, antecipados com a conta garantida do Aurora? Se ambos ocorrem, em quais situações a conta garantida é usada?
+
+**Resposta de Helena:** pela regra, o repasse é do que a Orbe já liquidou. Na prática, quando um lojista pressiona, Bia às vezes paga antes da liquidação e usa a conta garantida. Essa exceção não está documentada, não tem limite definido e depende de quem executa.
+
+**Conclusão:** a aparente contradição entre o item 5 e a resposta do item 16 está esclarecida: uma descreve a regra contratual; a outra, uma exceção operacional. Não há evidência suficiente para equiparar esse adiantamento de caixa às operações de antecipação tarifadas no relatório Orbe.
+
+**Proveniência:** texto “[Financeiro] Resposta para Turma do Barulho (repasse)” fornecido pelo usuário nesta conversa em 17/10/2026. Horário e permalink da resposta não informados. Nenhuma nova leitura ou mensagem no Slack nesta atualização.
