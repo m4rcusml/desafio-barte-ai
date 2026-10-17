@@ -97,17 +97,24 @@ O pipeline foi projetado para **nunca interromper a execução**, combinando int
 
 ### 4.2. Remessas Internacionais (Câmbio)
 - **Base da Tarvo:** 50% sobre o Spread BRL realizado por operação. Total de comissão apurada: **R$ 39.543,42**.
-- **Nota Fiscal Única:** Emitida uma única nota fiscal para a parceira e pagadora **Ponte Câmbio Soluções Financeiras S.A.** (CNPJ `40.892.317/0001-44`).
+- **Nota Fiscal Única:** Emitida uma única nota fiscal para a parceira e pagadora **Ponte Câmbio Soluções Financeiras S.A.** (CNPJ `75374179000146`, extraído dinamicamente do e-mail `.eml`).
 - **Exclusão de Spreads Negativos:** 4 operações com trava de 2h expirada (`PC-0926-0210`, `PC-0926-0326`, `PC-0926-0491` e `PC-0926-0545`) foram excluídas da nota e enviadas a `pendencias.csv` para contestação integral de Helena com a Ponte.
 - **Auditoria de Taxas Mundo Aberto:** A taxa aplicada de 1,50% contra 1,20% acordada em aditivo gerou 23 divergências no valor cheio pago a mais (**R$ 1.418,88**). A parte da Tarvo permanece provisionada em setembro até a liquidação definitiva.
 
 ### 4.3. Classificação Contábil & Conciliação Bancária
+- **Mapeamento Canônico de Linha Física Real:**
+  - Extrato Banco Aurora: utiliza as linhas físicas originais do CSV bruto (`L9` a `L92`), descartando o cabeçalho descritivo bancário e a linha de `SALDO ANTERIOR`. O cabeçalho foi tratado com lookup insensível a maiúsculas e acentos (`Lançamento` ou `Histórico`), prevenindo descrições em branco.
+  - Extrato Banco Meridiano: mapeia com exatidão o `ref_origem = FITID` de cada tag `<STMTTRN>`.
 - **Princípio da Contrapartida Bancária:** Pagamentos em setembro de despesas já provisionadas em competências anteriores baixam o passivo sem duplicar despesa no resultado:
   - Salários de agosto baixam `2.1.04.001` (Salários a pagar).
-  - Impostos de agosto (ISS, INSS, FGTS, IRRF, PIS, COFINS) baixam as respectivas contas de tributos a recolher.
+  - Impostos de agosto (DAMSP, ISS, GPS, GRF, DARF) baixam as respectivas contas de tributos a recolher dos grupos `2.1.03` e `2.1.04`.
   - Repasse de câmbio de agosto recebido em 04/09 baixa `1.1.03.002` (Comissões a receber).
-- **Despesas de Competência Setembro:** Reconhecimento direto de fornecedores correntes (AWS, Google Workspace, Condomínio, Contabilidade e Tarifas Bancárias).
-- **Trânsitos e Créditos Não Identificados:** Pix de R$ 7.350,00 alocado em `1.1.09.002` (Créditos a identificar) e transferência entre contas próprias de R$ 300.000,00 em `1.1.09.001` (Valores em trânsito).
+- **Despesas de Competência Setembro:** Reconhecimento direto de fornecedores correntes (AWS, Google Workspace, Condomínio, Contabilidade e Tarifas Bancárias do grupo `4.2.xx`).
+- **Eliminação de Fake IA:** Lançamentos sem regra recebem `metodo = "HUMANO"`, `confianca = 0.00`, conta transitória `1.1.09.002` e abrem pendência `LANCAMENTO_SEM_REGRA`.
+- **Conciliação Bancária e Detecção Dinâmica de Pendências:**
+  - Transferência entre contas próprias de R$ 300.000,00 no Aurora em 30/09 (linha física L92) sem compensação no Meridiano na mesma data -> pendência `TRANSITO_BANCARIO` (`quem_decide = "Caio / Conciliação Bancária"`).
+  - Crédito Pix não identificado de R$ 7.350,00 na linha física L50 -> pendência `CREDITO_NAO_IDENTIFICADO` (`quem_decide = "Helena / Financeiro"`).
+  - Devolução operacional sem causa de R$ 12.400,00 na linha física L65 -> pendência `DEVOLUCAO_SEM_CAUSA` (`quem_decide = "Helena / Comercial"`).
 
 ---
 
@@ -122,18 +129,20 @@ Em resposta à diretriz da coordenação (*"Quem abrir tem que conseguir refazer
   1. Todas as comissões por lojista (`COM-XXXX`).
   2. Todas as notas fiscais a emitir (`NF-XXXX`), incluindo a nota da Ponte Câmbio.
   3. Todas as divergências de taxa apuradas (`DIV-XXXX`), vinculadas às linhas originais contestadas.
+  4. Lançamentos bancários (`LAN-XXXX`) com linha física real (`L9` a `L92`) e FITID.
+  5. Pendências analíticas (`PEN-XXXX`) rastreadas individualmente.
 
 ### 5.2. Prova Real Matemática Centavo a Centavo
-- Cada um dos **171 IDs reportados** nas saídas oficiais possui verificação algorítmica:
-  $$\sum \text{rastro.csv.valor}(id\_saida) \equiv \text{relatorio\_oficial.valor}(id\_saida)$$
+- Cada um dos IDs reportados nas saídas oficiais possui verificação algorítmica:
+  $$\forall id\_saida \in \{COM, DIV, NF, LAN, PEN\} : \sum_{rastro} valor \equiv valor\_reportado$$
 - Inconsistências ou diferenças de arredondamento: **ZERO**.
 
 ### 5.3. Manifestos de Execução
-Gerados a cada rodada em formato estruturado ([`auditoria_execucao.json`](file:///C:/projetosdaniel/desafio-barte-ai/fechamento-completo/auditoria_execucao.json)) e executivo ([`auditoria_execucao.md`](file:///C:/projetosdaniel/desafio-barte-ai/fechamento-completo/auditoria_execucao.md)), contendo:
+Gerados a cada rodada em formato estruturado ([`auditoria_execucao.json`](file:///C:/projetosdaniel/desafio-barte-ai/barte-solution/desafio-barte-ai/saida/auditoria_execucao.json)) e executivo ([`auditoria_execucao.md`](file:///C:/projetosdaniel/desafio-barte-ai/barte-solution/desafio-barte-ai/saida/auditoria_execucao.md)), contendo:
 - Timestamp ISO 8601 com fuso horário da execução.
-- Inventário detalhado dos arquivos lidos (linhas físicas, tamanho em bytes, hash, método de triagem).
+- Inventário detalhado dos arquivos brutos lidos (linhas físicas, tamanho em bytes, hash, método de triagem).
 - Status do fechamento (`PROVISORIO` ou `APROVADO_POR_HELENA`).
-- Resumo de todas as 11 regras contábeis aplicadas.
+- Resumo de todas as regras contábeis e fiscais aplicadas.
 - Validação formal da prova real de conciliação.
 
 ---
@@ -145,9 +154,9 @@ Gerados a cada rodada em formato estruturado ([`auditoria_execucao.json`](file:/
 | **`comissoes_por_lojista.csv`** | 35 | **R$ 243.278,76** | 21 lojistas Checkout (R$ 203.735,34) + 14 clientes Câmbio (R$ 39.543,42) |
 | **`divergencias_taxa.csv`** | 115 | **R$ 3.016,37** | 92 transações Checkout (R$ 1.597,49) + 23 operações Remessa (R$ 1.418,88) |
 | **`notas_a_emitir.csv`** | 21 | **R$ 243.284,26** | 20 notas Checkout (saldo > 0) + 1 Nota Ponte Câmbio S.A. |
-| **`lancamentos_classificados.csv`** | 184 | **100% Conciliado** | 84 lançamentos Aurora CC 44710 + 100 lançamentos Meridiano CC 902335 |
-| **`pendencias.csv`** | 187 | **R$ 584.053,44** | Atlas bloqueada, Isenção Casa Estudante, 7 Bandeiras, Spreads Negativos |
-| **`rastro.csv`** | 4.134 | **100% Rastreabilidade** | $\sum \text{rastro.valor} \equiv \text{valor\_reportado}$ para COM, NF e DIV |
+| **`lancamentos_classificados.csv`** | 184 | **100% Conciliado** | 84 lançamentos Aurora CC 44710 (L9 a L92) + 100 lançamentos Meridiano CC 902335 |
+| **`pendencias.csv`** | 190 | **R$ 903.790,21** | Atlas bloqueada, Isenção Casa Estudante, 7 Bandeiras, Spreads Negativos, Trânsito 300k, Pix 7.350 |
+| **`rastro.csv`** | 4.508 | **100% Rastreabilidade** | $\sum \text{rastro.valor} \equiv \text{valor\_reportado}$ para COM, NF, DIV, LAN e PEN |
 | **`auditoria_execucao.json`** | 1 | — | Manifesto estruturado de inventário e metadados de execução |
 | **`auditoria_execucao.md`** | 1 | — | Relatório executivo de auditoria institucional |
 
@@ -163,11 +172,11 @@ Basta colocar o arquivo [`fechamento_tarvo.exe`](file:///C:/projetosdaniel/desaf
 
 ### Modo 2: Linha de Comando Python
 ```powershell
-python barte-solution/desafio-barte-ai/src/app.py
+python src/app.py --data-dir ../../Tarvo_Data_Pack_set2026
 ```
 
 ### Modo 3: Suíte de Testes Automatizados
 ```powershell
-python -m unittest discover -s barte-solution/desafio-barte-ai/tests
+python -m unittest discover -s tests -v
 ```
-*(Todos os 12 testes integrados rodam em ~0.06 segundos com 100% de aprovação).*
+*(Todos os 15 testes integrados rodam em ~0.08 segundos com 100% de aprovação).*

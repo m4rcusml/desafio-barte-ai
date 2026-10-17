@@ -67,13 +67,15 @@ def main():
 
     # Encontra o diretório oficial 'saida' do repositório
     candidatos_oficial = [
-        cwd / "barte-solution" / "desafio-barte-ai" / "saida",
-        exec_dir.parent / "saida",
         cwd / "saida",
+        cwd / "barte-solution" / "desafio-barte-ai" / "saida",
+        exec_dir / "saida",
+        exec_dir / "barte-solution" / "desafio-barte-ai" / "saida",
+        exec_dir.parent / "saida",
     ]
     output_oficial = cwd / "saida"
     for cand in candidatos_oficial:
-        if cand.exists() or cand.parent.exists():
+        if cand.exists():
             output_oficial = cand
             break
 
