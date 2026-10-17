@@ -2,6 +2,8 @@
 
 Este documento orienta o trabalho no caso fictício do Desafio Barte AI: contexto do negócio, regras confirmadas, escopo e decisões de desenvolvimento. Dados, empresas, pessoas e CNPJs do data pack são sintéticos.
 
+**Estado atual:** o desenvolvimento do sistema ainda não começou. Há levantamento de regras, planejamento e análises pontuais das fontes. Requisitos de processamento e validação abaixo orientam a implementação futura; não são funcionalidades existentes nem tarefas restantes para concluir a análise do `06`.
+
 ## Orientações para o desenvolvimento
 
 - Objetivo acordado: **nível extra**, com fechamento completo de setembro/2026, rastreabilidade dos valores, pendências explicadas e processamento parametrizado para outubro.
@@ -34,7 +36,7 @@ Revisão de resultados, hipóteses e pitch é conjunta. Essas responsabilidades 
 - Fora de escopo: conciliação parcela por parcela sem agenda; execução de pagamentos/devoluções; emissão fiscal; lançamentos efetivos no ERP; envio de contestações; lucro líquido/custo financeiro sem dados; aprovação autônoma de contratos/exceções. Notas são propostas **a emitir**.
 - Outubro deve reutilizar processamento e regras com vigência. Situações inéditas geram pendências, não decisões inventadas.
 - **Inputs e fechamento parcial, confirmado por Helena em resposta fornecida pelo usuário em 17/10:** mesmas fontes e colunas são o esperado; mudam registros, lojistas e condições. Podem ocorrer atrasos, ajustes posteriores da Orbe e layout alterado sem aviso. Detectar e avisar; não presumir que o mês está completo nem adaptar sem validação um layout desconhecido.
-- Continuar o que não depende da fonte/regra ausente, com resultados provisórios e bloqueios explicitados por motivo e dependência. Helena libera; taxa/cadastro exigem decisão prévia do comercial. Estado técnico concluído não é aprovação. Preservar versões dos arquivos e resultados ao receber ajustes; natureza incremental/substitutiva e reabertura de período não foram definidas.
+- Continuar o que não depende da fonte/regra ausente, com resultados provisórios e bloqueios explicitados por motivo e dependência. Helena libera; taxa/cadastro exigem decisão prévia do comercial. Estado técnico concluído não é aprovação. Preservar versões dos arquivos e resultados ao receber ajustes. O `06` é complemento de setembro, conforme anúncio da organização descrito abaixo; natureza incremental/substitutiva de outros envios e reabertura de período aprovado continuam sem regra geral.
 - Após o feedback, priorizar premissas com efeito demonstrável sobre valores, contas ou inclusão/exclusão no fechamento. A hipótese de caixa fica fora das entregas; não investir em quantificá-la para este case.
 - O pitch deve demonstrar o que Helena fará diferente no próximo fechamento: revisar resultados rastreáveis e pendências, decidir exceções com evidências e registrar decisões reutilizáveis. Esse fluxo é objetivo do produto, não capacidade já comprovada nem promessa de eliminação da revisão humana.
 
@@ -129,6 +131,19 @@ A Orbe deposita tudo no Aurora e não paga lojistas diretamente. Débito/Pix liq
 | `04_plano_de_contas_fenix_erp.csv` | Hierarquia e contas disponíveis no ERP |
 | `05a_extrato_banco_aurora_cc4471_set2026.csv` | Conta principal; cabeçalhos, saldo anterior e movimentos |
 | `05b_extrato_banco_meridiano_cc90233_set2026.ofx` | Conta de remessas; 100 transações identificadas por FITID |
+| `06_orbe_ajustes_tardios_set2026.csv` | Complemento obrigatório de setembro: 14 registros no formato do `01`, sendo 10 estornos, 3 reversões de antecipação e 1 venda; todos com movimento em 30/09/2026 |
+
+### Ajustes tardios Orbe — envio concreto de 17/10/2026
+
+**Fonte:** anúncio da organização transcrito pelo usuário em 17/10/2026, sem permalink da mensagem, e leitura do [arquivo 06](https://drive.google.com/file/d/1JFUOwyEUaQK_HkYGEJ54JbWdxwIGHgEN/view) na [pasta do case](https://drive.google.com/drive/folders/1sSiIBQUUJ9XxUwwK2LyDHofbpM5rRcTD). O anúncio informa que são ajustes de setembro que ficaram fora do relatório, no mesmo formato do `01`, e que a entrega das 18h30 deve considerá-los. Helena está disponível no canal até 17h45, segundo esse anúncio.
+
+- **Confirmado apenas para este envio:** o `06` complementa o `01` e integra setembro/2026; não substitui o relatório original nem é deslocado para outubro pela data de chegada. Isso não prova completude do mês, não define o tratamento de qualquer ajuste futuro e não autoriza reabertura automática de período aprovado.
+- **Observado no `06`:** sete lojistas afetados: Dublin, Maple, Mundo Aberto, Bridge, Edu Abroad, Oxford e Kiwi. Os dois estornos Bridge referem vendas de 12 e 13/09; aplicar as condições anteriores à mudança de 15/09. As três reversões referem antecipações de Oxford (duas) e Maple (uma). A venda adicional é da Kiwi.
+- **Cruzamento executado em 17/10:** `01 + 06` contém 1.957 IDs únicos, não vazios, sem duplicatas ou conflitos sob o mesmo ID. As 13 referências do `06` apontam operações únicas no `01`, de tipo esperado, sem outra anulação referenciada no conjunto. EC, modalidade, parcelas, taxa aplicada e data original conferem; bruto, taxa e líquido são opostos exatos em todos os pares. Ver [relatório com evidências](PROMPTS/outputs/orbe-01-06-verificacao.md). Isso não apura comissão contratual nem comprova elegibilidade de todas as linhas.
+- **Pendência concreta de qualidade:** sete estornos do `06` têm bandeira diferente da venda referenciada; há também variações de nome em seis pares, com EC igual. Preservar originais, vínculos e evidências. Pelas regras confirmadas, bandeira não é dimensão da taxa; a proposta para a implementação futura é apurar pelos vínculos conferidos e manter a discrepância visível na revisão de Helena, sem excluir automaticamente nem corrigir silenciosamente. Pergunta com os sete pares está no relatório; enviada pelo usuário à Helena, aguardando resposta (sem horário ou permalink fornecidos).
+- **Ajuste técnico necessário:** aceitar vários arquivos Orbe na competência, preservar originais e execuções, reutilizar o leitor após validação do layout e reprocessar o conjunto `01 + 06`. Repetição idêntica deve contar uma vez com evidência preservada; ID com conteúdo conflitante gera pendência sem precedência automática.
+- Recalcular comissões, divergências, notas propostas, pendências e rastro dependentes; apresentar diferenças por lojista e efeito sobre notas. Zero/negativo não gera nota; negativo continua sujeito ao financeiro. Não presumir que Maple ou Oxford terminarão negativos antes da apuração. Remessas e bancos mantêm suas fontes; não criar movimentos bancários por inferência dos ajustes.
+- Repetir a execução com o mesmo conjunto não pode duplicar contribuições. A diferença entre execuções deve fechar com o rastro. Resultados alterados exigem nova revisão de Helena; conclusão técnica não herda aprovação anterior. Esses itens são requisitos, não funcionalidades ou testes já comprovados.
 
 A rotina descrita envolve baixar relatórios, abrir anexos, consultar taxas, identificar lojistas, conferir vigências e movimentos, apurar comissões, investigar divergências, preparar notas e classificar extratos. Nomes inconsistentes, contratos incompletos, acordos não comunicados, duplicidades e diferenças entre competência e caixa exigem investigação e conhecimento humano.
 
@@ -140,7 +155,7 @@ Distribuição aproximada dos oito dias: checkout, 3 dias (metade de associaçã
 
 As revisões de 17/10 resolveram arredondamento, rotina, responsáveis, esforço, desconto da taxa, calendário aproximado de repasses e retorno de contestações. Os nove estornos de agosto analisados têm referência contratual com vigência aplicável; não tratá-los como bloqueados por ausência das vendas originais no CSV de setembro.
 
-Permanecem sem confirmação: taxa vigente da Atlas; precedência em duplicatas futuras com valores conflitantes; limite numérico de tolerância escolhido pela equipe; contas específicas de casos bancários ambíguos; agenda detalhada de recebíveis e custos da adquirência/conta garantida. Procedimento fiscal completo e execução no ERP não integram a entrega planejada. Premissas e impactos estão em `HIPOTESES.md`.
+Permanecem sem confirmação: taxa vigente da Atlas; precedência em duplicatas com valores conflitantes; limite numérico de tolerância escolhido pela equipe; contas específicas de casos bancários ambíguos; agenda detalhada de recebíveis e custos da adquirência/conta garantida. Para Orbe, o envio `06` tem formato, caráter complementar e competência esclarecidos; continuam pendentes o protocolo de outros ajustes, a reabertura de períodos aprovados e o critério de completude das fontes. O cruzamento `01 + 06` não encontrou IDs repetidos ou referências ausentes/ambíguas nos ajustes, mas identificou sete diferenças de bandeira a conferir com Helena. Perguntas propostas e prioridades estão em `HIPOTESES.md` e no relatório de verificação. Procedimento fiscal completo e execução no ERP não integram a entrega planejada.
 
 ## Referências
 

@@ -2,6 +2,8 @@
 
 ## Decisões e estado
 
+**O desenvolvimento do sistema ainda não começou.** As análises pontuais das fontes já realizadas não implementam o núcleo. Os ajustes de processamento abaixo são requisitos futuros, não pendências para concluir a investigação do `06`.
+
 - **Decidido pela equipe em 17/10/2026:** apresentação por subagente, conforme instrução explícita do usuário nesta conversa.
 - **Decidido:** núcleo de análises e cálculos determinístico em Python; IA para coordenação técnica, investigação, explicação e insights. Decisões comerciais e exceções sem regra permanecem humanas.
 - **Prioridade:** mínimo de checkout por lojista com rastro e somas verificadas, executável por um comando, antes do investimento na camada agêntica. O objetivo final é o nível extra.
@@ -22,7 +24,7 @@ O subagente pode conduzir o processamento técnico sem supervisão contínua. A 
 
 | Componente | Responsabilidade |
 |---|---|
-| Ingestão | CSV, XLSX, EML com anexo XLSX e OFX; identificação do arquivo e localização de cada registro |
+| Ingestão | CSV, XLSX, EML com anexo XLSX e OFX; múltiplos arquivos Orbe na competência, identificação do arquivo e localização de cada registro |
 | Normalização | Datas, valores, unidades de taxa e CNPJs, com conteúdo original preservado |
 | Cadastro e contratos | Correspondências confirmadas EC/CNPJ, condições e vigências; ambiguidades viram pendências |
 | Apuração | Checkout e remessas com regras explícitas, valores intermediários e arredondamento |
@@ -71,6 +73,8 @@ Não há compromisso de construir Streamlit, uma API web ou infraestrutura exter
 
 Entrada proposta: competência, identificador da solicitação, referências dos arquivos disponíveis e versão das regras/decisões. Arquivos devem ser resolvidos pelo hospedeiro; o modelo não escolhe caminhos arbitrários.
 
+O conjunto de entradas deve admitir vários arquivos da mesma fonte. Para setembro/2026, incluir explicitamente `01_orbe_relatorio_comissoes_set2026.csv` e `06_orbe_ajustes_tardios_set2026.csv`, registrando no manifesto que o segundo é complemento conforme anúncio da organização. Não inferir essa relação apenas do nome, da ordem de chegada ou do hash.
+
 Saída proposta: identificador da execução, etapas concluídas, validações, resultados disponíveis, arquivos gerados, bloqueios, pendências e resumo com evidências. Incluir cobertura das fontes, dependências ausentes, situação de cada resultado e versão de entradas/regras usada. Conclusão técnica não significa aprovação humana do fechamento.
 
 Exemplos de ferramentas a implementar:
@@ -108,7 +112,7 @@ Conforme resposta fornecida pelo usuário em 17/10/2026 e registrada em `nossas-
 
 ### Desenho técnico proposto
 
-1. **Inventário de entradas:** registrar fonte esperada, arquivo/versão recebido, competência declarada, hash e estado de leitura. Distinguir arquivo ausente, arquivo inválido e arquivo válido sem movimentos; nenhum deles equivale automaticamente a valor zero.
+1. **Inventário de entradas:** registrar fonte esperada, arquivos/versões recebidos, competência declarada, hash, relação entre arquivos quando conhecida e sua evidência, além do estado de leitura. Distinguir arquivo ausente, arquivo inválido e arquivo válido sem movimentos; nenhum deles equivale automaticamente a valor zero. Vários arquivos podem pertencer à mesma fonte/competência.
 2. **Contrato de layout por leitor:** validar cabeçalhos, abas necessárias, campos, tipos e unidades. Layout incompatível bloqueia a ingestão afetada com erro localizado e aviso persistido; não tentar correspondência arbitrária de colunas pela IA. Mudança compatível só é aceita por regra explícita do leitor. O mês continua pelas dependências válidas.
 3. **Dependências explícitas no Python:** cada cálculo declara fontes, condições e referências necessárias. Bloqueios propagam somente aos resultados dependentes, não ao mês inteiro por padrão. A decisão sobre prontidão é determinística, não opinião do subagente.
 4. **Estados por resultado:** `APURADO` quando calculado com suas dependências válidas; `PROVISORIO` quando há valor calculável, mas cobertura/decisão pendente pode alterá-lo; `BLOQUEADO` quando faltam dados ou regra para calcular. Guardar motivo, dependência e responsável. Aprovação é campo separado (`PENDENTE`/`LIBERADO`), com autor, momento e escopo. Uma etapa apurada pode continuar aguardando liberação.
@@ -121,7 +125,23 @@ Exemplos de dependência: falta do relatório Ponte bloqueia remessas e sua nota
 
 Exportar resultados parciais preservando as colunas obrigatórias; acrescentar situação/cobertura quando aplicável e manifesto por execução com alertas e bloqueios. Uma saída sem linhas calculáveis não deve aparentar total zero aprovado: registrar explicitamente sua ausência de cobertura no manifesto/pendências. Exportações e propostas de notas não equivalem a emissão fiscal nem aprovação.
 
-Não alterar a regra já confirmada de ajustes Ponte no mês em que aparecem. A resposta nova menciona ajustes Orbe, sem estabelecer sua competência, formato ou reabertura automática; esses detalhes permanecem pendentes.
+Não alterar a regra já confirmada de ajustes Ponte no mês em que aparecem. A resposta inicial de Helena não definiu competência, formato ou reabertura para ajustes Orbe em geral. O anúncio posterior do `06` resolve formato, caráter complementar e competência apenas para esse envio, conforme a seção abaixo; reabertura automática continua sem autorização.
+
+### Complemento Orbe `06` — aplicação concreta e mudanças necessárias
+
+**Fonte:** anúncio da organização fornecido pelo usuário em 17/10/2026 (sem permalink da mensagem) e leitura do [arquivo 06](https://drive.google.com/file/d/1JFUOwyEUaQK_HkYGEJ54JbWdxwIGHgEN/view). São ajustes de setembro omitidos do relatório, no mesmo formato do `01`, obrigatórios para a entrega das 18h30. Isso confirma o conjunto `01 + 06` para esta entrega, sem estabelecer protocolo para qualquer outro ajuste ou provar completude do mês.
+
+O `06` contém 14 movimentos de 30/09: 10 estornos, 3 reversões de antecipação e 1 venda. Afeta Dublin, Maple, Mundo Aberto, Bridge, Edu Abroad, Oxford e Kiwi. As duas vendas originais dos estornos Bridge são de 12 e 13/09; as três reversões apontam antecipações de Oxford (duas) e Maple (uma); a venda adicional é da Kiwi. O cruzamento com o `01` foi executado em 17/10 e está no [relatório com evidências](orbe-01-06-verificacao.md): 1.957 IDs únicos não vazios, sem duplicatas/conflitos sob o mesmo ID; as 13 referências são únicas, encontradas no `01`, com tipo esperado e sem outra anulação referenciada no conjunto. EC, data original, modalidade, parcelas e taxa aplicada conferem; bruto, taxa e líquido se anulam exatamente. Há sete diferenças de bandeira e seis variações de nome. Apuração contratual e efeito nas notas permanecem por executar. O script auxiliar e o JSON da análise foram removidos, com evidências consolidadas no relatório e sem comando de reprodução mantido. O desenho abaixo é requisito para desenvolvimento futuro.
+
+1. **Ingestão e identidade:** validar o layout de ambos e usar o mesmo leitor, preservando arquivo, hash, linha física, conteúdo original, `id_transacao` e `id_referencia`. O ID de negócio serve para comparação entre arquivos; a identidade física deve preservar todas as ocorrências. Hash de arquivo sozinho não detecta sobreposição parcial.
+2. **Repetição e conflito:** contar uma só contribuição para repetição idêntica, com evidência das ocorrências descartadas. Mesmo ID com conteúdo divergente exige diagnóstico dos campos e pendência; não implementar precedência automática por nome ou chegada. Não descartar silenciosamente diferenças aparentemente não financeiras sem critério explícito. Conflitos bloqueiam apenas resultados dependentes.
+3. **Referências e cálculo:** conferir as 13 referências de estornos/reversões no conjunto e verificar anulações já registradas. Estornos usam a vigência da venda original, incluindo Bridge antes de 15/09; ausência da venda não é bloqueio automático se os campos e contratos disponíveis bastarem. Reversões devem identificar e anular a comissão da antecipação referenciada, com controle para não anulá-la duas vezes. Referência insuficiente, valor inconsistente ou alcance ambíguo gera pendência localizada. Manter cálculo contratual, sinais e arredondamento por linha; não substituir comissão por `valor_taxa`.
+4. **Nova execução:** recomputar o conjunto completo com as mesmas versões de regras, preservando entradas e resultados anteriores. Gerar diferenças por lojista entre execução apenas com `01` e execução com `01 + 06`, isolando mudanças de regras caso também ocorram. Diferença de comissão deve fechar com as contribuições efetivamente incluídas, removidas ou alteradas no rastro.
+5. **Dependências e revisão:** regenerar comissões, divergências, notas propostas, pendências e rastro afetados. Verificar os totais de Maple e Oxford após os abatimentos; não presumir nota negativa. Aplicar a regra de não gerar nota zero/negativa e encaminhar negativo ao financeiro. Remessas e classificação bancária continuam por suas fontes; se reexportadas na nova execução, identificar as versões usadas, sem inventar movimentos vinculados ao `06`. Resultados alterados aguardam revisão de Helena e não herdam aprovação anterior.
+6. **Validação e cobertura:** verificar que cada uma das 14 linhas tem destino explicado e que repetir a execução não acrescenta valores. O cruzamento confirmou 1.957 registros com IDs únicos, sem comprovar elegibilidade de todos para comissão. Registrar cobertura do conjunto recebido; completude mensal depende de confirmação própria, ainda sem protocolo definido.
+7. **Discrepâncias descritivas:** comparar também bandeira e nome com a operação referenciada, preservando os valores de cada fonte. No cruzamento concreto, sete bandeiras divergem e seis nomes variam, sem diferença de EC. Não confundir esse alerta com duplicação de ID ou divergência de taxa. Pelas dimensões contratuais confirmadas, bandeira não altera o cálculo; proposta: manter o vínculo por referência com evidências e pendência de qualidade para Helena conferir, sem exclusão automática ou sobrescrita. A pergunta concreta está no relatório e foi enviada pelo usuário à Helena; aguarda resposta, sem horário ou permalink fornecidos. Critérios futuros de aceitação de metadados divergentes devem ser explícitos, não decididos silenciosamente pelo modelo.
+
+Perguntas propostas em [HIPOTESES.md](../../HIPOTESES.md): semântica de futuros ajustes, revisão de período aprovado e confirmação de completude; conflitos/referências só devem ser levados ao financeiro com evidências concretas após a conferência técnica. Essas lacunas não justificam paralisar a inclusão do complemento conhecido nem criar perguntas repetidas sobre sua competência e formato.
 
 ## Transparência e resultados do subagente
 
@@ -138,6 +158,7 @@ Respostas devem referenciar execução, resultados e evidências; sugestões dev
 - Os seis CSVs respeitam o contrato do desafio e as somas do rastro fecham por resultado.
 - Testes cobrem arredondamento negativo, vigências, estornos anteriores à isenção, Atlas sem taxa, duplicata Ponte, negativos excluídos e classificação de provisões.
 - Testes adicionais: Ponte ausente sem bloquear checkout; arquivo inválido distinto de vazio; layout incompatível gera aviso sem remapeamento silencioso; resultado incompleto não vira total definitivo; arquivo repetido não duplica valores; correção preserva versão e não herda aprovação dos resultados alterados.
+- Para o conjunto `01 + 06`: cabeçalhos, unicidade de IDs e referências dos 13 ajustes já foram conferidos na análise pontual registrada no relatório, com alerta para sete bandeiras divergentes. Continuam como critérios do núcleo a testar: 14 linhas com destino explicado; Bridge pela vigência original; reversões pela comissão referenciada; notas após abatimentos; diferenças por lojista fechando com o rastro; repetição sem duplicação; conflitos e discrepâncias com pendência/evidência. A conferência das fontes não comprova esses critérios financeiros ou de produção.
 - O subagente não possui ferramentas de aprovação comercial ou de operação financeira externa.
 - Nova competência não exige trocar o algoritmo; evento sem regra conhecida produz pendência, sem inventar condição.
 - Dependências, comando real e limitações são documentados após verificação. Esses critérios ainda não constituem resultados de testes executados.
@@ -147,4 +168,4 @@ Respostas devem referenciar execução, resultados e evidências; sugestões dev
 - Sistema hospedeiro, ponto de acionamento e canal de entrega dos resultados/revisões.
 - Provedor/modelo e SDK agêntico; nenhuma integração ou contratação escolhida neste documento.
 - Versões fixadas, adaptador OFX e interface técnica final.
-- Semântica dos ajustes Orbe (incrementais/substitutivos e competência), revisão de períodos aprovados, layouts suportados pelos leitores e canal do hospedeiro para avisos e aprovações. A diretriz de continuar partes independentes e explicitar provisórios/bloqueios já foi confirmada.
+- Semântica dos demais ajustes Orbe (complemento/substituição e competência quando não declarada), tratamento de conflitos, revisão de períodos aprovados e critério de completude das fontes. O `06` está confirmado como complemento de setembro, no formato do `01`; isso não resolve as regras gerais. Layouts suportados pelos leitores e canal do hospedeiro para avisos e aprovações ainda precisam ser implementados/definidos. A diretriz de continuar partes independentes e explicitar provisórios/bloqueios já foi confirmada.

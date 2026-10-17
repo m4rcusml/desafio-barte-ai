@@ -6,7 +6,7 @@ Fechamento de setembro/2026 da Tarvo, com objetivo de entrega no nível extra.
 
 A equipe escolheu **subagente**, acoplável ao sistema da empresa, sobre um núcleo determinístico em Python. O núcleo calcula e valida; o subagente coordena o fluxo técnico, investiga e explica resultados. Exceções comerciais e aprovação do fechamento permanecem humanas; operações financeiras externas estão fora do escopo.
 
-O mínimo deve funcionar com um comando antes do investimento na camada agêntica. Esta seção registra planejamento, não funcionalidades implementadas. O comando e as instruções de instalação serão documentados quando existirem e forem verificados.
+O mínimo deve funcionar com um comando antes do investimento na camada agêntica. O desenvolvimento do sistema ainda não começou; foram realizados levantamento de regras e análises pontuais das fontes. Esta seção registra planejamento, não funcionalidades implementadas. O comando e as instruções de instalação serão documentados quando existirem e forem verificados.
 
 ## Documentação
 
