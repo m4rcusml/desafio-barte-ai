@@ -17,6 +17,9 @@ def format_meridiano_file(input_path: Path, output_dir: Path) -> Tuple[Path, int
     with open(input_path, "r", encoding="latin1", errors="ignore") as f:
         ofx_text = f.read()
 
+    if "<OFX>" not in ofx_text.upper() and "<STMTRS>" not in ofx_text.upper():
+        raise ValueError(f"Layout OFX inválido ou corrompido no arquivo '{input_path.name}'.")
+
     m_branch = re.search(r"<BRANCHID>(\d+)", ofx_text)
     m_acct = re.search(r"<ACCTID>([^<\r\n]+)", ofx_text)
     m_dtstart = re.search(r"<DTSTART>(\d{8})", ofx_text)

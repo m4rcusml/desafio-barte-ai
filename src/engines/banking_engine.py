@@ -33,6 +33,7 @@ class LinhaPendenciaContabil:
     motivo: str
     quem_decide: str
     id_saida: str = ""
+    arquivo_origem: str = "05a_extrato_banco_aurora_cc4471_set2026.csv"
 
 
 @dataclass
@@ -41,7 +42,7 @@ class ResultadoContabil:
     pendencias: List[LinhaPendenciaContabil]
 
 
-def classificar_extratos(silver_dir: Path) -> ResultadoContabil:
+def classificar_extratos(silver_dir: Path, competencia: Optional[str] = None) -> ResultadoContabil:
     aurora_files = glob.glob(str(silver_dir / "*AURORA*.csv"))
     meridiano_files = glob.glob(str(silver_dir / "*MERIDIANO*.csv"))
 
@@ -63,12 +64,14 @@ def classificar_extratos(silver_dir: Path) -> ResultadoContabil:
     with open(meridiano_path, mode="r", encoding="utf-8") as f:
         reader_m = csv.DictReader(f, delimiter=";")
         for r in reader_m:
+            d_s = r.get("data", "").strip()
+            if competencia and d_s and not d_s.startswith(competencia):
+                continue
             meridiano_rows.append(r)
             v_s = r.get("valor", "").strip()
             if not v_s:
                 continue
             v_dec = Decimal(v_s)
-            d_s = r.get("data", "").strip()
             desc = r.get("lancamento", "").strip().upper()
             if "MESMA TITULARIDADE" in desc and v_dec > Decimal("0.00"):
                 meridiano_creditos_mesma_titularidade.add((d_s, v_dec))
@@ -84,6 +87,8 @@ def classificar_extratos(silver_dir: Path) -> ResultadoContabil:
             linha_fisica = row.get("linha_fisica", "").strip()
             ref_origem = f"L{linha_fisica}" if linha_fisica else f"L{idx}"
             data = row.get("data", "").strip()
+            if competencia and data and not data.startswith(competencia):
+                continue
             descricao = row.get("lancamento", "").strip()
             valor = Decimal(val_str)
             desc_upper = descricao.upper()
@@ -238,6 +243,7 @@ def classificar_extratos(silver_dir: Path) -> ResultadoContabil:
                     valor_brl=abs(valor),
                     motivo=f"Lançamento '{descricao}' não classificado por regras conhecidas. Encaminhado para decisão contábil.",
                     quem_decide="Helena / Contabilidade",
+                    arquivo_origem="05b_extrato_banco_meridiano_cc90233_set2026.ofx",
                 )
             )
 

@@ -93,6 +93,9 @@ class JevClient:
                     "delayed_prob": float(noul_res.get("prob", 0.0)),
                     "method": "JEV",
                 }
+        except urllib.error.HTTPError as e:
+            e.close()
+            return None
         except Exception:
             # Falha de conexão ou timeout: delega silenciosamente para Gemini Flash
             return None

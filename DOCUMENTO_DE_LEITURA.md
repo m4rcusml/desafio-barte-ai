@@ -87,13 +87,15 @@ O pipeline foi projetado para **nunca interromper a execução**, combinando int
   - Vendas a partir de `15/09/2026`: aplicada a taxa renegociada de **2,19%**. Divergências foram apontadas onde a Orbe continuou cobrando 2,59%.
 - **Tratamento das 7 Divergências de Bandeira (Arquivo `06`):**
   - Nos 7 estornos onde a adquirente trocou a bandeira em relação à venda original (ex: Visa $\leftrightarrow$ Amex/Elo), comprovou-se que EC, modalidade, parcelas, data e taxas batiam perfeitamente.
-  - **Tratamento:** O vínculo foi mantido, a taxa contratual da venda original foi aplicada (já que os contratos da Tarvo não variam taxa por bandeira) e foram geradas 7 pendências `DIVERGENCIA_CADASTRO_BANDEIRA` em `pendencias.csv` para cobrança de correção cadastral à Orbe.
+  - **Tratamento (Homologado por Helena em 17/10):** O vínculo por `id_referencia` foi mantido, a taxa contratual da venda original foi aplicada (já que os contratos da Tarvo não variam taxa por bandeira) e a evidência das bandeiras divergentes foi preservada no `rastro.csv`, **sem abrir pendência ou contestação** apenas pela troca de bandeira.
 - **Regra de Estornos Órfãos Sem Referência (Helena, 14h10):**
   - Se um arquivo de ajustes trouxer estorno que não conste nos arquivos principais da Orbe, o ajuste entra na apuração pelo valor declarado e gera pendência `ESTORNO_ORFAO_SEM_ORIGEM` para Helena notificar a adquirente.
 - **Casa do Estudante Viagens (`1018325654`):**
-  - Isenção total de taxas acordada de set a dez/2026. Em estrita conformidade com Helena, **nenhuma cobrança foi feita contra a adquirente**. As taxas cobradas foram enviadas para devolução interna em `pendencias.csv`. Apenas o estorno de venda prévia de agosto foi descontado da apuração.
+  - Isenção total de taxas acordada de set a dez/2026. Em estrita conformidade com Helena, **nenhuma cobrança foi feita contra a adquirente**. As taxas cobradas foram enviadas para devolução interna na pendência consolidada `PEN-0058` (`R$ 15.396,77`), preservando no `rastro.csv` todas as **118 transações individuais reais da Orbe** (`01_orbe_relatorio_comissoes_set2026.csv`). Apenas o estorno de venda prévia de agosto (`R$ -5,50`) foi descontado da apuração.
 - **Bloqueio Atlas Idiomas (`1076801732`):**
-  - Operações iniciadas em 10/09 sem contrato formal assinado. 100% bloqueada de faturamento e encaminhada a `pendencias.csv` para validação comercial.
+  - Operações iniciadas em 10/09 sem contrato formal assinado. 100% bloqueada de faturamento e encaminhada a `pendencias.csv` pelo valor da taxa em disputa (`R$ 7.876,05` em 57 registros) para validação comercial.
+- **Deduplicação Exata vs. Bloqueio Integral de Conflitos:**
+  - Registros efetivamente idênticos em todos os campos relevantes são deduplicados com evidência preservada no `rastro.csv`; registros com mesmo `id_transacao` (Orbe) ou `num_operacao` (Ponte) e valores conflitantes têm **todas as ocorrências bloqueadas** (`DUPLICIDADE_CONFLITANTE`), sem escolha automática da primeira ou última versão.
 
 ### 4.2. Remessas Internacionais (Câmbio)
 - **Base da Tarvo:** 50% sobre o Spread BRL realizado por operação. Total de comissão apurada: **R$ 39.543,42**.
@@ -130,34 +132,34 @@ Em resposta à diretriz da coordenação (*"Quem abrir tem que conseguir refazer
   2. Todas as notas fiscais a emitir (`NF-XXXX`), incluindo a nota da Ponte Câmbio.
   3. Todas as divergências de taxa apuradas (`DIV-XXXX`), vinculadas às linhas originais contestadas.
   4. Lançamentos bancários (`LAN-XXXX`) com linha física real (`L9` a `L92`) e FITID.
-  5. Pendências analíticas (`PEN-XXXX`) rastreadas individualmente.
+  5. Pendências analíticas (`PEN-XXXX`) rastreadas até cada operação bruta (incluindo as 118 transações Orbe reais de `PEN-0058`).
 
 ### 5.2. Prova Real Matemática Centavo a Centavo
 - Cada um dos IDs reportados nas saídas oficiais possui verificação algorítmica:
   $$\forall id\_saida \in \{COM, DIV, NF, LAN, PEN\} : \sum_{rastro} valor \equiv valor\_reportado$$
 - Inconsistências ou diferenças de arredondamento: **ZERO**.
 
-### 5.3. Manifestos de Execução
-Gerados a cada rodada em formato estruturado ([`auditoria_execucao.json`](file:///C:/projetosdaniel/desafio-barte-ai/barte-solution/desafio-barte-ai/saida/auditoria_execucao.json)) e executivo ([`auditoria_execucao.md`](file:///C:/projetosdaniel/desafio-barte-ai/barte-solution/desafio-barte-ai/saida/auditoria_execucao.md)), contendo:
-- Timestamp ISO 8601 com fuso horário da execução.
-- Inventário detalhado dos arquivos brutos lidos (linhas físicas, tamanho em bytes, hash, método de triagem).
-- Status do fechamento (`PROVISORIO` ou `APROVADO_POR_HELENA`).
-- Resumo de todas as regras contábeis e fiscais aplicadas.
+### 5.3. Manifestos de Execução e Governança
+Gerados a cada rodada em formato estruturado ([`auditoria_execucao.json`](file:///C:/projetosdaniel/desafio-barte-ai/barte-solution/desafio-barte-ai/saida/auditoria_execucao.json)), executivo ([`auditoria_execucao.md`](file:///C:/projetosdaniel/desafio-barte-ai/barte-solution/desafio-barte-ai/saida/auditoria_execucao.md)) e histórico ([`historico_execucoes.json`](file:///C:/projetosdaniel/desafio-barte-ai/barte-solution/desafio-barte-ai/saida/historico_execucoes.json)), contendo:
+- `id_execucao`, `versao_regras`, `competencia` e timestamp ISO 8601 com fuso horário da execução.
+- Inventário detalhado dos arquivos brutos lidos (linhas físicas, tamanho em bytes, hash SHA-256, método de triagem) e cobertura por domínio (`cobertura_fontes`).
+- Separação entre `estado_tecnico` (`CONCLUIDO` / `PARCIAL_COM_BLOQUEIOS`) e `status_aprovacao` (`PROVISORIO` / `APROVADO_POR_HELENA` / `REABERTO_PARA_REVISAO`), com rebaixamento automático quando resultados mudam.
+- Comparação rastreável com a execução anterior (`comparacao_execucao_anterior`).
 - Validação formal da prova real de conciliação.
 
 ---
 
-## 6. Quadro Geral dos Resultados Homologados (Setembro/2026)
+## 6. Quadro Geral dos Resultados Verificados (Setembro/2026 — `01 + 06`)
 
 | Arquivo de Saída | Linhas | Valor Total (BRL) | Destaque Técnico |
 | :--- | :---: | :---: | :--- |
-| **`comissoes_por_lojista.csv`** | 35 | **R$ 243.278,76** | 21 lojistas Checkout (R$ 203.735,34) + 14 clientes Câmbio (R$ 39.543,42) |
-| **`divergencias_taxa.csv`** | 115 | **R$ 3.016,37** | 92 transações Checkout (R$ 1.597,49) + 23 operações Remessa (R$ 1.418,88) |
-| **`notas_a_emitir.csv`** | 21 | **R$ 243.284,26** | 20 notas Checkout (saldo > 0) + 1 Nota Ponte Câmbio S.A. |
-| **`lancamentos_classificados.csv`** | 184 | **100% Conciliado** | 84 lançamentos Aurora CC 44710 (L9 a L92) + 100 lançamentos Meridiano CC 902335 |
-| **`pendencias.csv`** | 190 | **R$ 903.790,21** | Atlas bloqueada, Isenção Casa Estudante, 7 Bandeiras, Spreads Negativos, Trânsito 300k, Pix 7.350 |
-| **`rastro.csv`** | 4.508 | **100% Rastreabilidade** | $\sum \text{rastro.valor} \equiv \text{valor\_reportado}$ para COM, NF, DIV, LAN e PEN |
-| **`auditoria_execucao.json`** | 1 | — | Manifesto estruturado de inventário e metadados de execução |
+| **`comissoes_por_lojista.csv`** | 35 | **R$ 243.278,76** | 21 lojistas Checkout (`R$ 203.735,34`) + 14 clientes Câmbio (`R$ 39.543,42`) |
+| **`divergencias_taxa.csv`** | 115 | **R$ 2.995,11** | 92 transações Checkout (`R$ 1.576,23`) + 23 operações Remessa (`R$ 1.418,88`) |
+| **`notas_a_emitir.csv`** | 21 | **R$ 243.284,26** | 20 notas Checkout (`R$ 203.740,84`, saldo > 0) + 1 Nota Ponte Câmbio S.A. (`R$ 39.543,42`) |
+| **`lancamentos_classificados.csv`** | 184 | **100% Conciliado** | 84 lançamentos Aurora CC 44710 (`L9` a `L92`) + 100 lançamentos Meridiano CC 902335 (`FITID`) |
+| **`pendencias.csv`** | 68 | **R$ 594.980,52** | 57 Atlas (`R$ 7.876,05`), 1 Casa Estudante (`R$ 15.396,77`), 1 Duplicata Ponte (`R$ 821,88`), 4 Spreads Negativos (`R$ 1.834,05`), 5 Bancárias Aurora (`R$ 569.051,77`) |
+| **`rastro.csv`** | 4.503 | **100% Rastreabilidade** | $\sum \text{rastro.valor} \equiv \text{valor\_reportado}$ para todos os 423 IDs (`COM`, `NF`, `DIV`, `LAN` e `PEN`) |
+| **`auditoria_execucao.json`** | 1 | — | Manifesto estruturado de inventário, cobertura de fontes, hashes e comparação entre execuções |
 | **`auditoria_execucao.md`** | 1 | — | Relatório executivo de auditoria institucional |
 
 ---
@@ -179,4 +181,5 @@ python src/app.py --data-dir ../../Tarvo_Data_Pack_set2026
 ```powershell
 python -m unittest discover -s tests -v
 ```
-*(Todos os 15 testes integrados rodam em ~0.08 segundos com 100% de aprovação).*
+*(Todos os 29 testes integrados são reproduzíveis do zero a partir do pacote bruto em diretórios temporários isolados).*
+

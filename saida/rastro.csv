@@ -16,7 +16,7 @@ COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88418848;1.57;Taxa contratual
 COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88418725;110.45;Taxa contratual Crédito parcelado (12x);3.79%;Bruto R$ 2914.28 * 3.79% = R$ 110.45
 COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88418683;39.29;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1460.58 * 2.69% = R$ 39.29
 COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88422689;16.15;Taxa contratual Crédito à vista;2.69%;Bruto R$ 600.45 * 2.69% = R$ 16.15
-COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88445473;-122.41;Estorno à taxa da venda original (2026-09-03);2.69%;Bruto R$ -4550.49 * 2.69% = R$ -122.41
+COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88445473;-122.41;Estorno à taxa da venda original (2026-09-03);2.69%;Bruto R$ -4550.49 * 2.69% = R$ -122.41 [Estorno bandeira MASTERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88422397;214.76;Taxa contratual Crédito parcelado (10x);3.79%;Bruto R$ 5666.57 * 3.79% = R$ 214.76
 COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88423777;97.76;Taxa contratual Crédito parcelado (2x);3.19%;Bruto R$ 3064.53 * 3.19% = R$ 97.76
 COM-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88424288;10.47;Taxa contratual Débito;1.39%;Bruto R$ 752.94 * 1.39% = R$ 10.47
@@ -71,7 +71,7 @@ COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88424393;145.88;Taxa contratu
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88424784;137.91;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 4323.19 * 3.19% = R$ 137.91
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88424228;9.15;Taxa contratual PIX;0.89%;Bruto R$ 1028.10 * 0.89% = R$ 9.15
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88424656;83.11;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 2605.29 * 3.19% = R$ 83.11
-COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88445591;-145.88;Estorno à taxa da venda original (2026-09-12);3.79%;Bruto R$ -3849.03 * 3.79% = R$ -145.88
+COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88445591;-145.88;Estorno à taxa da venda original (2026-09-12);3.79%;Bruto R$ -3849.03 * 3.79% = R$ -145.88 [Estorno bandeira VISA vs venda AMEX - vínculo por referência homologado por Helena]
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88427082;108.60;Taxa contratual Crédito parcelado (2x);3.19%;Bruto R$ 3404.47 * 3.19% = R$ 108.60
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88426567;101.17;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 3171.50 * 3.19% = R$ 101.17
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88426207;250.00;Taxa contratual Crédito parcelado (4x);3.19%;Bruto R$ 7837.13 * 3.19% = R$ 250.00
@@ -82,14 +82,14 @@ COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88428515;63.36;Taxa contratua
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88429063;54.05;Taxa contratual Crédito à vista;2.69%;Bruto R$ 2009.16 * 2.69% = R$ 54.05
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88429438;9.77;Taxa contratual PIX;0.89%;Bruto R$ 1097.58 * 0.89% = R$ 9.77
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88429268;27.77;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1032.27 * 2.69% = R$ 27.77
-COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88445821;-83.11;Estorno à taxa da venda original (2026-09-12);3.19%;Bruto R$ -2605.29 * 3.19% = R$ -83.11
+COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88445821;-83.11;Estorno à taxa da venda original (2026-09-12);3.19%;Bruto R$ -2605.29 * 3.19% = R$ -83.11 [Estorno bandeira ELO vs venda MASTERCARD - vínculo por referência homologado por Helena]
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88430431;278.62;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 8734.13 * 3.19% = R$ 278.62
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88430397;239.07;Taxa contratual Crédito parcelado (12x);3.79%;Bruto R$ 6307.87 * 3.79% = R$ 239.07
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88430646;8.95;Taxa contratual PIX;0.89%;Bruto R$ 1006.14 * 0.89% = R$ 8.95
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88431347;22.34;Taxa contratual Crédito à vista;2.69%;Bruto R$ 830.52 * 2.69% = R$ 22.34
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88432181;18.19;Taxa contratual PIX;0.89%;Bruto R$ 2043.39 * 0.89% = R$ 18.19
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88433883;10.07;Taxa contratual Débito;1.49%;Bruto R$ 675.64 * 1.49% = R$ 10.07
-COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446121;-590.63;Estorno à taxa da venda original (2026-09-11);3.79%;Bruto R$ -15583.88 * 3.79% = R$ -590.63
+COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446121;-590.63;Estorno à taxa da venda original (2026-09-11);3.79%;Bruto R$ -15583.88 * 3.79% = R$ -590.63 [Estorno bandeira VISA vs venda HIPERCARD - vínculo por referência homologado por Helena]
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88435717;133.49;Taxa contratual Crédito parcelado (4x);3.19%;Bruto R$ 4184.62 * 3.19% = R$ 133.49
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88435499;233.34;Taxa contratual Crédito parcelado (3x);3.19%;Bruto R$ 7314.71 * 3.19% = R$ 233.34
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88435962;26.94;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1001.63 * 2.69% = R$ 26.94
@@ -111,9 +111,9 @@ COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88440577;356.55;Taxa contratu
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88441563;41.05;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1526.00 * 2.69% = R$ 41.05
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88441729;119.76;Taxa contratual Crédito parcelado (2x);3.19%;Bruto R$ 3754.31 * 3.19% = R$ 119.76
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88441698;226.93;Taxa contratual Crédito parcelado (9x);3.79%;Bruto R$ 5987.61 * 3.79% = R$ 226.93
-COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446715;-313.06;Estorno à taxa da venda original (2026-09-25);3.79%;Bruto R$ -8260.20 * 3.79% = R$ -313.06
+COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446715;-313.06;Estorno à taxa da venda original (2026-09-25);3.79%;Bruto R$ -8260.20 * 3.79% = R$ -313.06 [Estorno bandeira AMEX vs venda VISA - vínculo por referência homologado por Helena]
 COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88442642;174.58;Taxa contratual Crédito à vista;2.69%;Bruto R$ 6490.11 * 2.69% = R$ 174.58
-COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446885;-155.97;Estorno à taxa da venda original (2026-09-27);3.19%;Bruto R$ -4889.30 * 3.19% = R$ -155.97
+COM-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446885;-155.97;Estorno à taxa da venda original (2026-09-27);3.19%;Bruto R$ -4889.30 * 3.19% = R$ -155.97 [Estorno bandeira HIPERCARD vs venda ELO - vínculo por referência homologado por Helena]
 COM-0003;01_orbe_relatorio_comissoes_set2026.csv;TX88410833;22.45;Taxa contratual Crédito à vista;2.69%;Bruto R$ 834.61 * 2.69% = R$ 22.45
 COM-0003;01_orbe_relatorio_comissoes_set2026.csv;TX88410204;35.68;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1326.31 * 2.69% = R$ 35.68
 COM-0003;01_orbe_relatorio_comissoes_set2026.csv;TX88410164;35.48;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1319.12 * 2.69% = R$ 35.48
@@ -195,7 +195,7 @@ COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88410045;41.21;Taxa contratua
 COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88412086;15.51;Taxa contratual Crédito à vista;2.69%;Bruto R$ 576.51 * 2.69% = R$ 15.51
 COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88411784;24.83;Taxa contratual Crédito à vista;2.69%;Bruto R$ 922.95 * 2.69% = R$ 24.83
 COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88412668;354.95;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 9365.34 * 3.79% = R$ 354.95
-COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88444937;-41.21;Estorno à taxa da venda original (2026-09-01);2.69%;Bruto R$ -1532.07 * 2.69% = R$ -41.21
+COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88444937;-41.21;Estorno à taxa da venda original (2026-09-01);2.69%;Bruto R$ -1532.07 * 2.69% = R$ -41.21 [Estorno bandeira AMEX vs venda VISA - vínculo por referência homologado por Helena]
 COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88413227;8.52;Taxa contratual PIX;0.89%;Bruto R$ 957.00 * 0.89% = R$ 8.52
 COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88412937;23.37;Taxa contratual Crédito à vista;2.69%;Bruto R$ 868.80 * 2.69% = R$ 23.37
 COM-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88413068;191.87;Taxa contratual Crédito parcelado (9x);3.79%;Bruto R$ 5062.58 * 3.79% = R$ 191.87
@@ -304,7 +304,7 @@ COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88422415;31.89;Taxa contratua
 COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88423417;589.19;Taxa contratual Crédito parcelado (12x);3.79%;Bruto R$ 15545.86 * 3.79% = R$ 589.19
 COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88423589;83.87;Taxa contratual Crédito à vista;2.69%;Bruto R$ 3117.97 * 2.69% = R$ 83.87
 COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88423548;520.70;Taxa contratual Crédito parcelado (7x);3.79%;Bruto R$ 13738.70 * 3.79% = R$ 520.70
-COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88445531;-19.52;Estorno à taxa da venda original (2026-09-10);2.69%;Bruto R$ -725.80 * 2.69% = R$ -19.52
+COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88445531;-19.52;Estorno à taxa da venda original (2026-09-10);2.69%;Bruto R$ -725.80 * 2.69% = R$ -19.52 [Estorno bandeira HIPERCARD vs venda VISA - vínculo por referência homologado por Helena]
 COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88425094;64.76;Taxa contratual Crédito à vista;2.69%;Bruto R$ 2407.54 * 2.69% = R$ 64.76
 COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88427011;6.59;Taxa contratual PIX;0.89%;Bruto R$ 740.97 * 0.89% = R$ 6.59
 COM-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88426754;144.34;Taxa contratual Crédito parcelado (12x);3.79%;Bruto R$ 3808.34 * 3.79% = R$ 144.34
@@ -496,7 +496,7 @@ COM-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88418756;5.32;Taxa contratual
 COM-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88419028;5.90;Taxa contratual Débito;1.49%;Bruto R$ 395.67 * 1.49% = R$ 5.90
 COM-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88419885;142.40;Taxa contratual Crédito parcelado (2x);3.19%;Bruto R$ 4463.97 * 3.19% = R$ 142.40
 COM-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88420446;427.57;Taxa contratual Crédito parcelado (10x);3.49%;Bruto R$ 12251.27 * 3.49% = R$ 427.57
-COM-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88445298;-13.59;Estorno à taxa da venda original (2026-09-02);1.49%;Bruto R$ -912.11 * 1.49% = R$ -13.59
+COM-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88445298;-13.59;Estorno à taxa da venda original (2026-09-02);1.49%;Bruto R$ -912.11 * 1.49% = R$ -13.59 [Estorno bandeira HIPERCARD vs venda ELO - vínculo por referência homologado por Helena]
 COM-0008;01_orbe_relatorio_comissoes_set2026.csv;AN88445325;631.86;Taxa contratual de antecipação;2.10%;Bruto R$ 30088.46 * 2.10% = R$ 631.86
 COM-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88421039;19.11;Taxa contratual Crédito à vista;2.69%;Bruto R$ 710.23 * 2.69% = R$ 19.11
 COM-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88422470;174.42;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 5467.80 * 3.19% = R$ 174.42
@@ -639,7 +639,7 @@ COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88436752;58.21;Taxa contratua
 COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88436788;1.69;Taxa contratual PIX (Corte vigência pós-15/09);0.89%;Bruto R$ 190.30 * 0.89% = R$ 1.69
 COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88436800;29.02;Taxa contratual Crédito à vista (Corte vigência pós-15/09);2.19%;Bruto R$ 1325.19 * 2.19% = R$ 29.02
 COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88436518;285.98;Taxa contratual Crédito parcelado (4x) (Corte vigência pós-15/09);3.19%;Bruto R$ 8965.01 * 3.19% = R$ 285.98
-COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88446447;-147.02;Estorno à taxa da venda original (2026-09-14);3.19%;Bruto R$ -4608.80 * 3.19% = R$ -147.02
+COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88446447;-147.02;Estorno à taxa da venda original (2026-09-14);3.19%;Bruto R$ -4608.80 * 3.19% = R$ -147.02 [Estorno bandeira MASTERCARD vs venda ELO - vínculo por referência homologado por Helena]
 COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88436323;117.31;Taxa contratual Crédito parcelado (4x) (Corte vigência pós-15/09);3.19%;Bruto R$ 3677.44 * 3.19% = R$ 117.31
 COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88437309;31.22;Taxa contratual Crédito à vista (Corte vigência pós-15/09);2.19%;Bruto R$ 1425.45 * 2.19% = R$ 31.22
 COM-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88437399;26.17;Taxa contratual Crédito à vista (Corte vigência pós-15/09);2.19%;Bruto R$ 1194.96 * 2.19% = R$ 26.17
@@ -695,7 +695,7 @@ COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88418886;10.93;Taxa contratua
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88419707;138.62;Taxa contratual Crédito à vista;2.69%;Bruto R$ 5153.25 * 2.69% = R$ 138.62
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88418470;337.12;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 8895.11 * 3.79% = R$ 337.12
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88420771;224.29;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 7030.97 * 3.19% = R$ 224.29
-COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88445191;-14.24;Estorno à taxa da venda original (2026-09-05);1.49%;Bruto R$ -956.03 * 1.49% = R$ -14.24
+COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88445191;-14.24;Estorno à taxa da venda original (2026-09-05);1.49%;Bruto R$ -956.03 * 1.49% = R$ -14.24 [Estorno bandeira ELO vs venda MASTERCARD - vínculo por referência homologado por Helena]
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88420230;5.76;Taxa contratual PIX;0.79%;Bruto R$ 728.89 * 0.79% = R$ 5.76
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88420636;110.00;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 3448.28 * 3.19% = R$ 110.00
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88420652;51.89;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1928.96 * 2.69% = R$ 51.89
@@ -739,7 +739,7 @@ COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88436441;193.10;Taxa contratu
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88437754;6.45;Taxa contratual PIX;0.79%;Bruto R$ 816.48 * 0.79% = R$ 6.45
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88437348;25.38;Taxa contratual Crédito à vista;2.69%;Bruto R$ 943.59 * 2.69% = R$ 25.38
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88438343;219.29;Taxa contratual Crédito parcelado (2x);3.19%;Bruto R$ 6874.18 * 3.19% = R$ 219.29
-COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88446602;-149.97;Estorno à taxa da venda original (2026-09-23);3.19%;Bruto R$ -4701.10 * 3.19% = R$ -149.97
+COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88446602;-149.97;Estorno à taxa da venda original (2026-09-23);3.19%;Bruto R$ -4701.10 * 3.19% = R$ -149.97 [Estorno bandeira HIPERCARD vs venda MASTERCARD - vínculo por referência homologado por Helena]
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88438969;109.96;Taxa contratual Crédito parcelado (6x);3.19%;Bruto R$ 3447.03 * 3.19% = R$ 109.96
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88441187;107.17;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 3359.70 * 3.19% = R$ 107.17
 COM-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88440474;68.77;Taxa contratual Crédito à vista;2.69%;Bruto R$ 2556.66 * 2.69% = R$ 68.77
@@ -822,14 +822,14 @@ COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88441119;75.14;Taxa contratua
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88441108;49.15;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1827.27 * 2.69% = R$ 49.15
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88441991;4.04;Taxa contratual Débito;1.49%;Bruto R$ 271.29 * 1.49% = R$ 4.04
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88441530;129.17;Taxa contratual Crédito parcelado (2x);3.19%;Bruto R$ 4049.29 * 3.19% = R$ 129.17
-COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88446684;-5.38;Estorno à taxa da venda original (2026-09-20);1.49%;Bruto R$ -360.90 * 1.49% = R$ -5.38
+COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88446684;-5.38;Estorno à taxa da venda original (2026-09-20);1.49%;Bruto R$ -360.90 * 1.49% = R$ -5.38 [Estorno bandeira ELO vs venda MASTERCARD - vínculo por referência homologado por Helena]
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88441585;190.96;Taxa contratual Crédito parcelado (7x);3.79%;Bruto R$ 5038.50 * 3.79% = R$ 190.96
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88443089;4.88;Taxa contratual PIX;0.89%;Bruto R$ 548.81 * 0.89% = R$ 4.88
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88444598;3.04;Taxa contratual PIX;0.89%;Bruto R$ 341.06 * 0.89% = R$ 3.04
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88443849;287.71;Taxa contratual Crédito parcelado (6x);3.19%;Bruto R$ 9019.08 * 3.19% = R$ 287.71
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88446907;-30.68;Estorno à taxa da venda original (2026-09-24);2.69%;Bruto R$ -1140.46 * 2.69% = R$ -30.68
 COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88444446;11.14;Taxa contratual Débito;1.49%;Bruto R$ 747.49 * 1.49% = R$ 11.14
-COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88446959;-129.17;Estorno à taxa da venda original (2026-09-28);3.19%;Bruto R$ -4049.29 * 3.19% = R$ -129.17
+COM-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88446959;-129.17;Estorno à taxa da venda original (2026-09-28);3.19%;Bruto R$ -4049.29 * 3.19% = R$ -129.17 [Estorno bandeira MASTERCARD vs venda HIPERCARD - vínculo por referência homologado por Helena]
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88411343;154.48;Taxa contratual Crédito parcelado (6x);3.19%;Bruto R$ 4842.71 * 3.19% = R$ 154.48
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88411173;116.47;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 3651.00 * 3.19% = R$ 116.47
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88411289;53.63;Taxa contratual Crédito à vista;2.59%;Bruto R$ 2070.82 * 2.59% = R$ 53.63
@@ -886,7 +886,7 @@ COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88431527;77.52;Taxa contratua
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88432872;40.83;Taxa contratual Crédito à vista;2.59%;Bruto R$ 1576.54 * 2.59% = R$ 40.83
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88432862;30.21;Taxa contratual Crédito à vista;2.59%;Bruto R$ 1166.55 * 2.59% = R$ 30.21
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88434139;67.28;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 2109.24 * 3.19% = R$ 67.28
-COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88446182;-24.84;Estorno à taxa da venda original (2026-09-13);2.59%;Bruto R$ -958.90 * 2.59% = R$ -24.84
+COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88446182;-24.84;Estorno à taxa da venda original (2026-09-13);2.59%;Bruto R$ -958.90 * 2.59% = R$ -24.84 [Estorno bandeira MASTERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88433148;8.95;Taxa contratual PIX;0.89%;Bruto R$ 1005.42 * 0.89% = R$ 8.95
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88435046;205.67;Taxa contratual Crédito parcelado (10x);3.79%;Bruto R$ 5426.77 * 3.79% = R$ 205.67
 COM-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88434946;15.95;Taxa contratual Crédito à vista;2.59%;Bruto R$ 616.00 * 2.59% = R$ 15.95
@@ -950,7 +950,7 @@ COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88423594;148.23;Taxa contratu
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88423743;6.61;Taxa contratual Débito;1.49%;Bruto R$ 443.65 * 1.49% = R$ 6.61
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88424464;192.91;Taxa contratual Crédito parcelado (5x);3.19%;Bruto R$ 6047.37 * 3.19% = R$ 192.91
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88423605;6.89;Taxa contratual PIX;0.89%;Bruto R$ 773.61 * 0.89% = R$ 6.89
-COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88445564;-290.33;Estorno à taxa da venda original (2026-09-06);3.79%;Bruto R$ -7660.42 * 3.79% = R$ -290.33
+COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88445564;-290.33;Estorno à taxa da venda original (2026-09-06);3.79%;Bruto R$ -7660.42 * 3.79% = R$ -290.33 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88425522;74.67;Taxa contratual Crédito parcelado (6x);3.19%;Bruto R$ 2340.77 * 3.19% = R$ 74.67
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88425694;31.79;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1181.86 * 2.69% = R$ 31.79
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88426870;7.11;Taxa contratual PIX;0.89%;Bruto R$ 799.31 * 0.89% = R$ 7.11
@@ -964,7 +964,7 @@ COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88427567;21.61;Taxa contratua
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88427683;163.57;Taxa contratual Crédito parcelado (3x);3.19%;Bruto R$ 5127.52 * 3.19% = R$ 163.57
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88427514;25.78;Taxa contratual Crédito à vista;2.69%;Bruto R$ 958.54 * 2.69% = R$ 25.78
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88428455;22.92;Taxa contratual Crédito à vista;2.69%;Bruto R$ 851.88 * 2.69% = R$ 22.92
-COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88445799;-199.56;Estorno à taxa da venda original (2026-09-15);3.79%;Bruto R$ -5265.46 * 3.79% = R$ -199.56
+COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88445799;-199.56;Estorno à taxa da venda original (2026-09-15);3.79%;Bruto R$ -5265.46 * 3.79% = R$ -199.56 [Estorno bandeira MASTERCARD vs venda ELO - vínculo por referência homologado por Helena]
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88428574;83.30;Taxa contratual Crédito parcelado (12x);3.79%;Bruto R$ 2197.87 * 3.79% = R$ 83.30
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88429913;38.31;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1424.33 * 2.69% = R$ 38.31
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88430142;81.91;Taxa contratual Crédito parcelado (4x);3.19%;Bruto R$ 2567.65 * 3.19% = R$ 81.91
@@ -975,7 +975,7 @@ COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88434998;498.36;Taxa contratu
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88435171;112.91;Taxa contratual Crédito parcelado (4x);3.19%;Bruto R$ 3539.62 * 3.19% = R$ 112.91
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88434503;74.71;Taxa contratual Crédito parcelado (4x);3.19%;Bruto R$ 2341.91 * 3.19% = R$ 74.71
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88436077;105.38;Taxa contratual Crédito parcelado (3x);3.19%;Bruto R$ 3303.51 * 3.19% = R$ 105.38
-COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88446347;-18.75;Estorno à taxa da venda original (2026-09-15);2.69%;Bruto R$ -697.02 * 2.69% = R$ -18.75
+COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88446347;-18.75;Estorno à taxa da venda original (2026-09-15);2.69%;Bruto R$ -697.02 * 2.69% = R$ -18.75 [Estorno bandeira VISA vs venda ELO - vínculo por referência homologado por Helena]
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88436029;121.09;Taxa contratual Crédito parcelado (7x);3.79%;Bruto R$ 3194.87 * 3.79% = R$ 121.09
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88436693;41.73;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1551.31 * 2.69% = R$ 41.73
 COM-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88437140;27.44;Taxa contratual Crédito à vista;2.69%;Bruto R$ 1020.18 * 2.69% = R$ 27.44
@@ -1088,7 +1088,7 @@ COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88441337;154.80;Taxa contratu
 COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88441438;59.66;Taxa contratual Crédito parcelado (2x);3.19%;Bruto R$ 1870.10 * 3.19% = R$ 59.66
 COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88441504;245.60;Taxa contratual Crédito parcelado (10x);3.79%;Bruto R$ 6480.19 * 3.79% = R$ 245.60
 COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88441796;89.54;Taxa contratual Crédito parcelado (6x);3.19%;Bruto R$ 2807.00 * 3.19% = R$ 89.54
-COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88446725;-154.80;Estorno à taxa da venda original (2026-09-27);3.19%;Bruto R$ -4852.73 * 3.19% = R$ -154.80
+COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88446725;-154.80;Estorno à taxa da venda original (2026-09-27);3.19%;Bruto R$ -4852.73 * 3.19% = R$ -154.80 [Estorno bandeira MASTERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88441656;153.82;Taxa contratual Crédito à vista;2.69%;Bruto R$ 5718.35 * 2.69% = R$ 153.82
 COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88443334;73.47;Taxa contratual Crédito parcelado (2x);3.19%;Bruto R$ 2303.23 * 3.19% = R$ 73.47
 COM-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88443033;7.62;Taxa contratual Débito;1.49%;Bruto R$ 511.41 * 1.49% = R$ 7.62
@@ -1161,7 +1161,7 @@ COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88421787;364.25;Taxa contratu
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88421327;140.51;Taxa contratual Crédito parcelado (3x);2.99%;Bruto R$ 4699.26 * 2.99% = R$ 140.51
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88421670;5.43;Taxa contratual PIX;0.89%;Bruto R$ 610.07 * 0.89% = R$ 5.43
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88421387;42.37;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1701.64 * 2.49% = R$ 42.37
-COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88445410;-88.51;Estorno à taxa da venda original (2026-09-05);3.79%;Bruto R$ -2335.28 * 3.79% = R$ -88.51
+COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88445410;-88.51;Estorno à taxa da venda original (2026-09-05);3.79%;Bruto R$ -2335.28 * 3.79% = R$ -88.51 [Estorno bandeira VISA vs venda MASTERCARD - vínculo por referência homologado por Helena]
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88422659;178.00;Taxa contratual Crédito parcelado (6x);2.99%;Bruto R$ 5953.28 * 2.99% = R$ 178.00
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88422755;21.40;Taxa contratual Crédito à vista;2.49%;Bruto R$ 859.36 * 2.49% = R$ 21.40
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88422774;27.96;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1122.80 * 2.49% = R$ 27.96
@@ -1208,7 +1208,7 @@ COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88432333;23.90;Taxa contratua
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88431764;61.85;Taxa contratual Crédito parcelado (3x);2.99%;Bruto R$ 2068.53 * 2.99% = R$ 61.85
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88432360;383.98;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 10131.46 * 3.79% = R$ 383.98
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88433733;157.76;Taxa contratual Crédito parcelado (2x);2.99%;Bruto R$ 5276.42 * 2.99% = R$ 157.76
-COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88446216;-37.68;Estorno à taxa da venda original (2026-09-17);2.49%;Bruto R$ -1513.24 * 2.49% = R$ -37.68
+COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88446216;-37.68;Estorno à taxa da venda original (2026-09-17);2.49%;Bruto R$ -1513.24 * 2.49% = R$ -37.68 [Estorno bandeira MASTERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88433125;4.81;Taxa contratual PIX;0.89%;Bruto R$ 540.61 * 0.89% = R$ 4.81
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88435332;171.84;Taxa contratual Crédito parcelado (4x);2.99%;Bruto R$ 5747.32 * 2.99% = R$ 171.84
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88434240;254.93;Taxa contratual Crédito parcelado (8x);3.79%;Bruto R$ 6726.29 * 3.79% = R$ 254.93
@@ -1263,9 +1263,9 @@ COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88442560;13.75;Taxa contratua
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;AN88446774;1185.02;Taxa contratual de antecipação;2.10%;Bruto R$ 56429.41 * 2.10% = R$ 1185.02
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88443108;15.99;Taxa contratual Crédito à vista;2.49%;Bruto R$ 642.02 * 2.49% = R$ 15.99
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88443034;267.71;Taxa contratual Crédito parcelado (9x);3.79%;Bruto R$ 7063.63 * 3.79% = R$ 267.71
-COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88446861;-46.96;Estorno à taxa da venda original (2026-09-27);2.49%;Bruto R$ -1886.02 * 2.49% = R$ -46.96
+COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88446861;-46.96;Estorno à taxa da venda original (2026-09-27);2.49%;Bruto R$ -1886.02 * 2.49% = R$ -46.96 [Estorno bandeira VISA vs venda AMEX - vínculo por referência homologado por Helena]
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88444082;98.62;Taxa contratual Crédito parcelado (5x);2.99%;Bruto R$ 3298.43 * 2.99% = R$ 98.62
-COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88446943;-694.95;Estorno à taxa da venda original (2026-09-28);3.79%;Bruto R$ -18336.29 * 3.79% = R$ -694.95
+COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88446943;-694.95;Estorno à taxa da venda original (2026-09-28);3.79%;Bruto R$ -18336.29 * 3.79% = R$ -694.95 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88443765;90.74;Taxa contratual Crédito parcelado (6x);2.99%;Bruto R$ 3034.85 * 2.99% = R$ 90.74
 COM-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88444056;192.47;Taxa contratual Crédito parcelado (2x);2.99%;Bruto R$ 6437.24 * 2.99% = R$ 192.47
 COM-0015;06_orbe_ajustes_tardios_set2026.csv;TX88447030;-14.00;Estorno à taxa da venda original (2026-09-25);2.49%;Bruto R$ -562.44 * 2.49% = R$ -14.00 [Estorno bandeira VISA vs venda ELO - vínculo por referência homologado por Helena]
@@ -1292,14 +1292,14 @@ COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88420131;210.75;Taxa contratu
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88421216;6.27;Taxa contratual PIX;0.89%;Bruto R$ 704.92 * 0.89% = R$ 6.27
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88421474;7.15;Taxa contratual PIX;0.89%;Bruto R$ 803.09 * 0.89% = R$ 7.15
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88421379;517.34;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 13650.02 * 3.79% = R$ 517.34
-COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88445346;-49.09;Estorno à taxa da venda original (2026-09-06);2.39%;Bruto R$ -2054.05 * 2.39% = R$ -49.09
+COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88445346;-49.09;Estorno à taxa da venda original (2026-09-06);2.39%;Bruto R$ -2054.05 * 2.39% = R$ -49.09 [Estorno bandeira HIPERCARD vs venda VISA - vínculo por referência homologado por Helena]
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88421307;523.99;Taxa contratual Crédito parcelado (9x);3.79%;Bruto R$ 13825.71 * 3.79% = R$ 523.99
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88422061;253.51;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 6689.00 * 3.79% = R$ 253.51
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88422991;418.99;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 11055.18 * 3.79% = R$ 418.99
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88422630;2.59;Taxa contratual PIX;0.89%;Bruto R$ 290.75 * 0.89% = R$ 2.59
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88422515;15.03;Taxa contratual Crédito à vista;2.39%;Bruto R$ 629.07 * 2.39% = R$ 15.03
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88424269;45.53;Taxa contratual Crédito à vista;2.39%;Bruto R$ 1904.96 * 2.39% = R$ 45.53
-COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88445518;-150.81;Estorno à taxa da venda original (2026-09-07);2.89%;Bruto R$ -5218.50 * 2.89% = R$ -150.81
+COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88445518;-150.81;Estorno à taxa da venda original (2026-09-07);2.89%;Bruto R$ -5218.50 * 2.89% = R$ -150.81 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88424050;203.62;Taxa contratual Crédito parcelado (5x);2.89%;Bruto R$ 7045.80 * 2.89% = R$ 203.62
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88423520;5.29;Taxa contratual Débito;1.49%;Bruto R$ 355.31 * 1.49% = R$ 5.29
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88423443;15.17;Taxa contratual PIX;0.89%;Bruto R$ 1704.88 * 0.89% = R$ 15.17
@@ -1314,7 +1314,7 @@ COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88428417;507.52;Taxa contratu
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88429073;10.41;Taxa contratual Crédito à vista;2.39%;Bruto R$ 435.48 * 2.39% = R$ 10.41
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88428966;33.15;Taxa contratual Crédito à vista;2.39%;Bruto R$ 1387.17 * 2.39% = R$ 33.15
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88429115;180.52;Taxa contratual Crédito parcelado (4x);2.89%;Bruto R$ 6246.47 * 2.89% = R$ 180.52
-COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88445971;-10.41;Estorno à taxa da venda original (2026-09-16);2.39%;Bruto R$ -435.48 * 2.39% = R$ -10.41
+COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88445971;-10.41;Estorno à taxa da venda original (2026-09-16);2.39%;Bruto R$ -435.48 * 2.39% = R$ -10.41 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88430045;162.29;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 4282.00 * 3.79% = R$ 162.29
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88430562;54.94;Taxa contratual Crédito parcelado (6x);2.89%;Bruto R$ 1901.06 * 2.89% = R$ 54.94
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88430893;45.98;Taxa contratual Crédito à vista;2.39%;Bruto R$ 1923.92 * 2.39% = R$ 45.98
@@ -1326,7 +1326,7 @@ COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88431704;326.14;Taxa contratu
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88433816;28.85;Taxa contratual Crédito à vista;2.39%;Bruto R$ 1206.99 * 2.39% = R$ 28.85
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88433732;111.23;Taxa contratual Crédito parcelado (5x);2.89%;Bruto R$ 3848.69 * 2.89% = R$ 111.23
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88434148;229.48;Taxa contratual Crédito parcelado (5x);2.89%;Bruto R$ 7940.37 * 2.89% = R$ 229.48
-COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88446232;-180.52;Estorno à taxa da venda original (2026-09-16);2.89%;Bruto R$ -6246.47 * 2.89% = R$ -180.52
+COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88446232;-180.52;Estorno à taxa da venda original (2026-09-16);2.89%;Bruto R$ -6246.47 * 2.89% = R$ -180.52 [Estorno bandeira HIPERCARD vs venda ELO - vínculo por referência homologado por Helena]
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88434529;247.93;Taxa contratual Crédito parcelado (5x);2.89%;Bruto R$ 8579.05 * 2.89% = R$ 247.93
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88434867;12.24;Taxa contratual Débito;1.49%;Bruto R$ 821.18 * 1.49% = R$ 12.24
 COM-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88434898;122.40;Taxa contratual Crédito parcelado (4x);2.89%;Bruto R$ 4235.19 * 2.89% = R$ 122.40
@@ -1379,7 +1379,7 @@ COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88419839;17.90;Taxa contratua
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;AN88445216;-840.45;Reversão de antecipação à taxa da antecipação original (2026-09-08);2.10%;Bruto R$ -40021.58 * 2.10% = R$ -840.45
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88421393;133.49;Taxa contratual Crédito parcelado (2x);3.09%;Bruto R$ 4320.00 * 3.09% = R$ 133.49
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88421094;15.41;Taxa contratual Débito;1.49%;Bruto R$ 1034.39 * 1.49% = R$ 15.41
-COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88445384;-72.07;Estorno à taxa da venda original (2026-09-04);3.09%;Bruto R$ -2332.45 * 3.09% = R$ -72.07
+COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88445384;-72.07;Estorno à taxa da venda original (2026-09-04);3.09%;Bruto R$ -2332.45 * 3.09% = R$ -72.07 [Estorno bandeira HIPERCARD vs venda VISA - vínculo por referência homologado por Helena]
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;AN88445434;518.13;Taxa contratual de antecipação;2.10%;Bruto R$ 24672.92 * 2.10% = R$ 518.13
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88422325;44.51;Taxa contratual Crédito parcelado (6x);3.09%;Bruto R$ 1440.50 * 3.09% = R$ 44.51
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88423218;276.65;Taxa contratual Crédito parcelado (5x);3.09%;Bruto R$ 8953.12 * 3.09% = R$ 276.65
@@ -1423,7 +1423,7 @@ COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88437761;2.44;Taxa contratual
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88437702;108.61;Taxa contratual Crédito parcelado (6x);3.09%;Bruto R$ 3515.01 * 3.09% = R$ 108.61
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88437650;124.06;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 3273.25 * 3.79% = R$ 124.06
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88438992;39.38;Taxa contratual Crédito à vista;2.59%;Bruto R$ 1520.58 * 2.59% = R$ 39.38
-COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446612;-302.04;Estorno à taxa da venda original (2026-09-22);3.79%;Bruto R$ -7969.30 * 3.79% = R$ -302.04
+COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446612;-302.04;Estorno à taxa da venda original (2026-09-22);3.79%;Bruto R$ -7969.30 * 3.79% = R$ -302.04 [Estorno bandeira MASTERCARD vs venda HIPERCARD - vínculo por referência homologado por Helena]
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88439127;44.08;Taxa contratual Crédito à vista;2.59%;Bruto R$ 1701.89 * 2.59% = R$ 44.08
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88439580;110.24;Taxa contratual Crédito parcelado (6x);3.09%;Bruto R$ 3567.63 * 3.09% = R$ 110.24
 COM-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88440021;13.00;Taxa contratual PIX;0.89%;Bruto R$ 1460.25 * 0.89% = R$ 13.00
@@ -1480,7 +1480,7 @@ COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88419897;3.04;Taxa contratual
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88420417;11.66;Taxa contratual Crédito à vista;2.49%;Bruto R$ 468.46 * 2.49% = R$ 11.66
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88419996;62.01;Taxa contratual Crédito parcelado (2x);2.99%;Bruto R$ 2073.78 * 2.99% = R$ 62.01
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88420057;39.74;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1595.90 * 2.49% = R$ 39.74
-COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88445205;-16.00;Estorno à taxa da venda original (2026-09-05);2.49%;Bruto R$ -642.65 * 2.49% = R$ -16.00
+COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88445205;-16.00;Estorno à taxa da venda original (2026-09-05);2.49%;Bruto R$ -642.65 * 2.49% = R$ -16.00 [Estorno bandeira ELO vs venda MASTERCARD - vínculo por referência homologado por Helena]
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88420256;137.56;Taxa contratual Crédito parcelado (3x);2.99%;Bruto R$ 4600.66 * 2.99% = R$ 137.56
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88420111;11.94;Taxa contratual PIX;0.89%;Bruto R$ 1341.43 * 0.89% = R$ 11.94
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88420249;123.20;Taxa contratual Crédito parcelado (3x);2.99%;Bruto R$ 4120.53 * 2.99% = R$ 123.20
@@ -1489,7 +1489,7 @@ COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88421287;23.78;Taxa contratua
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88421273;44.44;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1784.69 * 2.49% = R$ 44.44
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88421359;13.21;Taxa contratual PIX;0.89%;Bruto R$ 1483.82 * 0.89% = R$ 13.21
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88420900;13.49;Taxa contratual Débito;1.49%;Bruto R$ 905.54 * 1.49% = R$ 13.49
-COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88445351;-441.95;Estorno à taxa da venda original (2026-09-08);3.59%;Bruto R$ -12310.63 * 3.59% = R$ -441.95
+COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88445351;-441.95;Estorno à taxa da venda original (2026-09-08);3.59%;Bruto R$ -12310.63 * 3.59% = R$ -441.95 [Estorno bandeira HIPERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88422024;4.09;Taxa contratual PIX;0.89%;Bruto R$ 459.96 * 0.89% = R$ 4.09
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88422226;189.94;Taxa contratual Crédito parcelado (3x);2.99%;Bruto R$ 6352.36 * 2.99% = R$ 189.94
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88423100;7.72;Taxa contratual Débito;1.49%;Bruto R$ 518.31 * 1.49% = R$ 7.72
@@ -1531,7 +1531,7 @@ COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88428735;151.46;Taxa contratu
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88429150;26.98;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1083.46 * 2.49% = R$ 26.98
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88428676;374.08;Taxa contratual Crédito parcelado (10x);3.59%;Bruto R$ 10420.13 * 3.59% = R$ 374.08
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88429336;85.08;Taxa contratual Crédito parcelado (4x);2.99%;Bruto R$ 2845.40 * 2.99% = R$ 85.08
-COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88445875;-58.31;Estorno à taxa da venda original (2026-09-07);2.49%;Bruto R$ -2341.94 * 2.49% = R$ -58.31
+COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88445875;-58.31;Estorno à taxa da venda original (2026-09-07);2.49%;Bruto R$ -2341.94 * 2.49% = R$ -58.31 [Estorno bandeira AMEX vs venda VISA - vínculo por referência homologado por Helena]
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;AN88445945;98.27;Taxa contratual de antecipação;2.10%;Bruto R$ 4679.61 * 2.10% = R$ 98.27
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88430353;32.11;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1289.38 * 2.49% = R$ 32.11
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88429990;192.88;Taxa contratual Crédito parcelado (11x);3.59%;Bruto R$ 5372.59 * 3.59% = R$ 192.88
@@ -1552,7 +1552,7 @@ COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88433646;70.35;Taxa contratua
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88433964;14.33;Taxa contratual Crédito à vista;2.49%;Bruto R$ 575.38 * 2.49% = R$ 14.33
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88433537;128.93;Taxa contratual Crédito parcelado (2x);2.99%;Bruto R$ 4311.95 * 2.99% = R$ 128.93
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88433590;29.17;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1171.58 * 2.49% = R$ 29.17
-COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446237;-8.82;Estorno à taxa da venda original (2026-09-15);1.49%;Bruto R$ -591.82 * 1.49% = R$ -8.82
+COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446237;-8.82;Estorno à taxa da venda original (2026-09-15);1.49%;Bruto R$ -591.82 * 1.49% = R$ -8.82 [Estorno bandeira AMEX vs venda MASTERCARD - vínculo por referência homologado por Helena]
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88435140;78.01;Taxa contratual Crédito parcelado (2x);2.99%;Bruto R$ 2609.15 * 2.99% = R$ 78.01
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88434338;238.52;Taxa contratual Crédito parcelado (8x);3.59%;Bruto R$ 6644.08 * 3.59% = R$ 238.52
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88434839;50.11;Taxa contratual Crédito à vista;2.49%;Bruto R$ 2012.35 * 2.49% = R$ 50.11
@@ -1572,15 +1572,15 @@ COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88435533;14.73;Taxa contratua
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88435384;54.24;Taxa contratual Crédito à vista;2.49%;Bruto R$ 2178.13 * 2.49% = R$ 54.24
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;AN88446371;777.81;Taxa contratual de antecipação;2.10%;Bruto R$ 37038.57 * 2.10% = R$ 777.81
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88437238;30.35;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1218.77 * 2.49% = R$ 30.35
-COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446419;-374.08;Estorno à taxa da venda original (2026-09-16);3.59%;Bruto R$ -10420.13 * 3.59% = R$ -374.08
+COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446419;-374.08;Estorno à taxa da venda original (2026-09-16);3.59%;Bruto R$ -10420.13 * 3.59% = R$ -374.08 [Estorno bandeira AMEX vs venda VISA - vínculo por referência homologado por Helena]
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88437958;279.48;Taxa contratual Crédito parcelado (8x);3.59%;Bruto R$ 7784.87 * 3.59% = R$ 279.48
-COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446585;-25.55;Estorno à taxa da venda original (2026-09-16);2.49%;Bruto R$ -1025.97 * 2.49% = R$ -25.55
+COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446585;-25.55;Estorno à taxa da venda original (2026-09-16);2.49%;Bruto R$ -1025.97 * 2.49% = R$ -25.55 [Estorno bandeira MASTERCARD vs venda ELO - vínculo por referência homologado por Helena]
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88438431;94.29;Taxa contratual Crédito à vista;2.49%;Bruto R$ 3786.78 * 2.49% = R$ 94.29
-COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446596;-179.30;Estorno à taxa da venda original (2026-09-17);2.99%;Bruto R$ -5996.67 * 2.99% = R$ -179.30
+COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446596;-179.30;Estorno à taxa da venda original (2026-09-17);2.99%;Bruto R$ -5996.67 * 2.99% = R$ -179.30 [Estorno bandeira HIPERCARD vs venda VISA - vínculo por referência homologado por Helena]
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88438067;164.35;Taxa contratual Crédito parcelado (2x);2.99%;Bruto R$ 5496.70 * 2.99% = R$ 164.35
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88438149;46.70;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1875.34 * 2.49% = R$ 46.70
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88438012;27.11;Taxa contratual Crédito à vista;2.49%;Bruto R$ 1088.84 * 2.49% = R$ 27.11
-COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446647;-67.15;Estorno à taxa da venda original (2026-09-15);2.99%;Bruto R$ -2245.67 * 2.99% = R$ -67.15
+COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88446647;-67.15;Estorno à taxa da venda original (2026-09-15);2.99%;Bruto R$ -2245.67 * 2.99% = R$ -67.15 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88439849;98.53;Taxa contratual Crédito parcelado (5x);2.99%;Bruto R$ 3295.21 * 2.99% = R$ 98.53
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88439502;214.40;Taxa contratual Crédito parcelado (7x);3.59%;Bruto R$ 5972.05 * 3.59% = R$ 214.40
 COM-0018;01_orbe_relatorio_comissoes_set2026.csv;TX88439678;80.65;Taxa contratual Crédito à vista;2.49%;Bruto R$ 3239.02 * 2.49% = R$ 80.65
@@ -1698,7 +1698,7 @@ COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88429219;25.47;Taxa contratua
 COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88428795;18.49;Taxa contratual Crédito à vista;2.69%;Bruto R$ 687.34 * 2.69% = R$ 18.49
 COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88429166;340.71;Taxa contratual Crédito parcelado (11x);3.79%;Bruto R$ 8989.75 * 3.79% = R$ 340.71
 COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88429018;53.80;Taxa contratual Crédito à vista;2.69%;Bruto R$ 2000.13 * 2.69% = R$ 53.80
-COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88445854;-88.66;Estorno à taxa da venda original (2026-09-07);3.19%;Bruto R$ -2779.18 * 3.19% = R$ -88.66
+COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88445854;-88.66;Estorno à taxa da venda original (2026-09-07);3.19%;Bruto R$ -2779.18 * 3.19% = R$ -88.66 [Estorno bandeira AMEX vs venda MASTERCARD - vínculo por referência homologado por Helena]
 COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88430169;64.25;Taxa contratual Crédito à vista;2.69%;Bruto R$ 2388.59 * 2.69% = R$ 64.25
 COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88429966;189.20;Taxa contratual Crédito parcelado (10x);3.79%;Bruto R$ 4992.21 * 3.79% = R$ 189.20
 COM-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88431662;11.27;Taxa contratual Débito;1.49%;Bruto R$ 756.23 * 1.49% = R$ 11.27
@@ -1783,7 +1783,7 @@ COM-0021;01_orbe_relatorio_comissoes_set2026.csv;TX88444107;601.01;Taxa contratu
 COM-0021;01_orbe_relatorio_comissoes_set2026.csv;TX88443951;115.70;Taxa contratual Crédito parcelado (6x);3.19%;Bruto R$ 3626.97 * 3.19% = R$ 115.70
 COM-0022;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0025;165.57;Split 50% spread BRL realizado;1.50%;Spread apurado R$ 331.14 * 50% = R$ 165.57
 COM-0022;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0056;177.88;Split 50% spread BRL realizado;1.50%;Spread apurado R$ 355.76 * 50% = R$ 177.88
-COM-0022;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0162;410.94;Split 50% spread BRL realizado;1.50%;Spread apurado R$ 821.88 * 50% = R$ 410.94
+COM-0022;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0162;410.94;Split 50% spread BRL realizado;1.50%;Spread apurado R$ 821.88 * 50% = R$ 410.94 [Deduplicado: 2 ocorrências idênticas]
 COM-0022;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0258;96.14;Split 50% spread BRL realizado;1.50%;Spread apurado R$ 192.27 * 50% = R$ 96.14
 COM-0022;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0260;124.12;Split 50% spread BRL realizado;1.50%;Spread apurado R$ 248.24 * 50% = R$ 124.12
 COM-0022;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0358;112.16;Split 50% spread BRL realizado;1.50%;Spread apurado R$ 224.32 * 50% = R$ 112.16
@@ -2026,7 +2026,7 @@ NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88418848;1.57;Faturamento NF C
 NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88418725;110.45;Faturamento NF Checkout (Taxa contratual Crédito parcelado (12x));3.79%;Bruto R$ 2914.28 * 3.79% = R$ 110.45
 NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88418683;39.29;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1460.58 * 2.69% = R$ 39.29
 NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88422689;16.15;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 600.45 * 2.69% = R$ 16.15
-NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88445473;-122.41;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-03));2.69%;Bruto R$ -4550.49 * 2.69% = R$ -122.41
+NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88445473;-122.41;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-03));2.69%;Bruto R$ -4550.49 * 2.69% = R$ -122.41 [Estorno bandeira MASTERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88422397;214.76;Faturamento NF Checkout (Taxa contratual Crédito parcelado (10x));3.79%;Bruto R$ 5666.57 * 3.79% = R$ 214.76
 NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88423777;97.76;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.19%;Bruto R$ 3064.53 * 3.19% = R$ 97.76
 NF-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88424288;10.47;Faturamento NF Checkout (Taxa contratual Débito);1.39%;Bruto R$ 752.94 * 1.39% = R$ 10.47
@@ -2081,7 +2081,7 @@ NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88424393;145.88;Faturamento NF
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88424784;137.91;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 4323.19 * 3.19% = R$ 137.91
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88424228;9.15;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 1028.10 * 0.89% = R$ 9.15
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88424656;83.11;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 2605.29 * 3.19% = R$ 83.11
-NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88445591;-145.88;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-12));3.79%;Bruto R$ -3849.03 * 3.79% = R$ -145.88
+NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88445591;-145.88;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-12));3.79%;Bruto R$ -3849.03 * 3.79% = R$ -145.88 [Estorno bandeira VISA vs venda AMEX - vínculo por referência homologado por Helena]
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88427082;108.60;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.19%;Bruto R$ 3404.47 * 3.19% = R$ 108.60
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88426567;101.17;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 3171.50 * 3.19% = R$ 101.17
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88426207;250.00;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));3.19%;Bruto R$ 7837.13 * 3.19% = R$ 250.00
@@ -2092,14 +2092,14 @@ NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88428515;63.36;Faturamento NF 
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88429063;54.05;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 2009.16 * 2.69% = R$ 54.05
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88429438;9.77;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 1097.58 * 0.89% = R$ 9.77
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88429268;27.77;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1032.27 * 2.69% = R$ 27.77
-NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88445821;-83.11;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-12));3.19%;Bruto R$ -2605.29 * 3.19% = R$ -83.11
+NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88445821;-83.11;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-12));3.19%;Bruto R$ -2605.29 * 3.19% = R$ -83.11 [Estorno bandeira ELO vs venda MASTERCARD - vínculo por referência homologado por Helena]
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88430431;278.62;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 8734.13 * 3.19% = R$ 278.62
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88430397;239.07;Faturamento NF Checkout (Taxa contratual Crédito parcelado (12x));3.79%;Bruto R$ 6307.87 * 3.79% = R$ 239.07
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88430646;8.95;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 1006.14 * 0.89% = R$ 8.95
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88431347;22.34;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 830.52 * 2.69% = R$ 22.34
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88432181;18.19;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 2043.39 * 0.89% = R$ 18.19
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88433883;10.07;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 675.64 * 1.49% = R$ 10.07
-NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446121;-590.63;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-11));3.79%;Bruto R$ -15583.88 * 3.79% = R$ -590.63
+NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446121;-590.63;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-11));3.79%;Bruto R$ -15583.88 * 3.79% = R$ -590.63 [Estorno bandeira VISA vs venda HIPERCARD - vínculo por referência homologado por Helena]
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88435717;133.49;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));3.19%;Bruto R$ 4184.62 * 3.19% = R$ 133.49
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88435499;233.34;Faturamento NF Checkout (Taxa contratual Crédito parcelado (3x));3.19%;Bruto R$ 7314.71 * 3.19% = R$ 233.34
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88435962;26.94;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1001.63 * 2.69% = R$ 26.94
@@ -2121,9 +2121,9 @@ NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88440577;356.55;Faturamento NF
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88441563;41.05;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1526.00 * 2.69% = R$ 41.05
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88441729;119.76;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.19%;Bruto R$ 3754.31 * 3.19% = R$ 119.76
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88441698;226.93;Faturamento NF Checkout (Taxa contratual Crédito parcelado (9x));3.79%;Bruto R$ 5987.61 * 3.79% = R$ 226.93
-NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446715;-313.06;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-25));3.79%;Bruto R$ -8260.20 * 3.79% = R$ -313.06
+NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446715;-313.06;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-25));3.79%;Bruto R$ -8260.20 * 3.79% = R$ -313.06 [Estorno bandeira AMEX vs venda VISA - vínculo por referência homologado por Helena]
 NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88442642;174.58;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 6490.11 * 2.69% = R$ 174.58
-NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446885;-155.97;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-27));3.19%;Bruto R$ -4889.30 * 3.19% = R$ -155.97
+NF-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88446885;-155.97;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-27));3.19%;Bruto R$ -4889.30 * 3.19% = R$ -155.97 [Estorno bandeira HIPERCARD vs venda ELO - vínculo por referência homologado por Helena]
 NF-0003;01_orbe_relatorio_comissoes_set2026.csv;TX88410833;22.45;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 834.61 * 2.69% = R$ 22.45
 NF-0003;01_orbe_relatorio_comissoes_set2026.csv;TX88410204;35.68;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1326.31 * 2.69% = R$ 35.68
 NF-0003;01_orbe_relatorio_comissoes_set2026.csv;TX88410164;35.48;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1319.12 * 2.69% = R$ 35.48
@@ -2205,7 +2205,7 @@ NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88410045;41.21;Faturamento NF 
 NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88412086;15.51;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 576.51 * 2.69% = R$ 15.51
 NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88411784;24.83;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 922.95 * 2.69% = R$ 24.83
 NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88412668;354.95;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 9365.34 * 3.79% = R$ 354.95
-NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88444937;-41.21;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-01));2.69%;Bruto R$ -1532.07 * 2.69% = R$ -41.21
+NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88444937;-41.21;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-01));2.69%;Bruto R$ -1532.07 * 2.69% = R$ -41.21 [Estorno bandeira AMEX vs venda VISA - vínculo por referência homologado por Helena]
 NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88413227;8.52;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 957.00 * 0.89% = R$ 8.52
 NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88412937;23.37;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 868.80 * 2.69% = R$ 23.37
 NF-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88413068;191.87;Faturamento NF Checkout (Taxa contratual Crédito parcelado (9x));3.79%;Bruto R$ 5062.58 * 3.79% = R$ 191.87
@@ -2314,7 +2314,7 @@ NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88422415;31.89;Faturamento NF 
 NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88423417;589.19;Faturamento NF Checkout (Taxa contratual Crédito parcelado (12x));3.79%;Bruto R$ 15545.86 * 3.79% = R$ 589.19
 NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88423589;83.87;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 3117.97 * 2.69% = R$ 83.87
 NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88423548;520.70;Faturamento NF Checkout (Taxa contratual Crédito parcelado (7x));3.79%;Bruto R$ 13738.70 * 3.79% = R$ 520.70
-NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88445531;-19.52;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-10));2.69%;Bruto R$ -725.80 * 2.69% = R$ -19.52
+NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88445531;-19.52;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-10));2.69%;Bruto R$ -725.80 * 2.69% = R$ -19.52 [Estorno bandeira HIPERCARD vs venda VISA - vínculo por referência homologado por Helena]
 NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88425094;64.76;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 2407.54 * 2.69% = R$ 64.76
 NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88427011;6.59;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 740.97 * 0.89% = R$ 6.59
 NF-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88426754;144.34;Faturamento NF Checkout (Taxa contratual Crédito parcelado (12x));3.79%;Bruto R$ 3808.34 * 3.79% = R$ 144.34
@@ -2505,7 +2505,7 @@ NF-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88418756;5.32;Faturamento NF C
 NF-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88419028;5.90;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 395.67 * 1.49% = R$ 5.90
 NF-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88419885;142.40;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.19%;Bruto R$ 4463.97 * 3.19% = R$ 142.40
 NF-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88420446;427.57;Faturamento NF Checkout (Taxa contratual Crédito parcelado (10x));3.49%;Bruto R$ 12251.27 * 3.49% = R$ 427.57
-NF-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88445298;-13.59;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-02));1.49%;Bruto R$ -912.11 * 1.49% = R$ -13.59
+NF-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88445298;-13.59;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-02));1.49%;Bruto R$ -912.11 * 1.49% = R$ -13.59 [Estorno bandeira HIPERCARD vs venda ELO - vínculo por referência homologado por Helena]
 NF-0007;01_orbe_relatorio_comissoes_set2026.csv;AN88445325;631.86;Faturamento NF Checkout (Taxa contratual de antecipação);2.10%;Bruto R$ 30088.46 * 2.10% = R$ 631.86
 NF-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88421039;19.11;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 710.23 * 2.69% = R$ 19.11
 NF-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88422470;174.42;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 5467.80 * 3.19% = R$ 174.42
@@ -2648,7 +2648,7 @@ NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88436752;58.21;Faturamento NF 
 NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88436788;1.69;Faturamento NF Checkout (Taxa contratual PIX (Corte vigência pós-15/09));0.89%;Bruto R$ 190.30 * 0.89% = R$ 1.69
 NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88436800;29.02;Faturamento NF Checkout (Taxa contratual Crédito à vista (Corte vigência pós-15/09));2.19%;Bruto R$ 1325.19 * 2.19% = R$ 29.02
 NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88436518;285.98;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x) (Corte vigência pós-15/09));3.19%;Bruto R$ 8965.01 * 3.19% = R$ 285.98
-NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88446447;-147.02;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-14));3.19%;Bruto R$ -4608.80 * 3.19% = R$ -147.02
+NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88446447;-147.02;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-14));3.19%;Bruto R$ -4608.80 * 3.19% = R$ -147.02 [Estorno bandeira MASTERCARD vs venda ELO - vínculo por referência homologado por Helena]
 NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88436323;117.31;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x) (Corte vigência pós-15/09));3.19%;Bruto R$ 3677.44 * 3.19% = R$ 117.31
 NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88437309;31.22;Faturamento NF Checkout (Taxa contratual Crédito à vista (Corte vigência pós-15/09));2.19%;Bruto R$ 1425.45 * 2.19% = R$ 31.22
 NF-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88437399;26.17;Faturamento NF Checkout (Taxa contratual Crédito à vista (Corte vigência pós-15/09));2.19%;Bruto R$ 1194.96 * 2.19% = R$ 26.17
@@ -2704,7 +2704,7 @@ NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88418886;10.93;Faturamento NF 
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88419707;138.62;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 5153.25 * 2.69% = R$ 138.62
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88418470;337.12;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 8895.11 * 3.79% = R$ 337.12
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88420771;224.29;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 7030.97 * 3.19% = R$ 224.29
-NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88445191;-14.24;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-05));1.49%;Bruto R$ -956.03 * 1.49% = R$ -14.24
+NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88445191;-14.24;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-05));1.49%;Bruto R$ -956.03 * 1.49% = R$ -14.24 [Estorno bandeira ELO vs venda MASTERCARD - vínculo por referência homologado por Helena]
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88420230;5.76;Faturamento NF Checkout (Taxa contratual PIX);0.79%;Bruto R$ 728.89 * 0.79% = R$ 5.76
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88420636;110.00;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 3448.28 * 3.19% = R$ 110.00
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88420652;51.89;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1928.96 * 2.69% = R$ 51.89
@@ -2748,7 +2748,7 @@ NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88436441;193.10;Faturamento NF
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88437754;6.45;Faturamento NF Checkout (Taxa contratual PIX);0.79%;Bruto R$ 816.48 * 0.79% = R$ 6.45
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88437348;25.38;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 943.59 * 2.69% = R$ 25.38
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88438343;219.29;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.19%;Bruto R$ 6874.18 * 3.19% = R$ 219.29
-NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88446602;-149.97;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-23));3.19%;Bruto R$ -4701.10 * 3.19% = R$ -149.97
+NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88446602;-149.97;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-23));3.19%;Bruto R$ -4701.10 * 3.19% = R$ -149.97 [Estorno bandeira HIPERCARD vs venda MASTERCARD - vínculo por referência homologado por Helena]
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88438969;109.96;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.19%;Bruto R$ 3447.03 * 3.19% = R$ 109.96
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88441187;107.17;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 3359.70 * 3.19% = R$ 107.17
 NF-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88440474;68.77;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 2556.66 * 2.69% = R$ 68.77
@@ -2831,14 +2831,14 @@ NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88441119;75.14;Faturamento NF 
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88441108;49.15;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1827.27 * 2.69% = R$ 49.15
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88441991;4.04;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 271.29 * 1.49% = R$ 4.04
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88441530;129.17;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.19%;Bruto R$ 4049.29 * 3.19% = R$ 129.17
-NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88446684;-5.38;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-20));1.49%;Bruto R$ -360.90 * 1.49% = R$ -5.38
+NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88446684;-5.38;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-20));1.49%;Bruto R$ -360.90 * 1.49% = R$ -5.38 [Estorno bandeira ELO vs venda MASTERCARD - vínculo por referência homologado por Helena]
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88441585;190.96;Faturamento NF Checkout (Taxa contratual Crédito parcelado (7x));3.79%;Bruto R$ 5038.50 * 3.79% = R$ 190.96
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88443089;4.88;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 548.81 * 0.89% = R$ 4.88
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88444598;3.04;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 341.06 * 0.89% = R$ 3.04
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88443849;287.71;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.19%;Bruto R$ 9019.08 * 3.19% = R$ 287.71
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88446907;-30.68;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-24));2.69%;Bruto R$ -1140.46 * 2.69% = R$ -30.68
 NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88444446;11.14;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 747.49 * 1.49% = R$ 11.14
-NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88446959;-129.17;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-28));3.19%;Bruto R$ -4049.29 * 3.19% = R$ -129.17
+NF-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88446959;-129.17;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-28));3.19%;Bruto R$ -4049.29 * 3.19% = R$ -129.17 [Estorno bandeira MASTERCARD vs venda HIPERCARD - vínculo por referência homologado por Helena]
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88411343;154.48;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.19%;Bruto R$ 4842.71 * 3.19% = R$ 154.48
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88411173;116.47;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 3651.00 * 3.19% = R$ 116.47
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88411289;53.63;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.59%;Bruto R$ 2070.82 * 2.59% = R$ 53.63
@@ -2895,7 +2895,7 @@ NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88431527;77.52;Faturamento NF 
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88432872;40.83;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.59%;Bruto R$ 1576.54 * 2.59% = R$ 40.83
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88432862;30.21;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.59%;Bruto R$ 1166.55 * 2.59% = R$ 30.21
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88434139;67.28;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 2109.24 * 3.19% = R$ 67.28
-NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88446182;-24.84;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-13));2.59%;Bruto R$ -958.90 * 2.59% = R$ -24.84
+NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88446182;-24.84;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-13));2.59%;Bruto R$ -958.90 * 2.59% = R$ -24.84 [Estorno bandeira MASTERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88433148;8.95;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 1005.42 * 0.89% = R$ 8.95
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88435046;205.67;Faturamento NF Checkout (Taxa contratual Crédito parcelado (10x));3.79%;Bruto R$ 5426.77 * 3.79% = R$ 205.67
 NF-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88434946;15.95;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.59%;Bruto R$ 616.00 * 2.59% = R$ 15.95
@@ -2959,7 +2959,7 @@ NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88423594;148.23;Faturamento NF
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88423743;6.61;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 443.65 * 1.49% = R$ 6.61
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88424464;192.91;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.19%;Bruto R$ 6047.37 * 3.19% = R$ 192.91
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88423605;6.89;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 773.61 * 0.89% = R$ 6.89
-NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88445564;-290.33;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-06));3.79%;Bruto R$ -7660.42 * 3.79% = R$ -290.33
+NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88445564;-290.33;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-06));3.79%;Bruto R$ -7660.42 * 3.79% = R$ -290.33 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88425522;74.67;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.19%;Bruto R$ 2340.77 * 3.19% = R$ 74.67
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88425694;31.79;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1181.86 * 2.69% = R$ 31.79
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88426870;7.11;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 799.31 * 0.89% = R$ 7.11
@@ -2973,7 +2973,7 @@ NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88427567;21.61;Faturamento NF 
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88427683;163.57;Faturamento NF Checkout (Taxa contratual Crédito parcelado (3x));3.19%;Bruto R$ 5127.52 * 3.19% = R$ 163.57
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88427514;25.78;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 958.54 * 2.69% = R$ 25.78
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88428455;22.92;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 851.88 * 2.69% = R$ 22.92
-NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88445799;-199.56;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-15));3.79%;Bruto R$ -5265.46 * 3.79% = R$ -199.56
+NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88445799;-199.56;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-15));3.79%;Bruto R$ -5265.46 * 3.79% = R$ -199.56 [Estorno bandeira MASTERCARD vs venda ELO - vínculo por referência homologado por Helena]
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88428574;83.30;Faturamento NF Checkout (Taxa contratual Crédito parcelado (12x));3.79%;Bruto R$ 2197.87 * 3.79% = R$ 83.30
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88429913;38.31;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1424.33 * 2.69% = R$ 38.31
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88430142;81.91;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));3.19%;Bruto R$ 2567.65 * 3.19% = R$ 81.91
@@ -2984,7 +2984,7 @@ NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88434998;498.36;Faturamento NF
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88435171;112.91;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));3.19%;Bruto R$ 3539.62 * 3.19% = R$ 112.91
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88434503;74.71;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));3.19%;Bruto R$ 2341.91 * 3.19% = R$ 74.71
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88436077;105.38;Faturamento NF Checkout (Taxa contratual Crédito parcelado (3x));3.19%;Bruto R$ 3303.51 * 3.19% = R$ 105.38
-NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88446347;-18.75;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-15));2.69%;Bruto R$ -697.02 * 2.69% = R$ -18.75
+NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88446347;-18.75;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-15));2.69%;Bruto R$ -697.02 * 2.69% = R$ -18.75 [Estorno bandeira VISA vs venda ELO - vínculo por referência homologado por Helena]
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88436029;121.09;Faturamento NF Checkout (Taxa contratual Crédito parcelado (7x));3.79%;Bruto R$ 3194.87 * 3.79% = R$ 121.09
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88436693;41.73;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1551.31 * 2.69% = R$ 41.73
 NF-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88437140;27.44;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 1020.18 * 2.69% = R$ 27.44
@@ -3097,7 +3097,7 @@ NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88441337;154.80;Faturamento NF
 NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88441438;59.66;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.19%;Bruto R$ 1870.10 * 3.19% = R$ 59.66
 NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88441504;245.60;Faturamento NF Checkout (Taxa contratual Crédito parcelado (10x));3.79%;Bruto R$ 6480.19 * 3.79% = R$ 245.60
 NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88441796;89.54;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.19%;Bruto R$ 2807.00 * 3.19% = R$ 89.54
-NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88446725;-154.80;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-27));3.19%;Bruto R$ -4852.73 * 3.19% = R$ -154.80
+NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88446725;-154.80;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-27));3.19%;Bruto R$ -4852.73 * 3.19% = R$ -154.80 [Estorno bandeira MASTERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88441656;153.82;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 5718.35 * 2.69% = R$ 153.82
 NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88443334;73.47;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.19%;Bruto R$ 2303.23 * 3.19% = R$ 73.47
 NF-0013;01_orbe_relatorio_comissoes_set2026.csv;TX88443033;7.62;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 511.41 * 1.49% = R$ 7.62
@@ -3170,7 +3170,7 @@ NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88421787;364.25;Faturamento NF
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88421327;140.51;Faturamento NF Checkout (Taxa contratual Crédito parcelado (3x));2.99%;Bruto R$ 4699.26 * 2.99% = R$ 140.51
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88421670;5.43;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 610.07 * 0.89% = R$ 5.43
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88421387;42.37;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1701.64 * 2.49% = R$ 42.37
-NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88445410;-88.51;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-05));3.79%;Bruto R$ -2335.28 * 3.79% = R$ -88.51
+NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88445410;-88.51;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-05));3.79%;Bruto R$ -2335.28 * 3.79% = R$ -88.51 [Estorno bandeira VISA vs venda MASTERCARD - vínculo por referência homologado por Helena]
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88422659;178.00;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));2.99%;Bruto R$ 5953.28 * 2.99% = R$ 178.00
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88422755;21.40;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 859.36 * 2.49% = R$ 21.40
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88422774;27.96;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1122.80 * 2.49% = R$ 27.96
@@ -3217,7 +3217,7 @@ NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88432333;23.90;Faturamento NF 
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88431764;61.85;Faturamento NF Checkout (Taxa contratual Crédito parcelado (3x));2.99%;Bruto R$ 2068.53 * 2.99% = R$ 61.85
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88432360;383.98;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 10131.46 * 3.79% = R$ 383.98
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88433733;157.76;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));2.99%;Bruto R$ 5276.42 * 2.99% = R$ 157.76
-NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88446216;-37.68;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-17));2.49%;Bruto R$ -1513.24 * 2.49% = R$ -37.68
+NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88446216;-37.68;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-17));2.49%;Bruto R$ -1513.24 * 2.49% = R$ -37.68 [Estorno bandeira MASTERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88433125;4.81;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 540.61 * 0.89% = R$ 4.81
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88435332;171.84;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));2.99%;Bruto R$ 5747.32 * 2.99% = R$ 171.84
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88434240;254.93;Faturamento NF Checkout (Taxa contratual Crédito parcelado (8x));3.79%;Bruto R$ 6726.29 * 3.79% = R$ 254.93
@@ -3272,9 +3272,9 @@ NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88442560;13.75;Faturamento NF 
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;AN88446774;1185.02;Faturamento NF Checkout (Taxa contratual de antecipação);2.10%;Bruto R$ 56429.41 * 2.10% = R$ 1185.02
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88443108;15.99;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 642.02 * 2.49% = R$ 15.99
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88443034;267.71;Faturamento NF Checkout (Taxa contratual Crédito parcelado (9x));3.79%;Bruto R$ 7063.63 * 3.79% = R$ 267.71
-NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88446861;-46.96;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-27));2.49%;Bruto R$ -1886.02 * 2.49% = R$ -46.96
+NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88446861;-46.96;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-27));2.49%;Bruto R$ -1886.02 * 2.49% = R$ -46.96 [Estorno bandeira VISA vs venda AMEX - vínculo por referência homologado por Helena]
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88444082;98.62;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));2.99%;Bruto R$ 3298.43 * 2.99% = R$ 98.62
-NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88446943;-694.95;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-28));3.79%;Bruto R$ -18336.29 * 3.79% = R$ -694.95
+NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88446943;-694.95;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-28));3.79%;Bruto R$ -18336.29 * 3.79% = R$ -694.95 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88443765;90.74;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));2.99%;Bruto R$ 3034.85 * 2.99% = R$ 90.74
 NF-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88444056;192.47;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));2.99%;Bruto R$ 6437.24 * 2.99% = R$ 192.47
 NF-0014;06_orbe_ajustes_tardios_set2026.csv;TX88447030;-14.00;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-25));2.49%;Bruto R$ -562.44 * 2.49% = R$ -14.00 [Estorno bandeira VISA vs venda ELO - vínculo por referência homologado por Helena]
@@ -3301,14 +3301,14 @@ NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88420131;210.75;Faturamento NF
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88421216;6.27;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 704.92 * 0.89% = R$ 6.27
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88421474;7.15;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 803.09 * 0.89% = R$ 7.15
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88421379;517.34;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 13650.02 * 3.79% = R$ 517.34
-NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88445346;-49.09;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-06));2.39%;Bruto R$ -2054.05 * 2.39% = R$ -49.09
+NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88445346;-49.09;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-06));2.39%;Bruto R$ -2054.05 * 2.39% = R$ -49.09 [Estorno bandeira HIPERCARD vs venda VISA - vínculo por referência homologado por Helena]
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88421307;523.99;Faturamento NF Checkout (Taxa contratual Crédito parcelado (9x));3.79%;Bruto R$ 13825.71 * 3.79% = R$ 523.99
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88422061;253.51;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 6689.00 * 3.79% = R$ 253.51
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88422991;418.99;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 11055.18 * 3.79% = R$ 418.99
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88422630;2.59;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 290.75 * 0.89% = R$ 2.59
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88422515;15.03;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.39%;Bruto R$ 629.07 * 2.39% = R$ 15.03
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88424269;45.53;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.39%;Bruto R$ 1904.96 * 2.39% = R$ 45.53
-NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88445518;-150.81;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-07));2.89%;Bruto R$ -5218.50 * 2.89% = R$ -150.81
+NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88445518;-150.81;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-07));2.89%;Bruto R$ -5218.50 * 2.89% = R$ -150.81 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88424050;203.62;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));2.89%;Bruto R$ 7045.80 * 2.89% = R$ 203.62
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88423520;5.29;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 355.31 * 1.49% = R$ 5.29
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88423443;15.17;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 1704.88 * 0.89% = R$ 15.17
@@ -3323,7 +3323,7 @@ NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88428417;507.52;Faturamento NF
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88429073;10.41;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.39%;Bruto R$ 435.48 * 2.39% = R$ 10.41
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88428966;33.15;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.39%;Bruto R$ 1387.17 * 2.39% = R$ 33.15
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88429115;180.52;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));2.89%;Bruto R$ 6246.47 * 2.89% = R$ 180.52
-NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88445971;-10.41;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-16));2.39%;Bruto R$ -435.48 * 2.39% = R$ -10.41
+NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88445971;-10.41;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-16));2.39%;Bruto R$ -435.48 * 2.39% = R$ -10.41 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88430045;162.29;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 4282.00 * 3.79% = R$ 162.29
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88430562;54.94;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));2.89%;Bruto R$ 1901.06 * 2.89% = R$ 54.94
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88430893;45.98;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.39%;Bruto R$ 1923.92 * 2.39% = R$ 45.98
@@ -3335,7 +3335,7 @@ NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88431704;326.14;Faturamento NF
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88433816;28.85;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.39%;Bruto R$ 1206.99 * 2.39% = R$ 28.85
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88433732;111.23;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));2.89%;Bruto R$ 3848.69 * 2.89% = R$ 111.23
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88434148;229.48;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));2.89%;Bruto R$ 7940.37 * 2.89% = R$ 229.48
-NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88446232;-180.52;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-16));2.89%;Bruto R$ -6246.47 * 2.89% = R$ -180.52
+NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88446232;-180.52;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-16));2.89%;Bruto R$ -6246.47 * 2.89% = R$ -180.52 [Estorno bandeira HIPERCARD vs venda ELO - vínculo por referência homologado por Helena]
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88434529;247.93;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));2.89%;Bruto R$ 8579.05 * 2.89% = R$ 247.93
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88434867;12.24;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 821.18 * 1.49% = R$ 12.24
 NF-0015;01_orbe_relatorio_comissoes_set2026.csv;TX88434898;122.40;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));2.89%;Bruto R$ 4235.19 * 2.89% = R$ 122.40
@@ -3388,7 +3388,7 @@ NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88419839;17.90;Faturamento NF 
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;AN88445216;-840.45;Faturamento NF Checkout (Reversão de antecipação à taxa da antecipação original (2026-09-08));2.10%;Bruto R$ -40021.58 * 2.10% = R$ -840.45
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88421393;133.49;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));3.09%;Bruto R$ 4320.00 * 3.09% = R$ 133.49
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88421094;15.41;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 1034.39 * 1.49% = R$ 15.41
-NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88445384;-72.07;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-04));3.09%;Bruto R$ -2332.45 * 3.09% = R$ -72.07
+NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88445384;-72.07;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-04));3.09%;Bruto R$ -2332.45 * 3.09% = R$ -72.07 [Estorno bandeira HIPERCARD vs venda VISA - vínculo por referência homologado por Helena]
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;AN88445434;518.13;Faturamento NF Checkout (Taxa contratual de antecipação);2.10%;Bruto R$ 24672.92 * 2.10% = R$ 518.13
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88422325;44.51;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.09%;Bruto R$ 1440.50 * 3.09% = R$ 44.51
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88423218;276.65;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));3.09%;Bruto R$ 8953.12 * 3.09% = R$ 276.65
@@ -3432,7 +3432,7 @@ NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88437761;2.44;Faturamento NF C
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88437702;108.61;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.09%;Bruto R$ 3515.01 * 3.09% = R$ 108.61
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88437650;124.06;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 3273.25 * 3.79% = R$ 124.06
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88438992;39.38;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.59%;Bruto R$ 1520.58 * 2.59% = R$ 39.38
-NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88446612;-302.04;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-22));3.79%;Bruto R$ -7969.30 * 3.79% = R$ -302.04
+NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88446612;-302.04;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-22));3.79%;Bruto R$ -7969.30 * 3.79% = R$ -302.04 [Estorno bandeira MASTERCARD vs venda HIPERCARD - vínculo por referência homologado por Helena]
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88439127;44.08;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.59%;Bruto R$ 1701.89 * 2.59% = R$ 44.08
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88439580;110.24;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.09%;Bruto R$ 3567.63 * 3.09% = R$ 110.24
 NF-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88440021;13.00;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 1460.25 * 0.89% = R$ 13.00
@@ -3489,7 +3489,7 @@ NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88419897;3.04;Faturamento NF C
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88420417;11.66;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 468.46 * 2.49% = R$ 11.66
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88419996;62.01;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));2.99%;Bruto R$ 2073.78 * 2.99% = R$ 62.01
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88420057;39.74;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1595.90 * 2.49% = R$ 39.74
-NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88445205;-16.00;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-05));2.49%;Bruto R$ -642.65 * 2.49% = R$ -16.00
+NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88445205;-16.00;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-05));2.49%;Bruto R$ -642.65 * 2.49% = R$ -16.00 [Estorno bandeira ELO vs venda MASTERCARD - vínculo por referência homologado por Helena]
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88420256;137.56;Faturamento NF Checkout (Taxa contratual Crédito parcelado (3x));2.99%;Bruto R$ 4600.66 * 2.99% = R$ 137.56
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88420111;11.94;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 1341.43 * 0.89% = R$ 11.94
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88420249;123.20;Faturamento NF Checkout (Taxa contratual Crédito parcelado (3x));2.99%;Bruto R$ 4120.53 * 2.99% = R$ 123.20
@@ -3498,7 +3498,7 @@ NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88421287;23.78;Faturamento NF 
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88421273;44.44;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1784.69 * 2.49% = R$ 44.44
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88421359;13.21;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 1483.82 * 0.89% = R$ 13.21
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88420900;13.49;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 905.54 * 1.49% = R$ 13.49
-NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88445351;-441.95;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-08));3.59%;Bruto R$ -12310.63 * 3.59% = R$ -441.95
+NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88445351;-441.95;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-08));3.59%;Bruto R$ -12310.63 * 3.59% = R$ -441.95 [Estorno bandeira HIPERCARD vs venda AMEX - vínculo por referência homologado por Helena]
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88422024;4.09;Faturamento NF Checkout (Taxa contratual PIX);0.89%;Bruto R$ 459.96 * 0.89% = R$ 4.09
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88422226;189.94;Faturamento NF Checkout (Taxa contratual Crédito parcelado (3x));2.99%;Bruto R$ 6352.36 * 2.99% = R$ 189.94
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88423100;7.72;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 518.31 * 1.49% = R$ 7.72
@@ -3540,7 +3540,7 @@ NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88428735;151.46;Faturamento NF
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88429150;26.98;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1083.46 * 2.49% = R$ 26.98
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88428676;374.08;Faturamento NF Checkout (Taxa contratual Crédito parcelado (10x));3.59%;Bruto R$ 10420.13 * 3.59% = R$ 374.08
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88429336;85.08;Faturamento NF Checkout (Taxa contratual Crédito parcelado (4x));2.99%;Bruto R$ 2845.40 * 2.99% = R$ 85.08
-NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88445875;-58.31;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-07));2.49%;Bruto R$ -2341.94 * 2.49% = R$ -58.31
+NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88445875;-58.31;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-07));2.49%;Bruto R$ -2341.94 * 2.49% = R$ -58.31 [Estorno bandeira AMEX vs venda VISA - vínculo por referência homologado por Helena]
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;AN88445945;98.27;Faturamento NF Checkout (Taxa contratual de antecipação);2.10%;Bruto R$ 4679.61 * 2.10% = R$ 98.27
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88430353;32.11;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1289.38 * 2.49% = R$ 32.11
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88429990;192.88;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.59%;Bruto R$ 5372.59 * 3.59% = R$ 192.88
@@ -3561,7 +3561,7 @@ NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88433646;70.35;Faturamento NF 
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88433964;14.33;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 575.38 * 2.49% = R$ 14.33
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88433537;128.93;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));2.99%;Bruto R$ 4311.95 * 2.99% = R$ 128.93
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88433590;29.17;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1171.58 * 2.49% = R$ 29.17
-NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446237;-8.82;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-15));1.49%;Bruto R$ -591.82 * 1.49% = R$ -8.82
+NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446237;-8.82;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-15));1.49%;Bruto R$ -591.82 * 1.49% = R$ -8.82 [Estorno bandeira AMEX vs venda MASTERCARD - vínculo por referência homologado por Helena]
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88435140;78.01;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));2.99%;Bruto R$ 2609.15 * 2.99% = R$ 78.01
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88434338;238.52;Faturamento NF Checkout (Taxa contratual Crédito parcelado (8x));3.59%;Bruto R$ 6644.08 * 3.59% = R$ 238.52
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88434839;50.11;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 2012.35 * 2.49% = R$ 50.11
@@ -3581,15 +3581,15 @@ NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88435533;14.73;Faturamento NF 
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88435384;54.24;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 2178.13 * 2.49% = R$ 54.24
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;AN88446371;777.81;Faturamento NF Checkout (Taxa contratual de antecipação);2.10%;Bruto R$ 37038.57 * 2.10% = R$ 777.81
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88437238;30.35;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1218.77 * 2.49% = R$ 30.35
-NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446419;-374.08;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-16));3.59%;Bruto R$ -10420.13 * 3.59% = R$ -374.08
+NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446419;-374.08;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-16));3.59%;Bruto R$ -10420.13 * 3.59% = R$ -374.08 [Estorno bandeira AMEX vs venda VISA - vínculo por referência homologado por Helena]
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88437958;279.48;Faturamento NF Checkout (Taxa contratual Crédito parcelado (8x));3.59%;Bruto R$ 7784.87 * 3.59% = R$ 279.48
-NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446585;-25.55;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-16));2.49%;Bruto R$ -1025.97 * 2.49% = R$ -25.55
+NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446585;-25.55;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-16));2.49%;Bruto R$ -1025.97 * 2.49% = R$ -25.55 [Estorno bandeira MASTERCARD vs venda ELO - vínculo por referência homologado por Helena]
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88438431;94.29;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 3786.78 * 2.49% = R$ 94.29
-NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446596;-179.30;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-17));2.99%;Bruto R$ -5996.67 * 2.99% = R$ -179.30
+NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446596;-179.30;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-17));2.99%;Bruto R$ -5996.67 * 2.99% = R$ -179.30 [Estorno bandeira HIPERCARD vs venda VISA - vínculo por referência homologado por Helena]
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88438067;164.35;Faturamento NF Checkout (Taxa contratual Crédito parcelado (2x));2.99%;Bruto R$ 5496.70 * 2.99% = R$ 164.35
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88438149;46.70;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1875.34 * 2.49% = R$ 46.70
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88438012;27.11;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 1088.84 * 2.49% = R$ 27.11
-NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446647;-67.15;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-15));2.99%;Bruto R$ -2245.67 * 2.99% = R$ -67.15
+NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88446647;-67.15;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-15));2.99%;Bruto R$ -2245.67 * 2.99% = R$ -67.15 [Estorno bandeira AMEX vs venda ELO - vínculo por referência homologado por Helena]
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88439849;98.53;Faturamento NF Checkout (Taxa contratual Crédito parcelado (5x));2.99%;Bruto R$ 3295.21 * 2.99% = R$ 98.53
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88439502;214.40;Faturamento NF Checkout (Taxa contratual Crédito parcelado (7x));3.59%;Bruto R$ 5972.05 * 3.59% = R$ 214.40
 NF-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88439678;80.65;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.49%;Bruto R$ 3239.02 * 2.49% = R$ 80.65
@@ -3707,7 +3707,7 @@ NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88429219;25.47;Faturamento NF 
 NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88428795;18.49;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 687.34 * 2.69% = R$ 18.49
 NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88429166;340.71;Faturamento NF Checkout (Taxa contratual Crédito parcelado (11x));3.79%;Bruto R$ 8989.75 * 3.79% = R$ 340.71
 NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88429018;53.80;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 2000.13 * 2.69% = R$ 53.80
-NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88445854;-88.66;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-07));3.19%;Bruto R$ -2779.18 * 3.19% = R$ -88.66
+NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88445854;-88.66;Faturamento NF Checkout (Estorno à taxa da venda original (2026-09-07));3.19%;Bruto R$ -2779.18 * 3.19% = R$ -88.66 [Estorno bandeira AMEX vs venda MASTERCARD - vínculo por referência homologado por Helena]
 NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88430169;64.25;Faturamento NF Checkout (Taxa contratual Crédito à vista);2.69%;Bruto R$ 2388.59 * 2.69% = R$ 64.25
 NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88429966;189.20;Faturamento NF Checkout (Taxa contratual Crédito parcelado (10x));3.79%;Bruto R$ 4992.21 * 3.79% = R$ 189.20
 NF-0019;01_orbe_relatorio_comissoes_set2026.csv;TX88431662;11.27;Faturamento NF Checkout (Taxa contratual Débito);1.49%;Bruto R$ 756.23 * 1.49% = R$ 11.27
@@ -3792,7 +3792,7 @@ NF-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88444107;601.01;Faturamento NF
 NF-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88443951;115.70;Faturamento NF Checkout (Taxa contratual Crédito parcelado (6x));3.19%;Bruto R$ 3626.97 * 3.19% = R$ 115.70
 NF-0021;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0025;165.57;Faturamento NF Ponte Câmbio (Split 50% Spread Remessas);1.50%;Spread apurado R$ 331.14 * 50% = R$ 165.57
 NF-0021;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0056;177.88;Faturamento NF Ponte Câmbio (Split 50% Spread Remessas);1.50%;Spread apurado R$ 355.76 * 50% = R$ 177.88
-NF-0021;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0162;410.94;Faturamento NF Ponte Câmbio (Split 50% Spread Remessas);1.50%;Spread apurado R$ 821.88 * 50% = R$ 410.94
+NF-0021;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0162;410.94;Faturamento NF Ponte Câmbio (Split 50% Spread Remessas);1.50%;Spread apurado R$ 821.88 * 50% = R$ 410.94 [Deduplicado: 2 ocorrências idênticas]
 NF-0021;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0258;96.14;Faturamento NF Ponte Câmbio (Split 50% Spread Remessas);1.50%;Spread apurado R$ 192.27 * 50% = R$ 96.14
 NF-0021;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0260;124.12;Faturamento NF Ponte Câmbio (Split 50% Spread Remessas);1.50%;Spread apurado R$ 248.24 * 50% = R$ 124.12
 NF-0021;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0358;112.16;Faturamento NF Ponte Câmbio (Split 50% Spread Remessas);1.50%;Spread apurado R$ 224.32 * 50% = R$ 112.16
@@ -4317,69 +4317,186 @@ LAN-0181;05b_extrato_banco_meridiano_cc90233_set2026.ofx;MRD2026090674;-240282.3
 LAN-0182;05b_extrato_banco_meridiano_cc90233_set2026.ofx;MRD2026090680;3912.66;Classificação contábil (MERIDIANO): conta 3.2.01 (REGRA);N/A;Extrato 2026-09-30: RENDIMENTO APLIC AUTOMATICA
 LAN-0183;05b_extrato_banco_meridiano_cc90233_set2026.ofx;MRD2026090688;-141194.63;Classificação contábil (MERIDIANO): conta 2.1.02.001 (REGRA);N/A;Extrato 2026-09-30: TED ENVIADA PONTE CAMBIO SA LIQ OPERACOES
 LAN-0184;05b_extrato_banco_meridiano_cc90233_set2026.ofx;MRD2026090696;-450.00;Classificação contábil (MERIDIANO): conta 4.2.01 (REGRA);N/A;Extrato 2026-09-30: TARIFA PACOTE CAMBIO
-PEN-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88421353;45.11;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1292.63, taxa em disputa R$ 45.11). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88423234;339.06;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 7551.55, taxa em disputa R$ 339.06). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0003;01_orbe_relatorio_comissoes_set2026.csv;TX88418299;38.21;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 957.70, taxa em disputa R$ 38.21). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88422170;311.62;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 7810.21, taxa em disputa R$ 311.62). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88423562;279.21;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 6218.54, taxa em disputa R$ 279.21). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0006;01_orbe_relatorio_comissoes_set2026.csv;TX88410188;76.53;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1918.29, taxa em disputa R$ 76.53). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88425538;2.01;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 203.46, taxa em disputa R$ 2.01). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88425685;245.22;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 5461.51, taxa em disputa R$ 245.22). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88417174;301.94;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 7567.58, taxa em disputa R$ 301.94). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88413600;97.51;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 2794.19, taxa em disputa R$ 97.51). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88417783;130.61;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 3742.59, taxa em disputa R$ 130.61). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88412107;48.67;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1394.81, taxa em disputa R$ 48.67). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0013;01_orbe_relatorio_comissoes_set2026.csv;AN88445637;1099.59;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 52361.86, taxa em disputa R$ 1099.59). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88428032;4.99;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 504.60, taxa em disputa R$ 4.99). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0015;01_orbe_relatorio_comissoes_set2026.csv;AN88445646;466.69;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 22223.80, taxa em disputa R$ 466.69). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88428488;9.30;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 939.45, taxa em disputa R$ 9.30). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88427530;314.31;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 7000.39, taxa em disputa R$ 314.31). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0018;01_orbe_relatorio_comissoes_set2026.csv;AN88445703;1090.78;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 51942.03, taxa em disputa R$ 1090.78). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0019;01_orbe_relatorio_comissoes_set2026.csv;AN88445766;1114.36;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 53065.13, taxa em disputa R$ 1114.36). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88429366;99.99;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 2506.25, taxa em disputa R$ 99.99). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0021;01_orbe_relatorio_comissoes_set2026.csv;TX88428508;35.19;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1008.53, taxa em disputa R$ 35.19). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0022;01_orbe_relatorio_comissoes_set2026.csv;TX88430278;18.19;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 521.25, taxa em disputa R$ 18.19). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0023;01_orbe_relatorio_comissoes_set2026.csv;AN88446030;-1099.59;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ -52361.86, taxa em disputa R$ -1099.59). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0024;01_orbe_relatorio_comissoes_set2026.csv;TX88430524;5.94;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 298.85, taxa em disputa R$ 5.94). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0025;01_orbe_relatorio_comissoes_set2026.csv;TX88430846;54.78;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1569.79, taxa em disputa R$ 54.78). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0026;01_orbe_relatorio_comissoes_set2026.csv;TX88414356;224.15;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 5617.94, taxa em disputa R$ 224.15). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0027;01_orbe_relatorio_comissoes_set2026.csv;TX88430812;150.02;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 3760.11, taxa em disputa R$ 150.02). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0028;01_orbe_relatorio_comissoes_set2026.csv;TX88419921;138.83;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 3479.67, taxa em disputa R$ 138.83). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0029;01_orbe_relatorio_comissoes_set2026.csv;TX88431921;158.90;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 3538.98, taxa em disputa R$ 158.90). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0030;01_orbe_relatorio_comissoes_set2026.csv;TX88433440;71.12;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1782.57, taxa em disputa R$ 71.12). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0031;01_orbe_relatorio_comissoes_set2026.csv;TX88433459;5.09;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 256.15, taxa em disputa R$ 5.09). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0032;01_orbe_relatorio_comissoes_set2026.csv;TX88433374;5.77;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 583.72, taxa em disputa R$ 5.77). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0033;01_orbe_relatorio_comissoes_set2026.csv;TX88433751;7.03;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 710.35, taxa em disputa R$ 7.03). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0034;01_orbe_relatorio_comissoes_set2026.csv;TX88411311;112.59;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 2821.87, taxa em disputa R$ 112.59). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0035;01_orbe_relatorio_comissoes_set2026.csv;TX88434732;28.21;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 2850.33, taxa em disputa R$ 28.21). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0036;01_orbe_relatorio_comissoes_set2026.csv;TX88436129;106.64;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 2672.89, taxa em disputa R$ 106.64). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0037;01_orbe_relatorio_comissoes_set2026.csv;TX88435925;8.83;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 444.02, taxa em disputa R$ 8.83). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0038;01_orbe_relatorio_comissoes_set2026.csv;TX88435943;149.74;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 3752.96, taxa em disputa R$ 149.74). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0039;01_orbe_relatorio_comissoes_set2026.csv;TX88417414;255.39;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 5687.98, taxa em disputa R$ 255.39). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0040;01_orbe_relatorio_comissoes_set2026.csv;TX88415360;63.81;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1599.33, taxa em disputa R$ 63.81). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0041;01_orbe_relatorio_comissoes_set2026.csv;TX88446499;-18.19;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ -521.25, taxa em disputa R$ -18.19). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0042;01_orbe_relatorio_comissoes_set2026.csv;TX88410385;10.23;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1033.78, taxa em disputa R$ 10.23). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0043;01_orbe_relatorio_comissoes_set2026.csv;AN88446517;1183.35;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 56350.28, taxa em disputa R$ 1183.35). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0044;01_orbe_relatorio_comissoes_set2026.csv;TX88437771;99.57;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 2853.15, taxa em disputa R$ 99.57). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0045;01_orbe_relatorio_comissoes_set2026.csv;TX88437854;199.96;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 5011.64, taxa em disputa R$ 199.96). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0046;01_orbe_relatorio_comissoes_set2026.csv;TX88438901;5.63;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 569.26, taxa em disputa R$ 5.63). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0047;01_orbe_relatorio_comissoes_set2026.csv;TX88440207;120.41;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 3017.94, taxa em disputa R$ 120.41). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0048;01_orbe_relatorio_comissoes_set2026.csv;AN88446660;-1183.35;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ -56350.28, taxa em disputa R$ -1183.35). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0049;01_orbe_relatorio_comissoes_set2026.csv;TX88419007;238.64;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 5981.11, taxa em disputa R$ 238.64). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0050;01_orbe_relatorio_comissoes_set2026.csv;TX88412755;82.74;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 2370.93, taxa em disputa R$ 82.74). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0051;01_orbe_relatorio_comissoes_set2026.csv;TX88443476;139.99;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 3117.97, taxa em disputa R$ 139.99). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0052;01_orbe_relatorio_comissoes_set2026.csv;TX88442802;64.98;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1862.08, taxa em disputa R$ 64.98). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0053;01_orbe_relatorio_comissoes_set2026.csv;TX88444518;120.92;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 3030.59, taxa em disputa R$ 120.92). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0054;01_orbe_relatorio_comissoes_set2026.csv;TX88413941;101.77;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 2916.27, taxa em disputa R$ 101.77). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0055;01_orbe_relatorio_comissoes_set2026.csv;TX88444426;2.43;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 246.20, taxa em disputa R$ 2.43). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0056;01_orbe_relatorio_comissoes_set2026.csv;TX88444140;30.56;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 875.69, taxa em disputa R$ 30.56). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0057;01_orbe_relatorio_comissoes_set2026.csv;TX88413380;60.07;Pendência (CADASTRO_PENDENTE): Atlas Idiomas iniciou em 10/09 sem contrato assinado vigente (bruto R$ 1721.25, taxa em disputa R$ 60.07). Não faturar até confirmação do Comercial.;N/A;Decisão requerida por: Bia / Comercial
-PEN-0058;05a_extrato_banco_aurora_cc4471_set2026.csv;LOTE_ISENCAO_118_TX;15396.77;Pendência (ISENCAO_NAO_AVISADA): Casa do Estudante (1018325654): Isenção total de MDR/Antecipação no período set-dez/2026 (taxa 0.00%) não comunicada à Orbe. Lote consolidado de 118 transações com taxa indevida de R$ 15396.77 a ser devolvida ao lojista via negociação comercial.;N/A;Decisão requerida por: Helena / Comercial
-PEN-0059;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0162;821.88;Pendência (OPERACAO_DUPLICADA): Operação PC-0926-0162 duplicada (cópia exata) no relatório da Ponte ('reprocessada'). Desconsiderada da apuração.;N/A;Decisão requerida por: Caio / Helena
-PEN-0060;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0210;687.52;Pendência (SPREAD_NEGATIVO_CONTESTACAO): Operação com spread negativo (-687.52 BRL / Taxa travada no pedido (D-1)). Excluída da comissão/nota para contestação com a Ponte.;N/A;Decisão requerida por: Helena
-PEN-0061;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0326;509.22;Pendência (SPREAD_NEGATIVO_CONTESTACAO): Operação com spread negativo (-509.22 BRL / Taxa travada no pedido (D-1)). Excluída da comissão/nota para contestação com a Ponte.;N/A;Decisão requerida por: Helena
-PEN-0062;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0491;292.28;Pendência (SPREAD_NEGATIVO_CONTESTACAO): Operação com spread negativo (-292.28 BRL / Taxa travada no pedido (D-1)). Excluída da comissão/nota para contestação com a Ponte.;N/A;Decisão requerida por: Helena
-PEN-0063;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0545;345.03;Pendência (SPREAD_NEGATIVO_CONTESTACAO): Operação com spread negativo (-345.03 BRL / Taxa travada no pedido (D-1)). Excluída da comissão/nota para contestação com a Ponte.;N/A;Decisão requerida por: Helena
+PEN-0001;01_orbe_relatorio_comissoes_set2026.csv;TX88421353;45.11;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1292.63, taxa cobrada 3.49% = R$ 45.11
+PEN-0002;01_orbe_relatorio_comissoes_set2026.csv;TX88423234;339.06;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 7551.55, taxa cobrada 4.49% = R$ 339.06
+PEN-0003;01_orbe_relatorio_comissoes_set2026.csv;TX88418299;38.21;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 957.70, taxa cobrada 3.99% = R$ 38.21
+PEN-0004;01_orbe_relatorio_comissoes_set2026.csv;TX88422170;311.62;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 7810.21, taxa cobrada 3.99% = R$ 311.62
+PEN-0005;01_orbe_relatorio_comissoes_set2026.csv;TX88423562;279.21;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 6218.54, taxa cobrada 4.49% = R$ 279.21
+PEN-0006;01_orbe_relatorio_comissoes_set2026.csv;TX88410188;76.53;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1918.29, taxa cobrada 3.99% = R$ 76.53
+PEN-0007;01_orbe_relatorio_comissoes_set2026.csv;TX88425538;2.01;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 203.46, taxa cobrada 0.99% = R$ 2.01
+PEN-0008;01_orbe_relatorio_comissoes_set2026.csv;TX88425685;245.22;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 5461.51, taxa cobrada 4.49% = R$ 245.22
+PEN-0009;01_orbe_relatorio_comissoes_set2026.csv;TX88417174;301.94;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 7567.58, taxa cobrada 3.99% = R$ 301.94
+PEN-0010;01_orbe_relatorio_comissoes_set2026.csv;TX88413600;97.51;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 2794.19, taxa cobrada 3.49% = R$ 97.51
+PEN-0011;01_orbe_relatorio_comissoes_set2026.csv;TX88417783;130.61;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 3742.59, taxa cobrada 3.49% = R$ 130.61
+PEN-0012;01_orbe_relatorio_comissoes_set2026.csv;TX88412107;48.67;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1394.81, taxa cobrada 3.49% = R$ 48.67
+PEN-0013;01_orbe_relatorio_comissoes_set2026.csv;AN88445637;1099.59;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 52361.86, taxa cobrada 2.10% = R$ 1099.59
+PEN-0014;01_orbe_relatorio_comissoes_set2026.csv;TX88428032;4.99;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 504.60, taxa cobrada 0.99% = R$ 4.99
+PEN-0015;01_orbe_relatorio_comissoes_set2026.csv;AN88445646;466.69;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 22223.80, taxa cobrada 2.10% = R$ 466.69
+PEN-0016;01_orbe_relatorio_comissoes_set2026.csv;TX88428488;9.30;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 939.45, taxa cobrada 0.99% = R$ 9.30
+PEN-0017;01_orbe_relatorio_comissoes_set2026.csv;TX88427530;314.31;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 7000.39, taxa cobrada 4.49% = R$ 314.31
+PEN-0018;01_orbe_relatorio_comissoes_set2026.csv;AN88445703;1090.78;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 51942.03, taxa cobrada 2.10% = R$ 1090.78
+PEN-0019;01_orbe_relatorio_comissoes_set2026.csv;AN88445766;1114.36;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 53065.13, taxa cobrada 2.10% = R$ 1114.36
+PEN-0020;01_orbe_relatorio_comissoes_set2026.csv;TX88429366;99.99;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 2506.25, taxa cobrada 3.99% = R$ 99.99
+PEN-0021;01_orbe_relatorio_comissoes_set2026.csv;TX88428508;35.19;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1008.53, taxa cobrada 3.49% = R$ 35.19
+PEN-0022;01_orbe_relatorio_comissoes_set2026.csv;TX88430278;18.19;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 521.25, taxa cobrada 3.49% = R$ 18.19
+PEN-0023;01_orbe_relatorio_comissoes_set2026.csv;AN88446030;-1099.59;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ -52361.86, taxa cobrada 2.10% = R$ -1099.59
+PEN-0024;01_orbe_relatorio_comissoes_set2026.csv;TX88430524;5.94;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 298.85, taxa cobrada 1.99% = R$ 5.94
+PEN-0025;01_orbe_relatorio_comissoes_set2026.csv;TX88430846;54.78;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1569.79, taxa cobrada 3.49% = R$ 54.78
+PEN-0026;01_orbe_relatorio_comissoes_set2026.csv;TX88414356;224.15;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 5617.94, taxa cobrada 3.99% = R$ 224.15
+PEN-0027;01_orbe_relatorio_comissoes_set2026.csv;TX88430812;150.02;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 3760.11, taxa cobrada 3.99% = R$ 150.02
+PEN-0028;01_orbe_relatorio_comissoes_set2026.csv;TX88419921;138.83;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 3479.67, taxa cobrada 3.99% = R$ 138.83
+PEN-0029;01_orbe_relatorio_comissoes_set2026.csv;TX88431921;158.90;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 3538.98, taxa cobrada 4.49% = R$ 158.90
+PEN-0030;01_orbe_relatorio_comissoes_set2026.csv;TX88433440;71.12;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1782.57, taxa cobrada 3.99% = R$ 71.12
+PEN-0031;01_orbe_relatorio_comissoes_set2026.csv;TX88433459;5.09;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 256.15, taxa cobrada 1.99% = R$ 5.09
+PEN-0032;01_orbe_relatorio_comissoes_set2026.csv;TX88433374;5.77;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 583.72, taxa cobrada 0.99% = R$ 5.77
+PEN-0033;01_orbe_relatorio_comissoes_set2026.csv;TX88433751;7.03;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 710.35, taxa cobrada 0.99% = R$ 7.03
+PEN-0034;01_orbe_relatorio_comissoes_set2026.csv;TX88411311;112.59;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 2821.87, taxa cobrada 3.99% = R$ 112.59
+PEN-0035;01_orbe_relatorio_comissoes_set2026.csv;TX88434732;28.21;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 2850.33, taxa cobrada 0.99% = R$ 28.21
+PEN-0036;01_orbe_relatorio_comissoes_set2026.csv;TX88436129;106.64;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 2672.89, taxa cobrada 3.99% = R$ 106.64
+PEN-0037;01_orbe_relatorio_comissoes_set2026.csv;TX88435925;8.83;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 444.02, taxa cobrada 1.99% = R$ 8.83
+PEN-0038;01_orbe_relatorio_comissoes_set2026.csv;TX88435943;149.74;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 3752.96, taxa cobrada 3.99% = R$ 149.74
+PEN-0039;01_orbe_relatorio_comissoes_set2026.csv;TX88417414;255.39;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 5687.98, taxa cobrada 4.49% = R$ 255.39
+PEN-0040;01_orbe_relatorio_comissoes_set2026.csv;TX88415360;63.81;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1599.33, taxa cobrada 3.99% = R$ 63.81
+PEN-0041;01_orbe_relatorio_comissoes_set2026.csv;TX88446499;-18.19;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ -521.25, taxa cobrada 3.49% = R$ -18.19
+PEN-0042;01_orbe_relatorio_comissoes_set2026.csv;TX88410385;10.23;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1033.78, taxa cobrada 0.99% = R$ 10.23
+PEN-0043;01_orbe_relatorio_comissoes_set2026.csv;AN88446517;1183.35;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 56350.28, taxa cobrada 2.10% = R$ 1183.35
+PEN-0044;01_orbe_relatorio_comissoes_set2026.csv;TX88437771;99.57;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 2853.15, taxa cobrada 3.49% = R$ 99.57
+PEN-0045;01_orbe_relatorio_comissoes_set2026.csv;TX88437854;199.96;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 5011.64, taxa cobrada 3.99% = R$ 199.96
+PEN-0046;01_orbe_relatorio_comissoes_set2026.csv;TX88438901;5.63;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 569.26, taxa cobrada 0.99% = R$ 5.63
+PEN-0047;01_orbe_relatorio_comissoes_set2026.csv;TX88440207;120.41;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 3017.94, taxa cobrada 3.99% = R$ 120.41
+PEN-0048;01_orbe_relatorio_comissoes_set2026.csv;AN88446660;-1183.35;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ -56350.28, taxa cobrada 2.10% = R$ -1183.35
+PEN-0049;01_orbe_relatorio_comissoes_set2026.csv;TX88419007;238.64;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 5981.11, taxa cobrada 3.99% = R$ 238.64
+PEN-0050;01_orbe_relatorio_comissoes_set2026.csv;TX88412755;82.74;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 2370.93, taxa cobrada 3.49% = R$ 82.74
+PEN-0051;01_orbe_relatorio_comissoes_set2026.csv;TX88443476;139.99;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 3117.97, taxa cobrada 4.49% = R$ 139.99
+PEN-0052;01_orbe_relatorio_comissoes_set2026.csv;TX88442802;64.98;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1862.08, taxa cobrada 3.49% = R$ 64.98
+PEN-0053;01_orbe_relatorio_comissoes_set2026.csv;TX88444518;120.92;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 3030.59, taxa cobrada 3.99% = R$ 120.92
+PEN-0054;01_orbe_relatorio_comissoes_set2026.csv;TX88413941;101.77;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 2916.27, taxa cobrada 3.49% = R$ 101.77
+PEN-0055;01_orbe_relatorio_comissoes_set2026.csv;TX88444426;2.43;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 246.20, taxa cobrada 0.99% = R$ 2.43
+PEN-0056;01_orbe_relatorio_comissoes_set2026.csv;TX88444140;30.56;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 875.69, taxa cobrada 3.49% = R$ 30.56
+PEN-0057;01_orbe_relatorio_comissoes_set2026.csv;TX88413380;60.07;Bloqueio contratual Atlas Idiomas (EC sem contrato assinado);PENDENTE;Bruto R$ 1721.25, taxa cobrada 3.49% = R$ 60.07
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88410932;16.37;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 608.88 cobrado a 2.69% = Taxa indevida R$ 16.37
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88410975;16.53;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 614.86 cobrado a 2.69% = Taxa indevida R$ 16.53
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88410128;218.81;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 5773.57 cobrado a 3.79% = Taxa indevida R$ 218.81
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88410468;208.16;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 6525.48 cobrado a 3.19% = Taxa indevida R$ 208.16
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88410859;119.87;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3757.72 cobrado a 3.19% = Taxa indevida R$ 119.87
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88410171;210.40;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 6595.84 cobrado a 3.19% = Taxa indevida R$ 210.40
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88412076;162.18;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 5084.26 cobrado a 3.19% = Taxa indevida R$ 162.18
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88412454;23.26;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 864.79 cobrado a 2.69% = Taxa indevida R$ 23.26
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88413035;122.24;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3225.45 cobrado a 3.79% = Taxa indevida R$ 122.24
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88413399;49.65;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1845.87 cobrado a 2.69% = Taxa indevida R$ 49.65
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88412743;137.18;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4300.56 cobrado a 3.19% = Taxa indevida R$ 137.18
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88415491;104.50;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3276.09 cobrado a 3.19% = Taxa indevida R$ 104.50
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88416144;71.38;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2237.86 cobrado a 3.19% = Taxa indevida R$ 71.38
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88415433;193.76;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 6074.20 cobrado a 3.19% = Taxa indevida R$ 193.76
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88415685;178.14;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4700.31 cobrado a 3.79% = Taxa indevida R$ 178.14
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88415978;85.98;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2695.50 cobrado a 3.19% = Taxa indevida R$ 85.98
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88416311;277.42;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 8696.59 cobrado a 3.19% = Taxa indevida R$ 277.42
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88416907;89.22;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2797.13 cobrado a 3.19% = Taxa indevida R$ 89.22
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88416509;60.11;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2234.94 cobrado a 2.69% = Taxa indevida R$ 60.11
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88417204;7.61;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 855.84 cobrado a 0.89% = Taxa indevida R$ 7.61
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88416842;284.66;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 7510.89 cobrado a 3.79% = Taxa indevida R$ 284.66
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88417236;35.02;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1301.95 cobrado a 2.69% = Taxa indevida R$ 35.02
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418090;208.68;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 5506.13 cobrado a 3.79% = Taxa indevida R$ 208.68
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418435;197.91;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 5222.07 cobrado a 3.79% = Taxa indevida R$ 197.91
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418273;51.00;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1896.05 cobrado a 2.69% = Taxa indevida R$ 51.00
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418116;15.98;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 594.33 cobrado a 2.69% = Taxa indevida R$ 15.98
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88417794;48.76;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1528.61 cobrado a 3.19% = Taxa indevida R$ 48.76
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418183;17.09;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1920.45 cobrado a 0.89% = Taxa indevida R$ 17.09
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418180;248.74;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 7797.66 cobrado a 3.19% = Taxa indevida R$ 248.74
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418131;35.64;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1325.13 cobrado a 2.69% = Taxa indevida R$ 35.64
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88419350;663.48;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 17506.19 cobrado a 3.79% = Taxa indevida R$ 663.48
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418990;119.24;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3737.98 cobrado a 3.19% = Taxa indevida R$ 119.24
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88418675;2.58;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 173.35 cobrado a 1.49% = Taxa indevida R$ 2.58
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;AN88445172;103.69;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4937.92 cobrado a 2.10% = Taxa indevida R$ 103.69
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88420231;107.69;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2841.51 cobrado a 3.79% = Taxa indevida R$ 107.69
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88420767;219.84;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 6891.81 cobrado a 3.19% = Taxa indevida R$ 219.84
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88419800;42.81;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1591.76 cobrado a 2.69% = Taxa indevida R$ 42.81
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88421653;5.33;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 599.69 cobrado a 0.89% = Taxa indevida R$ 5.33
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88421206;83.61;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3108.50 cobrado a 2.69% = Taxa indevida R$ 83.61
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88421843;50.54;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1584.51 cobrado a 3.19% = Taxa indevida R$ 50.54
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88421445;110.48;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3463.60 cobrado a 3.19% = Taxa indevida R$ 110.48
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88421923;115.28;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3614.01 cobrado a 3.19% = Taxa indevida R$ 115.28
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88422954;228.87;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 7174.89 cobrado a 3.19% = Taxa indevida R$ 228.87
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;AN88445486;910.93;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 43377.82 cobrado a 2.10% = Taxa indevida R$ 910.93
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88423783;93.41;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2928.51 cobrado a 3.19% = Taxa indevida R$ 93.41
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88423749;45.11;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1677.15 cobrado a 2.69% = Taxa indevida R$ 45.11
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88423823;106.84;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3349.38 cobrado a 3.19% = Taxa indevida R$ 106.84
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88423709;83.06;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2603.90 cobrado a 3.19% = Taxa indevida R$ 83.06
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88423880;303.81;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 8016.10 cobrado a 3.79% = Taxa indevida R$ 303.81
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88423515;352.41;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 9298.51 cobrado a 3.79% = Taxa indevida R$ 352.41
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88423437;30.73;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1142.57 cobrado a 2.69% = Taxa indevida R$ 30.73
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88424905;73.21;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2295.12 cobrado a 3.19% = Taxa indevida R$ 73.21
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88425223;156.47;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4905.04 cobrado a 3.19% = Taxa indevida R$ 156.47
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88425512;8.14;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 915.72 cobrado a 0.89% = Taxa indevida R$ 8.14
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88426178;21.13;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 785.56 cobrado a 2.69% = Taxa indevida R$ 21.13
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88426890;184.47;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 5783.06 cobrado a 3.19% = Taxa indevida R$ 184.47
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88426592;138.50;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4342.00 cobrado a 3.19% = Taxa indevida R$ 138.50
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88426399;38.88;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1445.47 cobrado a 2.69% = Taxa indevida R$ 38.88
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88426693;232.17;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 6126.03 cobrado a 3.79% = Taxa indevida R$ 232.17
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88427666;12.34;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 459.02 cobrado a 2.69% = Taxa indevida R$ 12.34
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;AN88445740;606.36;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 28874.36 cobrado a 2.10% = Taxa indevida R$ 606.36
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88427447;11.15;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1252.96 cobrado a 0.89% = Taxa indevida R$ 11.15
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88428766;24.05;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 894.26 cobrado a 2.69% = Taxa indevida R$ 24.05
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88429419;19.79;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 736.03 cobrado a 2.69% = Taxa indevida R$ 19.79
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88428877;236.05;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 7399.82 cobrado a 3.19% = Taxa indevida R$ 236.05
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;AN88445802;1206.58;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 57456.27 cobrado a 2.10% = Taxa indevida R$ 1206.58
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88430460;24.07;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 895.13 cobrado a 2.69% = Taxa indevida R$ 24.07
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88429864;6.82;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 458.11 cobrado a 1.49% = Taxa indevida R$ 6.82
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88431591;26.32;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 978.66 cobrado a 2.69% = Taxa indevida R$ 26.32
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88431209;63.43;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2358.01 cobrado a 2.69% = Taxa indevida R$ 63.43
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88431428;24.78;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 921.31 cobrado a 2.69% = Taxa indevida R$ 24.78
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88432026;314.07;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 8287.06 cobrado a 3.79% = Taxa indevida R$ 314.07
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88432675;94.07;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2948.93 cobrado a 3.19% = Taxa indevida R$ 94.07
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88432502;13.06;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 877.03 cobrado a 1.49% = Taxa indevida R$ 13.06
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88431751;8.47;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 952.04 cobrado a 0.89% = Taxa indevida R$ 8.47
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88432422;82.05;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2572.33 cobrado a 3.19% = Taxa indevida R$ 82.05
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88434117;28.80;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1070.71 cobrado a 2.69% = Taxa indevida R$ 28.80
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88433069;587.10;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 15490.80 cobrado a 3.79% = Taxa indevida R$ 587.10
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88433927;233.03;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 7305.14 cobrado a 3.19% = Taxa indevida R$ 233.03
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88433215;145.98;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4576.47 cobrado a 3.19% = Taxa indevida R$ 145.98
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88433422;140.22;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4395.91 cobrado a 3.19% = Taxa indevida R$ 140.22
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88433046;394.21;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 10401.42 cobrado a 3.79% = Taxa indevida R$ 394.21
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88434067;257.52;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 8072.75 cobrado a 3.19% = Taxa indevida R$ 257.52
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88433569;18.61;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1249.60 cobrado a 1.49% = Taxa indevida R$ 18.61
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88434450;2.67;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 179.80 cobrado a 1.49% = Taxa indevida R$ 2.67
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88434700;5.26;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 353.54 cobrado a 1.49% = Taxa indevida R$ 5.26
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88434297;29.10;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1082.01 cobrado a 2.69% = Taxa indevida R$ 29.10
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88434330;39.70;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1476.10 cobrado a 2.69% = Taxa indevida R$ 39.70
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88434663;11.80;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 792.05 cobrado a 1.49% = Taxa indevida R$ 11.80
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88435634;6.16;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 413.89 cobrado a 1.49% = Taxa indevida R$ 6.16
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88435991;40.26;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1496.92 cobrado a 2.69% = Taxa indevida R$ 40.26
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88436989;39.22;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1458.10 cobrado a 2.69% = Taxa indevida R$ 39.22
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88437827;50.41;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1874.29 cobrado a 2.69% = Taxa indevida R$ 50.41
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88437720;205.61;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 6445.72 cobrado a 3.19% = Taxa indevida R$ 205.61
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88437409;22.70;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 843.95 cobrado a 2.69% = Taxa indevida R$ 22.70
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88437916;39.44;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1466.34 cobrado a 2.69% = Taxa indevida R$ 39.44
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88438834;12.34;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 828.84 cobrado a 1.49% = Taxa indevida R$ 12.34
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88438430;182.26;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4809.01 cobrado a 3.79% = Taxa indevida R$ 182.26
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88438047;23.99;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 891.99 cobrado a 2.69% = Taxa indevida R$ 23.99
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88438180;372.75;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 9835.10 cobrado a 3.79% = Taxa indevida R$ 372.75
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88437994;86.61;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2715.13 cobrado a 3.19% = Taxa indevida R$ 86.61
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88438090;43.63;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1622.18 cobrado a 2.69% = Taxa indevida R$ 43.63
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88439362;272.73;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 7196.27 cobrado a 3.79% = Taxa indevida R$ 272.73
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88440140;43.07;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1601.32 cobrado a 2.69% = Taxa indevida R$ 43.07
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88439855;6.63;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 445.44 cobrado a 1.49% = Taxa indevida R$ 6.63
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88440981;99.99;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3134.66 cobrado a 3.19% = Taxa indevida R$ 99.99
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88442297;4.39;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 295.23 cobrado a 1.49% = Taxa indevida R$ 4.39
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88441917;9.08;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1021.01 cobrado a 0.89% = Taxa indevida R$ 9.08
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88442386;146.24;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 4584.59 cobrado a 3.19% = Taxa indevida R$ 146.24
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88442455;24.52;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 911.68 cobrado a 2.69% = Taxa indevida R$ 24.52
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88443269;504.90;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 15827.66 cobrado a 3.19% = Taxa indevida R$ 504.90
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88443300;9.94;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 1117.94 cobrado a 0.89% = Taxa indevida R$ 9.94
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88446763;-9.08;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ -1021.01 cobrado a 0.89% = Taxa indevida R$ -9.08
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88442853;56.31;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2093.64 cobrado a 2.69% = Taxa indevida R$ 56.31
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88443222;101.42;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3179.56 cobrado a 3.19% = Taxa indevida R$ 101.42
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88444622;5.11;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 343.19 cobrado a 1.49% = Taxa indevida R$ 5.11
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88444796;105.04;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 3292.86 cobrado a 3.19% = Taxa indevida R$ 105.04
+PEN-0058;01_orbe_relatorio_comissoes_set2026.csv;TX88444507;94.68;Isenção contratual set-dez/2026 (0.00%) não aplicada pela Orbe;0.00%;Bruto R$ 2968.04 cobrado a 3.19% = Taxa indevida R$ 94.68
+PEN-0059;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0162;821.88;Descarte de cópia exata na Ponte Câmbio;N/A;Cópia exata descartada ('reprocessada'): spread R$ 821.88
+PEN-0060;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0210;687.52;Exclusão e contestação de operação com spread negativo;N/A;Spread negativo reportado: -687.52 BRL (Taxa travada no pedido (D-1))
+PEN-0061;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0326;509.22;Exclusão e contestação de operação com spread negativo;N/A;Spread negativo reportado: -509.22 BRL (Taxa travada no pedido (D-1))
+PEN-0062;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0491;292.28;Exclusão e contestação de operação com spread negativo;N/A;Spread negativo reportado: -292.28 BRL (Taxa travada no pedido (D-1))
+PEN-0063;03_email_ponte_cambio_relatorio_set2026.eml;PC-0926-0545;345.03;Exclusão e contestação de operação com spread negativo;N/A;Spread negativo reportado: -345.03 BRL (Taxa travada no pedido (D-1))
 PEN-0064;05a_extrato_banco_aurora_cc4471_set2026.csv;L34;112220.15;Pendência (REPASSE_LOJISTA_BLOQUEADO): Repasse via PIX de R$ 112220.15 enviado para Atlas Idiomas (Lojista bloqueado para faturamento por ausência de contrato assinado). Requer averiguação da diretoria/comercial.;N/A;Decisão requerida por: Helena / Comercial
 PEN-0065;05a_extrato_banco_aurora_cc4471_set2026.csv;L50;7350.00;Pendência (CREDITO_NAO_IDENTIFICADO): PIX recebido de R$ 7350.00 sem identificação de lojista ou contrato. Retido até confirmação de origem.;N/A;Decisão requerida por: Helena / Financeiro
 PEN-0066;05a_extrato_banco_aurora_cc4471_set2026.csv;L60;137081.62;Pendência (REPASSE_LOJISTA_BLOQUEADO): Repasse via PIX de R$ 137081.62 enviado para Atlas Idiomas (Lojista bloqueado para faturamento por ausência de contrato assinado). Requer averiguação da diretoria/comercial.;N/A;Decisão requerida por: Helena / Comercial

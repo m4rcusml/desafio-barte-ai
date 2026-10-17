@@ -21,6 +21,11 @@ def format_orbe_file(input_path: Path, output_path: Path) -> int:
     with open(input_path, mode="r", encoding="utf-8", errors="ignore") as infile:
         reader = csv.DictReader(infile, delimiter=";")
         fieldnames = reader.fieldnames or []
+        obrigatorias = {"id_transacao", "data_movimento", "cod_estabelecimento", "valor_bruto"}
+        if not obrigatorias.issubset(set(fieldnames)):
+            raise ValueError(
+                f"Layout inválido no arquivo Orbe '{input_path.name}': colunas obrigatórias {sorted(obrigatorias)} ausentes em {fieldnames}."
+            )
 
         with open(output_path, mode="w", encoding="utf-8", newline="") as outfile:
             writer = csv.DictWriter(outfile, fieldnames=fieldnames, delimiter=";")

@@ -6,15 +6,18 @@ Implementa o Padrão Ouro de Auditabilidade da Organização Barte (14h11).
 
 from __future__ import annotations
 import csv
+import hashlib
 import json
+import re
 from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Tuple
 
 from ..engines.checkout_engine import ResultadoCheckout
 from ..engines.cambio_engine import ResultadoRemessas
 from ..engines.banking_engine import ResultadoContabil
+from ..utils import VERSAO_REGRAS, sha256_file, format_competencia_br
 
 
 def validar_prova_real(
@@ -89,6 +92,13 @@ def validar_prova_real(
     }
 
 
+def _combinar_hashes(pares: List[Tuple[str, str]]) -> str:
+    h = hashlib.sha256()
+    for nome, digest in sorted(pares):
+        h.update(f"{nome}:{digest}\n".encode("utf-8"))
+    return h.hexdigest()
+
+
 def gerar_manifestos_auditoria(
     state: Optional[Dict[str, Any]],
     comissoes_rows: List[Dict[str, str]],
@@ -99,14 +109,34 @@ def gerar_manifestos_auditoria(
     rastro_rows: List[Dict[str, str]],
     prova_real: Dict[str, Any],
     output_dirs: List[Path],
-) -> None:
-    """Gera o registro completo de execução em JSON e Markdown para auditoria de Tarvo e Barte."""
+) -> Dict[str, Any]:
+    """Gera o registro completo de execução em JSON e Markdown com hashes, cobertura e diff entre execuções."""
     now_iso = datetime.now().astimezone().isoformat()
-    status_fechamento = state.get("status_aprovacao", "PROVISORIO") if state else "PROVISORIO"
+    status_solicitado = state.get("status_aprovacao", "PROVISORIO") if state else "PROVISORIO"
     competencia = state.get("competencia", "2026-09") if state else "2026-09"
+    versao_regras = (state.get("versao_regras") if state else None) or VERSAO_REGRAS
+    cobertura_fontes = (state.get("cobertura_fontes") if state else None) or {}
+    estado_tecnico = (state.get("estado_tecnico") if state else None) or (
+        "CONCLUIDO" if prova_real["valido"] else "PARCIAL_COM_BLOQUEIOS"
+    )
 
-    # Inventário de arquivos processados
+    # 1. Lê manifesto anterior (se existir) ANTES de sobrescrever para rastrear diferenças e governança de aprovação
+    manifesto_anterior: Optional[Dict[str, Any]] = None
+    for d in output_dirs:
+        cand_prev = d / "auditoria_execucao.json"
+        if cand_prev.exists():
+            try:
+                with open(cand_prev, "r", encoding="utf-8") as fp:
+                    loaded = json.load(fp)
+                    if loaded.get("competencia") == competencia:
+                        manifesto_anterior = loaded
+                        break
+            except Exception:
+                pass
+
+    # 2. Inventário de arquivos de entrada com SHA-256
     arquivos_inventario = []
+    pares_hash_in: List[Tuple[str, str]] = []
     if state and "arquivos_descobertos" in state:
         for f in state["arquivos_descobertos"]:
             p = Path(f.get("caminho", ""))
@@ -117,46 +147,164 @@ def gerar_manifestos_auditoria(
                         linhas_count = sum(1 for _ in fp)
                 except Exception:
                     pass
+            digest_in = sha256_file(p)
+            nome_arq = f.get("nome", p.name)
+            dom_arq = f.get("domain", "")
+            cob_info = cobertura_fontes.get(dom_arq, {})
+            pares_hash_in.append((nome_arq, digest_in))
             arquivos_inventario.append({
-                "arquivo": f.get("nome", p.name),
+                "arquivo": nome_arq,
                 "caminho": str(p),
-                "dominio": f.get("domain", ""),
+                "dominio": dom_arq,
+                "estado": cob_info.get("estado", f.get("status", "PROCESSADA")),
                 "linhas_lidas": linhas_count,
                 "tamanho_bytes": p.stat().st_size if p.exists() else 0,
+                "sha256": digest_in,
                 "metodo_triagem": f.get("triage_source", "HEURISTICA"),
             })
+
+    hash_entradas_combinado = _combinar_hashes(pares_hash_in)
+
+    # 3. Inventário de arquivos de saída com SHA-256
+    ref_dir = output_dirs[0]
+    nomes_saida = [
+        ("comissoes_por_lojista.csv", len(comissoes_rows)),
+        ("divergencias_taxa.csv", len(divergencias_rows)),
+        ("notas_a_emitir.csv", len(notas_rows)),
+        ("lancamentos_classificados.csv", len(lancamentos_rows)),
+        ("pendencias.csv", len(pendencias_rows)),
+        ("rastro.csv", len(rastro_rows)),
+    ]
+    arquivos_saida_inv = []
+    pares_hash_out: List[Tuple[str, str]] = []
+    for fname, qtd_reg in nomes_saida:
+        f_out = ref_dir / fname
+        digest_out = sha256_file(f_out)
+        pares_hash_out.append((fname, digest_out))
+        arquivos_saida_inv.append({
+            "arquivo": fname,
+            "registros": qtd_reg,
+            "tamanho_bytes": f_out.stat().st_size if f_out.exists() else 0,
+            "sha256": digest_out,
+        })
+
+    hash_saidas_combinado = _combinar_hashes(pares_hash_out)
+    id_execucao = f"EXEC-{competencia}-{hash_entradas_combinado[:6]}-{hash_saidas_combinado[:8]}"
 
     total_comissao_brl = sum(Decimal(c["comissao_brl"]) for c in comissoes_rows)
     total_notas_brl = sum(Decimal(n["valor_brl"]) for n in notas_rows)
     total_divergencias_brl = sum(Decimal(d["diferenca_brl"]) for d in divergencias_rows)
 
+    metricas_atuais = {
+        "total_comissao_brl": f"{total_comissao_brl:.2f}",
+        "total_notas_a_emitir_brl": f"{total_notas_brl:.2f}",
+        "total_divergencias_taxa_brl": f"{total_divergencias_brl:.2f}",
+        "qtd_comissoes": len(comissoes_rows),
+        "qtd_notas": len(notas_rows),
+        "qtd_divergencias": len(divergencias_rows),
+        "qtd_lancamentos_contabeis": len(lancamentos_rows),
+        "qtd_pendencias_operacionais": len(pendencias_rows),
+        "qtd_linhas_rastro": len(rastro_rows),
+    }
+
+    # 4. Comparação entre execuções e separação entre estado_tecnico e status_aprovacao
+    status_aprovacao_final = status_solicitado
+    heranca_aprovacao_bloqueada = False
+
+    if manifesto_anterior:
+        prev_hash_in = manifesto_anterior.get("hash_entradas_combinado", "")
+        prev_hash_out = manifesto_anterior.get("hash_saidas_combinado", "")
+        prev_regras = manifesto_anterior.get("versao_regras", "")
+        prev_status_aprov = manifesto_anterior.get(
+            "status_aprovacao", manifesto_anterior.get("status_fechamento", "PROVISORIO")
+        )
+        entradas_identicas = (prev_hash_in == hash_entradas_combinado)
+        saidas_identicas = (prev_hash_out == hash_saidas_combinado)
+        regras_identicas = (prev_regras == versao_regras)
+
+        # Diferenças por métrica
+        prev_metricas = manifesto_anterior.get("metricas_financeiras", {})
+        diferencas_metricas: Dict[str, Dict[str, Any]] = {}
+        for k, v_atual in metricas_atuais.items():
+            v_ant = prev_metricas.get(k)
+            if v_ant is not None and str(v_ant) != str(v_atual):
+                diferencas_metricas[k] = {"anterior": v_ant, "atual": v_atual}
+
+        # Diferenças por arquivo de saída
+        prev_saidas_map = {
+            item["arquivo"]: item.get("sha256", "")
+            for item in manifesto_anterior.get("arquivos_saida", [])
+        }
+        arquivos_saida_alterados = [
+            item["arquivo"]
+            for item in arquivos_saida_inv
+            if item["arquivo"] in prev_saidas_map and prev_saidas_map[item["arquivo"]] != item["sha256"]
+        ]
+
+        # Governança: resultados alterados não herdam aprovação anterior!
+        if (not saidas_identicas or not entradas_identicas or not regras_identicas):
+            if prev_status_aprov == "APROVADO_POR_HELENA" or status_solicitado == "APROVADO_POR_HELENA":
+                if not (state and state.get("forcar_aprovacao_apos_mudanca") is True):
+                    status_aprovacao_final = "REABERTO_PARA_REVISAO"
+                    heranca_aprovacao_bloqueada = True
+
+        comparacao_execucao = {
+            "execucao_anterior_encontrada": True,
+            "id_execucao_anterior": manifesto_anterior.get("id_execucao", "EXEC-ANTERIOR"),
+            "versao_regras_anterior": prev_regras,
+            "status_aprovacao_anterior": prev_status_aprov,
+            "entradas_identicas": entradas_identicas,
+            "saidas_identicas": saidas_identicas,
+            "regras_identicas": regras_identicas,
+            "heranca_aprovacao_bloqueada": heranca_aprovacao_bloqueada,
+            "diferencas_metricas": diferencas_metricas,
+            "arquivos_saida_alterados": arquivos_saida_alterados,
+        }
+    else:
+        comparacao_execucao = {
+            "execucao_anterior_encontrada": False,
+            "id_execucao_anterior": None,
+            "entradas_identicas": None,
+            "saidas_identicas": None,
+            "regras_identicas": None,
+            "heranca_aprovacao_bloqueada": False,
+            "diferencas_metricas": {},
+            "arquivos_saida_alterados": [],
+        }
+
+    if state is not None:
+        state["id_execucao"] = id_execucao
+        state["versao_regras"] = versao_regras
+        state["estado_tecnico"] = estado_tecnico
+        state["status_aprovacao"] = status_aprovacao_final
+        state["comparacao_execucao_anterior"] = comparacao_execucao
+
     manifesto_data = {
-        "manifesto_versao": "2.0.0",
+        "manifesto_versao": "2.1.0",
+        "id_execucao": id_execucao,
+        "versao_regras": versao_regras,
         "data_hora_execucao": now_iso,
         "competencia": competencia,
-        "status_fechamento": status_fechamento,
+        "estado_tecnico": estado_tecnico,
+        "status_aprovacao": status_aprovacao_final,
+        "status_fechamento": status_aprovacao_final,
         "prova_real_rastro_valida": prova_real["valido"],
         "total_ids_auditados": prova_real["total_ids_validados"],
         "erros_conciliacao": prova_real["erros"],
-        "metricas_financeiras": {
-            "total_comissao_brl": f"{total_comissao_brl:.2f}",
-            "total_notas_a_emitir_brl": f"{total_notas_brl:.2f}",
-            "total_divergencias_taxa_brl": f"{total_divergencias_brl:.2f}",
-            "qtd_comissoes": len(comissoes_rows),
-            "qtd_notas": len(notas_rows),
-            "qtd_divergencias": len(divergencias_rows),
-            "qtd_lancamentos_contabeis": len(lancamentos_rows),
-            "qtd_pendencias_operacionais": len(pendencias_rows),
-            "qtd_linhas_rastro": len(rastro_rows),
-        },
+        "hash_entradas_combinado": hash_entradas_combinado,
+        "hash_saidas_combinado": hash_saidas_combinado,
+        "metricas_financeiras": metricas_atuais,
+        "cobertura_fontes": cobertura_fontes,
         "arquivos_entrada": arquivos_inventario,
+        "arquivos_saida": arquivos_saida_inv,
+        "comparacao_execucao_anterior": comparacao_execucao,
         "regras_aplicadas_resumo": [
-            "Checkout: Comissões apuradas pela taxa contratada por modalidade/parcelamento.",
-            "Checkout: Bridge Idiomas (1075624862) split temporal de taxa em 15/09/2026.",
+            "Checkout: Comissões apuradas pela taxa contratada por modalidade/parcelamento e filtradas por competência.",
+            "Checkout: Bridge Idiomas (1075624862) split temporal de taxa em 15/09/2026 respeitando data da venda original em estornos.",
             "Checkout: Atlas Idiomas (1076801732) bloqueio total por ausência de contrato assinado (Bia/Comercial).",
-            "Checkout: Casa do Estudante (1018325654) isenção set-dez com estornos anteriores respeitados à taxa original.",
-            "Checkout: Ajustes tardios (06) consolidados em setembro como lote complementar.",
-            "Checkout: 7 divergências de bandeira no lote 06 vinculadas e reportadas em pendências para correção Orbe.",
+            "Checkout: Casa do Estudante (1018325654) isenção set-dez consolidada em pendência com 118 transações reais no rastro.",
+            "Checkout/Remessas: Deduplicação estrita de cópias idênticas e bloqueio integral de todas as versões em IDs conflitantes.",
+            "Checkout: 7 divergências de bandeira no lote 06 vinculadas por referência sem abrir pendência indevida (homologado por Helena).",
             "Checkout: Estornos órfãos sem referência no relatório principal aceitos pelo valor declarado com pendência para Helena.",
             "Remessas: Split de 50% sobre o Spread BRL realizado (Ponte Câmbio).",
             "Remessas: Exclusão de 4 operações com spread negativo para contestação integral com a Ponte.",
@@ -168,37 +316,66 @@ def gerar_manifestos_auditoria(
     # Gera Markdown executivo
     md_lines = [
         "# 📋 Manifesto de Auditoria da Execução — Fechamento Financeiro Tarvo",
-        f"**Competência:** {competencia}  ",
+        f"**ID da Execução:** `{id_execucao}`  ",
+        f"**Versão de Regras:** `{versao_regras}`  ",
+        f"**Competência:** `{competencia}` ({format_competencia_br(competencia)})  ",
         f"**Data e Hora:** {now_iso}  ",
-        f"**Status do Fechamento:** `{status_fechamento}`  ",
+        f"**Estado Técnico:** `{estado_tecnico}`  ",
+        f"**Status de Aprovação Humana:** `{status_aprovacao_final}`  ",
         f"**Auditoria Matemática de Rastro:** `{'✅ 100% CONCILIADO' if prova_real['valido'] else '❌ DIVERGÊNCIAS DETECTADAS'}`  ",
         "",
         "---",
-        "## 1. Inventário de Arquivos de Entrada",
-        "| Arquivo | Domínio Identificado | Linhas | Tamanho (Bytes) | Método de Triagem |",
-        "| :--- | :--- | :---: | :---: | :--- |",
+        "## 1. Cobertura e Estado das Fontes por Frente",
+        "| Domínio | Frente | Estado | Arquivo | Motivo / Detalhe | Dependência | Responsável |",
+        "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
     ]
-    for arq in arquivos_inventario:
-        md_lines.append(f"| `{arq['arquivo']}` | {arq['dominio']} | {arq['linhas_lidas']} | {arq['tamanho_bytes']:,} | {arq['metodo_triagem']} |")
+    for dom_k, cob_v in cobertura_fontes.items():
+        md_lines.append(
+            f"| `{dom_k}` | {cob_v.get('frente', '')} | `{cob_v.get('estado', '')}` | "
+            f"`{cob_v.get('arquivo', '-')}` | {cob_v.get('motivo', '')} | "
+            f"{cob_v.get('dependencia', '')} | {cob_v.get('responsavel', '')} |"
+        )
 
     md_lines.extend([
         "",
         "---",
-        "## 2. Métricas Consolidadas das Saídas",
+        "## 2. Inventário de Arquivos de Entrada (SHA-256)",
+        "| Arquivo | Domínio Identificado | Linhas | Tamanho (Bytes) | SHA-256 (Prefixo) | Método de Triagem |",
+        "| :--- | :--- | :---: | :---: | :--- | :--- |",
+    ])
+    for arq in arquivos_inventario:
+        md_lines.append(
+            f"| `{arq['arquivo']}` | {arq['dominio']} | {arq['linhas_lidas']} | {arq['tamanho_bytes']:,} | `{arq['sha256'][:12]}` | {arq['metodo_triagem']} |"
+        )
+
+    md_lines.extend([
+        "",
+        "---",
+        "## 3. Métricas Consolidadas e Hashes das Saídas",
         f"- **Comissões por Lojista:** {len(comissoes_rows)} registros (Total: R$ {total_comissao_brl:.2f})",
         f"- **Notas Fiscais a Emitir:** {len(notas_rows)} registros (Total: R$ {total_notas_brl:.2f})",
         f"- **Divergências de Taxa:** {len(divergencias_rows)} operações contestadas (Total: R$ {total_divergencias_brl:.2f})",
         f"- **Lançamentos Contábeis:** {len(lancamentos_rows)} conciliações bancárias",
         f"- **Pendências Operacionais:** {len(pendencias_rows)} itens para decisão",
-        f"- **Rastro Universal:** {len(rastro_rows)} vínculos 1-para-1 auditáveis",
+        f"- **Rastro Universal:** {len(rastro_rows)} vínculos auditáveis",
+        f"- **Hash Combinado de Entradas:** `{hash_entradas_combinado}`",
+        f"- **Hash Combinado de Saídas:** `{hash_saidas_combinado}`",
         "",
         "---",
-        "## 3. Validação da Prova Real do Rastro",
-        f"Todos os {prova_real['total_ids_validados']} identificadores de saída (`COM-XXXX`, `NF-XXXX` e `DIV-XXXX`) foram verificados.",
+        "## 4. Comparação com Execução Anterior e Governança de Aprovação",
+        f"- **Execução Anterior Encontrada:** `{comparacao_execucao['execucao_anterior_encontrada']}`",
+        f"- **Entradas Idênticas:** `{comparacao_execucao['entradas_identicas']}`",
+        f"- **Saídas Idênticas:** `{comparacao_execucao['saidas_identicas']}`",
+        f"- **Herança de Aprovação Bloqueada por Alteração:** `{comparacao_execucao['heranca_aprovacao_bloqueada']}`",
+        f"- **Arquivos de Saída Alterados:** `{', '.join(comparacao_execucao['arquivos_saida_alterados']) or 'Nenhum'}`",
+        "",
+        "---",
+        "## 5. Validação da Prova Real do Rastro",
+        f"Todos os {prova_real['total_ids_validados']} identificadores de saída (`COM-XXXX`, `NF-XXXX`, `DIV-XXXX`, `LAN-XXXX` e `PEN-XXXX`) foram verificados.",
         "A soma das transações vinculadas no `rastro.csv` é identicamente igual ao valor total reportado em cada relatório oficial.",
         "",
         "---",
-        "## 4. Regras e Decisões Aplicadas nesta Execução",
+        "## 6. Regras e Decisões Aplicadas nesta Execução",
     ])
     for r in manifesto_data["regras_aplicadas_resumo"]:
         md_lines.append(f"- {r}")
@@ -206,12 +383,39 @@ def gerar_manifestos_auditoria(
     md_content = "\n".join(md_lines) + "\n"
 
     for d in output_dirs:
-        # JSON
+        # JSON atual
         with open(d / "auditoria_execucao.json", "w", encoding="utf-8") as fj:
             json.dump(manifesto_data, fj, indent=2, ensure_ascii=False)
-        # Markdown
+        # Markdown atual
         with open(d / "auditoria_execucao.md", "w", encoding="utf-8") as fmd:
             fmd.write(md_content)
+        # Histórico cumulativo de execuções para rastreabilidade entre runs
+        hist_path = d / "historico_execucoes.json"
+        historico_lista: List[Dict[str, Any]] = []
+        if hist_path.exists():
+            try:
+                with open(hist_path, "r", encoding="utf-8") as fh:
+                    loaded_h = json.load(fh)
+                    if isinstance(loaded_h, list):
+                        historico_lista = loaded_h
+            except Exception:
+                historico_lista = []
+        historico_lista.append({
+            "id_execucao": id_execucao,
+            "data_hora_execucao": now_iso,
+            "competencia": competencia,
+            "versao_regras": versao_regras,
+            "estado_tecnico": estado_tecnico,
+            "status_aprovacao": status_aprovacao_final,
+            "hash_entradas_combinado": hash_entradas_combinado,
+            "hash_saidas_combinado": hash_saidas_combinado,
+            "metricas_financeiras": metricas_atuais,
+            "comparacao_execucao_anterior": comparacao_execucao,
+        })
+        with open(hist_path, "w", encoding="utf-8") as fh:
+            json.dump(historico_lista, fh, indent=2, ensure_ascii=False)
+
+    return manifesto_data
 
 
 def emitir_todos_os_entregaveis(
@@ -224,6 +428,9 @@ def emitir_todos_os_entregaveis(
 ) -> Dict[str, Any]:
     output_dir_local.mkdir(parents=True, exist_ok=True)
     output_dir_oficial.mkdir(parents=True, exist_ok=True)
+
+    competencia = state.get("competencia", "2026-09") if state else "2026-09"
+    comp_label = format_competencia_br(competencia)
 
     rastro_completo: List[Dict[str, str]] = []
 
@@ -259,11 +466,12 @@ def emitir_todos_os_entregaveis(
 
     # 2. divergencias_taxa.csv
     divergencias_rows: List[Dict[str, str]] = []
+    divergencias_objs: List[Tuple[Dict[str, str], Any]] = []
     idx_div = 1
     for d in res_checkout.divergencias:
         id_saida = f"DIV-{idx_div:04d}"
         idx_div += 1
-        divergencias_rows.append({
+        d_row = {
             "id_saida": id_saida,
             "cnpj": d.cnpj,
             "linha_negocio": "CHECKOUT",
@@ -271,12 +479,14 @@ def emitir_todos_os_entregaveis(
             "taxa_contratada_pct": f"{d.taxa_contratada_pct:.2f}",
             "taxa_aplicada_pct": f"{d.taxa_aplicada_pct:.2f}",
             "diferenca_brl": f"{d.diferenca_brl:.2f}",
-        })
+        }
+        divergencias_rows.append(d_row)
+        divergencias_objs.append((d_row, d))
 
     for d in res_remessas.divergencias:
         id_saida = f"DIV-{idx_div:04d}"
         idx_div += 1
-        divergencias_rows.append({
+        d_row = {
             "id_saida": id_saida,
             "cnpj": d.cnpj,
             "linha_negocio": "REMESSA",
@@ -284,7 +494,9 @@ def emitir_todos_os_entregaveis(
             "taxa_contratada_pct": f"{d.taxa_contratada_pct:.2f}",
             "taxa_aplicada_pct": f"{d.taxa_aplicada_pct:.2f}",
             "diferenca_brl": f"{d.diferenca_brl:.2f}",
-        })
+        }
+        divergencias_rows.append(d_row)
+        divergencias_objs.append((d_row, d))
 
     # 3. notas_a_emitir.csv
     notas_rows: List[Dict[str, str]] = []
@@ -303,7 +515,7 @@ def emitir_todos_os_entregaveis(
                 "tomador": c.lojista,
                 "linha_negocio": "CHECKOUT",
                 "valor_brl": f"{c.comissao_brl:.2f}",
-                "discriminacao": f"Serviços de intermediação e facilitação de transações comerciais (Checkout) - Competência 09/2026. Lojista: {c.lojista}.",
+                "discriminacao": f"Serviços de intermediação e facilitação de transações comerciais (Checkout) - Competência {comp_label}. Lojista: {c.lojista}.",
             })
 
     if res_remessas.nota_ponte and res_remessas.nota_ponte.valor_brl > Decimal("0.00"):
@@ -339,42 +551,49 @@ def emitir_todos_os_entregaveis(
 
     # 5. pendencias.csv
     pendencias_rows: List[Dict[str, str]] = []
+    pendencias_objs: List[Tuple[Dict[str, str], Any]] = []
     idx_pen = 1
     for p in res_checkout.pendencias:
         id_saida = f"PEN-{idx_pen:04d}"
         idx_pen += 1
-        pendencias_rows.append({
+        p_row = {
             "id_saida": id_saida,
             "tipo": p.tipo,
             "ref_origem": p.ref_origem,
             "valor_brl": f"{p.valor_brl:.2f}",
             "motivo": p.motivo,
             "quem_decide": p.quem_decide,
-        })
+        }
+        pendencias_rows.append(p_row)
+        pendencias_objs.append((p_row, p))
 
     for p in res_remessas.pendencias:
         id_saida = f"PEN-{idx_pen:04d}"
         idx_pen += 1
-        pendencias_rows.append({
+        p_row = {
             "id_saida": id_saida,
             "tipo": p.tipo,
             "ref_origem": p.ref_origem,
             "valor_brl": f"{p.valor_brl:.2f}",
             "motivo": p.motivo,
             "quem_decide": p.quem_decide,
-        })
+        }
+        pendencias_rows.append(p_row)
+        pendencias_objs.append((p_row, p))
 
     for p in res_contabil.pendencias:
         id_saida = f"PEN-{idx_pen:04d}"
         idx_pen += 1
-        pendencias_rows.append({
+        p_row = {
             "id_saida": id_saida,
             "tipo": p.tipo,
             "ref_origem": p.ref_origem,
             "valor_brl": f"{p.valor_brl:.2f}",
             "motivo": p.motivo,
             "quem_decide": p.quem_decide,
-        })
+        }
+        pendencias_rows.append(p_row)
+        pendencias_objs.append((p_row, p))
 
     # 6. rastro.csv (Universal Expandido - Organização Barte 14h11)
     # A) Comissões Checkout
@@ -431,8 +650,8 @@ def emitir_todos_os_entregaveis(
             })
 
     # E) Divergências de Taxa (Checkout e Remessa)
-    for d in divergencias_rows:
-        arq_orig = (
+    for d, d_obj in divergencias_objs:
+        arq_orig = getattr(d_obj, "arquivo_origem", "") or (
             "01_orbe_relatorio_comissoes_set2026.csv"
             if d["linha_negocio"] == "CHECKOUT"
             else "03_email_ponte_cambio_relatorio_set2026.eml"
@@ -464,22 +683,43 @@ def emitir_todos_os_entregaveis(
             "detalhe_calculo": f"Extrato {l['data']}: {l['descricao']}",
         })
 
-    # G) Pendências Operacionais
-    for p in pendencias_rows:
-        arq_pend = "01_orbe_relatorio_comissoes_set2026.csv"
-        if "PC-0926" in p["ref_origem"]:
-            arq_pend = "03_email_ponte_cambio_relatorio_set2026.eml"
-        elif p["ref_origem"].startswith("L") or p["tipo"] in ("CREDITO_NAO_IDENTIFICADO", "TRANSITO_BANCARIO", "REPASSE_DEVOLVIDO"):
-            arq_pend = "05a_extrato_banco_aurora_cc4471_set2026.csv"
-        rastro_completo.append({
-            "id_saida": p["id_saida"],
-            "arquivo_origem": arq_pend,
-            "ref_origem": p["ref_origem"],
-            "valor": p["valor_brl"],
-            "regra_aplicada": f"Pendência ({p['tipo']}): {p['motivo']}",
-            "taxa_contratada_aplicada": "N/A",
-            "detalhe_calculo": f"Decisão requerida por: {p['quem_decide']}",
-        })
+    # G) Pendências Operacionais (com decomposição analítica das contribuições reais quando presentes)
+    for p, p_obj in pendencias_objs:
+        rastro_itens = getattr(p_obj, "rastro_itens", None) or []
+        if rastro_itens:
+            for ri in rastro_itens:
+                rastro_completo.append({
+                    "id_saida": p["id_saida"],
+                    "arquivo_origem": ri.arquivo_origem,
+                    "ref_origem": ri.ref_origem,
+                    "valor": f"{ri.valor:.2f}",
+                    "regra_aplicada": ri.regra_aplicada or f"Pendência ({p['tipo']}): {p['motivo']}",
+                    "taxa_contratada_aplicada": ri.taxa_contratada_aplicada or "N/A",
+                    "detalhe_calculo": ri.detalhe_calculo or f"Decisão requerida por: {p['quem_decide']}",
+                })
+        else:
+            arq_pend = getattr(p_obj, "arquivo_origem", "")
+            if not arq_pend:
+                arq_pend = "01_orbe_relatorio_comissoes_set2026.csv"
+                if p["ref_origem"].startswith("PC-"):
+                    arq_pend = "03_email_ponte_cambio_relatorio_set2026.eml"
+                elif re.match(r"^L\d+$", p["ref_origem"]) or p["tipo"] in (
+                    "CREDITO_NAO_IDENTIFICADO",
+                    "TRANSITO_BANCARIO",
+                    "REPASSE_DEVOLVIDO",
+                    "DEVOLUCAO_SEM_CAUSA",
+                    "REPASSE_LOJISTA_BLOQUEADO",
+                ):
+                    arq_pend = "05a_extrato_banco_aurora_cc4471_set2026.csv"
+            rastro_completo.append({
+                "id_saida": p["id_saida"],
+                "arquivo_origem": arq_pend,
+                "ref_origem": p["ref_origem"],
+                "valor": p["valor_brl"],
+                "regra_aplicada": f"Pendência ({p['tipo']}): {p['motivo']}",
+                "taxa_contratada_aplicada": "N/A",
+                "detalhe_calculo": f"Decisão requerida por: {p['quem_decide']}",
+            })
 
     # Validação matemática da Prova Real
     prova_real = validar_prova_real(
@@ -496,7 +736,7 @@ def emitir_todos_os_entregaveis(
         for err in prova_real["erros"]:
             print(f"  - {err}")
 
-    # Salva todos os entregáveis canônicos em ambos os destinos
+    # Salva todos os entregáveis canônicos em ambos os destinos ANTES de calcular hashes de saída no manifesto
     outputs_map = {
         "comissoes_por_lojista.csv": (comissoes_rows, ["id_saida", "cnpj", "lojista", "linha_negocio", "comissao_brl"]),
         "divergencias_taxa.csv": (divergencias_rows, ["id_saida", "cnpj", "linha_negocio", "ref_origem", "taxa_contratada_pct", "taxa_aplicada_pct", "diferenca_brl"]),
@@ -506,16 +746,17 @@ def emitir_todos_os_entregaveis(
         "rastro.csv": (rastro_completo, ["id_saida", "arquivo_origem", "ref_origem", "valor", "regra_aplicada", "taxa_contratada_aplicada", "detalhe_calculo"]),
     }
 
+    destinos_unicos = list({output_dir_local.resolve(): output_dir_local, output_dir_oficial.resolve(): output_dir_oficial}.values())
     for fname, (rows, header) in outputs_map.items():
-        for dest_dir in (output_dir_local, output_dir_oficial):
+        for dest_dir in destinos_unicos:
             fpath = dest_dir / fname
             with open(fpath, mode="w", encoding="utf-8", newline="") as f:
                 writer = csv.DictWriter(f, fieldnames=header, delimiter=";")
                 writer.writeheader()
                 writer.writerows(rows)
 
-    # Gera os manifestos de auditoria
-    gerar_manifestos_auditoria(
+    # Gera os manifestos de auditoria com hashes, cobertura e comparação entre execuções
+    manifesto_gerado = gerar_manifestos_auditoria(
         state=state,
         comissoes_rows=comissoes_rows,
         divergencias_rows=divergencias_rows,
@@ -524,10 +765,14 @@ def emitir_todos_os_entregaveis(
         pendencias_rows=pendencias_rows,
         rastro_rows=rastro_completo,
         prova_real=prova_real,
-        output_dirs=[output_dir_local, output_dir_oficial],
+        output_dirs=destinos_unicos,
     )
 
     return {
+        "id_execucao": manifesto_gerado["id_execucao"],
+        "versao_regras": manifesto_gerado["versao_regras"],
+        "estado_tecnico": manifesto_gerado["estado_tecnico"],
+        "status_aprovacao": manifesto_gerado["status_aprovacao"],
         "comissoes_count": len(comissoes_rows),
         "divergencias_count": len(divergencias_rows),
         "notas_count": len(notas_rows),
@@ -535,5 +780,7 @@ def emitir_todos_os_entregaveis(
         "pendencias_count": len(pendencias_rows),
         "rastro_count": len(rastro_completo),
         "prova_real_valida": prova_real["valido"],
+        "comparacao_execucao_anterior": manifesto_gerado["comparacao_execucao_anterior"],
     }
+
 

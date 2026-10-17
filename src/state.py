@@ -26,17 +26,22 @@ class ClosingState(TypedDict, total=False):
     data_dir: str
     output_dir_local: str       # fechamento-completo/ ao lado do executável
     output_dir_oficial: str     # barte-solution/desafio-barte-ai/saida
-    status_aprovacao: str       # 'PROVISORIO' ou 'APROVADO_POR_HELENA'
+    status_aprovacao: str       # 'PROVISORIO', 'APROVADO_POR_HELENA', 'REABERTO_PARA_REVISAO'
+    estado_tecnico: str         # 'CONCLUIDO', 'PARCIAL_COM_BLOQUEIOS'
     competencia: str            # '2026-09'
+    id_execucao: str            # Identificador determinístico/rastreável da execução
+    versao_regras: str          # Versão das regras contratuais e de conciliação
 
-    # Ingestão e Triagem Tripla
+    # Ingestão, Cobertura e Triagem Tripla
     arquivos_descobertos: List[FileMetadata]
     arquivos_identificados: Dict[str, str]  # chave semântica -> caminho do arquivo
+    cobertura_fontes: Dict[str, Dict[str, Any]]  # domínio -> {estado, arquivo, motivo, dependencia, responsavel, linhas_validas}
 
     # Camada Silver (dados formatados canônicos)
     silver_paths: Dict[str, str]
     relatorio_sanidade: Dict[str, Any]
     colisoes_id_detectadas: List[Dict[str, Any]]
+    comparacao_execucao_anterior: Dict[str, Any]
 
     # Resultados dos Motores de Domínio
     resultado_checkout: Dict[str, Any]

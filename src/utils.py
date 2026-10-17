@@ -145,3 +145,33 @@ def fmt_vigencia(val: Optional[str]) -> str:
         return f"{iso_date}-ate"
     return iso_date
 
+
+VERSAO_REGRAS = "2.1.0-padrao-ouro"
+
+
+def sha256_file(path: Optional[Path | str]) -> str:
+    """Calcula o hash SHA-256 de um arquivo em disco."""
+    if not path:
+        return ""
+    import hashlib
+    p = Path(path)
+    if not p.exists() or not p.is_file():
+        return ""
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def format_competencia_br(competencia: Optional[str]) -> str:
+    """Converte 'YYYY-MM' para 'MM/YYYY' (ex: '2026-09' -> '09/2026')."""
+    if not competencia:
+        return "09/2026"
+    s = str(competencia).strip()
+    m = re.match(r"^(\d{4})-(\d{2})$", s)
+    if m:
+        return f"{m.group(2)}/{m.group(1)}"
+    return s
+
+

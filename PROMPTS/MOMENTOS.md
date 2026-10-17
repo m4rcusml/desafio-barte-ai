@@ -18,10 +18,10 @@ Este documento registra 4 momentos decisivos de interação com a IA durante a c
 
 ---
 
-### Momento 3: Incorporação do Arquivo 06 e Máquina de Estados de Fechamento da Helena
-- **O que foi pedido:** Solicitou-se processar o novo arquivo complementar `06_orbe_ajustes_tardios_set2026.csv` e incorporar a resposta de Helena (13h34) sobre aprovação e colisões de `id_transacao`.
-- **O que a IA devolveu:** A IA auditou as 14 linhas do arquivo 06 (10 estornos, 3 reversões de antecipação e 1 venda tardia da Kiwi Experience), comprovou que todas as taxas bateram 100% com os contratos e modelou a máquina de estados: se chega antes da aprovação de Helena (`PROVISORIO`), consolida no mês de movimento; se chega depois, joga para outubro. Além disso, definiu a política de precedência (*Last-Write-Wins*) preservando a linha antiga no `rastro.csv` com status `SUPERSEDED` e gerando alerta em `pendencias.csv`.
-- **O que fizemos com isso:** Documentamos a premissa no `HIPOTESES.md`, atualizamos o motor de checkout e geramos as saídas oficiais em `saida/`, atingindo prova real matemática exata ($\sum \text{rastro.csv} \equiv \text{total\_reportado}$) em 100% das 35 comissões e 21 notas fiscais.
+### Momento 3: Incorporação do Arquivo 06, Bloqueio de Conflitos sem Precedência Cega e Governança de Aprovação
+- **O que foi pedido:** Solicitou-se processar o novo arquivo complementar `06_orbe_ajustes_tardios_set2026.csv` e incorporar as orientações de Helena sobre aprovação humana e colisões de `id_transacao` / `num_operacao`.
+- **O que a IA devolveu:** Inicialmente, a IA havia proposto uma política de precedência automática (*Last-Write-Wins* / `SUPERSEDED`) ou *First-Write-Wins* para IDs repetidos. Ao confrontar essa sugestão com as regras do negócio, identificou-se que escolher automaticamente uma versão em registros conflitantes violaria a governança financeira de Helena.
+- **O que fizemos com isso:** Corrigimos o desenho para um pré-agrupamento estrito por assinatura completa tanto na Orbe quanto na Ponte: (1) cópias efetivamente idênticas em todos os campos relevantes são deduplicadas uma única vez preservando evidência no `rastro.csv`; (2) IDs com valores conflitantes têm **todas as suas ocorrências bloqueadas** (`DUPLICIDADE_CONFLITANTE`) sem escolha automática; e (3) separamos `estado_tecnico` (`CONCLUIDO` / `PARCIAL_COM_BLOQUEIOS`) de `status_aprovacao` (`PROVISORIO` / `APROVADO_POR_HELENA` / `REABERTO_PARA_REVISAO`), garantindo que qualquer alteração de insumos, regras ou resultados rebaixe automaticamente aprovações anteriores para `REABERTO_PARA_REVISAO`.
 
 ---
 

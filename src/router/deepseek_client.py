@@ -84,6 +84,9 @@ Responda APENAS um JSON com o seguinte formato:
                     "method": "DEEPSEEK_V1_FLASH",
                     "reason": parsed.get("reason", ""),
                 }
+        except urllib.error.HTTPError as e:
+            e.close()
+            return None
         except Exception:
             # Fallback seguro para o próximo nível
             return None

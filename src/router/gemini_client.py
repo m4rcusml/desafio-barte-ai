@@ -72,6 +72,9 @@ Responda APENAS um JSON válido no seguinte formato:
                     "method": "GEMINI_FLASH",
                     "reason": parsed.get("reason", ""),
                 }
+        except urllib.error.HTTPError as e:
+            e.close()
+            return None
         except Exception:
             # Fallback para classificador heurístico local
             return None

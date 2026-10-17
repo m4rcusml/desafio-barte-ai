@@ -1,0 +1,106 @@
+[
+  {
+    "id_execucao": "EXEC-2026-09-2fa31a-91fee9b8",
+    "data_hora_execucao": "2026-10-17T16:57:10.968037-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "2.1.0-padrao-ouro",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-ANTERIOR",
+      "versao_regras_anterior": "",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": false,
+      "saidas_identicas": false,
+      "regras_identicas": false,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {
+        "qtd_linhas_rastro": {
+          "anterior": 4386,
+          "atual": 4503
+        }
+      },
+      "arquivos_saida_alterados": []
+    }
+  },
+  {
+    "id_execucao": "EXEC-2026-09-2fa31a-91fee9b8",
+    "data_hora_execucao": "2026-10-17T17:13:53.352271-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "2.1.0-padrao-ouro",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-2026-09-2fa31a-91fee9b8",
+      "versao_regras_anterior": "2.1.0-padrao-ouro",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": true,
+      "saidas_identicas": true,
+      "regras_identicas": true,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    }
+  },
+  {
+    "id_execucao": "EXEC-2026-09-2fa31a-91fee9b8",
+    "data_hora_execucao": "2026-10-17T17:14:01.910167-03:00",
+    "competencia": "2026-09",
+    "versao_regras": "2.1.0-padrao-ouro",
+    "estado_tecnico": "CONCLUIDO",
+    "status_aprovacao": "PROVISORIO",
+    "hash_entradas_combinado": "2fa31a1ba3a1eb9d65a9972eeac5fad4b9e795fbd1f5e90392271d5fab65d652",
+    "hash_saidas_combinado": "91fee9b800c40b852d255bbfa013836c9e1c7ea393ef188ec91e1ceef1f1340c",
+    "metricas_financeiras": {
+      "total_comissao_brl": "243278.76",
+      "total_notas_a_emitir_brl": "243284.26",
+      "total_divergencias_taxa_brl": "2995.11",
+      "qtd_comissoes": 35,
+      "qtd_notas": 21,
+      "qtd_divergencias": 115,
+      "qtd_lancamentos_contabeis": 184,
+      "qtd_pendencias_operacionais": 68,
+      "qtd_linhas_rastro": 4503
+    },
+    "comparacao_execucao_anterior": {
+      "execucao_anterior_encontrada": true,
+      "id_execucao_anterior": "EXEC-2026-09-2fa31a-91fee9b8",
+      "versao_regras_anterior": "2.1.0-padrao-ouro",
+      "status_aprovacao_anterior": "PROVISORIO",
+      "entradas_identicas": true,
+      "saidas_identicas": true,
+      "regras_identicas": true,
+      "heranca_aprovacao_bloqueada": false,
+      "diferencas_metricas": {},
+      "arquivos_saida_alterados": []
+    }
+  }
+]

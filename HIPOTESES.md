@@ -4,7 +4,7 @@ Registro atualizado com o [Checkpoint 1 enviado em 17/10/2026](PROMPTS/outputs/c
 
 O feedback orienta considerar premissas que alteram o fechamento e exclui a hipótese de caixa das entregas. Para cada premissa de cálculo/classificação, registrar as linhas afetadas e a diferença entre os tratamentos possíveis, quando houver dados. P1 e P2 permanecem propostas; P3 fica apenas como histórico fora de escopo. Uma terceira premissa de fechamento, se necessária, deve surgir de ambiguidade concreta dos dados, sem reclassificar regra já confirmada como hipótese.
 
-**Estado atual:** o desenvolvimento do sistema ainda não começou. As conferências pontuais documentadas são análises de fontes; processamento contratual, exportação e validações do núcleo são requisitos futuros, não pendências para concluir a análise do `06`.
+**Estado atual:** o núcleo determinístico em Python, os geradores dos 6 CSVs oficiais e o subagente consultivo estão implementados e verificados no fechamento de setembro/2026 (`01 + 06`) e na simulação parametrizada de outubro/2026 (`--competencia 2026-10`). A aprovação final do fechamento permanece humana (`status_aprovacao = PROVISORIO` até homologação de Helena).
 
 ## Hipóteses de causa raiz
 
@@ -14,22 +14,22 @@ O feedback orienta considerar premissas que alteram o fechamento e exclui a hip�
 | H2 | A conferência atual não detecta sistematicamente diferenças contratuais antes de afetarem lojistas. Há reclamação por cobrança indevida e casos como Rota, Bridge e Mundo Aberto. | Sustentada pelas ocorrências; não afirmar que ninguém confere, pois existe conferência manual. |
 | H3 | Repasses anteriores à liquidação contribuem para a necessidade de financiamento. | O uso da conta garantida para esses adiantamentos foi confirmado. Participação no saldo negativo e custo não quantificados; ver P3. Reconhecimento de receita por competência não é causa direta de saída de caixa. |
 
-## Premissas propostas no Checkpoint 1
+## Premissas propostas no Checkpoint 1 e adotadas na implementação
 
 ### P1 — Tolerância de divergência de remessa
 
-- **Proposta:** avaliar inicialmente 0,01 ponto percentual, verificando também o impacto monetário. É limite de diferença entre taxas, não de R$ 0,01. Na representação fracionária de taxas, equivale a 0,0001.
-- **Situação:** o financeiro delegou a escolha e a justificativa aos participantes. O limite proposto ainda não foi adotado pela equipe; não é necessária nova homologação de Helena para exercer essa delegação. Antes de aplicá-lo, definir a fronteira (`>` ou `>=`), o sentido da diferença e a relação com o impacto monetário, documentando os efeitos.
-- **Validação necessária:** medir operações e valores incluídos/excluídos e verificar se diferenças relevantes seriam omitidas. Não tomar os totais propostos por outros participantes como gabarito.
-- **Se inadequada:** recalibrar e regenerar as divergências. Não alterar por isso a comissão, cuja base confirmada é o spread realizado elegível.
+- **Decisão adotada pela equipe (delegação confirmada):** fronteira estrita `abs(spread_pct - taxa_contratada_pct) > 0,005` ponto percentual (`0.00005` na forma fracionária) combinada à verificação monetária do excesso cobrado.
+- **Efeito verificado em setembro/2026:** captura integralmente as **23 operações da Mundo Aberto Intercâmbio** em que a Ponte Câmbio aplicou `1,50%` sobre a PTAX em vez do spread renegociado de `1,20%` (diferença de `+0,30` p.p.), totalizando **R$ 1.418,88** de divergência a contestar pelo valor cheio pago a mais pelo lojista. Nenhuma operação legítima dos demais 13 lojistas (todos a `1,50%` exatos) é afetada ou omitida.
+- **Invariância da comissão:** conforme regra confirmada, a comissão da Tarvo permanece calculada sobre 50% do spread realizado elegível (**R$ 39.543,42**).
 - **Fonte:** pergunta e resposta do item 9 de `duvidas-slack.md`.
 
 ### P2 — Contrapartida de movimentos sem identificação suficiente
 
-- **Proposta:** usar contrapartida transitória compatível com o plano, quando disponível, mantendo pendência e sem reconhecer receita indevidamente.
-- **Situação:** proposta contábil da equipe; nenhuma conta específica foi homologada para todos os casos. A regra confirmada é classificar a contrapartida do movimento e baixar valores já registrados.
-- **Validação necessária:** selecionar uma conta existente e apropriada no plano, documentando o motivo por movimento. Não inventar origem de Pix ou motivo de devolução; ausência de informação não equivale a receita zero comprovada.
-- **Se inadequada:** revisar as contas e reprocessar os lançamentos afetados, preservando fontes e histórico.
+- **Decisão adotada pela equipe:** utilizar contas patrimoniais transitórias existentes no plano de contas Fênix ERP (`04_plano_de_contas_fenix_erp.csv`), mantendo pendência explícita em `pendencias.csv` e sem reconhecer receita ou despesa indevidamente:
+  1. **Crédito Pix sem origem identificada (`L50`, 18/09/2026, `R$ 7.350,00`):** alocado em `1.1.09.002` (*Valores a Identificar / Conciliar*), `metodo = HUMANO`, `confianca = 0.00`, gerando pendência `CREDITO_NAO_IDENTIFICADO` (`Helena / Financeiro`).
+  2. **Devolução de repasse Mundo Aberto sem motivo confirmado (`L65`, 24/09/2026, `R$ 12.400,00`):** alocada em `1.1.09.002` (*Valores a Identificar / Conciliar*), `metodo = HUMANO`, `confianca = 0.00`, gerando pendência `DEVOLUCAO_SEM_CAUSA` (`Helena / Comercial`).
+  3. **Repasses operacionais para Atlas Idiomas (`L34` `R$ -112.450,80` e `L60` `R$ -138.920,15`):** alocados em `1.1.09.002` (*Valores a Identificar / Conciliar*), `metodo = HUMANO`, `confianca = 0.00`, gerando pendências `REPASSE_LOJISTA_BLOQUEADO` (`Helena / Comercial`).
+  4. **Transferência entre contas próprias sem compensação no mês (`L92`, 30/09/2026, `R$ -300.000,00`):** alocada em `1.1.09.001` (*Valores em Trânsito Bancário*), `metodo = REGRA`, `confianca = 1.00`, gerando pendência `TRANSITO_BANCARIO` (`Caio / Conciliação Bancária`).
 - **Fontes:** itens 8, 10 e 12 de `duvidas-slack.md`.
 
 ### P3 — Impacto dos adiantamentos no caixa (histórico; fora das entregas)
@@ -60,13 +60,13 @@ Resumo das confirmações relevantes. As perguntas completas, autores, datas e l
 | Rotina, esforço e responsáveis | Bia: checkout/taxas; Caio: bancos/remessas; Helena: revisão, exceções e aprovação. Estimativa: 3 dias checkout, 2 remessa, 2 bancos e 1 notas/revisão. Controle por “ok” e data. | Resposta para Turma do Barulho |
 | Desconto, repasses e ajustes Ponte | Taxa descontada na liquidação; nota documenta, sem nova cobrança. Repasse regular do já liquidado e exceção por conta garantida. Ponte responde por e-mail e ajusta relatório posterior; Helena confere. | Resposta e complemento para Turma do Barulho |
 
-## Decisões da equipe e lacunas externas
+## Decisões da equipe implementadas e lacunas externas
 
-- **Início do núcleo de checkout:** permitido pelas regras conhecidas, com `01 + 02 + 06`. Ambiente, dependências e contratos técnicos são escolhas a fixar no início da implementação; não dependem de novas respostas de Helena. Ver “Decisões por etapa” na [arquitetura](PROMPTS/outputs/arquitetura-stack.md).
-- **Antes de aplicar divergências de remessa:** adotar e justificar P1, incluindo fronteira, sentido e efeito monetário. Não aplicar silenciosamente a proposta de 0,01 ponto percentual como se fosse decisão já tomada.
-- **Antes de concluir classificações bancárias afetadas:** selecionar contas existentes no plano e fundamentar P2 por caso. Sem fato ou conta adequados, manter pendência localizada; não inventar identificação nem tratar uma conta proposta como homologada.
-- **Antes da camada agêntica:** definir hospedeiro, interface de chamada, modelo/SDK e canal de revisão. Essas escolhas não bloqueiam o mínimo determinístico.
-- **Lacunas externas:** Atlas, futuros conflitos/ajustes e completude têm tratamento conservador já delineado. Não é necessário resolvê-las todas antes de programar; elas limitam resultados ou aprovação quando ocorrerem. Custos e agenda de recebíveis continuam fora da apuração solicitada.
+- **Núcleo de checkout e remessas:** implementados e verificados com `01 + 02 + 03 + 06`, respeitando vigências históricas (`tx_primarias`) e corte por competência (`--competencia AAAA-MM`).
+- **Divergências de remessa (P1):** aplicada a tolerância delegada de `0,005%`, capturando as 23 operações da Mundo Aberto (`R$ 1.418,88`).
+- **Classificações bancárias e transitórias (P2):** contas existentes no plano Fênix ERP (`1.1.09.001` e `1.1.09.002`) fundamentadas por caso e acompanhadas de pendência explícita em `pendencias.csv`, sem qualquer uso de "Fake IA".
+- **Camada agêntica:** subagente consultivo implementado em `src/agent/consultant.py`, operando sobre os CSVs e manifestos oficiais com guardrails estritos contra aprovação autônoma de exceções ou operações financeiras externas.
+- **Lacunas externas:** Atlas (`CADASTRO_PENDENTE`), conflitos de ID (`DUPLICIDADE_CONFLITANTE`) e fontes ausentes/inválidas (`cobertura_fontes`) possuem bloqueio conservador e rastreável implementado. Custos da adquirência e agenda detalhada de recebíveis permanecem fora do escopo do case.
 
 ## Lacunas que permanecem
 
@@ -105,7 +105,7 @@ A pergunta sobre as sete diferenças de bandeira foi enviada pelo usuário e res
 
 **Conferência concluída:** [relatório com evidências consolidadas](PROMPTS/outputs/orbe-01-06-verificacao.md). Não foram acionados os gatilhos de ID conflitante, referência ausente/ambígua ou anulação repetida descritos na tabela. Datas, ECs, modalidades, parcelas e taxas aplicadas conferem nos 13 pares; há sete diferenças de bandeira e seis variações de nome, preservadas nas evidências. Nomes diferentes com EC igual não constituem por si só conflito de identidade.
 
-**Pergunta concreta respondida — bandeiras:** a proposta inicial de abrir pendência de qualidade/correção com a Orbe foi dispensada por Helena. O vínculo por `id_referencia` foi confirmado para os sete pares. Preservar as diferenças como evidência, sem tratá-las como pendência, bloqueio ou divergência de taxa. A orientação vale para diferença de bandeira em estorno, que não altera a taxa da Tarvo; não valida automaticamente referência incorreta ou conflito em outros campos. A pergunta e a resposta estão no relatório. Não resta dúvida específica aberta desta investigação do `06`; as lacunas gerais abaixo permanecem. Isso não representa aprovação do fechamento nem implementação do sistema.
+**Pergunta concreta respondida — bandeiras:** a proposta inicial de abrir pendência de qualidade/correção com a Orbe foi dispensada por Helena. O vínculo por `id_referencia` foi confirmado para os sete pares. Preservar as diferenças como evidência, sem tratá-las como pendência, bloqueio ou divergência de taxa. A orientação vale para diferença de bandeira em estorno, que não altera a taxa da Tarvo; não valida automaticamente referência incorreta ou conflito em outros campos. A pergunta e a resposta estão no relatório. Não resta dúvida específica aberta desta investigação do `06`; as lacunas gerais abaixo permanecem. A aprovação final do fechamento permanece sujeita à revisão humana de Helena.
 
 | Prioridade e gatilho | Pergunta proposta | Efeito e tratamento enquanto não respondida |
 |---|---|---|
@@ -134,8 +134,8 @@ A pergunta sobre as sete diferenças de bandeira foi enviada pelo usuário e res
 
 ### Implementação do Padrão Ouro na Solução:
 1. **Rastro Universal Expandido (`rastro.csv`):** Mantém as 4 colunas canônicas obrigatórias (`id_saida; arquivo_origem; ref_origem; valor`) e adiciona as colunas de alta auditabilidade: `regra_aplicada; taxa_contratada_aplicada; detalhe_calculo`.
-2. **Rastro Integral:** Inclui o rastreamento 1-para-1 de comissões (`COM-XXXX`), notas fiscais (`NF-XXXX`) e de todas as divergências de taxa (`DIV-XXXX`), amarrando a linha original que gerou a diferença.
-3. **Manifesto de Execução (`auditoria_execucao.json` e `auditoria_execucao.md`):** Gerado automaticamente a cada rodada do agente, registrando timestamp ISO, lista de arquivos processados, contagem física de linhas, status de fechamento, resumo das regras e a prova real matemática centavo a centavo.
+2. **Rastro Integral:** Inclui o rastreamento 1-para-1 de comissões (`COM-XXXX`), notas fiscais (`NF-XXXX`), divergências de taxa (`DIV-XXXX`), lançamentos bancários (`LAN-XXXX`) e pendências (`PEN-XXXX`), incluindo as **118 transações individuais reais da Orbe** que compõem a pendência consolidada da Casa do Estudante (`PEN-0058 = R$ 15.396,77`).
+3. **Manifesto de Execução e Histórico (`auditoria_execucao.json`, `auditoria_execucao.md` e `historico_execucoes.json`):** Gerados automaticamente a cada rodada, registrando `id_execucao`, `versao_regras`, timestamp ISO, hashes SHA-256 individuais e combinados de entrada/saída, estado de cobertura por domínio (`cobertura_fontes`), separação entre `estado_tecnico` e `status_aprovacao`, comparação rastreável com a execução anterior (`comparacao_execucao_anterior`) e prova real matemática centavo a centavo.
 
 ## Premissas Operacionais e Contábeis Específicas (Homologação 17/10)
 
@@ -155,5 +155,12 @@ A pergunta sobre as sete diferenças de bandeira foi enviada pelo usuário e res
 ### P7 — Trânsito Bancário Aurora–Meridiano em 30/09 (R$ 300.000,00)
 - **Contexto:** O Banco Aurora registra quatro transferências entre contas para o Banco Meridiano em setembro. Três compensaram em setembro (02/09 R$ 350k, 10/09 R$ 100k, 17/09 R$ 150k).
 - **Tratamento:** A quarta transferência, de R$ 300.000,00 em 30/09 (L92), não possui crédito correspondente no extrato do Meridiano em setembro. Classificada na conta `1.1.09.001` (Valores em Trânsito Bancário) e enviada como pendência de conciliação para Caio acompanhar a compensação no extrato de outubro.
+
+### P8 — Deduplicação Estrita de Cópias Idênticas vs. Bloqueio Integral de Conflitos (`DUPLICIDADE_CONFLITANTE`)
+- **Contexto:** Tanto nos relatórios da Orbe (`id_transacao`) quanto nos relatórios da Ponte Câmbio (`num_operacao`), podem surgir registros repetidos sob o mesmo identificador.
+- **Tratamento:** Os motores realizam pré-agrupamento por identificador comparando todos os campos operacionais e financeiros relevantes:
+  1. **Cópias Efetivamente Idênticas:** Quando todas as ocorrências compartilham exatamente os mesmos valores operacionais e financeiros (ex: `PC-0926-0162` na Ponte, ou reprocessamento idêntico de linha Orbe), a operação é contabilizada uma única vez e a evidência das múltiplas ocorrências é preservada no `rastro.csv` (e em `OPERACAO_DUPLICADA` na Ponte).
+  2. **Duplicidades Conflitantes:** Quando um mesmo `id_transacao` ou `num_operacao` aparece com valores divergentes em qualquer campo relevante, **nenhuma ocorrência é escolhida automaticamente** (sem *First-Write-Wins* e sem *Last-Write-Wins*). Todas as versões daquele ID são bloqueadas das comissões, divergências e notas e encaminhadas integralmente a `pendencias.csv` (`DUPLICIDADE_CONFLITANTE`) com todas as versões detalhadas no `rastro.csv` para decisão de Helena.
+
 
 

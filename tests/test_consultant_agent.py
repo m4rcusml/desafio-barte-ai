@@ -13,13 +13,43 @@ if str(repo_root) not in sys.path:
     sys.path.insert(0, str(repo_root))
 
 from src.agent.consultant import TarvoConsultant
+from src.graph import build_closing_graph
 
 
 class TestConsultantAgent(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.agent = TarvoConsultant()
+        import shutil
+        import tempfile
+        import zipfile
+        cls._tmpdir = tempfile.TemporaryDirectory()
+        tmp_path = Path(cls._tmpdir.name)
+        repo_root = Path(__file__).resolve().parent.parent
+        zip_path = repo_root / "dados" / "originais" / "Tarvo_Data_Pack_set2026.zip"
+        f06_orig = repo_root / "dados" / "originais" / "06_orbe_ajustes_tardios_set2026.csv"
+
+        raw_dir = tmp_path / "raw"
+        raw_dir.mkdir(parents=True, exist_ok=True)
+        with zipfile.ZipFile(zip_path, "r") as z:
+            z.extractall(raw_dir)
+        shutil.copy(f06_orig, raw_dir / f06_orig.name)
+
+        out_dir = tmp_path / "saida"
+        loc_dir = tmp_path / "fechamento-completo"
+        graph = build_closing_graph()
+        graph.invoke({
+            "data_dir": str(raw_dir),
+            "output_dir_local": str(loc_dir),
+            "output_dir_oficial": str(out_dir),
+            "status_aprovacao": "PROVISORIO",
+            "competencia": "2026-09",
+        })
+        cls.agent = TarvoConsultant(output_dir=out_dir)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmpdir.cleanup()
 
     def test_summary_returns_valid_metrics(self):
         """Verifica se o sumário executivo retorna dados coerentes e status provisório."""

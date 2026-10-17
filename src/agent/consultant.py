@@ -21,10 +21,13 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 
+from ..utils import format_competencia_br
+
+
 class TarvoConsultant:
     """Subagente consultivo da Tarvo Pagamentos."""
 
-    def __init__(self, output_dir: Optional[Path] = None):
+    def __init__(self, output_dir: Optional[Path] = None, competencia: Optional[str] = None):
         if output_dir is None:
             # Tenta encontrar dadas as pastas padrão
             repo_root = Path(__file__).resolve().parent.parent.parent
@@ -38,6 +41,7 @@ class TarvoConsultant:
                 self.output_dir = cand1
         else:
             self.output_dir = Path(output_dir)
+        self.competencia_override = competencia
 
     def _read_csv(self, filename: str) -> List[Dict[str, str]]:
         path = self.output_dir / filename
@@ -45,6 +49,16 @@ class TarvoConsultant:
             return []
         with open(path, mode="r", encoding="utf-8") as f:
             return list(csv.DictReader(f, delimiter=";"))
+
+    def _read_manifest(self) -> Dict[str, Any]:
+        path = self.output_dir / "auditoria_execucao.json"
+        if not path.exists():
+            return {}
+        try:
+            with open(path, mode="r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return {}
 
     def get_summary(self) -> Dict[str, Any]:
         """Gera um resumo executivo dos resultados do fechamento."""
@@ -54,6 +68,7 @@ class TarvoConsultant:
         lancamentos = self._read_csv("lancamentos_classificados.csv")
         pendencias = self._read_csv("pendencias.csv")
         rastro = self._read_csv("rastro.csv")
+        manifest = self._read_manifest()
 
         total_comissao = sum(Decimal(c["comissao_brl"]) for c in comissoes) if comissoes else Decimal("0.00")
         total_notas = sum(Decimal(n["valor_brl"]) for n in notas) if notas else Decimal("0.00")
@@ -79,9 +94,19 @@ class TarvoConsultant:
             for k, v in pend_por_decisor.items()
         }
 
+        comp_raw = self.competencia_override or manifest.get("competencia", "2026-09")
+        comp_fmt = format_competencia_br(comp_raw)
+        status_aprov = manifest.get("status_aprovacao", manifest.get("status_fechamento", "PROVISORIO"))
+        estado_tec = manifest.get("estado_tecnico", "CONCLUIDO")
+
         return {
-            "competencia": "09/2026",
-            "status": "PROVISORIO (Aguardando Decisões Humanas)",
+            "competencia": comp_fmt,
+            "competencia_iso": comp_raw,
+            "id_execucao": manifest.get("id_execucao", ""),
+            "versao_regras": manifest.get("versao_regras", ""),
+            "estado_tecnico": estado_tec,
+            "status_aprovacao": status_aprov,
+            "status": f"{status_aprov} (Estado técnico: {estado_tec} - Aguardando Decisões Humanas)",
             "metricas": {
                 "total_comissao_brl": f"{total_comissao:.2f}",
                 "total_notas_a_emitir_brl": f"{total_notas:.2f}",
@@ -210,9 +235,14 @@ def main():
     parser.add_argument("--lojista", type=str, help="Consulta e explica fechamento de um lojista por nome ou CNPJ")
     parser.add_argument("--pendencias", type=str, nargs="?", const="ALL", help="Lista pendências por decisor (Helena, Caio, Bia)")
     parser.add_argument("--explain", type=str, help="Audita a composição de um ID (ex: COM-0001, NF-0021, DIV-0001)")
+    parser.add_argument("--output-dir", type=str, default=None, help="Diretório das saídas a consultar")
+    parser.add_argument("--competencia", type=str, default=None, help="Competência no formato YYYY-MM (opcional)")
 
     args = parser.parse_args()
-    agent = TarvoConsultant()
+    agent = TarvoConsultant(
+        output_dir=Path(args.output_dir) if args.output_dir else None,
+        competencia=args.competencia,
+    )
 
     if args.summary:
         res = agent.get_summary()

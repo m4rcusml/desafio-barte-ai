@@ -29,9 +29,16 @@ def main():
     parser.add_argument(
         "--status",
         type=str,
-        choices=["PROVISORIO", "APROVADO_POR_HELENA"],
+        choices=["PROVISORIO", "APROVADO_POR_HELENA", "REABERTO_PARA_REVISAO"],
         default=env_status,
-        help="Estado de aprovação do fechamento (PROVISORIO ou APROVADO_POR_HELENA)",
+        help="Estado de aprovação do fechamento (PROVISORIO, APROVADO_POR_HELENA ou REABERTO_PARA_REVISAO)",
+    )
+    env_comp = os.getenv("COMPETENCIA_FECHAMENTO", "2026-09")
+    parser.add_argument(
+        "--competencia",
+        type=str,
+        default=env_comp,
+        help="Competência do fechamento no formato YYYY-MM (padrão: 2026-09)",
     )
 
     args = parser.parse_args()
@@ -84,7 +91,8 @@ def main():
     print(f"📁 Pasta de Trabalho (Inputs) : {data_dir}")
     print(f"📁 Pasta de Saída (Executável): {output_local}")
     print(f"📁 Pasta de Saída (Oficial)   : {output_oficial}")
-    print(f"📋 Status do Fechamento      : {args.status}")
+    print(f"📅 Competência Alvo           : {args.competencia}")
+    print(f"📋 Status Solicitado          : {args.status}")
     print("=" * 75)
 
     graph = build_closing_graph()
@@ -94,7 +102,7 @@ def main():
         "output_dir_local": str(output_local),
         "output_dir_oficial": str(output_oficial),
         "status_aprovacao": args.status,
-        "competencia": "2026-09",
+        "competencia": args.competencia,
     }
 
     final_state = graph.invoke(initial_state)

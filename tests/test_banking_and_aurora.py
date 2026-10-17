@@ -14,6 +14,9 @@ if str(repo_root) not in sys.path:
 
 from src.engines.banking_engine import classificar_extratos
 from src.formatters.aurora_formatter import format_aurora_file
+from src.formatters.meridiano_formatter import format_meridiano_file
+from src.formatters.ponte_formatter import format_ponte_file
+from src.formatters.taxas_formatter import format_taxas_file
 from src.engines.cambio_engine import processar_remessas
 
 
@@ -21,14 +24,33 @@ class TestBankingAndAurora(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        import tempfile
+        import zipfile
+        cls._tmpdir = tempfile.TemporaryDirectory()
+        tmp_path = Path(cls._tmpdir.name)
         cls.repo_root = Path(__file__).resolve().parent.parent
-        cls.workspace_root = cls.repo_root.parent.parent
-        cls.data_dir = cls.workspace_root / "Tarvo_Data_Pack_set2026"
-        cls.silver_dir = cls.repo_root / "dados_formatados"
+        zip_path = cls.repo_root / "dados" / "originais" / "Tarvo_Data_Pack_set2026.zip"
+
+        cls.data_dir = tmp_path / "raw"
+        cls.data_dir.mkdir(parents=True, exist_ok=True)
+        with zipfile.ZipFile(zip_path, "r") as z:
+            z.extractall(cls.data_dir)
+
+        cls.silver_dir = tmp_path / "silver"
         cls.silver_dir.mkdir(parents=True, exist_ok=True)
         cls.raw_aurora = cls.data_dir / "05a_extrato_banco_aurora_cc4471_set2026.csv"
+        cls.raw_meridiano = cls.data_dir / "05b_extrato_banco_meridiano_cc90233_set2026.ofx"
         cls.f_ponte = cls.silver_dir / "03_ponte_cambio_operacoes_formatado.csv"
         cls.f_taxas = cls.silver_dir / "02_tabela_taxas_contratadas_formatado.csv"
+
+        format_aurora_file(cls.raw_aurora, cls.silver_dir)
+        format_meridiano_file(cls.raw_meridiano, cls.silver_dir)
+        format_ponte_file(cls.data_dir / "03_email_ponte_cambio_relatorio_set2026.eml", cls.f_ponte)
+        format_taxas_file(cls.data_dir / "02_tabela_taxas_contratadas.xlsx", cls.f_taxas)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._tmpdir.cleanup()
 
     def test_aurora_formatter_physical_lines_and_descriptions(self):
         """Verifica se o formatador do Aurora preserva a linha física e descrição preenchida."""
