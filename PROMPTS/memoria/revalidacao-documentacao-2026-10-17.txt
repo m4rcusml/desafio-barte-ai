@@ -1,0 +1,87 @@
+REVALIDAÇÃO APÓS CORREÇÃO DOCUMENTAL — 17/10/2026
+
+Base: main eb44d34e10b36419a3b032c268cc7c41718bb214, com alterações
+documentais locais. Não houve alteração em código Python, testes, fórmulas,
+fontes brutas ou seis CSVs oficiais. Não houve commit, push ou mensagem externa.
+
+CORREÇÕES
+
+HIPOTESES.md:
+- P1 agora descreve o motor real: cobrança a maior >= 0.01 ponto percentual;
+  filtro posterior >= 0.005 p.p., sem ampliar a seleção. Justificativa, fórmula
+  com PTAX/cotações, ausência de piso monetário extra e limites explicitados.
+- P2 descreve conta, método, confiança, valores e datas reais. L50 é 16/09;
+  L65 é 23/09. L34/L60 são -112220.15 e -137081.62, respectivamente.
+  REGRA/1.00 não significa aprovação de origem, contrato ou operação pendente.
+  Contas são propostas da equipe, com justificativa e alternativa transitória.
+- Vínculos Kiwi/Horizonte fundamentados na confirmação do financeiro, sem
+  alegar comprovação por nomes ou taxas observadas.
+- Apuração 01+06 e notas descritas como implementadas. Maple/Oxford positivos.
+- Retirada a quantificação de truncamento sem evidência reproduzida.
+- Regra de ajuste órfão separada do comportamento do código e do limite da
+  confirmação recebida; não se presume uma base monetária homologada.
+- Tipos efetivos de pendência de conflito diferenciados para Orbe e Ponte.
+
+README, AGENTS e DOCUMENTO_DE_LEITURA:
+- 40 testes; estado técnico separado de aprovação humana, sem homologação
+  fictícia. CLI/subagente como apresentação demonstrada; EXE opcional.
+- Retiradas promessas não comprovadas de tempo, disponibilidade irrestrita,
+  calibração externa, partidas dobradas completas e conciliação total.
+- Notas são propostas; contestações não são enviadas automaticamente.
+- Governança preserva aprovação anterior em sua execução e impede herdá-la
+  indevidamente na nova. Status declarado não autentica Helena.
+- README e src/.env.example descrevem os nomes reais das variáveis de ambiente;
+  o programa não carrega .env automaticamente. Chaves do exemplo ficam vazias.
+- Planejamento e auditorias anteriores de PROMPTS permanecem históricos; não
+  foram reescritos como se fossem evidências do estado atual.
+
+Roteiro local e LEIA-ME da apresentação:
+- Atualizados para implementação existente, resultados reais, 40 testes e
+  exemplo verificável Bridge COM-0009/TX88411252.
+- Mantidos os sete assuntos do pitch; limites e propostas futuras explícitos.
+- Deck remoto não foi alterado. Conferir slides e notas com o roteiro local.
+
+VALIDAÇÃO
+
+1. python -m unittest discover -s tests -v
+   40 testes aprovados, 7,499 s, exit code 0.
+   Inclui setembro, outubro sintético nas três frentes, vigências, deduplicação,
+   conflitos, fontes parciais, snapshots, revisão de aprovação e falhas de
+   cálculo/publicação. Log: revalidacao-documentacao-testes-2026-10-17.log.
+2. Reprodução real da CLI em work/revalidacao-documentacao, com ZIP original
+   extraído e 06 copiado sem limpeza. Os seis CSVs são idênticos aos versionados,
+   normalizando finais de linha. Estado CONCLUIDO, aprovação PROVISORIO.
+3. Conferência independente de cabeçalhos, formatos, enums, CNPJ, confiança,
+   IDs únicos, motivo/responsável e soma do rastro dos 423 resultados.
+4. As 4503 referências de rastro foram verificadas contra arquivos brutos do
+   snapshot: IDs Orbe, operações do anexo Ponte, linhas físicas Aurora e FITIDs.
+5. Valores, datas e descrições de L15/L34/L50/L60/L65/L92 conferidos com as
+   linhas físicas Aurora; contas/métodos comparados aos lançamentos gerados.
+6. Consultor executado com sucesso no resumo de setembro reproduzido.
+7. git diff --check sem erros. Verificação confirmou que src/*.py, testes e
+   saida/ não foram alterados. MOMENTOS mantém os quatro registros.
+
+RESULTADO DOS NÍVEIS
+
+Mínimo: ATENDIDO nos dados auditados — checkout por lojista com rastro.
+Alvo: ATENDIDO funcionalmente — mínimo mais remessas, divergências, notas
+propostas e classificação dos dois bancos.
+Extra: ATENDIDO funcionalmente nos cenários testados — mínimo e alvo mais
+rastro completo dos resultados, pendências explicadas e outubro parametrizado.
+Os níveis são cumulativos. A classificação não equivale a gabarito privado,
+homologação contábil, validação de qualquer evento futuro ou aprovação de Helena.
+
+Comissões: checkout 203735.34; remessas 39543.42.
+Contagens: 35 comissões, 115 divergências, 21 notas, 184 lançamentos,
+68 pendências e 4503 linhas de rastro para 423 resultados.
+
+PENDÊNCIAS DA ENTREGA GERAL
+
+Histórico integral das sessões de IA ainda precisa ser reunido. As memórias e
+MOMENTOS não o substituem. Postagens/checkpoints e prazos não são atestados por
+esta revalidação. Deck remoto e notas precisam refletir o roteiro local.
+Nenhuma nova aprovação financeira ou comunicação externa foi realizada.
+
+Evidências estruturadas: revalidacao-documentacao-2026-10-17.json.
+Scripts locais ignorados: work/revalidar_documentacao.py e
+work/reproducao-documentacao.py. Saídas/logs: work/revalidacao-documentacao/.

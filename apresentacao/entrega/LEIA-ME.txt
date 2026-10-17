@@ -1,21 +1,22 @@
-Tarvo / Pitch base para o financeiro e CFO
+Tarvo / Pitch para o financeiro e CFO — revisão 4, 17/10/2026
 
-Apresentação editável no Google Slides:
+Roteiro local atualizado: roteiro-pitch-tarvo.txt.
+Base: main cd2d849, 40 testes, CLI real com ZIP original + 06, seis CSVs
+reproduzidos e 423 resultados conferidos por soma do rastro.
+
+Deck de referência:
 https://docs.google.com/presentation/d/1SK2073ylh-1EjDinC110lk_pzZGxgsShhd1Huu2Opv8/edit?usp=drivesdk
 
-12 slides principais para uma apresentação de até 15 minutos e 3 de apoio.
-As notas do apresentador contêm falas, tempos e fontes.
-O roteiro-pitch-tarvo.txt inclui as falas completas, condução, transições,
-perguntas prováveis e orientações para inserir os resultados finais.
+Esta revisão atualiza os arquivos locais. O deck remoto e suas notas não são
+sincronizados automaticamente; conferir ambos com o roteiro antes de apresentar.
+Os tempos são alocações de ensaio, não duração medida.
 
-O arquivo de referência do orientador foi preservado.
-Revisão 2: desenvolvimento em andamento, conforme atualização do usuário.
-As evidências da implementação ainda não foram recebidas neste checkout.
-Valores, demonstração real e capacidades só entram após evidência verificável.
-As sete bandeiras do 06 estão esclarecidas por Helena: seguir id_referencia,
-preservar originais, sem pendência ou contestação apenas pela bandeira.
-O exemplo de rastreabilidade permanece didático, com valores e taxa fictícios.
-O mês adicional prioriza integração, outubro acompanhado e melhorias de uso.
-O episódio real de erro da IA consta no apoio 15 e em PROMPTS/MOMENTOS.md.
+O roteiro cobre causa raiz, solução, dinheiro em jogo, outubro, papel da IA,
+falhas e um mês adicional. A demonstração usa comandos e resultados reais;
+outubro foi validado com dados sintéticos. O fechamento continua PROVISORIO.
+Nenhuma afirmação de EXE homologado, aprovação financeira, economia medida,
+partidas dobradas completas ou execução inferior a 0,1 segundo é necessária.
 
-Preparação em 17/10/2026. Nenhum envio à organização foi realizado.
+Preservar o arquivo de referência do orientador. Não tratar o roteiro ou
+MOMENTOS como substituto do histórico integral de sessões de IA.
+Nenhum envio à organização é comprovado por esta revisão local.

@@ -1,6 +1,6 @@
 # Tarvo Closing Agent — Hackathon Barte AI
 
-Solução autônoma de conciliação e fechamento financeiro mensal da **Tarvo Pagamentos**, desenvolvida com **LangGraph**, quadrupla cascata de triagem semântica (**Jev / TypeSafe AI** -> **Gemini 2.5 Flash** -> **DeepSeek V1 Flash** -> **Heurística Local Offline**) e núcleo determinístico em Python com rigor matemático absoluto.
+Solução autônoma de conciliação e fechamento financeiro mensal da **Tarvo Pagamentos**, desenvolvida com **LangGraph**, cascata de triagem de arquivos (**Jev / TypeSafe AI** -> **Gemini 2.5 Flash** -> **DeepSeek V1 Flash** -> **Heurística Local Offline**) e núcleo determinístico em Python com valores em `Decimal` e conferência das somas do rastro.
 
 Cobertura funcional dos níveis **mínimo, alvo e extra** verificada no data pack de setembro e em cenários sintéticos de outubro. Isso não representa homologação da banca nem aprovação financeira de Helena. Os testes verificam as somas do rastro para comissões, notas, divergências, lançamentos e pendências; as limitações e os requisitos gerais de entrega ainda pendentes constam na auditoria em `PROMPTS/memoria/`.
 
@@ -10,23 +10,23 @@ Cobertura funcional dos níveis **mínimo, alvo e extra** verificada no data pac
 
 A solução é construída sobre um **grafo de estados (LangGraph / StateGraph Dual-Mode)** composto por 5 estágios:
 
-1. **Estágio 0 — Ingestão Dinâmica & Triagem Tri-Tier em Cascata:**
+1. **Estágio 0 — Ingestão Dinâmica e Triagem em Quatro Camadas:**
    - Varredura dinâmica da pasta onde o executável/script estiver rodando.
    - Triagem híbrida em cascata:
-     1. **Tier 1 (Jev / TypeSafe AI):** Decisões tipadas estruturadas em sub-500ms com probabilidades calibradas.
-     2. **Tier 2 (Gemini 2.5 Flash):** Raciocínio semântico contextual para anomalias e novos layouts.
-     3. **Tier 3 (DeepSeek V1 Flash):** Fallback semântico veloz para contingência de rede/APIs de LLM.
-     4. **Tier 4 (Heurística Local Offline):** Roteamento determinístico imediato (0ms, offline) baseado em regex e assinaturas de colunas, garantindo 100% de disponibilidade.
+     1. **Tier 1 (Jev / TypeSafe AI):** Cliente opcional de classificação estruturada de arquivos; desempenho e calibração não homologados nesta revisão.
+     2. **Tier 2 (Gemini 2.5 Flash):** Cliente opcional de classificação de arquivos; um leitor ainda precisa validar o layout antes de calcular.
+     3. **Tier 3 (DeepSeek V1 Flash):** Cliente opcional de contingência para classificação de arquivos, sem desempenho externo homologado.
+     4. **Tier 4 (Heurística Local Offline):** Roteamento local por regras de nomes e conteúdo, disponível sem credenciais; falhas de fonte continuam sujeitas a diagnóstico e bloqueio.
 2. **Estágio 1 — Camada Silver, Cobertura de Fontes & Guardrail 1 (Error Detector):**
    - Limpeza estrutural e formatação canônica (ISO-8601 `AAAA-MM-DD`, CNPJ numérico 14 dígitos, decimais com ponto `0.00`, delimitador `;`).
    - Rastreamento explícito de cobertura por domínio (`cobertura_fontes`): distingue fontes `PROCESSADA`, `AUSENTE`, `INVALIDA`, `VALIDA_SEM_MOVIMENTOS` e `BLOQUEADA_POR_DEPENDENCIA`, registrando motivo, dependência e responsável sem transformar falhas ou layouts desconhecidos em zero silencioso.
    - Normalização com preservação da linha física real original no extrato Aurora (`L9` a `L92`) e `FITID` no Meridiano.
-3. **Estágio 2 — Motores de Domínio em Paralelo (Camada Gold, Parametrizados por Competência):**
-   - **Motor de Checkout:** Filtra movimentos ativos por `competencia` (`AAAA-MM`) mantendo busca histórica integral (`tx_primarias`) para vendas originais de meses anteriores; aplica corte temporal da Bridge (15/09), isenção total de MDR/antecipação da Casa do Estudante (set–dez/2026) com faturamento apenas do estorno de agosto (`R$ -5,50`) e restauração das **118 transações Orbe reais** no `rastro.csv` da pendência consolidada (`PEN-0058`, `R$ 15.396,77`), bloqueio integral de faturamento da Atlas Idiomas (`R$ 7.876,05` em taxas retidas em pendências), preservação dos 7 estornos com bandeiras divergentes e **bloqueio integral de IDs conflitantes** (`DUPLICIDADE_CONFLITANTE`, sem *First-Write-Wins* ou *Last-Write-Wins*).
-   - **Motor de Câmbio:** Filtra por `data_contratacao` da competência, extrai dinamicamente o CNPJ da Ponte Câmbio (`75374179000146`) a partir do `.eml`, aplica 50% split de spread realizado elegível (`R$ 39.543,42`), emite nota fiscal única da parceria com discriminação dinâmica da competência (`MM/AAAA`), exclui spreads negativos (`spread_brl < 0`), contesta sobretaxa da Mundo Aberto (`1,50%` vs `1,20%`, `R$ 1.418,88`) e bloqueia integralmente `num_operacao` conflitantes.
-   - **Motor Bancário e Conciliação Dinâmica:** Classificação determinística pelo plano Fênix ERP (`1.1.03.001`, `2.1.04.001`, `4.2.01`, etc.), detecção dinâmica de transferências em trânsito bancário entre contas próprias (`R$ 300.000,00` no Aurora em 30/09 sem compensação no Meridiano), crédito Pix não identificado (`R$ 7.350,00` na `L50`), devolução sem causa (`R$ 12.400,00` na `L65`) e eliminação total de fake IA (`metodo = "HUMANO"`, `confianca = 0.00`, transitória `1.1.09.002`).
+3. **Estágio 2 — Motores de Domínio (Camada Gold, Parametrizados por Competência):**
+   - **Motor de Checkout:** Filtra movimentos por competência, mantendo busca histórica (`tx_primarias`) para vendas originais; aplica as vigências da Bridge e a isenção da Casa entre setembro e dezembro. A Casa tem comissão negativa de `R$ -5,50` por estorno de agosto, sem nota, e devolução pendente de `R$ 15.396,77` com 118 contribuições Orbe. Atlas permanece sem faturamento, com `R$ 7.876,05` de taxas observadas em pendências. Diferenças isoladas de bandeira são preservadas sem alarme. IDs conflitantes ficam integralmente bloqueados.
+   - **Motor de Câmbio:** Filtra pela contratação, extrai o CNPJ Ponte do e-mail e apura 50% do spread realizado elegível (`R$ 39.543,42`). Gera uma única nota **proposta** para a Ponte, exclui os negativos e identifica `R$ 1.418,88` de cobrança a maior da Mundo Aberto para contestação humana. Conflitos de `num_operacao` bloqueiam todas as versões; nenhuma contestação é enviada automaticamente.
+   - **Motor Bancário e Classificação Proposta:** Classificação determinística pelo plano Fênix ERP (`1.1.03.001`, `2.1.04.001`, `4.2.01`, etc.), detecção dinâmica de transferências em trânsito bancário entre contas próprias (`R$ 300.000,00` no Aurora em 30/09 sem compensação no Meridiano), crédito Pix não identificado (`R$ 7.350,00` na `L50`), devolução sem causa (`R$ 12.400,00` na `L65`) e tratamento de movimentos sem regra com `metodo = "HUMANO"`, `confianca = 0.00` e transitória `1.1.09.002`. Casos conhecidos de Pix sem origem, devolução e repasses Atlas usam `REGRA/1.00` com pendência humana; contas e justificativas estão em P2 de `HIPOTESES.md`.
 4. **Estágio 3 — Guardrail 2 (Auditoria de Divergências Reais):**
-   - Descarte de falsos positivos de truncamento/arredondamento de centavos ($|\text{taxa aplicada} - \text{contratada}| \ge 0.005\%$).
+   - Checkout e filtro posterior usam diferença absoluta de pelo menos `0.005` ponto percentual; o motor de remessas seleciona somente cobranças a maior de pelo menos `0.01` ponto percentual. Diferença apenas no valor truncado não constitui mudança de taxa. O valor de remessa usa cotações e PTAX, conforme P1 de `HIPOTESES.md`.
 5. **Estágio 4 — Emissor Atômico, Versionamento de Execução e Auditoria Universal:**
    - Validação matemática formal da Prova Real: $\forall id\_saida \in \{COM, NF, DIV, LAN, PEN\} : \sum \text{rastro.valor} \equiv \text{valor\_reportado}$.
    - Geração e validação em uma pasta temporária, preservação em `execucoes/AAAA-MM/<id_execucao>/` e publicação dos CSVs e manifestos em `fechamento-completo/` e `saida/`, com restauração dos destinos se uma troca falhar.
@@ -105,19 +105,19 @@ python -m src.agent.consultant --explain "PEN-0058"
 
 ## 🔑 Configuração de Ambiente (.env)
 
-A solução foi desenhada para **nunca travar**, mesmo sem nenhuma chave de API ou conexão de rede (graças ao Tier 4 de Heurística Local Offline). 
+O fluxo determinístico foi verificado sem chaves de API e sem chamadas a modelos externos, usando a heurística local. Arquivos inválidos ou ausentes geram bloqueios explícitos; falhas de cálculo ou publicação podem interromper a execução preservando as saídas anteriores. Os testes de fallback não homologam os provedores em nuvem.
 
-Para ativar os tiers de IA em nuvem, copie o arquivo de exemplo e insira suas credenciais:
-```bash
-cp src/.env.example src/.env
-```
+Os clientes leem variáveis do ambiente do processo; a aplicação não carrega
+`src/.env` automaticamente. `src/.env.example` é uma referência de configuração.
+Para ativar clientes opcionais, configure as variáveis no terminal ou no hospedeiro
+antes de iniciar. Copiar o exemplo para `.env` sozinho não ativa as integrações.
 
 Variáveis suportadas:
 ```env
 # Tier 1: TypeSafe Jev AI
 JEV_API_KEY=
-JEV_BASE_URL=https://api.jev.ai/v1
-JEV_MODEL=jev-financial-classifier-v1
+JEV_API_URL=https://api.typesafe.ai/v1/decide
+JEV_MODEL=jev-1
 
 # Tier 2: Google Gemini Flash
 GEMINI_API_KEY=
@@ -125,7 +125,7 @@ GEMINI_MODEL=gemini-2.5-flash
 
 # Tier 3: DeepSeek V1 Flash
 DEEPSEEK_API_KEY=
-DEEPSEEK_BASE_URL=https://api.deepseek.com/v1
+DEEPSEEK_API_URL=https://api.deepseek.com/chat/completions
 DEEPSEEK_MODEL=deepseek-v1-flash
 ```
 
@@ -154,7 +154,29 @@ Ao executar, o agente gera os 6 CSVs obrigatórios com separador `;` e ponto dec
 1. **Atlas Idiomas (EC 1076801732):** Operações iniciadas em 10/09 sem contrato assinado retidas em 100% no arquivo `pendencias.csv` pelo valor da taxa em disputa (`R$ 7.876,05` em 57 transações) até liberação formal do Comercial (Bia). Repasses operacionais via PIX (`L34` e `L60`) também sinalizados para averiguação.
 2. **Casa do Estudante (EC 1018325654):** Isenção de MDR e antecipação acordada (set–dez/2026, informada pelo financeiro); taxas cobradas pela Orbe (`R$ 15.396,77`) consolidadas na pendência única `PEN-0058` para alinhamento comercial com Helena, preservando no `rastro.csv` todas as **118 contribuições individuais reais do arquivo `01_orbe_relatorio_comissoes_set2026.csv`** (sem vínculo com o extrato Aurora). A comissão líquida de setembro apurou apenas o estorno da venda de agosto (`R$ -5,50`), constando em `comissoes_por_lojista.csv` (`COM-0005`), porém **sem emissão de nota fiscal** em `notas_a_emitir.csv` por saldo não positivo (gerando 20 notas de checkout em vez de 21, totalizando `R$ 203.740,84`).
 3. **Reversões de Antecipação no Arquivo 06:** Três reversões de antecipação foram abatidas da comissão de setembro e calculadas à taxa da antecipação original referenciada.
-4. **Política de Duplicidade e Bloqueio Integral de Conflitos:** Registros efetivamente idênticos em todos os campos relevantes são deduplicados com evidência preservada no `rastro.csv`; já registros com o mesmo `id_transacao` (Orbe) ou `num_operacao` (Ponte) e valores conflitantes têm **todas as suas ocorrências bloqueadas** (`DUPLICIDADE_CONFLITANTE`), sem escolha automática da primeira ou última versão.
+4. **Política de Duplicidade e Bloqueio Integral de Conflitos:** Cópias idênticas nos campos relevantes contam uma vez, com evidência. IDs conflitantes bloqueiam todas as versões, sem precedência automática. Na Orbe, a pendência é `DUPLICIDADE_CONFLITANTE`; na Ponte, `OPERACAO_DUPLICADA` com motivo explícito de conflito e bloqueio.
 5. **Cobertura de Fontes e Fechamento Parcial:** Fontes ausentes (`AUSENTE`), corrompidas/layout inválido (`INVALIDA`), válidas sem movimentos na competência (`VALIDA_SEM_MOVIMENTOS`) e bloqueadas por falta de cadastro/plano (`BLOQUEADA_POR_DEPENDENCIA`) são explicitadas no manifesto e em `pendencias.csv`, nunca gerando zero silencioso.
-6. **Guardrails Agênticos e Aprovação Humana:** O subagente consultivo atua exclusivamente em modo consultivo/explicativo; `estado_tecnico` concluído não equivale a aprovação financeira (`status_aprovacao`), e qualquer mudança nos dados ou regras revoga aprovações anteriores para `REABERTO_PARA_REVISAO`.
+6. **Guardrails Agênticos e Aprovação Humana:** O subagente consultivo atua exclusivamente em modo consultivo/explicativo; `estado_tecnico` concluído não equivale a aprovação financeira (`status_aprovacao`), e mudanças em dados, regras, código ou resultados impedem herdar a aprovação anterior na nova execução; o registro da execução antiga é preservado. O status informado pelo operador não autentica Helena.
 
+
+## Evidências e limites da entrega
+
+A revisão técnica de 17/10/2026 executou **40 testes**, reproduziu os seis CSVs
+com o ZIP original e o complemento `06`, e conferiu 423 resultados por soma do
+rastro. O mínimo, o alvo e o extra são cumulativos e estão cobertos nos dados de
+setembro e cenários sintéticos de outubro; isso não equivale ao gabarito privado
+da banca nem à aprovação financeira. O nível intermediário oficial é **alvo**.
+
+`REGRA/1.00` identifica aplicação de uma regra de classificação proposta; uma
+pendência associada ainda pode exigir decisão de Helena. Não representa certeza
+da origem de um crédito ou homologação das contas contábeis. Não há conciliação
+parcela por parcela nem geração de partidas dobradas completas para o ERP.
+
+O roteiro local atualizado está em `apresentacao/entrega/roteiro-pitch-tarvo.txt`.
+A revisão local não sincroniza automaticamente as notas do deck remoto.
+`PROMPTS/MOMENTOS.md` contém quatro intervenções, mas não substitui o histórico
+integral das sessões exigido pelo regulamento. Reunir esses históricos e confirmar
+postagens/checkpoints e horários continuam tarefas da entrega geral. Relatórios
+antigos em `PROMPTS/memoria/` e o plano em `PROMPTS/outputs/arquitetura-stack.md`
+preservam o estado de suas versões; o README e o dossiê descrevem a implementação
+atual. Consulte `PROMPTS/memoria/revalidacao-main-cd2d849-2026-10-17.txt`.

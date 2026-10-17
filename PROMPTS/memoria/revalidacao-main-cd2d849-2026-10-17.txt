@@ -1,0 +1,98 @@
+SINCRONIZAÇÃO E REVALIDAÇÃO DA MAIN — 17/10/2026
+
+Base sincronizada: cd2d8499d33a8c5dc749eaaf1d8be151acb237c8.
+Título do commit: fix(docs): correcao factual de divergencias, exemplo Bridge,
+volume Atlas e origem da isencao Casa.
+
+SINCRONIZAÇÃO
+
+git fetch origin main encontrou um commit novo. Alterações documentais locais
+foram preservadas em stash (mantido como backup). A main avançou por fast-forward
+de eb44d34 para cd2d849. O commit recebido não altera Python, testes ou saida/.
+As correções locais foram reaplicadas. O conflito no roteiro foi resolvido
+integrando os detalhes novos ao roteiro atualizado. Não há conflitos no índice.
+HEAD e origin/main apresentam zero commits de diferença nos dois sentidos.
+
+As correções documentais permanecem locais, sem commit ou push. A base remota
+sincronizada e a documentação integrada da árvore de trabalho são estados distintos.
+
+REGULAMENTO
+
+Documento oficial relido pelo Google Drive nesta rodada:
+https://docs.google.com/document/d/1GwHs0lgLWXdw-jIrPyYAxyJ_xEJJxViE/edit
+Confirmados seis CSVs e seus formatos, rastro por resultado, níveis mínimo/alvo/
+extra e índice de 2–4 momentos com pelo menos um erro da IA. Pitch exige causa
+raiz, solução, valores, uso em outubro, limites da IA, falhas e um mês adicional.
+
+CONFERÊNCIA DAS ALTERAÇÕES RECEBIDAS
+
+- Rota Global: 87 divergências, 1546.28; diferenças de 0.50 ponto percentual.
+  Taxas contratada/aplicada observadas: 2.49/2.99, 2.99/3.49 e 3.59/4.09.
+- Bridge: cinco divergências, 29.95; contratada 2.19%, aplicada 2.59%.
+- Checkout total de divergências: 1576.23, sem atribuir tudo à Rota.
+- COM-0009 Bridge: 109 contribuições, soma 11769.74. Exemplos conferidos:
+  TX88411252: 3882.89 × 3.19% = 123.86;
+  TX88444329: 708.46 × 2.19% = 15.52;
+  TX88447044: -1982.10 × 3.19% = -63.23, no arquivo 06.
+- Atlas: 57 movimentos. Vendas 135428.90; antecipações 235943.10;
+  reversões -108712.14; estornos -521.25. Soma algébrica dos brutos 262138.61.
+  O número recebido foi confirmado, mas a descrição precisava esclarecer que
+  inclui movimentos com bases sobrepostas, não volume de vendas novas. As
+  taxas observadas de 7876.05 permanecem pendentes, sem comissão contratual
+  confirmada. Essa distinção foi integrada ao HIPOTESES e ao roteiro.
+- Casa: origem da isenção preservada como confirmação do financeiro. Saldo
+  -5.50 permanece em comissão, sem nota proposta; 20 notas de checkout.
+- MOMENTOS recebido tinha cinco itens. O regulamento pede 2–4: consolidamos
+  os dois últimos em um registro e preservamos o conteúdo integral recebido
+  em MOMENTOS-recebido-cd2d849-2026-10-17.txt. O roteiro remoto recebido também
+  foi preservado em roteiro-recebido-cd2d849-2026-10-17.txt. Não houve edição
+  de transcripts integrais de sessões.
+
+TESTES E REPRODUÇÃO
+
+- 40 testes passaram em 6,941 s, exit code 0, após a sincronização e integração.
+  Cobrem setembro, outubro sintético, vigências, fontes incompletas, conflitos,
+  idempotência, origem dos arquivos, snapshots, aprovação declarada e falhas
+  de cálculo/publicação. Log: revalidacao-main-cd2d849-testes-2026-10-17.log.
+- CLI real executada em work/revalidacao-main-cd2d849 com ZIP original extraído
+  sem limpeza e complemento 06. Seis CSVs idênticos aos versionados, normalizando
+  finais de linha. Estado CONCLUIDO, aprovação PROVISORIO.
+- 423 resultados conferidos por soma do rastro. 4503 referências verificadas
+  contra IDs Orbe, operações do anexo Ponte, linhas Aurora e FITIDs Meridiano
+  no snapshot das entradas. Cabeçalhos, formatos, enums, CNPJ, métodos,
+  confiança e motivo/responsável também conferidos.
+- Casos bancários L15/L34/L50/L60/L65/L92 novamente comparados às linhas brutas.
+- Consultor executou o resumo da competência com sucesso.
+- git diff --check passou; git ls-files -u vazio. Nenhuma mudança local em
+  código Python, testes ou seis CSVs oficiais. src/.env.example continua com
+  correções documentais locais sobre variáveis de ambiente.
+
+Contagens: 35 comissões, 115 divergências, 21 notas, 184 lançamentos,
+68 pendências e 4503 linhas no rastro.
+Comissões: checkout 203735.34 e remessas 39543.42.
+
+PARECER
+
+Mínimo: ATENDIDO nos dados auditados — checkout por lojista e rastro.
+Alvo: ATENDIDO funcionalmente — mínimo mais remessas, divergências por
+transação, notas propostas e classificação dos dois bancos.
+Extra: ATENDIDO funcionalmente nos cenários testados — mínimo e alvo mais
+rastro dos resultados, pendências explicadas e outubro parametrizado.
+
+O novo commit não introduziu regressão financeira identificada. A conferência
+de somas e referências não substitui o gabarito privado da banca, revisão das
+contas contábeis ou aprovação de Helena. Outubro foi testado com dados sintéticos;
+não se garante qualquer evento/layout futuro sem validação.
+
+REQUISITOS GERAIS AINDA NÃO ATESTADOS
+
+Histórico integral de todas as sessões de IA, sincronização do deck remoto e
+notas com o roteiro local, postagens/checkpoints e cumprimento dos prazos.
+O repositório público foi confirmado na auditoria anterior; não houve mudança
+de visibilidade nesta rodada. Nenhuma mensagem, emissão fiscal, operação
+financeira ou aprovação foi realizada. O fechamento real continua PROVISORIO.
+
+Evidências estruturadas: revalidacao-main-cd2d849-2026-10-17.json.
+Scripts locais: work/revalidar_cd2d849.py, work/conferir_cd2d849.py e
+work/finalizar_auditoria_cd2d849.py. Logs da CLI e consultor estão em
+work/revalidacao-main-cd2d849/.

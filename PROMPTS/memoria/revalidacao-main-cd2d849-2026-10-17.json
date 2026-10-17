@@ -1,0 +1,155 @@
+{
+  "commit": "cd2d8499d33a8c5dc749eaaf1d8be151acb237c8",
+  "arquivos": {
+    "comissoes_por_lojista.csv": {
+      "registros": 35,
+      "igual_a_saida_versionada": true
+    },
+    "divergencias_taxa.csv": {
+      "registros": 115,
+      "igual_a_saida_versionada": true
+    },
+    "notas_a_emitir.csv": {
+      "registros": 21,
+      "igual_a_saida_versionada": true
+    },
+    "lancamentos_classificados.csv": {
+      "registros": 184,
+      "igual_a_saida_versionada": true
+    },
+    "pendencias.csv": {
+      "registros": 68,
+      "igual_a_saida_versionada": true
+    },
+    "rastro.csv": {
+      "registros": 4503,
+      "igual_a_saida_versionada": true
+    }
+  },
+  "ids_verificados": 423,
+  "comissoes": {
+    "CHECKOUT": "203735.34",
+    "REMESSA": "39543.42"
+  },
+  "estado_tecnico": "CONCLUIDO",
+  "status_aprovacao": "PROVISORIO",
+  "consultor_ok": true,
+  "rastro_referencias_brutas_verificadas": 4503,
+  "casos_bancarios_conferidos_com_fonte_bruta": {
+    "L15": [
+      "2026-09-04",
+      "-184732.18",
+      "2.1.04.001"
+    ],
+    "L34": [
+      "2026-09-10",
+      "-112220.15",
+      "2.1.01.001"
+    ],
+    "L50": [
+      "2026-09-16",
+      "7350.00",
+      "1.1.09.002"
+    ],
+    "L60": [
+      "2026-09-22",
+      "-137081.62",
+      "2.1.01.001"
+    ],
+    "L65": [
+      "2026-09-23",
+      "12400.00",
+      "2.1.01.001"
+    ],
+    "L92": [
+      "2026-09-30",
+      "-300000.00",
+      "1.1.09.001"
+    ]
+  },
+  "documentacao_atualizada": [
+    "README.md",
+    "HIPOTESES.md",
+    "DOCUMENTO_DE_LEITURA.md",
+    "AGENTS.md",
+    "apresentacao/entrega/LEIA-ME.txt",
+    "apresentacao/entrega/roteiro-pitch-tarvo.txt",
+    "src/.env.example"
+  ],
+  "codigo_python_testes_e_csvs_oficiais_preservados": true,
+  "limite_verificacao": "Somas e referencias conferidas; nao e confronto com gabarito privado ou homologacao contabil.",
+  "conferencia_fatos_commit": {
+    "atlas_linhas": 57,
+    "atlas_bruto_por_tipo": {
+      "VENDA": "135428.90",
+      "ANTECIPACAO": "235943.10",
+      "REVERSAO ANTECIPACAO": "-108712.14",
+      "ESTORNO": "-521.25"
+    },
+    "atlas_soma_brutos": "262138.61",
+    "divergencias_checkout": {
+      "95927868000148": {
+        "count": 87,
+        "total": "1546.28",
+        "taxas": [
+          [
+            "2.49",
+            "2.99"
+          ],
+          [
+            "2.99",
+            "3.49"
+          ],
+          [
+            "3.59",
+            "4.09"
+          ]
+        ]
+      },
+      "22224579000109": {
+        "count": 5,
+        "total": "29.95",
+        "taxas": [
+          [
+            "2.19",
+            "2.59"
+          ]
+        ]
+      }
+    },
+    "bridge_contribuicoes": 109,
+    "bridge_soma": "11769.74",
+    "bridge_exemplos": {
+      "TX88411252": {
+        "id_saida": "COM-0009",
+        "arquivo_origem": "01_orbe_relatorio_comissoes_set2026.csv",
+        "ref_origem": "TX88411252",
+        "valor": "123.86",
+        "regra_aplicada": "Taxa contratual Crédito parcelado (4x) (Corte vigência pré-15/09)",
+        "taxa_contratada_aplicada": "3.19%",
+        "detalhe_calculo": "Bruto R$ 3882.89 * 3.19% = R$ 123.86"
+      },
+      "TX88444329": {
+        "id_saida": "COM-0009",
+        "arquivo_origem": "01_orbe_relatorio_comissoes_set2026.csv",
+        "ref_origem": "TX88444329",
+        "valor": "15.52",
+        "regra_aplicada": "Taxa contratual Crédito à vista (Corte vigência pós-15/09)",
+        "taxa_contratada_aplicada": "2.19%",
+        "detalhe_calculo": "Bruto R$ 708.46 * 2.19% = R$ 15.52"
+      },
+      "TX88447044": {
+        "id_saida": "COM-0009",
+        "arquivo_origem": "06_orbe_ajustes_tardios_set2026.csv",
+        "ref_origem": "TX88447044",
+        "valor": "-63.23",
+        "regra_aplicada": "Estorno à taxa da venda original (2026-09-13)",
+        "taxa_contratada_aplicada": "3.19%",
+        "detalhe_calculo": "Bruto R$ -1982.10 * 3.19% = R$ -63.23 [Estorno bandeira ELO vs venda HIPERCARD - vínculo por referência homologado por Helena]"
+      }
+    }
+  },
+  "momentos_indice": 4,
+  "main_sincronizada": true,
+  "conflitos_resolvidos": true
+}

@@ -1,0 +1,103 @@
+AUDITORIA DA MAIN E DOS REQUISITOS BARTE — 17/10/2026
+
+Versão: eb44d34e10b36419a3b032c268cc7c41718bb214.
+git fetch origin main executado; HEAD e origin/main idênticos (0 commits
+de diferença em ambos os sentidos). Não foi necessário merge. Código e
+saídas oficiais preservados; esta rodada acrescenta somente evidências locais.
+
+Fonte oficial relida pelo Google Drive:
+https://docs.google.com/document/d/1GwHs0lgLWXdw-jIrPyYAxyJ_xEJJxViE/edit
+Repositório público confirmado pelo conector GitHub (visibility=public).
+
+CONCLUSÃO SOBRE OS NÍVEIS
+
+Mínimo: ATENDIDO nos dados auditados — checkout por lojista com rastro.
+Alvo: ATENDIDO funcionalmente — inclui o mínimo, remessas, divergências por
+transação, notas propostas e classificação dos dois bancos.
+Extra: ATENDIDO funcionalmente nos cenários testados — inclui mínimo e alvo,
+rastro dos resultados, pendências explicadas e execução parametrizada de
+outubro com dados sintéticos, sem mudar o algoritmo.
+O documento oficial chama o nível intermediário de ALVO, não de médio.
+
+Isso não equivale a aprovação de Helena, homologação da banca ou validação
+contra seu gabarito privado. A entrega geral NÃO pode ser declarada 100%
+completa enquanto as pendências documentais e os envios não forem resolvidos.
+
+VERIFICAÇÕES DESTA RODADA
+
+1. Python 3.14.7: 40 testes passaram em 8,160 s. O primeiro ensaio no sandbox
+encontrou restrições de remoção de diretórios temporários; a repetição fora
+dessas restrições terminou com exit code 0. Log integral preservado junto a
+este relatório. Inclui outubro nas três frentes, vigências, nomes de origem,
+duplicidades/conflitos, fontes ausentes/inválidas/vazias, snapshots,
+aprovações declaradas e falhas de cálculo/publicação.
+2. ZIP original extraído em pasta de trabalho isolada e 06 copiado sem limpeza.
+CLI executada como documentado: python src/app.py --data-dir <pasta>
+--competencia 2026-09. Estado CONCLUIDO; aprovação PROVISORIO.
+3. Os seis CSVs reproduzidos são idênticos aos versionados em saida/ após
+normalização de finais de linha. Nenhuma saída financeira oficial substituída.
+4. Verificação independente dos cabeçalhos obrigatórios, separador, decimais,
+CNPJs, datas, enums, confiança, IDs únicos e motivo/responsável nas pendências.
+423 IDs conferidos: soma exata das contribuições no rastro para cada resultado.
+Esta checagem de somas não constitui recálculo independente de todas as regras
+financeiras; os testes de regressão e a revisão do código complementam-na.
+5. Consultor executado por python -m src.agent.consultant --summary, apontando
+para a saída reproduzida. Resumo apresentou setembro, CONCLUIDO e PROVISORIO.
+
+Arquivo                              Registros
+comissoes_por_lojista.csv              35
+divergencias_taxa.csv                 115
+notas_a_emitir.csv                     21
+lancamentos_classificados.csv        184
+pendencias.csv                        68
+rastro.csv                          4503
+
+Checkout: R$ 203.735,34. Remessas: R$ 39.543,42.
+Divergências: R$ 2.995,11. Notas propostas: R$ 243.284,26.
+Notas excedem as comissões em R$ 5,50 porque o saldo negativo da Casa não
+gera nota. Não somar pendências, divergências e notas como benefício único.
+
+REQUISITOS GERAIS E PENDÊNCIAS
+
+- README, HIPOTESES, PROMPTS, PROMPTS/MOMENTOS, saida e src: presentes.
+- README contém execução do zero, preparação do ZIP + 06, chaves opcionais e
+limitações. A execução local demonstrada não depende de modelo em nuvem.
+- MOMENTOS contém quatro momentos com intervenções e erros da IA; atende ao
+formato pedido. Histórico integral de TODAS as sessões não foi localizado.
+Memórias/resumos não substituem transcripts, exports ou links integrais.
+- Roteiro local apresentacao/entrega/roteiro-pitch-tarvo.txt e LEIA-ME dizem
+que código, comando e resultados ainda não estavam disponíveis. Estão
+desatualizados frente à main. O roteiro estrutura os sete assuntos do pitch,
+mas a narrativa e os exemplos precisam refletir a implementação atual.
+O deck remoto não foi relido nesta rodada; uma auditoria anterior registra
+notas desatualizadas. Não considerar que essa pendência foi resolvida.
+- HIPOTESES.md, P2, diverge do CSV/código: descreve L34 e L60 Atlas como
+1.1.09.002/HUMANO/0 e valores -112450.80/-138920.15, enquanto a saída reproduz
+2.1.01.001/REGRA/1 e valores -112220.15/-137081.62. L65 também está como
+2.1.01.001/REGRA/1, embora P2 descreva transitória/HUMANO/0; L50 mantém a
+transitória, mas está REGRA/1. As pendências humanas existem. Alinhar a
+premissa ou implementação com justificativa explícita; a banca penaliza
+hipóteses não transparentes e alarmes falsos. A confirmação de Helena não
+fixou essas contas específicas. Não alterar automaticamente os valores brutos
+para fazê-los coincidir com o texto desatualizado.
+- AGENTS ainda cita 29 testes e tolerância não escolhida, embora a suíte atual
+tenha 40 testes e HIPOTESES P1 documente a escolha delegada.
+- DOCUMENTO_DE_LEITURA contém alegações de execução inferior a 0,1 segundo e
+formato por executável que esta auditoria não comprovou. Os serviços de IA
+em nuvem e o EXE não foram homologados nesta rodada; não são requisitos dos
+níveis oficiais. O status de aprovação é declaração do operador, sem
+autenticação da identidade de Helena.
+- Repositório público: confirmado. Postagens dos checkpoints e links do repo
+e pitch no thread do time e cumprimento dos horários: não atestados aqui.
+O regulamento exige repo até 18h30 e pitch até 19h de 17/10/2026. Não houve
+envio de mensagens, publicação de pitch ou push nesta rodada.
+
+EVIDÊNCIAS
+
+auditoria-eb44d34-2026-10-17.json: totais, contagens e comparação dos CSVs.
+auditoria-eb44d34-testes-2026-10-17.log: log da suíte com 40 aprovações.
+work/auditoria-eb44d34.py: script da reprodução/checagem, diretório ignorado.
+work/auditoria-eb44d34/cli.log e consultor.log: comandos reais.
+
+Relatórios antigos em PROMPTS/memoria preservam revisões de versões anteriores
+e não devem ser lidos como o estado atual da main.

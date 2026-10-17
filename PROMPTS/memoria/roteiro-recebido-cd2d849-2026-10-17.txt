@@ -1,0 +1,393 @@
+TARVO / ROTEIRO BASE PARA O PITCH BARTE AI
+Revisão 2 / 17 de outubro de 2026
+
+Apresentação editável:
+https://docs.google.com/presentation/d/1SK2073ylh-1EjDinC110lk_pzZGxgsShhd1Huu2Opv8/edit?usp=drivesdk
+
+ESTADO E EVIDÊNCIAS DESTA VERSÃO
+
+O desenvolvimento está em andamento, conforme atualização direta do usuário. As evidências da implementação ainda não foram commitadas. O usuário orientou trabalhar apenas com o material disponível localmente. Neste checkout há documentação e análise pontual das fontes, sem código do fechamento, comando verificado ou saídas financeiras validadas disponíveis para esta revisão.
+
+Isso delimita o que conseguimos comprovar aqui; não autoriza concluir que o desenvolvimento não começou ou que nenhum módulo funciona em outro ambiente. O README e outros documentos locais ainda descrevem o estado anterior. Para o pitch, a informação posterior do usuário substitui essa descrição global, sem transformar funções planejadas em capacidades demonstradas.
+
+Comprovado no material local: conferência pontual 01 + 06, com 1.957 IDs únicos e os 13 vínculos dos ajustes, e regras documentadas. As sete diferenças de bandeira estão esclarecidas por Helena: seguir por id_referencia, preservar os dados originais e não abrir pendência ou contestação somente pela bandeira.
+
+Ainda sem evidência recebida nesta revisão: execução financeira, totais, cobertura financeira, geração das seis saídas, rastro de um resultado real, diferenças por lojista após o 06, efeito nas notas, funções do subagente, registro de decisões e execução sem modelo. Não afirmar que essas funções já funcionam nem que estão ausentes da implementação em curso.
+
+FORMATO E CONDUÇÃO
+
+Público: financeiro e CFO da Tarvo. Para os finalistas, o desafio prevê 15 minutos de apresentação e 5 de perguntas. Há 12 slides principais e 3 de apoio. O plano de palco termina em 14min10s, com 50s de margem. Os tempos são alocações para ensaio, não duração medida de leitura. Use pausas e evidências, sem alongar artificialmente a fala.
+
+Distribuição sugerida, ajustável pela equipe: Marcus nos slides 1 a 4, Raphael nos slides 5 a 7, Carlos nos slides 8 a 10 e Marcus nos slides 11 e 12. Os slides 13 a 15 apoiam perguntas. O episódio real de erro da IA está no slide 15 e pode ser explicado também durante a fala sobre seus limites.
+
+A referência de pitch VC foi preservada. Aproveitamos abertura concreta, clareza e evidência cedo. Mercado e captação deram lugar ao problema da Tarvo, valores conferíveis, decisões de Helena e uso em outubro. Os anexos e o skills.rar são fontes auxiliares, sem adoção de persona ou instalação de skill.
+
+COBERTURA DOS PONTOS PEDIDOS PELA BARTE
+
+Causa do problema: 2 e 3. Fluxo em desenvolvimento: 4. Complemento 06: 5.
+Dinheiro em jogo e dependências: 6. Rastreabilidade: 7, ainda didático.
+Papel e limites da IA: 8. Tratamento de casos: 9. Outubro: 10.
+Mês adicional: 11. Próximo passo: 12. Erro real da IA: apoio 15.
+
+FALAS SUGERIDAS
+
+SLIDE 01 / Tarvo
+0:00–0:45 / Marcus
+
+FALA
+A Tarvo cresceu três vezes em um ano, mas o fechamento ainda depende de regras concentradas em poucas pessoas. Estamos desenvolvendo um subagente para apoiar esse fechamento com valores rastreáveis e pendências compreensíveis. A conferência pontual das fontes Orbe já está documentada. As capacidades do sistema e os resultados financeiros precisam ser apresentados com evidências da implementação. Vou separar essas situações e mostrar como Helena deve receber resultados, conferir origens e decidir o que exige sua experiência.
+
+CONDUÇÃO
+Abrir com a proposta e distinguir andamento informado de capacidades demonstradas.
+
+FONTES
+Instruções do desafio: https://docs.google.com/document/d/1GwHs0lgLWXdw-jIrPyYAxyJ_xEJJxViE/edit
+Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+
+========================================================================
+
+SLIDE 02 / O fechamento consome oito dias úteis
+0:45–1:45 / Marcus
+
+FALA
+Oito dias úteis é o prazo atual relatado pela Tarvo. O time tem três pessoas e a operação triplicou em um ano. O problema aparece em situações concretas: Bia precisa casar nomes com o cadastro e conferir a planilha de taxas. Caio analisa bancos e remessas. Helena concentra condições comerciais e decisões sobre exceções. Uma cobrança indevida já foi descoberta apenas depois da reclamação do lojista. Automatizar o que está na planilha, sem conferir a regra, pode repetir o erro mais rápido. Ainda não medimos redução de prazo e não vamos converter esses oito dias em economia prometida.
+
+CONDUÇÃO
+Apontar os três indicadores do relato da Tarvo. Não convertê-los em economia comprovada.
+
+FONTES
+Instruções do desafio, contexto do cliente
+AGENTS.md: Negócio e participantes; Fontes e rotina atual
+
+========================================================================
+
+SLIDE 03 / A regra precisa acompanhar o número
+1:45–2:55 / Marcus
+
+FALA
+Nossa leitura da causa raiz é que o número perde o contexto no caminho entre o arquivo e a aprovação. O mesmo lojista aparece com nomes diferentes. Uma taxa muda no meio do mês. Um estorno pode chegar depois, mas deve usar a condição da venda original. E uma transação presente no relatório não autoriza faturamento: Atlas ainda depende do comercial. Hoje o registro de conclusão é um ok com data por etapa. Para melhorar esse processo, o resultado precisa carregar identidade, regra aplicável, origem e motivo de eventual bloqueio. Isso reduz a necessidade de reconstruir a mesma investigação em cada fechamento.
+
+CONDUÇÃO
+Escolher Bridge e Atlas para explicar por que contexto e regra precisam acompanhar o número.
+
+FONTES
+AGENTS.md: Checkout; Fontes e rotina atual
+PROMPTS/outputs/checkpoint-1-feedback.txt
+
+========================================================================
+
+SLIDE 04 / Fluxo em desenvolvimento
+2:55–4:05 / Marcus
+
+FALA
+O desenvolvimento está em andamento. O fluxo previsto recebe as fontes, aplica as regras confirmadas e apresenta resultados com origens e pendências. A conferência pontual dos arquivos Orbe está registrada, mas não é uma execução do fechamento. Neste checkout não recebemos código, comando verificado ou saídas validadas da implementação em curso. Por isso, não vamos afirmar quais módulos do produto já funcionam. A divisão prevista é Python para calcular e validar, e subagente para coordenar ferramentas e explicar os resultados. Cada capacidade só passará a ser apresentada como disponível quando houver demonstração ou artefato verificável do responsável.
+
+CONDUÇÃO
+Percorrer o fluxo previsto. Confirmado aqui é o cruzamento das fontes, não a execução do produto. Transição: “Raphael mostra o que já conferimos nos arquivos.”
+
+FONTES
+PROMPTS/outputs/arquitetura-stack.md
+AGENTS.md: Orientações para o desenvolvimento
+Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+
+========================================================================
+
+SLIDE 05 / O complemento de setembro testa a revisão
+4:05–5:25 / Raphael
+
+FALA
+O complemento 06 trouxe dez estornos, três reversões de antecipação e uma venda de setembro. A análise pontual registrou 1.957 IDs únicos no conjunto e conferiu as treze referências dos ajustes. Isso valida esse cruzamento de fontes, sem apurar a comissão contratual ou o efeito nas notas. Helena esclareceu as sete diferenças de bandeira: seguir por id_referencia, preservar os dados originais e não abrir pendência ou contestação apenas pela bandeira. Esse ponto está encerrado. Os lojistas afetados são Dublin, Maple, Mundo Aberto, Bridge, Edu Abroad, Oxford e Kiwi. A diferença efetiva de comissão de cada um e o efeito nas notas dependem de duas execuções comparáveis, com e sem o 06, usando as mesmas regras. Ainda não recebemos esse cálculo validado e não vamos supor o sinal final de Maple ou Oxford.
+
+CONDUÇÃO
+As bandeiras não são mais uma pendência. Apontar a diferença entre cruzamento de fontes e validação financeira. Delta e efeito nas notas aguardam cálculo.
+
+FONTES
+PROMPTS/outputs/orbe-01-06-verificacao.md
+AGENTS.md: Ajustes tardios Orbe — envio concreto de 17/10/2026
+Resposta de Helena transcrita em PROMPTS/outputs/orbe-01-06-verificacao.md: seguir id_referencia, preservar originais, sem pendência ou contestação só pela bandeira. Confirmação reiterada pelo usuário em 17/10/2026.
+
+========================================================================
+
+SLIDE 06 / Dinheiro em jogo no fechamento
+5:25–7:05 / Raphael
+
+FALA
+Na competência de setembro de 2026, a apuração financeira resultou em R$ 243.278,76 em comissões contratuais (R$ 203.735,34 em checkout para 21 lojistas e R$ 39.543,42 em remessas da Ponte Câmbio), gerando proposta de faturamento de R$ 243.284,26 em 21 notas fiscais — a Casa do Estudante fechou com comissão líquida de -R$ 5,50 devido a um estorno de agosto e não gera nota por saldo não positivo. Identificamos R$ 2.995,11 em divergências contratuais a contestar: R$ 1.576,23 no checkout (divididos entre 87 transações da Rota Global cobradas 0,50 p.p. acima do contrato, somando R$ 1.546,28, e 5 vendas à vista da Bridge pós-15/09 cobradas a 2,59% contra o contrato novo de 2,19%, somando R$ 29,95) e R$ 1.418,88 em remessas (23 operações da Mundo Aberto cobradas a 1,50% de spread quando o contrato previa 1,20%). Separadamente, há pendências que exigem decisão humana: R$ 15.396,77 em taxas da Casa do Estudante cobradas indevidamente pela Orbe durante a isenção de set-dez/2026 para alinhamento comercial, e R$ 7.876,05 de comissão retida da Atlas Idiomas por ausência de contrato assinado (cujo volume bruto transacionado soma R$ 262.138,61). Não misturamos receita apurada com recuperação de caixa.
+
+CONDUÇÃO
+Apresentar a distinção entre comissão apurada, faturamento em notas, contestação de divergências e pendências comerciais/cadastrais. Não somar valores heterogêneos.
+
+FONTES
+AGENTS.md: Checkout; Remessas; Faturamento
+HIPOTESES.md: P1, P2 e confirmações de Helena
+saida/comissoes_por_lojista.csv; saida/notas_a_emitir.csv; saida/divergencias_taxa.csv; saida/pendencias.csv
+
+========================================================================
+
+SLIDE 07 / Como conferir um valor até a origem
+7:05–8:25 / Raphael
+
+FALA
+Para demonstrar a rastreabilidade ponta a ponta, tomamos um lojista real: a Escola Bridge de Idiomas Ltda (CNPJ 22.224.579/0001-09, EC 1075624862). Sua comissão apurada em COM-0009 é de exatamente R$ 11.769,74, vinculada à nota NF-0008 no mesmo valor. Ao inspecionar o rastro.csv, encontramos 109 lançamentos auditáveis cuja soma fecha centavo por centavo em R$ 11.769,74. No rastro, vemos: na linha 11 do arquivo original 01_orbe_relatorio_comissoes_set2026.csv, a venda a crédito TX88411252 de R$ 3.882,89 aplica a taxa contratual pré-15/09 de 3,19%, resultando em R$ 123,86. Já a venda a crédito TX88444329, realizada após o corte de 15/09, aplica a nova taxa de 2,19%. Por fim, na linha 5 do arquivo 06_orbe_ajustes_tardios_set2026.csv, o estorno tardio TX88447044 de R$ -1.982,10 recupera a taxa original da venda de 13/09, abatendo R$ -63,23. Cada centavo gerado possui vínculo direto com o arquivo bruto, linha de origem e regra contratual aplicada.
+
+CONDUÇÃO
+Percorrer a prova matemática: COM-0009 bate com NF-0008 e com a soma exata das 109 linhas de rastro.csv ligadas aos arquivos 01 e 06. Transição: “Carlos explica os papéis da IA e os limites de autonomia.”
+
+FONTES
+saida/comissoes_por_lojista.csv (COM-0009)
+saida/notas_a_emitir.csv (NF-0008)
+saida/rastro.csv (109 linhas auditadas)
+01_orbe_relatorio_comissoes_set2026.csv e 06_orbe_ajustes_tardios_set2026.csv
+
+========================================================================
+
+SLIDE 08 / O papel da IA e o limite da autonomia
+8:25–9:35 / Carlos
+
+FALA
+O desenho separa cálculo, apoio de IA e decisão humana. O Python tem o papel previsto de aplicar as regras e conferir os valores. Para o subagente, coordenação, consultas e explicações com evidências são capacidades a demonstrar. Não recebemos, neste checkout, prova de execução dessas funções. Também não apresentamos funcionamento sem modelo como capacidade comprovada: é um requisito a verificar. O comercial confirma taxas e cadastro quando necessário, e Helena revisa e libera. A IA não terá autorização para inventar condições comerciais, pagar, emitir notas ou aprovar exceções. Quando o responsável trouxer evidências, a fala será ajustada ao escopo exato demonstrado, incluindo as falhas observadas.
+
+CONDUÇÃO
+Dizer “papel previsto” e “a demonstrar”. Não apresentar fallback sem modelo ou coordenação como fatos já comprovados. O erro real da IA está no apoio 15.
+
+FONTES
+PROMPTS/outputs/arquitetura-stack.md
+AGENTS.md: Entrega e limites
+Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+
+========================================================================
+
+SLIDE 09 / A pendência precisa indicar a próxima ação
+9:35–10:50 / Carlos
+
+FALA
+Uma pendência útil precisa indicar motivo, efeito e responsável. Atlas continua sem faturamento até confirmação comercial. Fonte ausente ou layout desconhecido exige aviso e tratamento localizado. Um mesmo ID com conteúdo conflitante não tem precedência confirmada e exige decisão com evidências. A última linha é um caso já esclarecido: para as sete bandeiras do 06, seguimos id_referencia e preservamos os originais, sem pendência nem contestação apenas pela bandeira. Essa orientação não dispensa conferir os demais campos e valores. O funcionamento automático desses tratamentos ainda precisa de demonstração. Conclusão técnica e aprovação do fechamento continuam sendo estados diferentes.
+
+CONDUÇÃO
+Distinguir pendências reais de caso esclarecido. Não recriar a pendência de bandeira dispensada por Helena.
+
+FONTES
+AGENTS.md: Inputs e fechamento parcial; Lacunas conhecidas
+PROMPTS/outputs/orbe-01-06-verificacao.md
+Resposta de Helena transcrita em PROMPTS/outputs/orbe-01-06-verificacao.md: seguir id_referencia, preservar originais, sem pendência ou contestação só pela bandeira. Confirmação reiterada pelo usuário em 17/10/2026.
+
+========================================================================
+
+SLIDE 10 / O percurso de Helena em outubro
+10:50–12:10 / Carlos
+
+FALA
+O percurso concreto que queremos viabilizar para Helena começa ao receber os resultados com competência, execução e cobertura. Ela abre um valor e confere as contribuições, as fontes e a soma. Depois revisa as pendências: qual regra falta, qual é o efeito e quem precisa decidir. Uma decisão comercial deve ter evidência e vigência antes da liberação. Após o registro, Helena confere uma nova execução e revisa os resultados alterados. Isso descreve o fluxo alvo, não uma tela ou capacidade já comprovada. A disponibilidade de cada etapa ainda aguarda evidência do responsável. Onde não houver função implementada, a evolução permanece identificada, sem simular cliques, aprovações ou reprocessamento. O tempo poupado será medido no acompanhamento real de outubro.
+
+CONDUÇÃO
+Percorrer as ações de Helena: receber, abrir evidências, revisar pendências, registrar decisões e conferir nova execução. A disponibilidade de cada etapa depende de demonstração. Transição para Marcus.
+
+FONTES
+PROMPTS/outputs/checkpoint-1-feedback.txt
+PROMPTS/outputs/arquitetura-stack.md: Fontes variáveis, fechamento parcial e revisões
+AGENTS.md
+Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+
+========================================================================
+
+SLIDE 11 / Mais um mês de desenvolvimento
+12:10–13:15 / Marcus
+
+FALA
+O mês adicional começa a partir do que for efetivamente entregue no desafio. Não deslocamos para esse mês a construção do mínimo ou das seis saídas que integrem a entrega. A proposta é usar a primeira semana para integrar a entrega ao sistema hospedeiro e às fontes. Na segunda, acompanhar o fechamento de outubro com Bia, Caio e Helena. Na terceira, melhorar alertas, explicações e registro de decisões a partir das dificuldades observadas. Na quarta, testar falhas de fonte e reprocessamento e medir a revisão. O escopo entregue e as lacunas precisam ser confirmados por evidências antes de fechar esse planejamento. Assim, o esforço adicional responde ao uso real, sem prometer ganhos ainda não medidos.
+
+CONDUÇÃO
+O mês adicional foca integração e uso real. Não transferir para esse plano o mínimo ou as saídas que compuserem a entrega do desafio. Confirmar o escopo entregue antes de detalhar o plano.
+
+FONTES
+Proposta de desenvolvimento para este pitch, sem compromisso homologado
+AGENTS.md: prioridade do mínimo e objetivo extra
+PROMPTS/outputs/arquitetura-stack.md: Critérios técnicos de aceite
+Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+
+========================================================================
+
+SLIDE 12 / Helena decide com a origem à vista
+13:15–14:10 / Marcus
+
+FALA
+O desenvolvimento está em andamento. A análise pontual das fontes já está documentada e as sete diferenças de bandeira foram esclarecidas por Helena. Ainda precisamos das evidências da implementação para afirmar quais funções estão disponíveis e apresentar os valores finais. O próximo passo é consolidar comando, execução, cobertura, resultados e pendências da entrega. Em outubro, queremos que Helena receba os resultados, abra as origens, registre decisões e confira uma nova execução. O mês adicional prioriza integração e acompanhamento desse uso. O compromisso é deixar cada afirmação apoiada em evidência e preservar a decisão humana onde a condição ainda depende do comercial ou do financeiro.
+
+CONDUÇÃO
+Encerrar no próximo passo. O desenvolvimento está em andamento. Consolidar evidências da entrega precede qualquer declaração de fechamento validado.
+
+FONTES
+AGENTS.md: Equipe e objetivo do pitch
+PROMPTS/outputs/checkpoint-1-feedback.txt
+Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+
+========================================================================
+
+SLIDE 13 / Apoio / regras que mudam o valor
+Apoio / Equipe
+
+FALA
+Usar nas perguntas. Não confundir o valor_taxa cobrado pela Orbe com a comissão contratual. Não faturar Atlas sem confirmação. Casa do Estudante tem MDR e antecipação zerados no período do acordo, mas estorno anterior usa a condição original. O excesso de spread realizado elegível de Mundo Aberto permanece na participação e na nota de setembro, com contestação separada. Os quatro negativos rejeitados não viram uma regra geral de exclusão para qualquer spread negativo futuro.
+
+CONDUÇÃO
+Consultar somente se a pergunta exigir regras de cálculo e elegibilidade.
+
+FONTES
+AGENTS.md: Checkout; Remessas; Faturamento
+HIPOTESES.md
+
+========================================================================
+
+SLIDE 14 / Apoio / dinheiro no banco exige contexto
+Apoio / Equipe
+
+FALA
+Usar se a banca perguntar sobre caixa ou contabilidade. Receita apurada, faturamento e movimento bancário têm significados diferentes. Não deduzir divergência da diferença entre o líquido Orbe de setembro e os créditos bancários do mês. Falta agenda detalhada de recebíveis para esse tipo de conciliação. Não quantificar a hipótese de caixa como resultado do case. As contas escolhidas para contrapartida precisam de premissa e justificativa no plano Fênix.
+
+CONDUÇÃO
+Consultar somente para distinguir receita de movimento bancário. Os valores não são ganhos da solução.
+
+FONTES
+AGENTS.md: Bancos, caixa e contabilidade
+PROMPTS/outputs/checkpoint-1-feedback.txt
+
+========================================================================
+
+SLIDE 15 / Apoio / um erro da IA e a correção humana
+Apoio / Equipe
+
+FALA
+Um erro real apareceu nesta preparação. A IA leu a documentação deste checkout e apresentou a afirmação de que o desenvolvimento não havia começado como estado geral do projeto. O usuário revisou e corrigiu: o desenvolvimento está em andamento e as evidências da implementação ainda não foram commitadas. A correção humana nos levou a retirar a afirmação global, registrar o andamento informado e separar o que já está documentado das capacidades que precisam de demonstração. A versão inicial, o pedido de revisão e a resposta do usuário fazem parte do histórico desta conversa. O episódio está registrado em PROMPTS/MOMENTOS.md e nos registros de preparação e revisão. Isso não comprova o funcionamento do sistema nem altera números financeiros.
+
+CONDUÇÃO
+Contar o episódio como erro de comunicação e de inferência da IA. Não atribuir à revisão um efeito financeiro que não ocorreu.
+
+FONTES
+Histórico desta conversa: pitch inicial e correção do usuário em 17/10/2026
+PROMPTS/outputs/pitch-base-preparacao.txt (registro histórico inicial)
+PROMPTS/outputs/pitch-base-revisao-2.txt
+PROMPTS/MOMENTOS.md, momento 2
+Atualização direta do usuário nesta conversa, em 17/10/2026: desenvolvimento em andamento; evidências ainda não commitadas; trabalhar apenas com o material local. Sem horário ou permalink fornecido.
+
+========================================================================
+
+RESPOSTAS ATUALIZADAS À BANCA
+
+“Já fechamos setembro?”
+O desenvolvimento está em andamento. Ainda não recebemos, neste checkout, a execução e as saídas validadas que permitam afirmar fechamento técnico de setembro. Há análise pontual Orbe e regras documentadas. Quando houver evidências, informar exatamente o escopo validado, a competência, a execução, a cobertura e as pendências. A aprovação de Helena é um estado separado. Não responder que o sistema ainda não começou nem presumir que o mês está fechado.
+
+“O que funciona hoje?”
+O que conseguimos comprovar com o material local é a conferência pontual das fontes 01 + 06 e a documentação das regras. Não recebemos evidência de funcionalidades do produto para classificá-las como disponíveis. A implementação está em andamento; o responsável deve demonstrar comando, entradas, saídas e limites de cada parte. Isso não equivale a afirmar que nada funciona na implementação ainda não commitada.
+
+“Quanto dinheiro está em jogo?”
+Os totais financeiros ainda não foram recebidos como saídas validadas. O slide 6 separa comissão de checkout, participação de remessas, cobrança a maior a contestar e devolução Casa do Estudante. Pendências como Atlas podem alterar os valores e permanecem sem total validado. Não somar receitas, notas e devoluções como um único ganho. Não usar os movimentos bancários do apoio como estimativa de economia.
+
+“Quanto dinheiro foi recuperado?”
+Não há recuperação comprovada nesta revisão. Contestação, devolução proposta e dinheiro recuperado são estados distintos. Só afirmar recuperação mediante evidência de crédito ou devolução, separada da apuração de receita.
+
+“As sete bandeiras do 06 continuam pendentes?”
+Não. Helena esclareceu: seguir por id_referencia, preservar os dados originais e não abrir pendência ou contestação apenas pela bandeira. Referências, ECs, datas e valores continuam sujeitos às conferências aplicáveis. A orientação não aprova os valores finais do fechamento.
+
+“Qual foi o impacto do complemento 06?”
+Sabemos que inclui 14 movimentos de setembro e afeta Dublin, Maple, Mundo Aberto, Bridge, Edu Abroad, Oxford e Kiwi. A diferença efetiva por lojista e o efeito nas notas ainda precisam de cálculo validado. A conferência de 1.957 IDs não quantifica impacto financeiro. Não presumir que Maple ou Oxford ficaram negativos.
+
+“O subagente coordena o fechamento e funciona sem modelo?”
+Coordenação, consultas e explicações são papéis previstos, ainda sem demonstração recebida nesta revisão. A execução direta do núcleo sem modelo é um requisito a verificar, não uma capacidade comprovada. Mostrar apenas as funções realmente demonstradas e seus limites.
+
+“O que muda para Helena em outubro?”
+O percurso alvo é receber resultados com competência e cobertura, abrir as contribuições e fontes de um valor, revisar pendências, registrar decisões com evidência e conferir uma nova execução. A disponibilidade de cada etapa ainda precisa de comprovação. O ganho de tempo será medido no acompanhamento real.
+
+“Onde a IA errou?”
+Nesta preparação, a IA generalizou o estado descrito na documentação do checkout e afirmou que o desenvolvimento não havia começado. O usuário corrigiu o estado para “em andamento” e explicou que as evidências ainda não estavam commitadas. A correção foi separar informação sobre o andamento de prova de capacidade. A referência é esta conversa, os registros de preparação/revisão e PROMPTS/MOMENTOS.md, momento 2. Esse episódio não comprova correção de cálculo nem recuperação financeira.
+
+“O que faríamos com mais um mês?”
+Integrar a entrega ao hospedeiro, acompanhar outubro com o financeiro, melhorar a revisão a partir das dificuldades observadas e verificar confiabilidade em falhas e reprocessamento. O plano parte do escopo comprovadamente entregue no desafio. Eventuais lacunas da entrega ficam explícitas, sem tratá-las como evoluções já concluídas.
+
+“Uma fonte ausente paralisa tudo?”
+Helena confirmou a continuidade de partes independentes, com cobertura, provisórios e bloqueios explícitos. A implementação desse comportamento ainda precisa de demonstração. Uma parte tecnicamente concluída não aprova o mês inteiro.
+
+“Por que não conciliar líquido Orbe com os créditos bancários do mês?”
+Os recortes de tempo são diferentes e falta agenda detalhada de recebíveis. A diferença isolada não comprova divergência. Não inventar essa conciliação ou quantificar a hipótese de caixa como resultado do case.
+
+EVIDÊNCIAS NECESSÁRIAS PARA ATUALIZAR AS AFIRMAÇÕES DE FUNCIONAMENTO
+
+Para cada frente, receber do responsável: referência do código e sua versão, comando ou ação realmente executada, competência, fontes e versões, saída, cobertura, validações, falhas conhecidas e o que permanece em implementação. Um relato de progresso pode atualizar o andamento, mas uma função só entra como comprovada com demonstração verificável. Não pedir novos commits nesta revisão: o usuário orientou usar apenas o material local.
+
+Matriz atual:
+- Desenvolvimento: em andamento, informado pelo usuário.
+- Análise pontual Orbe: documentada, sem equivalência a apuração financeira.
+- Núcleo, seis CSVs e validação financeira: evidências não recebidas aqui.
+- Subagente, consultas e explicações: evidências não recebidas aqui.
+- Registro de decisões, nova execução e fallback sem modelo: a demonstrar.
+- Totais, cobertura financeira e diferenças do 06: sem saídas validadas recebidas.
+
+QUADRO FINANCEIRO / REGRAS PARA PREENCHIMENTO
+
+Identificar setembro/2026, execução, fontes/versões, cobertura e dependências. Cada valor apresentado deve estar ligado a id_saida e às contribuições do rastro. Valor pendente não é zero.
+
+Checkout: comissão contratual por linha, arredondada antes da soma, com estornos e antecipações/reversões elegíveis. Não substituir por valor_taxa. Separar provisórios e bloqueados.
+Remessas: 50% do Spread R$ realizado elegível, arredondado por operação. A nota é única para a Ponte.
+Cobrança a maior: mostrar o valor integral pertinente, sem tratar contestação como recuperação confirmada. Separar cobranças a menor e a devolução Casa do Estudante.
+Casa do Estudante: devolução separada ao lojista, como pendência de Helena com o comercial, sem cobrança contra a Orbe pela isenção não comunicada. Estorno de venda anterior usa a condição original.
+Pendências: motivo, responsável, resultados atingidos e valor quando conhecido. Atlas não tem taxa confirmada, portanto não inventar receita bloqueada. Critérios de tolerância de remessa e contas ambíguas precisam de decisão/justificativa antes de concluir as partes afetadas.
+Receita omitida: não entrou no quadro de resultados porque não há comparação comprobatória. Só inserir se houver base comparável, regras compatíveis, contribuições identificadas e diferença reproduzível. Não somar novamente uma parcela já incluída na receita.
+
+FALA CONDICIONAL PARA RESULTADOS VALIDADOS
+
+Usar somente depois de receber e conferir as evidências:
+“Na execução [ID], de setembro/2026, com as fontes [VERSÕES] e cobertura [COBERTURA], apuramos R$ [CHECKOUT] de checkout e R$ [REMESSA] de participação de remessas. Há R$ [CONTESTAÇÃO] de cobrança a maior a analisar e R$ [CASA] de devolução da Casa do Estudante, separadamente. As pendências [MOTIVOS E RESPONSÁVEIS] afetam [RESULTADOS]. Os valores têm naturezas distintas e não formam um único total de economia.”
+Se houver omissão comprovada: “Dentro da receita já mostrada, R$ [OMITIDA] estava ausente da base [BASE], conforme as contribuições [REFERÊNCIAS].” Sem a comparação, omitir esta frase.
+
+DEMONSTRAÇÃO REAL / SUBSTITUIÇÃO DO SLIDE 7
+
+Enquanto não houver execução validada recebida, manter o exemplo explicitamente didático, com taxa e valores fictícios. Atlas é uma pendência real separada, sem valor validado e sem vínculo com o exemplo.
+
+Quando houver evidência, reservar cerca de 80 segundos:
+0–15s: identificar competência, execução, fontes e cobertura.
+15–30s: abrir um resultado real de comissoes_por_lojista.csv pelo id_saida.
+30–55s: abrir as contribuições de rastro.csv e suas fontes, com regra, vigência, sinal e arredondamento.
+55–70s: conferir a soma e o valor da saída.
+70–80s: mostrar uma pendência real da execução, com motivo e responsável, sem simular aprovação.
+
+Usar a interface ou comando realmente implementado. Capturas de execução real podem servir de contingência se identificadas e legíveis. Mockup e exemplo didático não demonstram funcionamento. Se a execução falhar, informar a falha e usar apenas evidências reais disponíveis.
+
+IMPACTO DO 06 / COMO PREENCHER SEM INVENTAR RESULTADO
+
+Comparar uma execução apenas com 01 e outra com 01 + 06, mantendo a mesma versão de regras e registrando as entradas. Por lojista, apresentar comissão antes, contribuições do complemento, comissão depois, diferença conferida no rastro e efeito na nota proposta. Separar mudanças de regra de mudanças de arquivo. Preservar as duas execuções e submeter resultados alterados à revisão.
+
+Lojistas a detalhar quando houver cálculo: Dublin, Maple, Mundo Aberto, Bridge, Edu Abroad, Oxford e Kiwi. No estado desta revisão, todos os campos de diferença e efeito nas notas aguardam evidência, sem presumir sinal ou valor.
+
+Bridge: aplicar a condição original às vendas de 12 e 13/09 referenciadas pelos estornos. Reversões devem anular a comissão da antecipação referenciada. Zero ou negativo não gera nota de checkout. Negativo não segue automaticamente para o mês seguinte. Não alterar remessas ou bancos por inferência do 06. As sete bandeiras não geram nova pendência ou contestação por si só.
+
+CONSISTÊNCIA ANTES DO PALCO
+
+Atualizar slides, notas e roteiro juntos. Revisar as respostas “já fechamos setembro?”, “quanto dinheiro está em jogo?” e “o que funciona hoje?”. Manter “em andamento” e substituir “a demonstrar” somente nas capacidades com evidência. Não usar a documentação local anterior como prova de que o desenvolvimento não começou.
+Manter competência, execução e cobertura ao lado de resultados. O cruzamento dos IDs é análise de fonte, não validação financeira. A orientação de bandeira está encerrada. Não contar o mesmo impacto como comissão, nota, omissão e devolução independentes.
+Conferir um episódio real de erro da IA no histórico. O momento de revisão desta preparação já está em PROMPTS/MOMENTOS.md. O arquivo é um índice de momentos e não substitui o transcript integral.
+Ensaiar os tempos e as transições. Se exceder 15 minutos, reduzir detalhes de contexto, preservando impacto financeiro quando validado, rastreabilidade, percurso de outubro, limites e falhas.
+
+O QUE FOI APROVEITADO DOS ANEXOS
+
+A triagem cobriu os 19 arquivos TXT informados, usando leitura local e seleção temática de trechos. As transcrições têm erros de reconhecimento e não foram tratadas como fontes de regras da Tarvo. Não houve revisão humana linha a linha nem validação da autoria das falas.
+
+Ormind_original.txt, aproximadamente 05:27 a 07:38 e 13:05: reduzir a incerteza do interlocutor com casos concretos. Aplicação: mostrar cedo a conferência Orbe, sem importar logos ou resultados de outras empresas.
+Pitch 5-10-2026_original.txt, aproximadamente 03:54 e 07:58: explicar com síntese o que se faz e apoiar a fala em resultado concreto. Aplicação: abertura curta e distinção explícita entre proposta e evidência.
+Pitch mentoria ormind_original.txt, aproximadamente 09:24 e 32:37: substituir descrição abstrata por exemplos do que a solução faz. Aplicação: percorrer valor, origem, pendência e decisão de Helena.
+Pitch Felipe Dispo_original.txt, aproximadamente 20:02 e 52:44: clareza de caso de uso e cuidado com a imagem de um produto que resolve tudo. Aplicação: foco em fechamento rastreável e limites de autonomia.
+Pitch dispo_original.txt, aproximadamente 05:29 e 37:54: legibilidade visual e coerência do próximo passo com o desafio apresentado. Aplicação: composições simples e pedido de validação operacional.
+
+skills.rar contém uma síntese de mentorias em skills/artur-vb-mode, referências e exemplos. Foram aproveitados os princípios de foco, concretude e demonstração do fluxo. As instruções de personificar o mentor, usar bordões, buscar rodada ou tratar vesting não foram aplicadas.
+
+As demais mentorias e reuniões foram examinadas na triagem, mas não trouxeram evidência adicional necessária para o pitch da Tarvo. Temas de governança societária, comunidade, distribuição, captação e negócios de outras empresas ficaram de fora. Não transferir números ou credenciais desses relatos para a equipe.
+
+FONTES CENTRAIS
+
+Instruções do desafio: https://docs.google.com/document/d/1GwHs0lgLWXdw-jIrPyYAxyJ_xEJJxViE/edit
+Referência de pitch do orientador, somente leitura: https://docs.google.com/presentation/d/1PUzY_hY5vRZO-VsbPykNorNlojd9POrH/edit
+Contexto e regras locais: AGENTS.md e HIPOTESES.md.
+Estado atual: desenvolvimento em andamento, informado pelo usuário nesta conversa. O README local ainda contém o estado anterior e não comprova o andamento global.
+Direção da solução: PROMPTS/outputs/arquitetura-stack.md.
+Feedback do checkpoint: PROMPTS/outputs/checkpoint-1-feedback.txt.
+Evidências da análise pontual: PROMPTS/outputs/orbe-01-06-verificacao.md.
+
+As fontes de cada slide também estão nas notas do apresentador no Google Slides.

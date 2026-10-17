@@ -2,7 +2,7 @@
 
 Registro atualizado com o [Checkpoint 1 enviado em 17/10/2026](PROMPTS/outputs/checkpoint-1.txt), seu [feedback](PROMPTS/outputs/checkpoint-1-feedback.txt) e as respostas documentadas em [duvidas-slack.md](PROMPTS/outputs/duvidas-slack.md) e [nossas-duvidas.md](PROMPTS/outputs/nossas-duvidas.md). O checkpoint registra intenção de desenvolvimento, não funcionalidades implementadas. O feedback reconhece a leitura da causa raiz, mas não homologa limites, contas contábeis ou resultados numéricos.
 
-O feedback orienta considerar premissas que alteram o fechamento e exclui a hipótese de caixa das entregas. Para cada premissa de cálculo/classificação, registrar as linhas afetadas e a diferença entre os tratamentos possíveis, quando houver dados. P1 e P2 permanecem propostas; P3 fica apenas como histórico fora de escopo. Uma terceira premissa de fechamento, se necessária, deve surgir de ambiguidade concreta dos dados, sem reclassificar regra já confirmada como hipótese.
+O feedback orienta considerar premissas que alteram o fechamento e exclui a hipótese de caixa das entregas. P1 e P2 abaixo descrevem as escolhas implementadas pela equipe, sujeitas aos limites indicados; P3 fica como histórico fora de escopo. As confirmações do financeiro estão separadas dessas escolhas. A revisão documental de 17/10/2026 usa os CSVs reproduzidos da main `cd2d849` e o código dos motores; não altera fontes nem regras financeiras.
 
 **Estado atual:** o núcleo determinístico em Python, os geradores dos 6 CSVs oficiais e o subagente consultivo estão implementados e verificados no fechamento de setembro/2026 (`01 + 06`) e na simulação parametrizada de outubro/2026 (`--competencia 2026-10`). A aprovação final do fechamento permanece humana (`status_aprovacao = PROVISORIO` até homologação de Helena).
 
@@ -18,19 +18,22 @@ O feedback orienta considerar premissas que alteram o fechamento e exclui a hip�
 
 ### P1 — Tolerância de divergência de remessa
 
-- **Decisão adotada pela equipe (delegação confirmada):** fronteira estrita `abs(spread_pct - taxa_contratada_pct) > 0,005` ponto percentual (`0.00005` na forma fracionária) combinada à verificação monetária do excesso cobrado.
+- **Decisão implementada pela equipe (escolha delegada):** o motor de remessas seleciona cobranças a maior quando `spread_pct_aplicado - spread_contratado_pct >= 0.01` ponto percentual. O filtro posterior usa diferença absoluta `>= 0.005` ponto percentual e não amplia a seleção já feita pelo motor. O limite efetivo de remessa é, portanto, inclusivo de `0.01` p.p.; não é o limite estrito de `0.005` p.p. descrito em versões anteriores deste documento.
+- **Justificativa e limite:** a faixa evita alertas por pequenas diferenças na representação percentual e distingue as operações de setembro com excesso de `0.30` p.p. O valor contestado é calculado com as cotações, sem usar o percentual arredondado como base monetária: `valor_me × (taxa_cliente − ptax_ref × (1 + spread_contratado))`, arredondado por operação com `ROUND_HALF_UP`. É uma tolerância operacional escolhida pela equipe, não uma regra homologada por Helena; pode omitir excessos inferiores a `0.01` p.p. em novos dados. Não há filtro monetário mínimo adicional no motor.
 - **Efeito verificado em setembro/2026:** captura integralmente as **23 operações da Mundo Aberto Intercâmbio** em que a Ponte Câmbio aplicou `1,50%` sobre a PTAX em vez do spread renegociado de `1,20%` (diferença de `+0,30` p.p.), totalizando **R$ 1.418,88** de divergência a contestar pelo valor cheio pago a mais pelo lojista. Nenhuma operação legítima dos demais 13 lojistas (todos a `1,50%` exatos) é afetada ou omitida.
 - **Invariância da comissão:** conforme regra confirmada, a comissão da Tarvo permanece calculada sobre 50% do spread realizado elegível (**R$ 39.543,42**).
 - **Fonte:** pergunta e resposta do item 9 de `duvidas-slack.md`.
 
 ### P2 — Contrapartida de movimentos sem identificação suficiente
 
-- **Decisão adotada pela equipe:** utilizar contas patrimoniais transitórias existentes no plano de contas Fênix ERP (`04_plano_de_contas_fenix_erp.csv`), mantendo pendência explícita em `pendencias.csv` e sem reconhecer receita ou despesa indevidamente:
-  1. **Crédito Pix sem origem identificada (`L50`, 18/09/2026, `R$ 7.350,00`):** alocado em `1.1.09.002` (*Valores a Identificar / Conciliar*), `metodo = HUMANO`, `confianca = 0.00`, gerando pendência `CREDITO_NAO_IDENTIFICADO` (`Helena / Financeiro`).
-  2. **Devolução de repasse Mundo Aberto sem motivo confirmado (`L65`, 24/09/2026, `R$ 12.400,00`):** alocada em `1.1.09.002` (*Valores a Identificar / Conciliar*), `metodo = HUMANO`, `confianca = 0.00`, gerando pendência `DEVOLUCAO_SEM_CAUSA` (`Helena / Comercial`).
-  3. **Repasses operacionais para Atlas Idiomas (`L34` `R$ -112.450,80` e `L60` `R$ -138.920,15`):** alocados em `1.1.09.002` (*Valores a Identificar / Conciliar*), `metodo = HUMANO`, `confianca = 0.00`, gerando pendências `REPASSE_LOJISTA_BLOQUEADO` (`Helena / Comercial`).
+- **Escolha implementada pela equipe:** propor contrapartidas patrimoniais existentes no plano Fênix ERP (`04_plano_de_contas_fenix_erp.csv`), com pendências humanas para origem, causa ou contrato ainda não resolvidos. As contas específicas são propostas contábeis da equipe; Helena confirmou os fatos, não esses códigos.
+  1. **Crédito Pix sem origem identificada (`L50`, 16/09/2026, `R$ 7.350,00`):** `1.1.09.002` (*Valores a Identificar / Conciliar*), `metodo = REGRA`, `confianca = 1.00`, com pendência `CREDITO_NAO_IDENTIFICADO` (`Helena / Financeiro`). A conta transitória evita reconhecer receita sem origem.
+  2. **Devolução de repasse Mundo Aberto sem motivo confirmado (`L65`, 23/09/2026, `R$ 12.400,00`):** `2.1.01.001`, `metodo = REGRA`, `confianca = 1.00`, com pendência `DEVOLUCAO_SEM_CAUSA` (`Helena / Comercial`). A proposta recompõe a obrigação de repasse ao lojista; a causa do retorno permanece desconhecida e exige revisão.
+  3. **Repasses operacionais para Atlas Idiomas (`L34`, `R$ -112.220,15`; `L60`, `R$ -137.081,62`):** `2.1.01.001`, `metodo = REGRA`, `confianca = 1.00`, com pendências `REPASSE_LOJISTA_BLOQUEADO` (`Helena / Comercial`). A proposta baixa obrigação de repasse; o bloqueio de faturamento por falta de contrato não transforma o pagamento em despesa nem comprova que ele foi autorizado. Os valores são os dos movimentos bancários, sem substituição por estimativas do texto anterior.
   4. **Transferência entre contas próprias sem compensação no mês (`L92`, 30/09/2026, `R$ -300.000,00`):** alocada em `1.1.09.001` (*Valores em Trânsito Bancário*), `metodo = REGRA`, `confianca = 1.00`, gerando pendência `TRANSITO_BANCARIO` (`Caio / Conciliação Bancária`).
-- **Fontes:** itens 8, 10 e 12 de `duvidas-slack.md`.
+- **Significado de método e confiança:** `REGRA/1.00` registra a aplicação determinística da classificação proposta, não certeza da origem, aprovação comercial ou decisão de Helena. Movimentos sem regra conhecida recebem `HUMANO/0.00`, conta `1.1.09.002` e pendência `LANCAMENTO_SEM_REGRA`. Todos os lançamentos continuam provisórios até revisão.
+- **Alternativa e impacto:** usar transitória também em L65/L34/L60 mudaria a conta proposta, sem alterar os valores bancários, comissões ou notas. A implementação mantém a contrapartida de repasse e explicita a decisão pendente. Uma revisão contábil pode exigir reclassificação.
+- **Fontes dos fatos:** itens 8, 10 e 12 de `duvidas-slack.md`. **Evidência da escolha implementada:** `src/engines/banking_engine.py` e `saida/lancamentos_classificados.csv`.
 
 ### P3 — Impacto dos adiantamentos no caixa (histórico; fora das entregas)
 
@@ -57,15 +60,15 @@ Resumo das confirmações relevantes. As perguntas completas, autores, datas e l
 | Provisões e conta de classificação | Contrapartida bancária; folha, tributos de agosto e recebimento Ponte de 04/09 já registrados. Além desses, nada provisionado; despesas indicadas entram no mês. | Item 12 |
 | Negativos, duplicata e contestação | Quatro negativos questionados excluídos da comissão/nota e pendentes com Helena. Duplicata contada uma vez e listada para correção. Para o case, considerar prazo de contestação aberto. | Itens 7, 15 e 18 |
 | Casa do Estudante | MDR e antecipação zero de setembro a dezembro (informado pelo financeiro em resposta no Slack, pois a planilha trazia apenas a anotação "ver c/ comercial"); devolução separada com Helena/comercial, sem cobrança à Orbe por isenção não comunicada. Estornos anteriores respeitam taxa original. Não emite NF por saldo negativo (R$ -5,50). | Atualização de 17/10 às 9h44 via Slack |
-| Atlas Idiomas | Operações iniciadas em 10/09 sem contrato assinado: comissão retida em 100% como pendência (R$ 7.876,05 em 57 transações). Volume bruto no arquivo 01 soma R$ 262.138,61 (R$ 135.428,90 em vendas e R$ 126.709,71 em antecipações/estornos). Não faturar até confirmação comercial. | Resposta de Helena e item 5 |
+| Atlas Idiomas | Operações iniciadas em 10/09 sem contrato assinado: R$ 7.876,05 de taxas observadas em 57 movimentos pendentes; não são comissão contratual confirmada. No arquivo 01, as vendas somam R$ 135.428,90. A soma algébrica dos brutos de todos os movimentos é R$ 262.138,61: vendas + antecipações de R$ 235.943,10 − reversões de R$ 108.712,14 − estornos de R$ 521,25. Essa soma inclui bases sobrepostas e não representa vendas novas. Não faturar até confirmação comercial. | Regra: resposta de Helena e item 5. Valores: recálculo do arquivo 01 na revisão de cd2d849 |
 | Rotina, esforço e responsáveis | Bia: checkout/taxas; Caio: bancos/remessas; Helena: revisão, exceções e aprovação. Estimativa: 3 dias checkout, 2 remessa, 2 bancos e 1 notas/revisão. Controle por “ok” e data. | Resposta para Turma do Barulho |
 | Desconto, repasses e ajustes Ponte | Taxa descontada na liquidação; nota documenta, sem nova cobrança. Repasse regular do já liquidado e exceção por conta garantida. Ponte responde por e-mail e ajusta relatório posterior; Helena confere. | Resposta e complemento para Turma do Barulho |
 
 ## Decisões da equipe implementadas e lacunas externas
 
 - **Núcleo de checkout e remessas:** implementados e verificados com `01 + 02 + 03 + 06`, respeitando vigências históricas (`tx_primarias`) e corte por competência (`--competencia AAAA-MM`).
-- **Divergências de remessa (P1):** aplicada a tolerância delegada de `0,005%`, capturando as 23 operações da Mundo Aberto (`R$ 1.418,88`).
-- **Classificações bancárias e transitórias (P2):** contas existentes no plano Fênix ERP (`1.1.09.001` e `1.1.09.002`) fundamentadas por caso e acompanhadas de pendência explícita em `pendencias.csv`, sem qualquer uso de "Fake IA".
+- **Divergências de remessa (P1):** limite efetivo inclusivo de `0.01` ponto percentual para cobrança a maior, capturando as 23 operações da Mundo Aberto (`R$ 1.418,88`).
+- **Classificações bancárias (P2):** contrapartidas patrimoniais `1.1.09.001`, `1.1.09.002` e `2.1.01.001`, fundamentadas por caso e acompanhadas de pendência. Método e confiança descrevem a classificação aplicada, sem substituir a revisão humana.
 - **Camada agêntica:** subagente consultivo implementado em `src/agent/consultant.py`, operando sobre os CSVs e manifestos oficiais com guardrails estritos contra aprovação autônoma de exceções ou operações financeiras externas.
 - **Lacunas externas:** Atlas (`CADASTRO_PENDENTE`), conflitos de ID (`DUPLICIDADE_CONFLITANTE`) e fontes ausentes/inválidas (`cobertura_fontes`) possuem bloqueio conservador e rastreável implementado. Custos da adquirência e agenda detalhada de recebíveis permanecem fora do escopo do case.
 
@@ -94,11 +97,11 @@ Fonte e transcrição: [nossas-duvidas.md](PROMPTS/outputs/nossas-duvidas.md), r
 | Confirmado para o `06` | Complemento do `01`, de competência setembro/2026 | Reprocessar `01 + 06`; não substituir o `01` nem mover para outubro pela chegada tardia |
 | Observado no arquivo | 10 estornos, 3 reversões de antecipação e 1 venda, todos em 30/09; sete lojistas | Rever comissões e propostas de notas dos lojistas afetados, com diferenças rastreáveis |
 | Aplicação de regra já confirmada | Estornos Bridge remetem a 12 e 13/09, antes da nova vigência de 15/09 | Usar condições da venda original; não criar nova hipótese sobre vigência |
-| Verificação técnica executada em 17/10 | 1.957 IDs únicos e não vazios, sem duplicatas; 13 referências únicas encontradas no `01`, sem outra anulação referenciada; bruto/taxa/líquido opostos exatos | IDs e referências verificados; comissão contratual e efeito nas notas continuam por apurar. As sete diferenças de bandeira foram esclarecidas por Helena, sem pendência ou contestação |
-| Desenho técnico proposto | Inventário de múltiplos arquivos, deduplicação de repetição idêntica, nova execução e comparação antes/depois | Implementar e verificar repetição sem duplicar valores; conflito de conteúdo exige pendência |
+| Verificação técnica executada em 17/10 | 1.957 IDs únicos e não vazios, sem duplicatas; 13 referências únicas encontradas no `01`, sem outra anulação referenciada; bruto/taxa/líquido opostos exatos | Comissão e notas já apuradas no conjunto `01 + 06`: checkout `203735.34`, notas checkout `203740.84`. Sete diferenças de bandeira esclarecidas por Helena, sem pendência ou contestação |
+| Desenho implementado e testado | Múltiplos arquivos Orbe, deduplicação de repetição idêntica, snapshots por execução e comparação entre versões | Testes verificam repetição sem duplicação e bloqueio integral de conflitos; resultados alterados não herdam aprovação |
 | Não definido pelo anúncio | Protocolo geral de outros ajustes, conflitos, reabertura de período aprovado e completude do mês | Manter perguntas e bloqueios específicos; não extrapolar a semântica deste complemento |
 
-As reversões são de Oxford (duas) e Maple (uma); verificar se o total mensal segue positivo, sem antecipar resultado. A nova venda é da Kiwi. Aplicar contratos, arredondamento por linha e anulação da comissão da antecipação referenciada; `valor_taxa` não vira base de faturamento. Não alterar a regra distinta dos ajustes Ponte no mês em que aparecem. O anúncio não modifica P1/P2 nem inclui a hipótese de caixa nas entregas.
+As reversões são de Oxford (duas) e Maple (uma). Após a apuração, ambos mantêm checkout positivo: Oxford `13845.71` e Maple `14165.77`, com notas propostas. A nova venda é da Kiwi. Foram aplicados contratos, arredondamento por linha e anulação da comissão da antecipação referenciada; `valor_taxa` não vira base de faturamento. A regra distinta dos ajustes Ponte no mês em que aparecem permanece. O anúncio não modifica P1/P2 nem inclui a hipótese de caixa nas entregas.
 
 ### Lacunas e perguntas propostas após o `06`
 
@@ -121,7 +124,7 @@ A pergunta sobre as sete diferenças de bandeira foi enviada pelo usuário e res
 > *"Em setembro isso não acontece: todas as referências do arquivo de ajustes estão no relatório. Se um dia acontecer, o ajuste entra pelo valor que veio e vira pendência para eu pedir a original à Orbe.*
 > *— Helena"*
 
-- **Tratamento:** Se um ajuste tardio trouxer estorno ou reversão de transação que não conste do relatório principal, a operação entra na apuração pelo valor declarado e o sistema gera automaticamente uma pendência do tipo `ESTORNO_ORFAO_SEM_ORIGEM` para Helena notificar a adquirente.
+- **Confirmação e limite:** o texto recebido diz “valor que veio”, sem definir qual coluna deve virar comissão quando falta a referência. Em setembro não há esse caso no `06`. O código registra `ESTORNO_ORFAO_SEM_ORIGEM` pelo `valor_bruto` declarado, com rastro e responsável Helena, enquanto a comissão segue o cálculo contratual disponível. Não afirmar que esse ramo homologa qualquer ajuste órfão futuro ou substitui a comissão pelo bruto; a base e o alcance precisam de revisão antes de tratar um caso novo como fechado. Nenhuma comunicação externa é enviada automaticamente.
 
 ## Padrão Ouro de Auditabilidade e Rastro (Organização Barte, 14h11)
 
@@ -135,23 +138,23 @@ A pergunta sobre as sete diferenças de bandeira foi enviada pelo usuário e res
 
 ### Implementação do Padrão Ouro na Solução:
 1. **Rastro Universal Expandido (`rastro.csv`):** Mantém as 4 colunas canônicas obrigatórias (`id_saida; arquivo_origem; ref_origem; valor`) e adiciona as colunas de alta auditabilidade: `regra_aplicada; taxa_contratada_aplicada; detalhe_calculo`.
-2. **Rastro Integral:** Inclui o rastreamento 1-para-1 de comissões (`COM-XXXX`), notas fiscais (`NF-XXXX`), divergências de taxa (`DIV-XXXX`), lançamentos bancários (`LAN-XXXX`) e pendências (`PEN-XXXX`), incluindo as **118 transações individuais reais da Orbe** que compõem a pendência consolidada da Casa do Estudante (`PEN-0058 = R$ 15.396,77`).
+2. **Rastro Integral:** Liga comissões (`COM-XXXX`), notas propostas (`NF-XXXX`), divergências (`DIV-XXXX`), lançamentos (`LAN-XXXX`) e pendências (`PEN-XXXX`) às contribuições de origem. Um resultado pode ter várias contribuições, incluindo as 118 transações da pendência Casa (`PEN-0058 = R$ 15.396,77`).
 3. **Manifesto de Execução e Histórico (`auditoria_execucao.json`, `auditoria_execucao.md` e `historico_execucoes.json`):** Gerados automaticamente a cada rodada, registrando `id_execucao`, `versao_regras`, timestamp ISO, hashes SHA-256 individuais e combinados de entrada/saída, estado de cobertura por domínio (`cobertura_fontes`), separação entre `estado_tecnico` e `status_aprovacao`, comparação rastreável com a execução anterior (`comparacao_execucao_anterior`) e prova real matemática centavo a centavo.
 
-## Premissas Operacionais e Contábeis Específicas (Homologação 17/10)
+## Regras confirmadas e escolhas operacionais da equipe — revisão de 17/10
 
-### P4 — Vínculo de Lojistas sem EC pelo Nome e Validação por Taxa
+### P4 — Vínculos cadastrais confirmados pelo financeiro
 - **Contexto:** Kiwi Experience, Horizonte Viagens e Novo Horizonte Intercâmbio constavam sem código de estabelecimento (`cod_estabelecimento`) explícito na planilha cadastral inicial.
-- **Tratamento:** As entidades foram associadas pelo nome comercial aos seus respectivos contratos. A validação comprobatória veio do próprio arquivo da Orbe: as taxas aplicadas pela adquirente (ex: 2,39% e 2,89% da Novo Horizonte) batem centavo a centavo com as condições da aba vigente, confirmando a exatidão cadastral.
+- **Tratamento confirmado:** EC `1043300981` = Novo Horizonte Intercâmbio; EC `1043396662` = Horizonte Viagens; EC `1038867654` = Kiwi Experience. Os CNPJs e contratos são os das respectivas linhas vigentes. A autoridade para esses vínculos é a resposta do financeiro registrada no item 5 de `PROMPTS/outputs/duvidas-slack.md`; semelhança de nome ou coincidência de taxa não confirma identidade nem contrato.
 
 ### P5 — Truncamento da Orbe vs Arredondamento Tarvo (`ROUND_HALF_UP`)
 - **Contexto:** A adquirente Orbe trunca a coluna `valor_taxa` no segundo dígito decimal, enquanto o contrato e a regra de Helena exigem arredondamento canônico por operação (`ROUND_HALF_UP`).
-- **Impacto:** Essa divergência gera exatamente R$ 0,01 de variação em 929 linhas do relatório de checkout, somando R$ 8,57 de resíduo. 
+- **Limite da evidência:** não se mantém a contagem anterior de 929 linhas/R$ 8,57 como resultado validado desta revisão. Diferença entre taxa observada e comissão contratual também pode ter outras causas; o truncamento deve ser isolado por operação antes de ser quantificado.
 - **Decisão:** Conforme orientação formal, diferença decorrente puramente de truncamento não constitui divergência contratual de taxa e não é cobrada do lojista nem contestada à adquirente.
 
 ### P6 — Classificação da Folha de Salários de Agosto Paga em Setembro (`2.1.04.001`)
 - **Contexto:** Lançamento no Banco Aurora em 04/09/2026 (linha física L15) no valor de R$ -184.732,18 ("PAGTO SALARIOS - FOLHA 08/2026").
-- **Premissa Contábil:** A despesa de salários pertence ao mês trabalhado (agosto/2026) e já havia sido provisionada pela contabilidade. O pagamento no 5º dia útil de setembro opera estritamente a baixa do passivo exigível. Classificada na conta `2.1.04.001` (Salários a Pagar - Passivo Circulante), evitando a duplicidade de despesa em setembro.
+- **Fato confirmado e proposta contábil:** a folha pertence a agosto e já estava provisionada. O pagamento de 04/09 baixa o passivo, sem repetir a despesa em setembro. A conta proposta pela equipe é `2.1.04.001` (Salários a Pagar - Passivo Circulante).
 
 ### P7 — Trânsito Bancário Aurora–Meridiano em 30/09 (R$ 300.000,00)
 - **Contexto:** O Banco Aurora registra quatro transferências entre contas para o Banco Meridiano em setembro. Três compensaram em setembro (02/09 R$ 350k, 10/09 R$ 100k, 17/09 R$ 150k).
@@ -161,7 +164,7 @@ A pergunta sobre as sete diferenças de bandeira foi enviada pelo usuário e res
 - **Contexto:** Tanto nos relatórios da Orbe (`id_transacao`) quanto nos relatórios da Ponte Câmbio (`num_operacao`), podem surgir registros repetidos sob o mesmo identificador.
 - **Tratamento:** Os motores realizam pré-agrupamento por identificador comparando todos os campos operacionais e financeiros relevantes:
   1. **Cópias Efetivamente Idênticas:** Quando todas as ocorrências compartilham exatamente os mesmos valores operacionais e financeiros (ex: `PC-0926-0162` na Ponte, ou reprocessamento idêntico de linha Orbe), a operação é contabilizada uma única vez e a evidência das múltiplas ocorrências é preservada no `rastro.csv` (e em `OPERACAO_DUPLICADA` na Ponte).
-  2. **Duplicidades Conflitantes:** Quando um mesmo `id_transacao` ou `num_operacao` aparece com valores divergentes em qualquer campo relevante, **nenhuma ocorrência é escolhida automaticamente** (sem *First-Write-Wins* e sem *Last-Write-Wins*). Todas as versões daquele ID são bloqueadas das comissões, divergências e notas e encaminhadas integralmente a `pendencias.csv` (`DUPLICIDADE_CONFLITANTE`) com todas as versões detalhadas no `rastro.csv` para decisão de Helena.
+  2. **Duplicidades Conflitantes:** Quando um mesmo `id_transacao` ou `num_operacao` aparece com valores divergentes em campo relevante, nenhuma ocorrência é escolhida automaticamente. Todas as versões daquele ID são bloqueadas das comissões, divergências e notas, com versões detalhadas no rastro para decisão de Helena. A Orbe usa o tipo `DUPLICIDADE_CONFLITANTE`; a Ponte usa `OPERACAO_DUPLICADA` com motivo explícito de conflito e bloqueio integral.
 
 
 

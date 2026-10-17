@@ -1,0 +1,37 @@
+{
+  "commit": "eb44d34e10b36419a3b032c268cc7c41718bb214",
+  "arquivos": {
+    "comissoes_por_lojista.csv": {
+      "registros": 35,
+      "igual_a_saida_versionada": true
+    },
+    "divergencias_taxa.csv": {
+      "registros": 115,
+      "igual_a_saida_versionada": true
+    },
+    "notas_a_emitir.csv": {
+      "registros": 21,
+      "igual_a_saida_versionada": true
+    },
+    "lancamentos_classificados.csv": {
+      "registros": 184,
+      "igual_a_saida_versionada": true
+    },
+    "pendencias.csv": {
+      "registros": 68,
+      "igual_a_saida_versionada": true
+    },
+    "rastro.csv": {
+      "registros": 4503,
+      "igual_a_saida_versionada": true
+    }
+  },
+  "ids_verificados": 423,
+  "comissoes": {
+    "CHECKOUT": "203735.34",
+    "REMESSA": "39543.42"
+  },
+  "estado_tecnico": "CONCLUIDO",
+  "status_aprovacao": "PROVISORIO",
+  "consultor_ok": true
+}
